@@ -4,3 +4,17 @@
 *.jar
 *.war
 *.ear
+target/*
+
+# IDEA Intellij Files *
+.idea/*
+*.iml
+
+# Netbeans Files #
+.nbproject/*
+build.xml
+nb-build.xml
+
+* Eclipse Files #
+.project
+.classhpath
