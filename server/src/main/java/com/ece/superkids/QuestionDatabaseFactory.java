@@ -4,9 +4,15 @@ public final class QuestionDatabaseFactory {
 
     static QuestionDatabase questionDatabase;
 
-    public static QuestionDatabase aQuestionList() {
+    /**
+     * Factory method to get the question database. Since the database can be expensive to load,
+     * we create it in a singleton pattern.
+     *
+     * @return the question database
+     */
+    public static QuestionDatabase aQuestionDatabase() {
         if (questionDatabase == null) {
-
+            questionDatabase = new FileQuestionDatabase();
         }
         return questionDatabase;
     }
