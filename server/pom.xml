@@ -11,5 +11,14 @@
 
   <artifactId>server</artifactId>
 
+  <dependencies>
+    <dependency><groupId>super-kids</groupId>
+      <artifactId>server</artifactId></dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
+
 
 </project>
