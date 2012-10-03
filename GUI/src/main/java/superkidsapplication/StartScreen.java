@@ -8,7 +8,7 @@ package superkidsapplication;
  *
  * @author david
  */
-public class StartScreen extends javax.swing.JFrame {
+public class StartScreen extends javax.swing.JPanel {
 
     /**
      * Creates new form StartScreen
@@ -26,154 +26,98 @@ public class StartScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        StartScreenGraphics = new javax.swing.JLayeredPane();
-        ContinueButton = new javax.swing.JButton();
-        NewGameButton = new javax.swing.JButton();
-        OptionButton = new javax.swing.JButton();
-        Background = new javax.swing.JLabel();
+        ScreenComponents = new javax.swing.JLayeredPane();
+        ContinueGame = new javax.swing.JButton();
+        NewGame = new javax.swing.JButton();
+        Options = new javax.swing.JButton();
+        BackGround = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(720, 540));
-        setResizable(false);
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setLayout(new java.awt.BorderLayout());
 
-        StartScreenGraphics.setAlignmentX(0.0F);
-        StartScreenGraphics.setAlignmentY(0.0F);
-        StartScreenGraphics.setFocusable(false);
-        StartScreenGraphics.setMaximumSize(new java.awt.Dimension(800, 600));
-        StartScreenGraphics.setMinimumSize(new java.awt.Dimension(800, 600));
+        ScreenComponents.setAlignmentX(0.0F);
+        ScreenComponents.setAlignmentY(0.0F);
+        ScreenComponents.setMinimumSize(new java.awt.Dimension(800, 600));
+        ScreenComponents.setSize(new java.awt.Dimension(800, 600));
 
-        ContinueButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        ContinueButton.setForeground(new java.awt.Color(255, 255, 255));
-        ContinueButton.setText("Continue Game");
-        ContinueButton.setContentAreaFilled(false);
-        ContinueButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        ContinueButton.addActionListener(new java.awt.event.ActionListener() {
+        ContinueGame.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        ContinueGame.setForeground(new java.awt.Color(255, 255, 255));
+        ContinueGame.setText("Continue Game");
+        ContinueGame.setAlignmentY(0.0F);
+        ContinueGame.setBorderPainted(false);
+        ContinueGame.setContentAreaFilled(false);
+        ContinueGame.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ContinueGame.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ContinueGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContinueButtonActionPerformed(evt);
+                ContinueGameActionPerformed(evt);
             }
         });
-        ContinueButton.setBounds(490, 210, 180, 50);
-        StartScreenGraphics.add(ContinueButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        ContinueGame.setBounds(487, 190, 190, 50);
+        ScreenComponents.add(ContinueGame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        NewGameButton.setBackground(new java.awt.Color(0, 0, 0));
-        NewGameButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        NewGameButton.setForeground(new java.awt.Color(255, 255, 255));
-        NewGameButton.setText("New Game");
-        NewGameButton.setContentAreaFilled(false);
-        NewGameButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        NewGameButton.addActionListener(new java.awt.event.ActionListener() {
+        NewGame.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        NewGame.setForeground(new java.awt.Color(255, 255, 255));
+        NewGame.setText("New Game");
+        NewGame.setBorderPainted(false);
+        NewGame.setContentAreaFilled(false);
+        NewGame.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        NewGame.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        NewGame.setMaximumSize(new java.awt.Dimension(180, 29));
+        NewGame.setMinimumSize(new java.awt.Dimension(180, 29));
+        NewGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewGameButtonActionPerformed(evt);
+                NewGameActionPerformed(evt);
             }
         });
-        NewGameButton.setBounds(540, 260, 130, 50);
-        StartScreenGraphics.add(NewGameButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        NewGame.setBounds(520, 240, 150, 50);
+        ScreenComponents.add(NewGame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        OptionButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        OptionButton.setForeground(new java.awt.Color(255, 255, 255));
-        OptionButton.setText("Options");
-        OptionButton.setContentAreaFilled(false);
-        OptionButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        OptionButton.addActionListener(new java.awt.event.ActionListener() {
+        Options.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        Options.setForeground(new java.awt.Color(255, 255, 255));
+        Options.setText("Options");
+        Options.setBorderPainted(false);
+        Options.setContentAreaFilled(false);
+        Options.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Options.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Options.setMaximumSize(new java.awt.Dimension(180, 29));
+        Options.setMinimumSize(new java.awt.Dimension(180, 29));
+        Options.setSize(new java.awt.Dimension(140, 50));
+        Options.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OptionButtonActionPerformed(evt);
+                OptionsActionPerformed(evt);
             }
         });
-        OptionButton.setBounds(567, 310, 100, 50);
-        StartScreenGraphics.add(OptionButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Options.setBounds(530, 290, 140, 50);
+        ScreenComponents.add(Options, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startscreen/startscreen_background/Slide1.jpg"))); // NOI18N
-        Background.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Background.setAlignmentY(0.0F);
-        Background.setIconTextGap(0);
-        Background.setMaximumSize(new java.awt.Dimension(800, 600));
-        Background.setMinimumSize(new java.awt.Dimension(800, 600));
-        Background.setPreferredSize(new java.awt.Dimension(800, 600));
-        Background.setBounds(0, 0, 800, 600);
-        StartScreenGraphics.add(Background, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        BackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startscreen/startscreen_background/Slide1.jpg"))); // NOI18N
+        BackGround.setAlignmentY(0.0F);
+        BackGround.setBounds(0, 0, 760, 560);
+        ScreenComponents.add(BackGround, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(StartScreenGraphics, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 720, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(StartScreenGraphics, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 540, Short.MAX_VALUE)
-        );
-
-        pack();
+        add(ScreenComponents, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NewGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameButtonActionPerformed
+    private void ContinueGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinueGameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContinueGameActionPerformed
+
+    private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
         new NewGameFrame().setVisible(true);
-    }//GEN-LAST:event_NewGameButtonActionPerformed
+    }//GEN-LAST:event_NewGameActionPerformed
 
-    private void ContinueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinueButtonActionPerformed
+    private void OptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionsActionPerformed
         // TODO add your handling code here:
-        TestOkCancelDialog dialog = new TestOkCancelDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-    }//GEN-LAST:event_ContinueButtonActionPerformed
+    }//GEN-LAST:event_OptionsActionPerformed
 
-    private void OptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionButtonActionPerformed
-        // TODO add your handling code here:
-        TestOkCancelDialog dialog = new TestOkCancelDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-    }//GEN-LAST:event_OptionButtonActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new StartScreen().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Background;
-    private javax.swing.JButton ContinueButton;
-    private javax.swing.JButton NewGameButton;
-    private javax.swing.JButton OptionButton;
-    private javax.swing.JLayeredPane StartScreenGraphics;
+    private javax.swing.JLabel BackGround;
+    private javax.swing.JButton ContinueGame;
+    private javax.swing.JButton NewGame;
+    private javax.swing.JButton Options;
+    private javax.swing.JLayeredPane ScreenComponents;
     // End of variables declaration//GEN-END:variables
 }
