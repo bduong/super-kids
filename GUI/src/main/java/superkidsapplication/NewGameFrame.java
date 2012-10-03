@@ -25,7 +25,6 @@ public class NewGameFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         levelButton3 = new javax.swing.JButton();
@@ -42,18 +41,14 @@ public class NewGameFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         levelButton3.setText("Level 3");
         levelButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 levelButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(levelButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
 
         levelButton4.setText("Level 4");
-        jPanel1.add(levelButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
 
         levelButton5.setText("Level 5");
         levelButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -61,19 +56,55 @@ public class NewGameFrame extends javax.swing.JFrame {
                 levelButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(levelButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
         newGameLabel.setText("NEW GAME");
-        jPanel1.add(newGameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
         selectLevelLabel.setText("Select your level");
-        jPanel1.add(selectLevelLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
         levelButton1.setText("Level 1");
-        jPanel1.add(levelButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
 
         levelButton2.setText("Level 2");
-        jPanel1.add(levelButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(190, 190, 190)
+                .add(newGameLabel))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(170, 170, 170)
+                .add(selectLevelLabel))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(90, 90, 90)
+                .add(levelButton1)
+                .add(2, 2, 2)
+                .add(levelButton2)
+                .add(2, 2, 2)
+                .add(levelButton3))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(130, 130, 130)
+                .add(levelButton4)
+                .add(12, 12, 12)
+                .add(levelButton5))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(20, 20, 20)
+                .add(newGameLabel)
+                .add(34, 34, 34)
+                .add(selectLevelLabel)
+                .add(14, 14, 14)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(levelButton1)
+                    .add(levelButton2)
+                    .add(levelButton3))
+                .add(11, 11, 11)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(levelButton4)
+                    .add(levelButton5)))
+        );
 
         jMenu1.setText("File");
 
@@ -98,7 +129,7 @@ public class NewGameFrame extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(16, 16, 16)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

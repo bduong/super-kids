@@ -96,15 +96,11 @@ public class StartScreen extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(StartScreenGraphics, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 799, Short.MAX_VALUE))
+            .add(StartScreenGraphics, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 720, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(StartScreenGraphics, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 599, Short.MAX_VALUE))
+            .add(StartScreenGraphics, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 540, Short.MAX_VALUE)
         );
 
         pack();
@@ -112,14 +108,7 @@ public class StartScreen extends javax.swing.JFrame {
 
     private void NewGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameButtonActionPerformed
         // TODO add your handling code here:
-        TestOkCancelDialog dialog = new TestOkCancelDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+        new NewGameFrame().setVisible(true);
     }//GEN-LAST:event_NewGameButtonActionPerformed
 
     private void ContinueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinueButtonActionPerformed
