@@ -4,6 +4,7 @@
  */
 package superkidsapplication;
 
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -16,11 +17,22 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     private JPanel startscreen;
+    //this list will be used to keep up with the panels that are generated.
+    //it will be useful to go back in the menu
+    private ArrayList <JPanel> panels = new ArrayList <JPanel>();
     
     public Main() {
         initComponents();
-        startscreen = new StartScreen();
-        add(startscreen, java.awt.BorderLayout.CENTER);
+        startscreen = new StartScreen(this);
+        //everytime you add a panel to the main frame also add it to the panelList throught the
+       //addToPanelList method
+        add(startscreen, java.awt.FlowLayout.LEFT);
+        addToPanelList(startscreen);
+    }
+    
+    //add to panels list.
+    public void addToPanelList(JPanel panel){
+        panels.add(panel);
     }
 
     /**
@@ -32,13 +44,51 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Super Kids: The Ultimate Adventure");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setName("mainframe"); // NOI18N
 
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("Go Back");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    //go back function
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        
+        //get the last index of the arraylist
+        int end= panels.size()-1; 
+        //if there is only one panel in the list then you are in the main menu, so return this function
+        if(end==-0){
+            return;
+        }
+        //set the last panel invisible
+        panels.get(end).setVisible(false);
+        //remove the last panel from the list
+        panels.remove(end);
+        //now add the panel before the last panel to the frame
+        add(panels.get(end-1), java.awt.FlowLayout.LEFT);
+        //and set it to visible
+        panels.get(end-1).setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -76,5 +126,8 @@ public class Main extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

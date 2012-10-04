@@ -4,16 +4,23 @@
  */
 package superkidsapplication;
 
+import java.util.ArrayList;
+import javax.swing.JPanel;
+
 /**
  *
  * @author david
  */
 public class StartScreen extends javax.swing.JPanel {
+    
+    private Main mainFrame;
+    
 
     /**
      * Creates new form StartScreen
      */
-    public StartScreen() {
+    public StartScreen(Main mainFrame) {
+        this.mainFrame = mainFrame;
         initComponents();
     }
 
@@ -104,9 +111,19 @@ public class StartScreen extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_ContinueGameActionPerformed
 
+    //if new game is clicked
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
-        new NewGameFrame().setVisible(true);
+        
+        //create a newgame panel
+        NewGamePanel gamePanel = new NewGamePanel();
+        //set the visibility of the current panel (Startscreen) to false
+        this.setVisible(false);
+        //add the panel (gameframe) to the main frame
+        mainFrame.add(gamePanel, java.awt.FlowLayout.LEFT);
+        //add this panel to the panels list stored in mainFrame class
+        mainFrame.addToPanelList(gamePanel);
+        
     }//GEN-LAST:event_NewGameActionPerformed
 
     private void OptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionsActionPerformed
