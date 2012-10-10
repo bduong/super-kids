@@ -15,7 +15,7 @@ target/*
 .nbproject/*
 build.xml
 nb-build.xml
-
+*/nbactions.xml
 * Eclipse Files #
 .project
 .classhpath
