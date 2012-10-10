@@ -128,6 +128,12 @@ public class StartScreen extends javax.swing.JPanel {
 
     private void OptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionsActionPerformed
         // TODO add your handling code here:
+        //create instance of OptionsPanel
+        OptionsPanel optionsPanel = new OptionsPanel();
+        //hide startscreen and show options
+        this.setVisible(false);
+        mainFrame.add(optionsPanel, java.awt.FlowLayout.LEFT);
+        mainFrame.addToPanelList(optionsPanel);
     }//GEN-LAST:event_OptionsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

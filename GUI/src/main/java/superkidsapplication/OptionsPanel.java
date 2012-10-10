@@ -7,12 +7,12 @@ package superkidsapplication;
  *
  * @author davidOhayon
  */
-public class OptionsFrame extends javax.swing.JPanel {
+public class OptionsPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form OptionsFrame
+     * Creates new form OptionsPanel
      */
-    public OptionsFrame() {
+    public OptionsPanel() {
         initComponents();
     }
 
@@ -73,7 +73,7 @@ public class OptionsFrame extends javax.swing.JPanel {
                     .add(volumeLabel))
                 .add(157, 157, 157))
             .add(layout.createSequentialGroup()
-                .add(28, 28, 28)
+                .add(29, 29, 29)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(allTypesButton)
                     .add(oddOneOutButton)
@@ -84,7 +84,7 @@ public class OptionsFrame extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(40, 40, 40)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .add(multipleChoiceButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(oddOneOutButton)
@@ -92,7 +92,7 @@ public class OptionsFrame extends javax.swing.JPanel {
                 .add(matchingButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(allTypesButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 60, Short.MAX_VALUE)
+                .add(18, 18, 18)
                 .add(volumeSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(volumeLabel)
@@ -138,20 +138,20 @@ public class OptionsFrame extends javax.swing.JPanel {
                     }
                 }
             } catch (ClassNotFoundException ex) {
-                java.util.logging.Logger.getLogger(NewGameFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             } catch (InstantiationException ex) {
-                java.util.logging.Logger.getLogger(NewGameFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             } catch (IllegalAccessException ex) {
-                java.util.logging.Logger.getLogger(NewGameFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-                java.util.logging.Logger.getLogger(NewGameFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
             //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewGameFrame().setVisible(true);
+                new NewGamePanel().setVisible(true);
             }
         });
     }
