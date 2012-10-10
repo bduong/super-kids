@@ -28,9 +28,17 @@ public class QuestionDatabaseTests {
                 .build();
     }
 
+//    @Test
+//    public void questionDatabaseReturnsKnownValue() {
+//        Question question = questionDatabase.getQuestion(QuestionLevel.LEVEL_1, 1);
+//        assertEquals(expected, question);
+//    }
+
     @Test
-    public void questionDatabaseReturnsKnownValue() {
-        Question question = questionDatabase.getQuestion(QuestionLevel.LEVEL_1, 1);
-        assertEquals(expected, question);
+    public void writeToJSONWorksCorrectly() {
+        questionDatabase.saveQuestion(QuestionLevel.LEVEL_1, 1, expected);
+        questionDatabase.saveQuestion(QuestionLevel.LEVEL_1, 1, expected);
+        Question actual = questionDatabase.getQuestion(QuestionLevel.LEVEL_1, 1);
+        assertEquals(expected, actual);
     }
 }
