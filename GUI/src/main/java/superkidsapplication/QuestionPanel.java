@@ -8,14 +8,14 @@ package superkidsapplication;
  *
  * @author Prashant
  */
-public class Questions extends javax.swing.JPanel {
+public class QuestionPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form Questions
+     * Creates new form QuestionPanel
      */
     public int a;
     
-    public Questions() {
+    public QuestionPanel() {
         
         initComponents();
         a=0;
@@ -36,15 +36,14 @@ public class Questions extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 204, 255));
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SuperKids/circle.png"))); // NOI18N
-        jButton1.setLabel("");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/circle.png"))); // NOI18N
         jButton1.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,9 +51,7 @@ public class Questions extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SuperKids/rectangle.png"))); // NOI18N
-        jButton2.setActionCommand("");
-        jButton2.setLabel("");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/rectangle.png"))); // NOI18N
         jButton2.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,9 +59,7 @@ public class Questions extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SuperKids/Square.png"))); // NOI18N
-        jButton3.setActionCommand("");
-        jButton3.setLabel("");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/Square.png"))); // NOI18N
         jButton3.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,9 +67,7 @@ public class Questions extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SuperKids/triangle.png"))); // NOI18N
-        jButton4.setActionCommand("");
-        jButton4.setLabel("");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/triangle.png"))); // NOI18N
         jButton4.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,11 +75,9 @@ public class Questions extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SuperKids/Boy.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/Boy.png"))); // NOI18N
 
         jLabel2.setText("Which one of these is a Square?");
-
-        jButton5.setText("Menu");
 
         jLabel3.setText("00");
 
@@ -98,16 +89,12 @@ public class Questions extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(195, 195, 195))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -117,8 +104,7 @@ public class Questions extends javax.swing.JPanel {
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(45, 45, 45))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
@@ -127,6 +113,10 @@ public class Questions extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel5)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(147, 147, 147))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,14 +128,13 @@ public class Questions extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton5)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
-                        .addGap(160, 160, 160)
+                        .addGap(168, 168, 168)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -156,7 +145,7 @@ public class Questions extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(23, Short.MAX_VALUE))))
+                        .addContainerGap(27, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -165,7 +154,7 @@ public class Questions extends javax.swing.JPanel {
     if(a<4)
     {a++;}
     jButton1.enable(false);
-        WrongAnswer Wrong = new WrongAnswer();
+        WrongAnswerFrame Wrong = new WrongAnswerFrame();
         Wrong.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -177,7 +166,7 @@ public class Questions extends javax.swing.JPanel {
         jButton3.enable(false);
         jButton4.enable(false);
         
-        CorrectAnswer corr = new CorrectAnswer();
+        CorrectAnswerFrame corr = new CorrectAnswerFrame();
         corr.setVisible(true);
         if(a == 1)
         {
@@ -203,7 +192,7 @@ public class Questions extends javax.swing.JPanel {
         if(a<4)
         {a++;}
         jButton2.enable(false);
-        WrongAnswer Wrong = new WrongAnswer();
+        WrongAnswerFrame Wrong = new WrongAnswerFrame();
         Wrong.setVisible(true);
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -213,7 +202,7 @@ public class Questions extends javax.swing.JPanel {
         if(a<4)
         {a++;}
         jButton4.enable(false);
-        WrongAnswer Wrong = new WrongAnswer();
+        WrongAnswerFrame Wrong = new WrongAnswerFrame();
         Wrong.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -222,7 +211,6 @@ public class Questions extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
