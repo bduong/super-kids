@@ -46,7 +46,6 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         jLayeredPane1.setAlignmentX(0.0F);
         jLayeredPane1.setAlignmentY(0.0F);
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(800, 600));
-        jLayeredPane1.setPreferredSize(new java.awt.Dimension(800, 600));
 
         title.setFont(new java.awt.Font("Chalkduster", 0, 36)); // NOI18N
         title.setForeground(new java.awt.Color(255, 255, 51));
@@ -57,7 +56,7 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         userphoto.setForeground(new java.awt.Color(255, 255, 51));
         userphoto.setText("user photo");
         userphoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        userphoto.setBounds(650, 10, 60, 60);
+        userphoto.setBounds(660, 10, 60, 60);
         jLayeredPane1.add(userphoto, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         username.setForeground(new java.awt.Color(255, 255, 51));
@@ -99,11 +98,11 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
