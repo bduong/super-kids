@@ -56,7 +56,7 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         userphoto.setForeground(new java.awt.Color(255, 255, 51));
         userphoto.setText("user photo");
         userphoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        userphoto.setBounds(650, 10, 70, 70);
+        userphoto.setBounds(660, 10, 60, 60);
         jLayeredPane1.add(userphoto, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         username.setForeground(new java.awt.Color(255, 255, 51));
