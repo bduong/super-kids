@@ -4,23 +4,20 @@
  */
 package superkidsapplication;
 
-import java.util.ArrayList;
-import javax.swing.JPanel;
-
 /**
  *
  * @author david
  */
 public class StartScreen extends javax.swing.JPanel {
     
-    private Main mainFrame;
+    private PanelController controller;
     
 
     /**
      * Creates new form StartScreen
      */
-    public StartScreen(Main mainFrame) {
-        this.mainFrame = mainFrame;
+    public StartScreen() {
+        controller = PanelController.getInstance();
         initComponents();
     }
 
@@ -117,12 +114,8 @@ public class StartScreen extends javax.swing.JPanel {
         
         //create a newgame panel
         NewGamePanel gamePanel = new NewGamePanel();
-        //set the visibility of the current panel (Startscreen) to false
-        this.setVisible(false);
-        //add the panel (gameframe) to the main frame
-        mainFrame.add(gamePanel, java.awt.FlowLayout.LEFT);
-        //add this panel to the panels list stored in mainFrame class
-        mainFrame.addToPanelList(gamePanel);
+        //add new panel
+        controller.addPanel(gamePanel);
         
     }//GEN-LAST:event_NewGameActionPerformed
 
@@ -130,10 +123,8 @@ public class StartScreen extends javax.swing.JPanel {
         // TODO add your handling code here:
         //create instance of OptionsPanel
         OptionsPanel optionsPanel = new OptionsPanel();
-        //hide startscreen and show options
-        this.setVisible(false);
-        mainFrame.add(optionsPanel, java.awt.FlowLayout.LEFT);
-        mainFrame.addToPanelList(optionsPanel);
+        //add optionspanel
+        controller.addPanel(optionsPanel);
     }//GEN-LAST:event_OptionsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

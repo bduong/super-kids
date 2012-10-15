@@ -13,7 +13,11 @@ public class NewGamePanel extends javax.swing.JPanel {
     /**
      * Creates new form NewGamePanel
      */
+    private MainFrame mainFrame;
+    private PanelController controller;
+    
     public NewGamePanel() {
+        controller=PanelController.getInstance();
         initComponents();
     }
 
@@ -33,7 +37,7 @@ public class NewGamePanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(51, 153, 255));
+        setBackground(new java.awt.Color(153, 204, 255));
         setMinimumSize(new java.awt.Dimension(800, 600));
 
         jButton1.setText("Level 1");
@@ -101,7 +105,17 @@ public class NewGamePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        
+        
+        //CATEGORIES PANEL COMES HERE.
+        //QUESTIONS PANEL WILL BE ACCESSED FROM CATEGORIESPANEL
+        //create a newquestion panel
+        QuestionPanel qPanel = new QuestionPanel();
+        //add questionPanel
+        controller.addPanel(qPanel);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

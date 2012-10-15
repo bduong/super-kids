@@ -32,6 +32,8 @@ public class OptionsPanel extends javax.swing.JPanel {
         volumeSlider = new javax.swing.JSlider();
         volumeLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 204, 255));
+
         multipleChoiceButton.setText("Multiple Choice");
         multipleChoiceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +153,7 @@ public class OptionsPanel extends javax.swing.JPanel {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewGamePanel().setVisible(true);
+                //new NewGamePanel().setVisible(true);
             }
         });
     }
