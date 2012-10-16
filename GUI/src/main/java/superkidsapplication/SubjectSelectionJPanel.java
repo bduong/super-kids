@@ -11,12 +11,14 @@ package superkidsapplication;
 public class SubjectSelectionJPanel extends javax.swing.JPanel {
             
     private PanelController controller;
+    private QuestionBase factory;
 
     /**
      * Creates new form SubjectSelectionJPanel
      */
     public SubjectSelectionJPanel() {
         controller=PanelController.getInstance();
+        factory = new QuestionBase();
         initComponents();
     }
 
@@ -111,9 +113,8 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
 
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
         // TODO add your handling code here:
-        QuestionPanel qPanel = new QuestionPanel();
-        controller.addPanel(qPanel);
-        
+        QuestionPanel q = factory.createQuestionPanel();
+        controller.addPanel(q);
     }//GEN-LAST:event_subject1ActionPerformed
 
     private void subject2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject2ActionPerformed

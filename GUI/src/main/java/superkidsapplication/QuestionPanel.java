@@ -4,9 +4,13 @@
  */
 package superkidsapplication;
 
+import java.util.List;
+import javax.swing.Icon;
+import javax.swing.JButton;
+
 /**
  *
- * @author Prashant
+ * @author Prashant & Baris
  */
 public class QuestionPanel extends javax.swing.JPanel {
 
@@ -14,11 +18,16 @@ public class QuestionPanel extends javax.swing.JPanel {
      * Creates new form QuestionPanel
      */
     public int a;
-    
-    public QuestionPanel() {
-        
+    //points to which choice is correct
+    private int correctAnswer;
+
+    //when creating the panel set which choice is the correct answer
+    //1 is button1 , 2 is button2 and so on.
+    //look at design tab to see which button is which
+    public QuestionPanel(int correctAnswer) {
+        this.correctAnswer = correctAnswer;
         initComponents();
-        a=0;
+        a = 0;
     }
 
     /**
@@ -43,7 +52,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(153, 204, 255));
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/circle.png"))); // NOI18N
+        jButton1.setText("Choice 1");
         jButton1.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,7 +60,7 @@ public class QuestionPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/rectangle.png"))); // NOI18N
+        jButton2.setText("Choice 2");
         jButton2.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,7 +68,7 @@ public class QuestionPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/Square.png"))); // NOI18N
+        jButton3.setText("Choice 3");
         jButton3.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +76,7 @@ public class QuestionPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/triangle.png"))); // NOI18N
+        jButton4.setText("Choice 4");
         jButton4.setPreferredSize(new java.awt.Dimension(150, 150));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +86,7 @@ public class QuestionPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/Boy.png"))); // NOI18N
 
-        jLabel2.setText("Which one of these is a Square?");
+        jLabel2.setText("Question Comes Here");
 
         jLabel3.setText("00");
 
@@ -151,61 +160,36 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    if(a<4)
-    {a++;}
-    jButton1.enable(false);
-        WrongAnswerFrame Wrong = new WrongAnswerFrame();
-        Wrong.setVisible(true);
+        if (correctAnswer == 1) {
+            correctAnswerClicked();
+        } else {
+            wrongAnswerClicked(jButton1);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    if(a<4)
-    {a++;}
-    jButton1.enable(false);
-        jButton2.enable(false);
-        jButton3.enable(false);
-        jButton4.enable(false);
-        
-        CorrectAnswerFrame corr = new CorrectAnswerFrame();
-        corr.setVisible(true);
-        if(a == 1)
-        {
-            jLabel3.setText("10");
+        if (correctAnswer == 3) {
+            correctAnswerClicked();
+        } else {
+            wrongAnswerClicked(jButton3);
         }
-        else if(a==2)
-        {
-            jLabel3.setText("7");            
-        }
-        else if(a==3)
-        {
-            jLabel3.setText("5");            
-        }
-        else if(a==4)
-        {
-            jLabel3.setText("3");            
-        }
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        if(a<4)
-        {a++;}
-        jButton2.enable(false);
-        WrongAnswerFrame Wrong = new WrongAnswerFrame();
-        Wrong.setVisible(true);
-        
+        if (correctAnswer == 2) {
+            correctAnswerClicked();
+        } else {
+            wrongAnswerClicked(jButton2);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        if(a<4)
-        {a++;}
-        jButton4.enable(false);
-        WrongAnswerFrame Wrong = new WrongAnswerFrame();
-        Wrong.setVisible(true);
+        if (correctAnswer == 4) {
+            correctAnswerClicked();
+        } else {
+            wrongAnswerClicked(jButton4);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -218,7 +202,65 @@ public class QuestionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 
-    public void setQuestion(String qText) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    //set the question and the choices
+    //they can have a text or an icon (image)
+    //if no icon is wanted then pass an empty list into icon parameter
+    public void setQuestion(String qText, Icon icon) {
+        jLabel2.setIcon(icon);
+        jLabel2.setText(qText);
+    }
+
+    //set text and/or icons for buttons
+    public void setChoices(List<String> choices, List<Icon> icon) {
+        if (choices != null || icon != null) {
+            jButton1.setIcon(icon.get(0));
+            jButton1.setText(choices.get(0));
+            jButton2.setIcon(icon.get(1));
+            jButton2.setText(choices.get(1));
+            jButton3.setIcon(icon.get(2));
+            jButton3.setText(choices.get(2));
+            jButton4.setIcon(icon.get(3));
+            jButton4.setText(choices.get(3));
+        }
+    }
+
+    //when the correct answer is clicked this method is called from the button action
+    private void correctAnswerClicked() {
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        jButton4.setEnabled(false);
+
+        CorrectAnswerFrame corr = new CorrectAnswerFrame();
+        corr.setVisible(true);
+
+        //update score
+        if (a < 4) {
+            a++;
+        }
+
+        if (a == 1) {
+            jLabel3.setText("10");
+        } else if (a == 2) {
+            jLabel3.setText("7");
+        } else if (a == 3) {
+            jLabel3.setText("5");
+        } else if (a == 4) {
+            jLabel3.setText("3");
+        }
+
+        //// here when a question is answered correctly we need to do something. 
+        /// generate a new panel from the factory and display.
+    }
+
+    //when the wrong answer is selected
+    private void wrongAnswerClicked(JButton button) {
+        button.setEnabled(false);
+        WrongAnswerFrame Wrong = new WrongAnswerFrame();
+        Wrong.setVisible(true);
+        //update score 
+        if (a < 4) {
+            a++;
+        }
     }
 }
