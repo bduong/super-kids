@@ -111,9 +111,9 @@ public class NewGamePanel extends javax.swing.JPanel {
         //CATEGORIES PANEL COMES HERE.
         //QUESTIONS PANEL WILL BE ACCESSED FROM CATEGORIESPANEL
         //create a newquestion panel
-        QuestionPanel qPanel = new QuestionPanel();
+        SubjectSelectionJPanel sPanel = new SubjectSelectionJPanel();
         //add questionPanel
-        controller.addPanel(qPanel);
+        controller.addPanel(sPanel);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

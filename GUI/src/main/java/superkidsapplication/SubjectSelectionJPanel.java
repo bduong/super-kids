@@ -9,11 +9,14 @@ package superkidsapplication;
  * @author Heng
  */
 public class SubjectSelectionJPanel extends javax.swing.JPanel {
+            
+    private PanelController controller;
 
     /**
      * Creates new form SubjectSelectionJPanel
      */
     public SubjectSelectionJPanel() {
+        controller=PanelController.getInstance();
         initComponents();
     }
 
@@ -34,8 +37,6 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         subject1 = new javax.swing.JButton();
         subject2 = new javax.swing.JButton();
         subject3 = new javax.swing.JButton();
-        subject4 = new javax.swing.JButton();
-        subject5 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setAlignmentX(0.0F);
@@ -69,25 +70,27 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         score.setBounds(740, 40, 34, 16);
         jLayeredPane1.add(score, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        subject1.setText("jButton1");
+        subject1.setText("Shapes");
+        subject1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subject1ActionPerformed(evt);
+            }
+        });
         subject1.setBounds(120, 200, 120, 120);
         jLayeredPane1.add(subject1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        subject2.setText("jButton2");
-        subject2.setBounds(230, 350, 120, 120);
+        subject2.setText("Colors");
+        subject2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subject2ActionPerformed(evt);
+            }
+        });
+        subject2.setBounds(530, 200, 120, 120);
         jLayeredPane1.add(subject2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        subject3.setText("jButton3");
-        subject3.setBounds(350, 200, 120, 120);
+        subject3.setText("Animals");
+        subject3.setBounds(320, 200, 120, 120);
         jLayeredPane1.add(subject3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        subject4.setText("jButton4");
-        subject4.setBounds(470, 350, 120, 120);
-        jLayeredPane1.add(subject4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        subject5.setText("jButton5");
-        subject5.setBounds(580, 200, 120, 120);
-        jLayeredPane1.add(subject5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SubjectSelectionPanelResources/map_800_600.png"))); // NOI18N
         background.setText("jLabel5");
@@ -105,6 +108,18 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
+        // TODO add your handling code here:
+        QuestionPanel qPanel = new QuestionPanel();
+        controller.addPanel(qPanel);
+        
+    }//GEN-LAST:event_subject1ActionPerformed
+
+    private void subject2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subject2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JLayeredPane jLayeredPane1;
@@ -112,8 +127,6 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
     private javax.swing.JButton subject1;
     private javax.swing.JButton subject2;
     private javax.swing.JButton subject3;
-    private javax.swing.JButton subject4;
-    private javax.swing.JButton subject5;
     private javax.swing.JLabel title;
     private javax.swing.JLabel username;
     private javax.swing.JLabel userphoto;
