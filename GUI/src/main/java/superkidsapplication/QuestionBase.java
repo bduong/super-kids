@@ -31,12 +31,12 @@ public class QuestionBase {
 
     // create qPanel
     QuestionPanel questionPanel = new QuestionPanel();
-    String anwser = question.getAnswer();
+    String answer = question.getAnswer();
 
     // set the question on qpanel
     questionPanel.setQuestion(questionText);
     questionPanel.setChoices(choices);
-    questionPanel.setAnsers(answer);
+    questionPanel.setAnswer(answer);
 
     // return the questionPanel 
     panelController.addPanel(questionPanel);
