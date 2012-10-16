@@ -18,6 +18,7 @@ public class QuestionPanel extends javax.swing.JPanel {
      * Creates new form QuestionPanel
      */
     public int a;
+
     //points to which choice is correct
     private int correctAnswer;
 
@@ -201,6 +202,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
+
 
     //set the question and the choices
     //they can have a text or an icon (image)

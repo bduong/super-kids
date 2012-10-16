@@ -51,7 +51,7 @@ public class QuestionBase {
         icons.add(icon3);
         icons.add(icon4);
             
-        qPanel.setQuestion("Which is a square ?", null);
+        qPanel.setQuestion("Which one is a square ?", null);
         qPanel.setChoices(choices, icons);
         
         return qPanel;
