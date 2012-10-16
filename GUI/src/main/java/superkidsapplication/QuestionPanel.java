@@ -6,7 +6,7 @@ package superkidsapplication;
 
 /**
  *
- * @author Prashant
+ * @author Prashant, Marc
  */
 public class QuestionPanel extends javax.swing.JPanel {
 
@@ -14,6 +14,7 @@ public class QuestionPanel extends javax.swing.JPanel {
      * Creates new form QuestionPanel
      */
     public int a;
+    public String answer;
     
     public QuestionPanel() {
         
@@ -218,7 +219,22 @@ public class QuestionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 
-    public void setQuestion(String qText) {
-        throw new UnsupportedOperationException("Not yet implemented");
+
+    public void setQuestion(String questionText) {
+       //  throw new UnsupportedOperationException("Not yet implemented");
+       jLabel1.setText(questionText);
     }
+    public void setChoices(List<String> choices) {
+       jLabel2.setText(choices.get(0));
+       jLabel3.setText(choices.get(1));
+       jLabel4.setText(choices.get(2));
+       jLabel5.setText(choices.get(3));
+    }
+    public void setAnswer(String a) {
+      answer = a;
+    }
+  
+
+
+
 }

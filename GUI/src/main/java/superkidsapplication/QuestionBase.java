@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author baris, marc
+ * @author Baris, Marc
  */
 public class QuestionBase {
 
