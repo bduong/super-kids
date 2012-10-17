@@ -2,6 +2,7 @@ package superkidsapplication;
 
 import com.ece.superkids.*;
 import com.ece.superkids.entities.Question;
+import com.ece.superkids.enums.QuestionCategory;
 import com.ece.superkids.enums.QuestionLevel;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +41,9 @@ public class QuestionBase {
 
     //we need a better method where a new question is fetched in from the server when this method is called.
     public QuestionPanel createQuestionPanel(String category) {
+        QuestionDatabase fqd = QuestionDatabaseFactory.aQuestionDatabase();
 
-        //
-        FileQuestionDatabase fqd = new FileQuestionDatabase();
-        Question q = fqd.getQuestion(QuestionLevel.LEVEL_1, 1);
+        Question q = fqd.getQuestion(QuestionLevel.LEVEL_1, QuestionCategory.SHAPES, 1);
 
         String qText = q.getQuestion();
 
