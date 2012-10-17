@@ -7,25 +7,39 @@ import com.ece.superkids.enums.QuestionType;
 import com.google.gson.Gson;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileQuestionDatabase implements QuestionDatabase{
 
     private static String FILE_NAME = "Questions.txt";
     private Gson gson = new Gson();
+    private List<Question> questions;
 
-    @Override
-    public Question getQuestion(final QuestionLevel level, final int number) {
+    public FileQuestionDatabase() {
+        questions = new ArrayList<Question>();
         File file = new File(getClass().getResource("/" + FILE_NAME).getFile());
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line = reader.readLine();
-            return gson.fromJson(line, Question.class);
+            while (true) {
+                String line = reader.readLine();
+                if (line == null) {
+                    break;
+                }
+                questions.add(gson.fromJson(line, Question.class));
+            }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
+    }
+
+    @Override
+    public Question getQuestion(final QuestionLevel level, final int number) {
+        if (number <= questions.size()) {
+            return questions.get(number-1);
+        }
         return null;
         //        return QuestionBuilder.aQuestion()
 //                .asking("What has four sides?")

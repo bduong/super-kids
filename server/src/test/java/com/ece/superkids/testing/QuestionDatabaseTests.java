@@ -36,8 +36,6 @@ public class QuestionDatabaseTests {
 
     @Test
     public void writeToJSONWorksCorrectly() {
-        questionDatabase.saveQuestion(QuestionLevel.LEVEL_1, 1, expected);
-        questionDatabase.saveQuestion(QuestionLevel.LEVEL_1, 1, expected);
         Question actual = questionDatabase.getQuestion(QuestionLevel.LEVEL_1, 1);
         assertEquals(expected, actual);
     }

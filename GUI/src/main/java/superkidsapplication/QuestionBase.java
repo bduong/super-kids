@@ -25,7 +25,7 @@ public class QuestionBase {
 
     //we need a better method where a new question is fetched in from the server when this method is called.
     public QuestionPanel createQuestionPanel() {
-        FileQuestionDatabase fqd = new FileQuestionDatabase();
+        QuestionDatabase fqd = QuestionDatabaseFactory.aQuestionDatabase();
 
         Question q = fqd.getQuestion(QuestionLevel.LEVEL_1, 1);
 
