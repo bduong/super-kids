@@ -4,6 +4,8 @@
  */
 package superkidsapplication;
 
+import java.awt.Color;
+
 /**
  *
  * @author david
@@ -53,12 +55,20 @@ public class StartScreen extends javax.swing.JPanel {
         ContinueGame.setContentAreaFilled(false);
         ContinueGame.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ContinueGame.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ContinueGame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ContinueGameMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ContinueGameMouseEntered(evt);
+            }
+        });
         ContinueGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContinueGameActionPerformed(evt);
             }
         });
-        ContinueGame.setBounds(487, 190, 190, 50);
+        ContinueGame.setBounds(480, 260, 190, 50);
         ScreenComponents.add(ContinueGame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         NewGame.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
@@ -70,12 +80,20 @@ public class StartScreen extends javax.swing.JPanel {
         NewGame.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         NewGame.setMaximumSize(new java.awt.Dimension(180, 29));
         NewGame.setMinimumSize(new java.awt.Dimension(180, 29));
+        NewGame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                NewGameMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                NewGameMouseEntered(evt);
+            }
+        });
         NewGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NewGameActionPerformed(evt);
             }
         });
-        NewGame.setBounds(520, 240, 150, 50);
+        NewGame.setBounds(520, 300, 150, 50);
         ScreenComponents.add(NewGame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         Options.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
@@ -88,17 +106,24 @@ public class StartScreen extends javax.swing.JPanel {
         Options.setMaximumSize(new java.awt.Dimension(180, 29));
         Options.setMinimumSize(new java.awt.Dimension(180, 29));
         Options.setSize(new java.awt.Dimension(140, 50));
+        Options.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                OptionsMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                OptionsMouseEntered(evt);
+            }
+        });
         Options.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OptionsActionPerformed(evt);
             }
         });
-        Options.setBounds(530, 290, 140, 50);
+        Options.setBounds(530, 340, 140, 50);
         ScreenComponents.add(Options, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         BackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startscreen/startscreen_background/Slide1.jpg"))); // NOI18N
-        BackGround.setAlignmentY(0.0F);
-        BackGround.setBounds(0, 0, 760, 560);
+        BackGround.setBounds(0, 0, 800, 600);
         ScreenComponents.add(BackGround, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         add(ScreenComponents, java.awt.BorderLayout.CENTER);
@@ -111,12 +136,10 @@ public class StartScreen extends javax.swing.JPanel {
     //if new game is clicked
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
-        
         //create a newgame panel
         NewGamePanel gamePanel = new NewGamePanel();
         //add new panel
         controller.addPanel(gamePanel);
-        
     }//GEN-LAST:event_NewGameActionPerformed
 
     private void OptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionsActionPerformed
@@ -127,6 +150,37 @@ public class StartScreen extends javax.swing.JPanel {
         controller.addPanel(optionsPanel);
     }//GEN-LAST:event_OptionsActionPerformed
 
+    private void NewGameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewGameMouseEntered
+        // TODO add your handling code here:
+        this.NewGame.setForeground(Color.yellow);
+    }//GEN-LAST:event_NewGameMouseEntered
+
+    private void NewGameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewGameMouseExited
+        // TODO add your handling code here:
+        this.NewGame.setForeground(Color.white);
+    }//GEN-LAST:event_NewGameMouseExited
+
+    private void OptionsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OptionsMouseExited
+        // TODO add your handling code here:
+        this.Options.setForeground(Color.white);
+    }//GEN-LAST:event_OptionsMouseExited
+
+    private void OptionsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OptionsMouseEntered
+        // TODO add your handling code here:
+        this.Options.setForeground(Color.yellow);
+    }//GEN-LAST:event_OptionsMouseEntered
+
+    private void ContinueGameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContinueGameMouseEntered
+        // TODO add your handling code here:
+        this.ContinueGame.setForeground(Color.yellow);
+    }//GEN-LAST:event_ContinueGameMouseEntered
+
+    private void ContinueGameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContinueGameMouseExited
+        // TODO add your handling code here:
+        this.ContinueGame.setForeground(Color.white);
+    }//GEN-LAST:event_ContinueGameMouseExited
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BackGround;
     private javax.swing.JButton ContinueGame;

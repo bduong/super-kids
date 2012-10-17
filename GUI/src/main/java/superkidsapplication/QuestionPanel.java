@@ -18,16 +18,23 @@ public class QuestionPanel extends javax.swing.JPanel {
      * Creates new form QuestionPanel
      */
     public int a;
-
     //points to which choice is correct
     private int correctAnswer;
+    private QuestionBase qBase;
+    private PanelController controller;
+    private String category;
 
     //when creating the panel set which choice is the correct answer
     //1 is button1 , 2 is button2 and so on.
     //look at design tab to see which button is which
-    public QuestionPanel(int correctAnswer) {
+    public QuestionPanel(int correctAnswer, String category) {
+        this.category = category;
         this.correctAnswer = correctAnswer;
+        qBase = QuestionBase.getInstance();
+        controller = PanelController.getInstance();
         initComponents();
+        //initally next button is not visible becomes visible if the question is answered correctly
+        jButton5.setVisible(false);
         a = 0;
     }
 
@@ -49,6 +56,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 204, 255));
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -95,6 +103,15 @@ public class QuestionPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Super Kid: John Doe");
 
+        jButton5.setBackground(new java.awt.Color(153, 0, 0));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("NEXT QUESTION");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,22 +120,27 @@ public class QuestionPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(171, 171, 171)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(171, 171, 171)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(45, 45, 45))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton5)
+                                .addGap(27, 27, 27))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel5)
@@ -147,15 +169,18 @@ public class QuestionPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(27, Short.MAX_VALUE))))
+                        .addGap(0, 15, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -191,18 +216,31 @@ public class QuestionPanel extends javax.swing.JPanel {
             wrongAnswerClicked(jButton4);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    //if NEXT button is clicked go to next question
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        //// here when a question is answered correctly we get a new question panel and add to frame 
+        QuestionPanel qP = qBase.createQuestionPanel(category);
+        if (qP != null) {
+            controller.addPanel(qP);
+        } else {
+            jButton5.setText("NO MORE QUESTIONS");
+            jButton5.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
-
 
     //set the question and the choices
     //they can have a text or an icon (image)
@@ -213,29 +251,31 @@ public class QuestionPanel extends javax.swing.JPanel {
     }
 
     //set text and/or icons for buttons
-    public void setChoices(List<String> choices, List<Icon> icon) {
-        if (choices != null || icon != null) {
-            jButton1.setIcon(icon.get(0));
+    public void setChoices(List<String> choices, List<Icon> icons) {
+        
+        if (icons != null) {
+            jButton1.setIcon(icons.get(0));
+            jButton2.setIcon(icons.get(1));
+            jButton3.setIcon(icons.get(2));
+            jButton4.setIcon(icons.get(3));
+        }
+
+        if (choices != null) {
             jButton1.setText(choices.get(0));
-            jButton2.setIcon(icon.get(1));
             jButton2.setText(choices.get(1));
-            jButton3.setIcon(icon.get(2));
             jButton3.setText(choices.get(2));
-            jButton4.setIcon(icon.get(3));
-            jButton4.setText(choices.get(3));
+            jButton3.setText(choices.get(3));
         }
     }
 
     //when the correct answer is clicked this method is called from the button action
     private void correctAnswerClicked() {
+        CorrectAnswerFrame corr = new CorrectAnswerFrame();
+        corr.setVisible(true);
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
         jButton3.setEnabled(false);
         jButton4.setEnabled(false);
-
-        CorrectAnswerFrame corr = new CorrectAnswerFrame();
-        corr.setVisible(true);
-
         //update score
         if (a < 4) {
             a++;
@@ -251,8 +291,7 @@ public class QuestionPanel extends javax.swing.JPanel {
             jLabel3.setText("3");
         }
 
-        //// here when a question is answered correctly we need to do something. 
-        /// generate a new panel from the factory and display.
+        jButton5.setVisible(true);
     }
 
     //when the wrong answer is selected

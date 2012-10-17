@@ -52,6 +52,7 @@
       <Dimension value="[800, 600]"/>
     </Property>
     <Property name="name" type="java.lang.String" value="mainframe" noResource="true"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>

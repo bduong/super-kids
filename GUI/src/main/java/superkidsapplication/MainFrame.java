@@ -4,6 +4,11 @@
  */
 package superkidsapplication;
 
+import com.apple.eawt.Application;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -20,15 +25,14 @@ public class MainFrame extends javax.swing.JFrame {
     //this list will be used to keep up with the panels that are generated.
     //it will be useful to go back in the menu
     private PanelController controller;
-    
-    public MainFrame() {
-        try{
-        UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
 
-    }
-    catch(Exception e){
-        System.out.println("Nimbus isn't available");
-    }
+    public MainFrame() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+
+        } catch (Exception e) {
+            System.out.println("Nimbus isn't available");
+        }
         initComponents();
         startscreen = new StartScreen();
         //get panelcontroller
@@ -37,6 +41,8 @@ public class MainFrame extends javax.swing.JFrame {
         controller.setMainFrame(this);
         //add the startscreen
         controller.addPanel(startscreen);
+        //set icons
+        setIcon();
     }
 
     /**
@@ -59,6 +65,7 @@ public class MainFrame extends javax.swing.JFrame {
         setTitle("Super Kids: The Ultimate Adventure");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setName("mainframe"); // NOI18N
+        setResizable(false);
 
         FileMenu.setText("File");
 
@@ -146,10 +153,22 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
-                
+                MainFrame mFrame = new MainFrame();
+                mFrame.setVisible(true);
             }
         });
+    }
+
+    //set icon
+    public void setIcon() {
+        String osName = System.getProperty("os.name");
+        java.net.URL url = ClassLoader.getSystemResource("superkidsapplication/Boy.png");
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Image img = kit.createImage(url);
+        if (osName.contains("OS X")) {
+            Application.getApplication().setDockIconImage(img);
+        }
+        this.setIconImage(img);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AboutItem;

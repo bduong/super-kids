@@ -31,8 +31,6 @@ public class AboutFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(255, 153, 153));
         jTextArea1.setColumns(20);

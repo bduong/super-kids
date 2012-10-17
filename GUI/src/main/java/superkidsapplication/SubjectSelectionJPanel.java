@@ -17,8 +17,9 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
      * Creates new form SubjectSelectionJPanel
      */
     public SubjectSelectionJPanel() {
+        System.out.println("SUBJECT SELECTION");
         controller=PanelController.getInstance();
-        factory = new QuestionBase();
+        factory = QuestionBase.getInstance();
         initComponents();
     }
 
@@ -91,6 +92,11 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         jLayeredPane1.add(subject2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         subject3.setText("Animals");
+        subject3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subject3ActionPerformed(evt);
+            }
+        });
         subject3.setBounds(320, 200, 120, 120);
         jLayeredPane1.add(subject3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -113,13 +119,24 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
 
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
         // TODO add your handling code here:
-        QuestionPanel q = factory.createQuestionPanel();
+        factory.reset();
+        QuestionPanel q = factory.createQuestionPanel("shapes");
         controller.addPanel(q);
     }//GEN-LAST:event_subject1ActionPerformed
 
     private void subject2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject2ActionPerformed
         // TODO add your handling code here:
+        factory.reset();
+        QuestionPanel q = factory.createQuestionPanel("colors");
+        controller.addPanel(q);
     }//GEN-LAST:event_subject2ActionPerformed
+
+    private void subject3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject3ActionPerformed
+        // TODO add your handling code here:
+        factory.reset();
+        QuestionPanel q = factory.createQuestionPanel("animals");
+        controller.addPanel(q);
+    }//GEN-LAST:event_subject3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
