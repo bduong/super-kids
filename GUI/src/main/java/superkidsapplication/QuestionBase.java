@@ -2,6 +2,7 @@ package superkidsapplication;
 
 import com.ece.superkids.*;
 import com.ece.superkids.entities.Question;
+import com.ece.superkids.enums.QuestionCategory;
 import com.ece.superkids.enums.QuestionLevel;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class QuestionBase {
     public QuestionPanel createQuestionPanel() {
         QuestionDatabase fqd = QuestionDatabaseFactory.aQuestionDatabase();
 
-        Question q = fqd.getQuestion(QuestionLevel.LEVEL_1, 1);
+        Question q = fqd.getQuestion(QuestionLevel.LEVEL_1, QuestionCategory.SHAPES, 1);
 
         String qText = q.getQuestion();
 

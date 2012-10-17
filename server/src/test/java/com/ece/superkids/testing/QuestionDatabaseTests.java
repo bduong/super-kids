@@ -4,6 +4,7 @@ import com.ece.superkids.QuestionDatabase;
 import com.ece.superkids.QuestionDatabaseFactory;
 import com.ece.superkids.builders.QuestionBuilder;
 import com.ece.superkids.entities.Question;
+import com.ece.superkids.enums.QuestionCategory;
 import com.ece.superkids.enums.QuestionLevel;
 import com.ece.superkids.enums.QuestionType;
 import org.junit.Before;
@@ -25,6 +26,8 @@ public class QuestionDatabaseTests {
                 .withChoices("Square", "Circle", "Triangle", "Oval")
                 .withAnswer("Square")
                 .withExplaination("A square has four equal sides")
+                .ofLevel(QuestionLevel.LEVEL_1)
+                .inCategory(QuestionCategory.SHAPES)
                 .build();
     }
 
@@ -36,7 +39,14 @@ public class QuestionDatabaseTests {
 
     @Test
     public void writeToJSONWorksCorrectly() {
-        Question actual = questionDatabase.getQuestion(QuestionLevel.LEVEL_1, 1);
+//        questionDatabase.saveQuestion(QuestionLevel.LEVEL_1, 1, expected);
+        Question actual = questionDatabase.getQuestion(QuestionLevel.LEVEL_1, QuestionCategory.SHAPES, 1);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void listQuestions() {
+        System.out.println(questionDatabase.getQuestion(QuestionLevel.LEVEL_1, QuestionCategory.SHAPES, 2).getQuestion());
+        System.out.println(questionDatabase.getQuestion(QuestionLevel.LEVEL_1, QuestionCategory.PLANETS, 2).getQuestion());
     }
 }

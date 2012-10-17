@@ -1,5 +1,7 @@
 package com.ece.superkids.entities;
 
+import com.ece.superkids.enums.QuestionCategory;
+import com.ece.superkids.enums.QuestionLevel;
 import com.ece.superkids.enums.QuestionType;
 
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ public class Question {
     private String answer;
     private String explaination;
     private QuestionType type;
+    private QuestionCategory category;
+    private QuestionLevel level;
 
     public Question() {
         choices = new ArrayList<String>();
@@ -57,6 +61,22 @@ public class Question {
         this.type = type;
     }
 
+    public QuestionCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(final QuestionCategory category) {
+        this.category = category;
+    }
+
+    public QuestionLevel getLevel() {
+        return level;
+    }
+
+    public void setLevel(final QuestionLevel level) {
+        this.level = level;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Question)) {
@@ -64,11 +84,13 @@ public class Question {
         }
         Question quest2 = (Question) obj;
 
-        if (!question.equals(quest2.question)) { return false; }
-        if (!choices.equals(quest2.choices)) { return false; }
-        if (!answer.equals(quest2.answer)) { return false; }
-        if (!explaination.equals(quest2.explaination)) { return false; }
-        if (!type.equals(quest2.type)) { return false; }
+        if (!question.equals(quest2.question)) return false;
+        if (!choices.equals(quest2.choices)) return false;
+        if (!answer.equals(quest2.answer)) return false;
+        if (!explaination.equals(quest2.explaination))  return false;
+        if (!type.equals(quest2.type))  return false;
+        if (!category.equals(quest2.category)) return false;
+        if (!level.equals(quest2.level)) return false;
 
         return true;
     }
