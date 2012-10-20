@@ -2,24 +2,31 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package superkidsapplication;
+package superkidsapplication.panels;
+
+import superkidsapplication.controllers.QuestionBase;
+import superkidsapplication.controllers.PanelController;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Heng
  */
-public class SubjectSelectionJPanel extends javax.swing.JPanel {
+public class SubjectSelectionPanel extends javax.swing.JPanel {
             
     private PanelController controller;
     private QuestionBase factory;
+    private String level;
 
     /**
-     * Creates new form SubjectSelectionJPanel
+     * Creates new form SubjectSelectionPanel
      */
-    public SubjectSelectionJPanel() {
-        System.out.println("SUBJECT SELECTION");
+    public SubjectSelectionPanel(String level) {
         controller=PanelController.getInstance();
         factory = QuestionBase.getInstance();
+        this.level=level;
         initComponents();
     }
 
@@ -74,6 +81,11 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         jLayeredPane1.add(score, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         subject1.setText("Shapes");
+        subject1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                subject1MouseEntered(evt);
+            }
+        });
         subject1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subject1ActionPerformed(evt);
@@ -83,6 +95,11 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         jLayeredPane1.add(subject1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         subject2.setText("Colors");
+        subject2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                subject2MouseEntered(evt);
+            }
+        });
         subject2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subject2ActionPerformed(evt);
@@ -92,6 +109,11 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         jLayeredPane1.add(subject2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         subject3.setText("Animals");
+        subject3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                subject3MouseEntered(evt);
+            }
+        });
         subject3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subject3ActionPerformed(evt);
@@ -118,25 +140,76 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
-        // TODO add your handling code here:
-        factory.reset();
-        QuestionPanel q = factory.createQuestionPanel("shapes");
-        controller.addPanel(q);
+        try {
+            // TODO add your handling code here:
+            factory.reset();
+            QuestionPanel q = factory.createQuestionPanel(level,"SHAPES");
+            controller.addPanel(q);
+        } catch (IOException ex) {
+            Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_subject1ActionPerformed
 
     private void subject2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject2ActionPerformed
-        // TODO add your handling code here:
-        factory.reset();
-        QuestionPanel q = factory.createQuestionPanel("colors");
-        controller.addPanel(q);
+        try {
+            // TODO add your handling code here:
+            factory.reset();
+            QuestionPanel q = factory.createQuestionPanel(level,"COLORS");
+            controller.addPanel(q);
+        } catch (IOException ex) {
+            Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_subject2ActionPerformed
 
     private void subject3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject3ActionPerformed
-        // TODO add your handling code here:
-        factory.reset();
-        QuestionPanel q = factory.createQuestionPanel("animals");
-        controller.addPanel(q);
+        try {
+            // TODO add your handling code here:
+            factory.reset();
+            QuestionPanel q = factory.createQuestionPanel(level,"ANIMALS");
+            controller.addPanel(q);
+        } catch (IOException ex) {
+            Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_subject3ActionPerformed
+
+    private void subject1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subject1MouseEntered
+        // TODO add your handling code here:
+              //say "no more questions"//ONLY WORKS IN MAC
+                if (System.getProperty("os.name").contains("OS X")) {
+                    try {
+                        //say the question (only works in MAC)
+                        Runtime.getRuntime().exec(new String[]{"say", "SHAPES"});
+                    } catch (IOException ex) {
+                        Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+    }//GEN-LAST:event_subject1MouseEntered
+
+    private void subject3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subject3MouseEntered
+        // TODO add your handling code here:
+              //say "no more questions"//ONLY WORKS IN MAC
+                if (System.getProperty("os.name").contains("OS X")) {
+                    try {
+                        //say the question (only works in MAC)
+                        Runtime.getRuntime().exec(new String[]{"say", "ANIMALS"});
+                    } catch (IOException ex) {
+                        Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+    }//GEN-LAST:event_subject3MouseEntered
+
+    private void subject2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subject2MouseEntered
+        // TODO add your handling code here:
+              //say "no more questions"//ONLY WORKS IN MAC
+                if (System.getProperty("os.name").contains("OS X")) {
+                    try {
+                        //say the question (only works in MAC)
+                        Runtime.getRuntime().exec(new String[]{"say", "COLORS"});
+                    } catch (IOException ex) {
+                        Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+    }//GEN-LAST:event_subject2MouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;

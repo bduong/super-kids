@@ -1,8 +1,9 @@
-package superkidsapplication;
+package superkidsapplication.controllers;
 
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import superkidsapplication.panels.MainFrame;
 
 /*
  * To change this template, choose Tools | Templates
@@ -57,7 +58,9 @@ public class PanelController {
     }
 
     //removes the last panel from the list by setting it invisible and removing it from the list
-    private void removePanel() {
+    //shouldnt call this directly
+    //call goBackOnePanel instead
+    public void removePanel() {
         //set last panel invisible
         panels.get(panels.size()-1).setVisible(false);
         //then remove from list
@@ -70,6 +73,11 @@ public class PanelController {
             return true;
         }
         return false;
+    }
+    
+    //get the current panel in the list/visible on the main frame.
+    public JPanel getCurrentPanel(){
+        return panels.get(panels.size()-1);
     }
     
     //when going back only remove the last panel from the list and set the panel before that visible.
@@ -85,7 +93,9 @@ public class PanelController {
         panels.get(panels.size()-1).setVisible(true);
     }
     
-    //go to main menu directly
+    //go to main menu (startscree) directly
+    //this removes all panels from the panels list
+    //and sets the startscreen to visible
     public void goToMainMenu(){
         //remove all panels until the first panel
        while(panels.size()!=1){

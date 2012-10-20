@@ -26,21 +26,21 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="240" pref="240" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="207" max="-2" attributes="0"/>
+              <Component id="pickLabel" min="-2" pref="207" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="150" max="-2" attributes="0"/>
+              <Component id="level1Button" min="-2" pref="150" max="-2" attributes="0"/>
               <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="151" max="-2" attributes="0"/>
+              <Component id="level2Button" min="-2" pref="151" max="-2" attributes="0"/>
               <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" pref="152" max="-2" attributes="0"/>
+              <Component id="level3Button" min="-2" pref="152" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="123" pref="123" max="-2" attributes="0"/>
-              <Component id="jButton5" min="-2" pref="150" max="-2" attributes="0"/>
+              <Component id="level4Button" min="-2" pref="150" max="-2" attributes="0"/>
               <EmptySpace min="75" pref="75" max="-2" attributes="0"/>
-              <Component id="jButton4" min="-2" pref="150" max="-2" attributes="0"/>
+              <Component id="level5Button" min="-2" pref="150" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,59 +48,68 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="44" max="-2" attributes="0"/>
+              <Component id="pickLabel" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton1" min="-2" pref="86" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="86" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="86" max="-2" attributes="0"/>
+                  <Component id="level1Button" min="-2" pref="86" max="-2" attributes="0"/>
+                  <Component id="level2Button" min="-2" pref="86" max="-2" attributes="0"/>
+                  <Component id="level3Button" min="-2" pref="86" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton5" min="-2" pref="86" max="-2" attributes="0"/>
-                  <Component id="jButton4" min="-2" pref="86" max="-2" attributes="0"/>
+                  <Component id="level4Button" min="-2" pref="86" max="-2" attributes="0"/>
+                  <Component id="level5Button" min="-2" pref="86" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="level1Button">
       <Properties>
         <Property name="text" type="java.lang.String" value="Level 1"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="level1ButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="pickLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Please pick a level"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="level2Button">
       <Properties>
         <Property name="text" type="java.lang.String" value="Level 2"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="level2ButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="level3Button">
       <Properties>
         <Property name="text" type="java.lang.String" value="Level 3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="level3ButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="level5Button">
       <Properties>
         <Property name="text" type="java.lang.String" value="Level 5"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="level5ButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="level4Button">
       <Properties>
         <Property name="text" type="java.lang.String" value="Level 4"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="level4ButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

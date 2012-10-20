@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package superkidsapplication;
+package superkidsapplication.panels;
 
+import superkidsapplication.controllers.PanelController;
 import com.apple.eawt.Application;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -34,7 +35,7 @@ public class MainFrame extends javax.swing.JFrame {
             System.out.println("Nimbus isn't available");
         }
         initComponents();
-        startscreen = new StartScreen();
+        startscreen = new StartScreenPanel();
         //get panelcontroller
         controller = PanelController.getInstance();
         //set the mainFrame in PanelController (THIS IS DONE ONLY ONCE/ DO NOT DO IT SOMEWHERE ELSE)
@@ -162,7 +163,7 @@ public class MainFrame extends javax.swing.JFrame {
     //set icon
     public void setIcon() {
         String osName = System.getProperty("os.name");
-        java.net.URL url = ClassLoader.getSystemResource("superkidsapplication/Boy.png");
+        java.net.URL url = ClassLoader.getSystemResource("characters/Boy.png");
         Toolkit kit = Toolkit.getDefaultToolkit();
         Image img = kit.createImage(url);
         if (osName.contains("OS X")) {

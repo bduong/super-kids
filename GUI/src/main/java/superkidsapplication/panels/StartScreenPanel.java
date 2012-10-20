@@ -2,23 +2,24 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package superkidsapplication;
+package superkidsapplication.panels;
 
+import superkidsapplication.controllers.PanelController;
 import java.awt.Color;
 
 /**
  *
  * @author david
  */
-public class StartScreen extends javax.swing.JPanel {
+public class StartScreenPanel extends javax.swing.JPanel {
     
     private PanelController controller;
     
 
     /**
-     * Creates new form StartScreen
+     * Creates new form StartScreenPanel
      */
-    public StartScreen() {
+    public StartScreenPanel() {
         controller = PanelController.getInstance();
         initComponents();
     }

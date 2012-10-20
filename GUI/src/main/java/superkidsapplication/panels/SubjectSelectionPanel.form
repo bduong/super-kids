@@ -112,6 +112,7 @@
             <Property name="text" type="java.lang.String" value="Shapes"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="subject1MouseEntered"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subject1ActionPerformed"/>
           </Events>
           <Constraints>
@@ -125,6 +126,7 @@
             <Property name="text" type="java.lang.String" value="Colors"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="subject2MouseEntered"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subject2ActionPerformed"/>
           </Events>
           <Constraints>
@@ -138,6 +140,7 @@
             <Property name="text" type="java.lang.String" value="Animals"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="subject3MouseEntered"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subject3ActionPerformed"/>
           </Events>
           <Constraints>

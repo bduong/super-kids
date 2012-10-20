@@ -2,11 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package superkidsapplication;
+package superkidsapplication.panels;
 
+import superkidsapplication.controllers.QuestionBase;
+import superkidsapplication.controllers.PanelController;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /**
  *
@@ -23,13 +29,16 @@ public class QuestionPanel extends javax.swing.JPanel {
     private QuestionBase qBase;
     private PanelController controller;
     private String category;
+    private String level;
+    private JFrame result;
 
     //when creating the panel set which choice is the correct answer
     //1 is button1 , 2 is button2 and so on.
     //look at design tab to see which button is which
-    public QuestionPanel(int correctAnswer, String category) {
+    public QuestionPanel(int correctAnswer, String level, String category) {
         this.category = category;
         this.correctAnswer = correctAnswer;
+        this.level = level;
         qBase = QuestionBase.getInstance();
         controller = PanelController.getInstance();
         initComponents();
@@ -93,7 +102,7 @@ public class QuestionPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/Boy.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
 
         jLabel2.setText("Question Comes Here");
 
@@ -147,8 +156,7 @@ public class QuestionPanel extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,14 +227,35 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     //if NEXT button is clicked go to next question
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        //// here when a question is answered correctly we get a new question panel and add to frame 
-        QuestionPanel qP = qBase.createQuestionPanel(category);
-        if (qP != null) {
-            controller.addPanel(qP);
-        } else {
-            jButton5.setText("NO MORE QUESTIONS");
-            jButton5.setEnabled(false);
+        try {
+            // TODO add your handling code here:
+            //// here when a question is answered correctly we get a new question panel and add to frame
+            //set result frame to invisible if no more questions
+            if (result != null) {
+                result.setVisible(false);
+            }
+            //get te next question
+            QuestionPanel qP = qBase.createQuestionPanel(level, category);
+            //if the returned questionPanel is not null then add to frame through the controller
+            if (qP != null) {
+                controller.addPanel(qP);
+              //if returned questionpanel is null then there are no more 
+            } else {
+                jButton5.setText("NO MORE QUESTIONS");
+                jButton5.setEnabled(false);
+                
+                //say "no more questions"//ONLY WORKS IN MAC
+                if (System.getProperty("os.name").contains("OS X")) {
+                    try {
+                        //say the question (only works in MAC)
+                        Runtime.getRuntime().exec(new String[]{"say", "no more questions"});
+                    } catch (IOException ex) {
+                        Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -245,14 +274,19 @@ public class QuestionPanel extends javax.swing.JPanel {
     //set the question and the choices
     //they can have a text or an icon (image)
     //if no icon is wanted then pass an empty list into icon parameter
-    public void setQuestion(String qText, Icon icon) {
+    public void setQuestion(String qText, Icon icon) throws IOException {
         jLabel2.setIcon(icon);
         jLabel2.setText(qText);
+        
+        if (System.getProperty("os.name").contains("OS X")) {
+            //say the question (only works in MAC)
+            Runtime.getRuntime().exec(new String[]{"say", qText});
+        }
     }
 
     //set text and/or icons for buttons
     public void setChoices(List<String> choices, List<Icon> icons) {
-        
+
         if (icons != null) {
             jButton1.setIcon(icons.get(0));
             jButton2.setIcon(icons.get(1));
@@ -264,14 +298,17 @@ public class QuestionPanel extends javax.swing.JPanel {
             jButton1.setText(choices.get(0));
             jButton2.setText(choices.get(1));
             jButton3.setText(choices.get(2));
-            jButton3.setText(choices.get(3));
+            jButton4.setText(choices.get(3));
         }
     }
 
     //when the correct answer is clicked this method is called from the button action
     private void correctAnswerClicked() {
-        CorrectAnswerFrame corr = new CorrectAnswerFrame();
-        corr.setVisible(true);
+        if (result != null) {
+            result.setVisible(false);
+        }
+        result = new CorrectAnswerFrame();
+        result.setVisible(true);
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
         jButton3.setEnabled(false);
@@ -297,8 +334,11 @@ public class QuestionPanel extends javax.swing.JPanel {
     //when the wrong answer is selected
     private void wrongAnswerClicked(JButton button) {
         button.setEnabled(false);
-        WrongAnswerFrame Wrong = new WrongAnswerFrame();
-        Wrong.setVisible(true);
+        if (result != null) {
+            result.setVisible(false);
+        }
+        result = new WrongAnswerFrame();
+        result.setVisible(true);
         //update score 
         if (a < 4) {
             a++;

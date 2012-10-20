@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package superkidsapplication;
+package superkidsapplication.panels;
 
 /**
  *
@@ -27,21 +27,21 @@ public class AboutFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        namesArea = new javax.swing.JTextArea();
+        iconLabel = new javax.swing.JLabel();
+        aboutLabel = new javax.swing.JLabel();
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(255, 153, 153));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Boston University MET College\nFALL 2012\nCS673 - Software Engineering\n\nSuper Kids - The Ultimate Adventure\n\nTeam Members;\n\nBenjamin Duong\nMarc Adam\nChun-Chieh Feng\nFranklin Wong\nKunal Singh\nBaris Tevfik\nPrashant Vaidyanathan\nHeng Du\nDavid Cheung\nDavid Ohayon");
-        jTextArea1.setBorder(null);
-        jScrollPane1.setViewportView(jTextArea1);
+        namesArea.setEditable(false);
+        namesArea.setBackground(new java.awt.Color(255, 153, 153));
+        namesArea.setColumns(20);
+        namesArea.setRows(5);
+        namesArea.setText("Boston University MET College\nFALL 2012\nCS673 - Software Engineering\n\nSuper Kids - The Ultimate Adventure\n\nTeam Members;\n\nBenjamin Duong\nMarc Adam\nChun-Chieh Feng\nFranklin Wong\nKunal Singh\nBaris Tevfik\nPrashant Vaidyanathan\nHeng Du\nDavid Cheung\nDavid Ohayon");
+        namesArea.setBorder(null);
+        jScrollPane1.setViewportView(namesArea);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/Boy.png"))); // NOI18N
+        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/panels/Boy.png"))); // NOI18N
 
-        jLabel2.setText("ABOUT");
+        aboutLabel.setText("ABOUT");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,10 +51,10 @@ public class AboutFrame extends javax.swing.JFrame {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .add(26, 26, 26)
-                        .add(jLabel1))
+                        .add(iconLabel))
                     .add(layout.createSequentialGroup()
                         .add(52, 52, 52)
-                        .add(jLabel2)))
+                        .add(aboutLabel)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 305, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -66,9 +66,9 @@ public class AboutFrame extends javax.swing.JFrame {
                 .addContainerGap())
             .add(layout.createSequentialGroup()
                 .add(47, 47, 47)
-                .add(jLabel2)
+                .add(aboutLabel)
                 .add(28, 28, 28)
-                .add(jLabel1)
+                .add(iconLabel)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -110,9 +110,9 @@ public class AboutFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel aboutLabel;
+    private javax.swing.JLabel iconLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea namesArea;
     // End of variables declaration//GEN-END:variables
 }
