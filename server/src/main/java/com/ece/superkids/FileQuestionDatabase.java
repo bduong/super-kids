@@ -54,14 +54,6 @@ public class FileQuestionDatabase implements QuestionDatabase{
     @Override
     public Question getQuestion(final QuestionLevel level, final QuestionCategory category, final int number) {
         return questions.get(level).get(category).get(number);
-
-        //        return QuestionBuilder.aQuestion()
-//                .asking("What has four sides?")
-//                .ofType(QuestionType.TEXT)
-//                .withChoices("Square", "Circle", "Triangle", "Oval")
-//                .withAnswer("Square")
-//                .withExplaination("A square has four equal sides")
-//                .build();
     }
 
     @Override
