@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class QuestionDatabaseTests {
 
@@ -31,22 +32,18 @@ public class QuestionDatabaseTests {
                 .build();
     }
 
-//    @Test
-//    public void questionDatabaseReturnsKnownValue() {
-//        Question question = questionDatabase.getQuestion(QuestionLevel.LEVEL_1, 1);
-//        assertEquals(expected, question);
-//    }
+
 
     @Test
-    public void writeToJSONWorksCorrectly() {
-//        questionDatabase.saveQuestion(QuestionLevel.LEVEL_1, 1, expected);
-        Question actual = questionDatabase.getQuestion(QuestionLevel.LEVEL_1, QuestionCategory.SHAPES, 1);
-        //assertEquals(expected, actual);
+    public void questionsAreParsedCorrectly() {
+        Question question = questionDatabase.getQuestion(QuestionLevel.LEVEL_1, QuestionCategory.SHAPES, 0);
+        assertEquals(expected, question);
     }
 
     @Test
-    public void listQuestions() {
-        System.out.println(questionDatabase.getQuestion(QuestionLevel.LEVEL_1, QuestionCategory.SHAPES, 2).getQuestion());
-        System.out.println(questionDatabase.getQuestion(QuestionLevel.LEVEL_1, QuestionCategory.PLANETS, 2).getQuestion());
+    public void questionIndexOutOfBoundsReturnsNull() {
+        int numberOfQuestions = questionDatabase.getNumberOfQuestions(QuestionLevel.LEVEL_1, QuestionCategory.SHAPES);
+        assertNull(questionDatabase.getQuestion(QuestionLevel.LEVEL_1, QuestionCategory.SHAPES,
+                numberOfQuestions + 1));
     }
 }

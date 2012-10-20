@@ -9,4 +9,8 @@ public interface QuestionDatabase {
     public Question getQuestion(QuestionLevel level, QuestionCategory category, int number);
 
     public void saveQuestion(QuestionLevel level, QuestionCategory category, Question question);
+
+	public int getNumberOfQuestions(QuestionLevel level, QuestionCategory category);
+
+	public int getNumberOfQuestions(QuestionLevel level);
 }
