@@ -94,6 +94,7 @@ public class QuestionBase {
             //return the panel
             return qPanel;
         }
+        //if returned is null then no more questions in the category of that level available.
         return null;
     }
 

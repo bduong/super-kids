@@ -4,17 +4,22 @@
  */
 package superkidsapplication.panels;
 
-import superkidsapplication.controllers.PanelController;
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.media.Manager;
+import javax.media.NoPlayerException;
+import javax.media.Player;
+import superkidsapplication.controllers.PanelController; 
 
 /**
  *
  * @author david
  */
 public class StartScreenPanel extends javax.swing.JPanel {
-    
+
     private PanelController controller;
-    
 
     /**
      * Creates new form StartScreenPanel
@@ -22,6 +27,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
     public StartScreenPanel() {
         controller = PanelController.getInstance();
         initComponents();
+        playMusic();
     }
 
     /**
@@ -180,8 +186,6 @@ public class StartScreenPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.ContinueGame.setForeground(Color.white);
     }//GEN-LAST:event_ContinueGameMouseExited
-
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BackGround;
     private javax.swing.JButton ContinueGame;
@@ -189,4 +193,20 @@ public class StartScreenPanel extends javax.swing.JPanel {
     private javax.swing.JButton Options;
     private javax.swing.JLayeredPane ScreenComponents;
     // End of variables declaration//GEN-END:variables
+
+    //very simple method to play a music file for background
+    //it uses jmf, other options might be better. mediaplayer from java 7 / javafx ??
+    //mp3 files wont work
+    //need to be enhanced so that file can be played in a loop..
+    //need to be linked into options frame to control the volume.
+    private void playMusic() {
+        try {
+            Player p = Manager.createPlayer(getClass().getResource("/music/GameForest.wav"));
+            p.start();
+        } catch (IOException ex) {
+            Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoPlayerException ex) {
+            Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
