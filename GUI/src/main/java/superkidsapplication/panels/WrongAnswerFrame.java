@@ -15,6 +15,8 @@ public class WrongAnswerFrame extends javax.swing.JFrame {
      */
     public WrongAnswerFrame() {
         initComponents();
+        //center frame relative to screen
+        setLocationRelativeTo(null);
     }
 
     /**

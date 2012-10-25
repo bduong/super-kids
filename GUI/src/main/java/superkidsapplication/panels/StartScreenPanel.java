@@ -16,6 +16,10 @@ import superkidsapplication.controllers.PanelController;
 /**
  *
  * @author david
+ * 
+ * MUSIC by
+ * www.nosoapradio.us
+ * track: GameForest
  */
 public class StartScreenPanel extends javax.swing.JPanel {
 

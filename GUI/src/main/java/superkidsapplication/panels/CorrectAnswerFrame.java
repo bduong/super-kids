@@ -15,6 +15,8 @@ public class CorrectAnswerFrame extends javax.swing.JFrame {
      */
     public CorrectAnswerFrame() {
         initComponents();
+        //center frame relative to screen
+        setLocationRelativeTo(null);
     }
 
     /**

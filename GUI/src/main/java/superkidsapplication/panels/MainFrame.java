@@ -44,6 +44,8 @@ public class MainFrame extends javax.swing.JFrame {
         controller.addPanel(startscreen);
         //set icons
         setIcon();
+        //center frame relative to screen
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -61,7 +63,9 @@ public class MainFrame extends javax.swing.JFrame {
         ExitItem = new javax.swing.JMenuItem();
         ModeMenu = new javax.swing.JMenu();
         ParentItem = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        ChildMenu = new javax.swing.JMenu();
+        LearnMode = new javax.swing.JMenuItem();
+        QMode = new javax.swing.JMenuItem();
         HelpMenu = new javax.swing.JMenu();
         AboutItem = new javax.swing.JMenuItem();
 
@@ -101,13 +105,25 @@ public class MainFrame extends javax.swing.JFrame {
         });
         ModeMenu.add(ParentItem);
 
-        jMenuItem1.setText("Child Mode");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        ChildMenu.setText("Child Mode");
+
+        LearnMode.setText("Learning Mode");
+        LearnMode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                LearnModeActionPerformed(evt);
             }
         });
-        ModeMenu.add(jMenuItem1);
+        ChildMenu.add(LearnMode);
+
+        QMode.setText("Question Mode");
+        QMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QModeActionPerformed(evt);
+            }
+        });
+        ChildMenu.add(QMode);
+
+        ModeMenu.add(ChildMenu);
 
         jMenuBar1.add(ModeMenu);
 
@@ -153,10 +169,14 @@ public class MainFrame extends javax.swing.JFrame {
         controller.addPanel(parentPanel);
     }//GEN-LAST:event_ParentItemActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void QModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QModeActionPerformed
         // TODO add your handling code here:
         controller.goToMainMenu();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_QModeActionPerformed
+
+    private void LearnModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LearnModeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LearnModeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,12 +228,14 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AboutItem;
     private javax.swing.JMenuItem BackItem;
+    private javax.swing.JMenu ChildMenu;
     private javax.swing.JMenuItem ExitItem;
     private javax.swing.JMenu FileMenu;
     private javax.swing.JMenu HelpMenu;
+    private javax.swing.JMenuItem LearnMode;
     private javax.swing.JMenu ModeMenu;
     private javax.swing.JMenuItem ParentItem;
+    private javax.swing.JMenuItem QMode;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

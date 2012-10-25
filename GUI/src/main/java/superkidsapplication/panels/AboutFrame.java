@@ -15,6 +15,8 @@ public class AboutFrame extends javax.swing.JFrame {
      */
     public AboutFrame() {
         initComponents();
+        //center frame relative to screen
+        setLocationRelativeTo(null);
     }
 
     /**
