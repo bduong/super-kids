@@ -4,7 +4,7 @@
  */
 package superkidsapplication.panels;
 
-import superkidsapplication.controllers.QuestionBase;
+import superkidsapplication.controllers.QuestionController;
 import superkidsapplication.controllers.PanelController;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class SubjectSelectionPanel extends javax.swing.JPanel {
             
     private PanelController controller;
-    private QuestionBase factory;
+    private QuestionController factory;
     private String level;
 
     /**
@@ -25,7 +25,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
      */
     public SubjectSelectionPanel(String level) {
         controller=PanelController.getInstance();
-        factory = QuestionBase.getInstance();
+        factory = QuestionController.getInstance();
         this.level=level;
         initComponents();
     }
@@ -122,7 +122,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         subject3.setBounds(320, 200, 120, 120);
         jLayeredPane1.add(subject3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SubjectSelectionPanelResources/map_800_600.png"))); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/subjectselectionbackground.png"))); // NOI18N
         background.setText("jLabel5");
         background.setBounds(0, 0, 800, 600);
         jLayeredPane1.add(background, javax.swing.JLayeredPane.DEFAULT_LAYER);

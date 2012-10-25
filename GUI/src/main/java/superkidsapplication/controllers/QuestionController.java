@@ -22,22 +22,22 @@ import superkidsapplication.panels.QuestionPanel;
  * the question and choices(answers) from the server
  *
  */
-public class QuestionBase {
+public class QuestionController {
 
     private int count;
     private List<Icon> icons;
     private QuestionPanel qPanel;
 
-    private QuestionBase() {
+    private QuestionController() {
         count = 0;
     }
 
     private static class QuestionBaseHolder {
 
-        public static final QuestionBase INSTANCE = new QuestionBase();
+        public static final QuestionController INSTANCE = new QuestionController();
     }
 
-    public static QuestionBase getInstance() {
+    public static QuestionController getInstance() {
         return QuestionBaseHolder.INSTANCE;
     }
 

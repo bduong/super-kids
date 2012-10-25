@@ -39,7 +39,7 @@ public class AboutFrame extends javax.swing.JFrame {
         namesArea.setBorder(null);
         jScrollPane1.setViewportView(namesArea);
 
-        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/superkidsapplication/panels/Boy.png"))); // NOI18N
+        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
 
         aboutLabel.setText("ABOUT");
 
@@ -69,7 +69,7 @@ public class AboutFrame extends javax.swing.JFrame {
                 .add(aboutLabel)
                 .add(28, 28, 28)
                 .add(iconLabel)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

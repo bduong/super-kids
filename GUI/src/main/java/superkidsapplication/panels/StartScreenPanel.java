@@ -20,6 +20,7 @@ import superkidsapplication.controllers.PanelController;
 public class StartScreenPanel extends javax.swing.JPanel {
 
     private PanelController controller;
+    private Player p;
 
     /**
      * Creates new form StartScreenPanel
@@ -27,7 +28,16 @@ public class StartScreenPanel extends javax.swing.JPanel {
     public StartScreenPanel() {
         controller = PanelController.getInstance();
         initComponents();
-        playMusic();
+        
+        //STARTSCREEN MUSIC
+        try {
+            p = Manager.createPlayer(getClass().getResource("/music/GameForest.wav"));
+        } catch (IOException ex) {
+            Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoPlayerException ex) {
+            Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        playMusic("play");
     }
 
     /**
@@ -129,7 +139,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
         Options.setBounds(530, 340, 140, 50);
         ScreenComponents.add(Options, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        BackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startscreen/startscreen_background/Slide1.jpg"))); // NOI18N
+        BackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/startscreenbackground.jpg"))); // NOI18N
         BackGround.setBounds(0, 0, 800, 600);
         ScreenComponents.add(BackGround, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -144,6 +154,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
         //create a newgame panel
+        playMusic("stop");
         NewGamePanel gamePanel = new NewGamePanel();
         //add new panel
         controller.addPanel(gamePanel);
@@ -199,14 +210,12 @@ public class StartScreenPanel extends javax.swing.JPanel {
     //mp3 files wont work
     //need to be enhanced so that file can be played in a loop..
     //need to be linked into options frame to control the volume.
-    private void playMusic() {
-        try {
-            Player p = Manager.createPlayer(getClass().getResource("/music/GameForest.wav"));
+    private void playMusic(String doPlay) {
+            if(doPlay.equals("play")){
             p.start();
-        } catch (IOException ex) {
-            Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoPlayerException ex) {
-            Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }
+            if(doPlay.equals("stop")){
+            p.stop();
+            }      
     }
 }

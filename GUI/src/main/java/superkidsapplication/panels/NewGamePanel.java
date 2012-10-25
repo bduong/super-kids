@@ -32,46 +32,16 @@ public class NewGamePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        level1Button = new javax.swing.JButton();
-        pickLabel = new javax.swing.JLabel();
-        level2Button = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        level4Button = new javax.swing.JButton();
         level3Button = new javax.swing.JButton();
         level5Button = new javax.swing.JButton();
-        level4Button = new javax.swing.JButton();
+        level2Button = new javax.swing.JButton();
+        level1Button = new javax.swing.JButton();
+        backgoundLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 204, 255));
         setMinimumSize(new java.awt.Dimension(800, 600));
-
-        level1Button.setText("Level 1");
-        level1Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                level1ButtonActionPerformed(evt);
-            }
-        });
-
-        pickLabel.setText("Please pick a level");
-        pickLabel.setFocusable(false);
-
-        level2Button.setText("Level 2");
-        level2Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                level2ButtonActionPerformed(evt);
-            }
-        });
-
-        level3Button.setText("Level 3");
-        level3Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                level3ButtonActionPerformed(evt);
-            }
-        });
-
-        level5Button.setText("Level 5");
-        level5Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                level5ButtonActionPerformed(evt);
-            }
-        });
 
         level4Button.setText("Level 4");
         level4Button.addActionListener(new java.awt.event.ActionListener() {
@@ -79,41 +49,62 @@ public class NewGamePanel extends javax.swing.JPanel {
                 level4ButtonActionPerformed(evt);
             }
         });
+        level4Button.setBounds(210, 470, 88, 29);
+        jLayeredPane1.add(level4Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        level3Button.setText("Level 3");
+        level3Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                level3ButtonActionPerformed(evt);
+            }
+        });
+        level3Button.setBounds(580, 320, 88, 29);
+        jLayeredPane1.add(level3Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        level5Button.setText("Level 5");
+        level5Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                level5ButtonActionPerformed(evt);
+            }
+        });
+        level5Button.setBounds(450, 470, 88, 29);
+        jLayeredPane1.add(level5Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        level2Button.setText("Level 2");
+        level2Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                level2ButtonActionPerformed(evt);
+            }
+        });
+        level2Button.setBounds(340, 320, 88, 29);
+        jLayeredPane1.add(level2Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        level1Button.setText("Level 1");
+        level1Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                level1ButtonActionPerformed(evt);
+            }
+        });
+        level1Button.setBounds(100, 320, 88, 29);
+        jLayeredPane1.add(level1Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        backgoundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/newgamebackground.png"))); // NOI18N
+        backgoundLabel.setBounds(0, 0, 800, 600);
+        jLayeredPane1.add(backgoundLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(240, 240, 240)
-                .add(pickLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 207, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-            .add(layout.createSequentialGroup()
-                .add(31, 31, 31)
-                .add(level1Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(51, 51, 51)
-                .add(level2Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 151, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(43, 43, 43)
-                .add(level3Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 152, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-            .add(layout.createSequentialGroup()
-                .add(123, 123, 123)
-                .add(level4Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(75, 75, 75)
-                .add(level5Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 1133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 201, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(60, 60, 60)
-                .add(pickLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(10, 10, 10)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(level1Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(level2Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(level3Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(49, 49, 49)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(level4Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(level5Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 719, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 154, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,11 +149,12 @@ public class NewGamePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_level5ButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backgoundLabel;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton level1Button;
     private javax.swing.JButton level2Button;
     private javax.swing.JButton level3Button;
     private javax.swing.JButton level4Button;
     private javax.swing.JButton level5Button;
-    private javax.swing.JLabel pickLabel;
     // End of variables declaration//GEN-END:variables
 }

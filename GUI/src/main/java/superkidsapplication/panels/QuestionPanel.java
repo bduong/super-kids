@@ -4,7 +4,7 @@
  */
 package superkidsapplication.panels;
 
-import superkidsapplication.controllers.QuestionBase;
+import superkidsapplication.controllers.QuestionController;
 import superkidsapplication.controllers.PanelController;
 import java.io.IOException;
 import java.util.List;
@@ -26,7 +26,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     public int a;
     //points to which choice is correct
     private int correctAnswer;
-    private QuestionBase qBase;
+    private QuestionController qBase;
     private PanelController controller;
     private String category;
     private String level;
@@ -39,7 +39,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         this.category = category;
         this.correctAnswer = correctAnswer;
         this.level = level;
-        qBase = QuestionBase.getInstance();
+        qBase = QuestionController.getInstance();
         controller = PanelController.getInstance();
         initComponents();
         //initally next button is not visible becomes visible if the question is answered correctly

@@ -59,6 +59,9 @@ public class MainFrame extends javax.swing.JFrame {
         FileMenu = new javax.swing.JMenu();
         BackItem = new javax.swing.JMenuItem();
         ExitItem = new javax.swing.JMenuItem();
+        ModeMenu = new javax.swing.JMenu();
+        ParentItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         HelpMenu = new javax.swing.JMenu();
         AboutItem = new javax.swing.JMenuItem();
 
@@ -87,6 +90,26 @@ public class MainFrame extends javax.swing.JFrame {
         FileMenu.add(ExitItem);
 
         jMenuBar1.add(FileMenu);
+
+        ModeMenu.setText("Mode");
+
+        ParentItem.setText("Parent Mode");
+        ParentItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ParentItemActionPerformed(evt);
+            }
+        });
+        ModeMenu.add(ParentItem);
+
+        jMenuItem1.setText("Child Mode");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        ModeMenu.add(jMenuItem1);
+
+        jMenuBar1.add(ModeMenu);
 
         HelpMenu.setText("Help");
 
@@ -123,6 +146,17 @@ public class MainFrame extends javax.swing.JFrame {
         AboutFrame about = new AboutFrame();
         about.setVisible(true);
     }//GEN-LAST:event_AboutItemActionPerformed
+
+    private void ParentItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParentItemActionPerformed
+        // TODO add your handling code here:
+        ParentalControlPanel parentPanel = new ParentalControlPanel();
+        controller.addPanel(parentPanel);
+    }//GEN-LAST:event_ParentItemActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        controller.goToMainMenu();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +211,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem ExitItem;
     private javax.swing.JMenu FileMenu;
     private javax.swing.JMenu HelpMenu;
+    private javax.swing.JMenu ModeMenu;
+    private javax.swing.JMenuItem ParentItem;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
