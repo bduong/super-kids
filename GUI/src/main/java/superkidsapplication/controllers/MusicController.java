@@ -8,7 +8,9 @@ import java.net.URL;
 import javax.sound.sampled.*;
 
 /**
- * @author baris MUSIC by www.nosoapradio.us track: GameForest
+ * @author baris
+ *
+ * MUSIC by www.nosoapradio.us track: GameForest
  *
  * a method to play audio clips:
  * http://www3.ntu.edu.sg/home/ehchua/programming/java/J8c_PlayingSound.html
@@ -63,9 +65,14 @@ public class MusicController {
     }
 
     public void playMusic() {
-        stopPlayback = false;
-        System.out.println("Start play thread");
-        new PlayThread().start();
+        //if the music has been stopped before...
+        if (stopPlayback == true) {
+            //then restart.
+            //this prevents creating new threads when there is one already running
+            stopPlayback = false;
+            System.out.println("Start play thread");
+            new PlayThread().start();
+        }
     }
 
     public void stopMusic() {
@@ -74,7 +81,7 @@ public class MusicController {
 
     public void setVolume(double gain) {
         FloatControl gainControl = (FloatControl) sourceDataLine.getControl(FloatControl.Type.MASTER_GAIN);
-        // set the gain (between 0.0 and 1.0
+        // set the gain
         float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
         gainControl.setValue(dB);
     }

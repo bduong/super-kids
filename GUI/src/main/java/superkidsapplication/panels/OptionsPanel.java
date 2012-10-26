@@ -72,6 +72,8 @@ public class OptionsPanel extends javax.swing.JPanel {
             }
         });
 
+        volumeSlider.setMaximum(200);
+        volumeSlider.setValue(100);
         volumeSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 volumeSliderStateChanged(evt);
@@ -180,7 +182,7 @@ public class OptionsPanel extends javax.swing.JPanel {
     private void volumeSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volumeSliderStateChanged
         // TODO add your handling code here:
         double vol = volumeSlider.getValue();
-        vol = vol/100; //convert to between 0.0 and 1.0 (gain)
+        vol = vol/100; //convert to between 0.0 and 2.0 (gain)
         System.out.println("Volume: "+vol);
         mController.setVolume(vol);
     }//GEN-LAST:event_volumeSliderStateChanged
