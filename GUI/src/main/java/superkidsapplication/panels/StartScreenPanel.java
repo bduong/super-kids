@@ -5,43 +5,28 @@
 package superkidsapplication.panels;
 
 import java.awt.Color;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.media.Manager;
-import javax.media.NoPlayerException;
-import javax.media.Player;
-import superkidsapplication.controllers.PanelController; 
+import superkidsapplication.controllers.MusicController;
+import superkidsapplication.controllers.PanelController;
 
 /**
  *
  * @author david
  * 
- * MUSIC by
- * www.nosoapradio.us
- * track: GameForest
  */
 public class StartScreenPanel extends javax.swing.JPanel {
 
     private PanelController controller;
-    private Player p;
+    private MusicController mController;
 
     /**
      * Creates new form StartScreenPanel
      */
     public StartScreenPanel() {
         controller = PanelController.getInstance();
+        mController = MusicController.getInstance();
         initComponents();
-        
-        //STARTSCREEN MUSIC
-        try {
-            p = Manager.createPlayer(getClass().getResource("/music/GameForest.wav"));
-        } catch (IOException ex) {
-            Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoPlayerException ex) {
-            Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        playMusic("play");
+        mController.loadThemeMusic();
+        mController.playMusic();
     }
 
     /**
@@ -158,7 +143,9 @@ public class StartScreenPanel extends javax.swing.JPanel {
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
         //create a newgame panel
-        playMusic("stop");
+        //stop music
+        mController.stopMusic();
+        //create a new game panel
         NewGamePanel gamePanel = new NewGamePanel();
         //add new panel
         controller.addPanel(gamePanel);
@@ -209,17 +196,4 @@ public class StartScreenPanel extends javax.swing.JPanel {
     private javax.swing.JLayeredPane ScreenComponents;
     // End of variables declaration//GEN-END:variables
 
-    //very simple method to play a music file for background
-    //it uses jmf, other options might be better. mediaplayer from java 7 / javafx ??
-    //mp3 files wont work
-    //need to be enhanced so that file can be played in a loop..
-    //need to be linked into options frame to control the volume.
-    private void playMusic(String doPlay) {
-            if(doPlay.equals("play")){
-            p.start();
-            }
-            if(doPlay.equals("stop")){
-            p.stop();
-            }      
-    }
 }

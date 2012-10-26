@@ -4,11 +4,11 @@
  */
 package superkidsapplication.panels;
 
-import superkidsapplication.controllers.QuestionController;
-import superkidsapplication.controllers.PanelController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import superkidsapplication.controllers.PanelController;
+import superkidsapplication.controllers.QuestionController;
 
 /**
  *

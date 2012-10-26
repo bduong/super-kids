@@ -3,6 +3,9 @@
  * and open the template in the editor.
  */
 package superkidsapplication.panels;
+
+import superkidsapplication.controllers.MusicController;
+
 /**
  *
  * @author davidOhayon
@@ -12,7 +15,9 @@ public class OptionsPanel extends javax.swing.JPanel {
     /**
      * Creates new form OptionsPanel
      */
+    MusicController mController;
     public OptionsPanel() {
+        mController=MusicController.getInstance();
         initComponents();
     }
 
@@ -25,12 +30,16 @@ public class OptionsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        onOffGroup = new javax.swing.ButtonGroup();
         multipleChoiceButton = new javax.swing.JToggleButton();
         matchingButton = new javax.swing.JToggleButton();
         oddOneOutButton = new javax.swing.JToggleButton();
         allTypesButton = new javax.swing.JToggleButton();
         volumeSlider = new javax.swing.JSlider();
         volumeLabel = new javax.swing.JLabel();
+        musicOnButton = new javax.swing.JRadioButton();
+        musicOffButton = new javax.swing.JRadioButton();
+        musicLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 204, 255));
 
@@ -64,41 +73,74 @@ public class OptionsPanel extends javax.swing.JPanel {
 
         volumeLabel.setText("Volume");
 
+        onOffGroup.add(musicOnButton);
+        musicOnButton.setText("ON");
+        musicOnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                musicOnButtonActionPerformed(evt);
+            }
+        });
+
+        onOffGroup.add(musicOffButton);
+        musicOffButton.setText("OFF");
+        musicOffButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                musicOffButtonActionPerformed(evt);
+            }
+        });
+
+        musicLabel.setText("     Music");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
-                    .add(volumeSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(volumeLabel))
-                .add(157, 157, 157))
             .add(layout.createSequentialGroup()
                 .add(29, 29, 29)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(allTypesButton)
-                    .add(oddOneOutButton)
-                    .add(multipleChoiceButton)
-                    .add(matchingButton))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(matchingButton)
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(oddOneOutButton)
+                            .add(multipleChoiceButton))
+                        .add(55, 55, 55)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                            .add(volumeSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(volumeLabel)
+                            .add(layout.createSequentialGroup()
+                                .add(musicOnButton)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(musicOffButton))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                                .add(musicLabel)
+                                .add(81, 81, 81)))))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
-                .add(multipleChoiceButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(oddOneOutButton)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(musicOnButton)
+                            .add(musicOffButton))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(musicLabel)
+                        .add(7, 7, 7)
+                        .add(volumeSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(volumeLabel))
+                    .add(layout.createSequentialGroup()
+                        .add(multipleChoiceButton)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(oddOneOutButton)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(matchingButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(allTypesButton)
-                .add(18, 18, 18)
-                .add(volumeSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(volumeLabel)
-                .add(15, 15, 15))
+                .add(95, 95, 95))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -118,11 +160,25 @@ public class OptionsPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_oddOneOutButtonActionPerformed
 
+    private void musicOnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicOnButtonActionPerformed
+        // TODO add your handling code here:
+        mController.playMusic();
+    }//GEN-LAST:event_musicOnButtonActionPerformed
+
+    private void musicOffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicOffButtonActionPerformed
+        // TODO add your handling code here:
+        mController.stopMusic();
+    }//GEN-LAST:event_musicOffButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton allTypesButton;
     private javax.swing.JToggleButton matchingButton;
     private javax.swing.JToggleButton multipleChoiceButton;
+    private javax.swing.JLabel musicLabel;
+    private javax.swing.JRadioButton musicOffButton;
+    private javax.swing.JRadioButton musicOnButton;
     private javax.swing.JToggleButton oddOneOutButton;
+    private javax.swing.ButtonGroup onOffGroup;
     private javax.swing.JLabel volumeLabel;
     private javax.swing.JSlider volumeSlider;
     // End of variables declaration//GEN-END:variables

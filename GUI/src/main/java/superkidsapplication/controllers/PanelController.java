@@ -1,7 +1,6 @@
 package superkidsapplication.controllers;
 
 import java.util.ArrayList;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import superkidsapplication.panels.MainFrame;
 

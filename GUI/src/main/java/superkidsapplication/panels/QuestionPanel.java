@@ -4,8 +4,6 @@
  */
 package superkidsapplication.panels;
 
-import superkidsapplication.controllers.QuestionController;
-import superkidsapplication.controllers.PanelController;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -13,6 +11,8 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import superkidsapplication.controllers.PanelController;
+import superkidsapplication.controllers.QuestionController;
 
 /**
  *

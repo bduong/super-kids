@@ -4,14 +4,12 @@
  */
 package superkidsapplication.panels;
 
-import superkidsapplication.controllers.PanelController;
 import com.apple.eawt.Application;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.net.URL;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
+import superkidsapplication.controllers.PanelController;
 
 /**
  *
