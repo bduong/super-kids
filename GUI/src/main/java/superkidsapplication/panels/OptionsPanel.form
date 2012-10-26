@@ -121,6 +121,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JSlider" name="volumeSlider">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="volumeSliderStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="volumeLabel">
       <Properties>

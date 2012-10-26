@@ -16,8 +16,9 @@ public class OptionsPanel extends javax.swing.JPanel {
      * Creates new form OptionsPanel
      */
     MusicController mController;
+
     public OptionsPanel() {
-        mController=MusicController.getInstance();
+        mController = MusicController.getInstance();
         initComponents();
     }
 
@@ -68,6 +69,12 @@ public class OptionsPanel extends javax.swing.JPanel {
         allTypesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 allTypesButtonActionPerformed(evt);
+            }
+        });
+
+        volumeSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                volumeSliderStateChanged(evt);
             }
         });
 
@@ -170,6 +177,13 @@ public class OptionsPanel extends javax.swing.JPanel {
         mController.stopMusic();
     }//GEN-LAST:event_musicOffButtonActionPerformed
 
+    private void volumeSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volumeSliderStateChanged
+        // TODO add your handling code here:
+        double vol = volumeSlider.getValue();
+        vol = vol/100; //convert to between 0.0 and 1.0 (gain)
+        System.out.println("Volume: "+vol);
+        mController.setVolume(vol);
+    }//GEN-LAST:event_volumeSliderStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton allTypesButton;
     private javax.swing.JToggleButton matchingButton;
@@ -182,29 +196,30 @@ public class OptionsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel volumeLabel;
     private javax.swing.JSlider volumeSlider;
     // End of variables declaration//GEN-END:variables
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
             /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-             * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-             */
-            try {
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Nimbus".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
                 }
-            } catch (ClassNotFoundException ex) {
-                java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-                java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
-            //</editor-fold>
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(NewGamePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
