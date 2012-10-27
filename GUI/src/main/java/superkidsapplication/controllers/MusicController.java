@@ -10,12 +10,12 @@ import javax.sound.sampled.*;
 /**
  * @author baris
  *
- * MUSIC by www.nosoapradio.us track: GameForest
+ * MUSIC by www.nosoapradio.us
  *
  * a method to play audio clips:
  * http://www3.ntu.edu.sg/home/ehchua/programming/java/J8c_PlayingSound.html
  *
- * also http://www.developer.com/java/other/print.php/2173111#Summary
+ * also http://www.developer.com/java/other/print.php/2173111
  *
  * a large wav file cannot be played using the method in the first link refer to
  * this article: http://codeidol.com/java/swing/Audio/Play-Non-Trivial-Audio/
@@ -31,10 +31,13 @@ public class MusicController {
     private SourceDataLine sourceDataLine;
     private Boolean stopPlayback;
     private URL urlOfFile;
+    private boolean firstLoad;
 
     private MusicController() {
         //initally not playing
         stopPlayback = true;
+        //this the first loading of theme
+        firstLoad = true;
     }
 
     private static class MusicControllerHolder {
@@ -47,17 +50,24 @@ public class MusicController {
     }
 
     //load main theme
-    public void loadThemeMusic() {
+    public void loadThemeMusic(String theme) {
         try {
-            urlOfFile = getClass().getResource("/music/GameForest.wav");
-            audioInputStream = AudioSystem.getAudioInputStream(urlOfFile);
-            audioFormat = audioInputStream.getFormat();
-            System.out.println("Audio Format: " + audioFormat);
+            if (firstLoad == true) {
+                urlOfFile = getClass().getResource("/music/" + theme + ".wav");
+                audioInputStream = AudioSystem.getAudioInputStream(urlOfFile);
+                audioFormat = audioInputStream.getFormat();
+                System.out.println("Audio Format: " + audioFormat);
 
-            DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, audioFormat);
+                DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, audioFormat);
 
-            sourceDataLine = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
-
+                sourceDataLine = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
+                firstLoad = false;
+            } //then you are changing the song
+            else if (firstLoad == false) {
+                urlOfFile = getClass().getResource("/music/" + theme + ".wav");
+                audioInputStream = AudioSystem.getAudioInputStream(urlOfFile);
+                System.out.println("Theme song is changed to: "+ theme);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(0);

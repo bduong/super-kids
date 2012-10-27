@@ -8,7 +8,7 @@ import superkidsapplication.controllers.MusicController;
 
 /**
  *
- * @author davidOhayon
+ * @author davidOhayon & baris
  */
 public class OptionsPanel extends javax.swing.JPanel {
 
@@ -17,10 +17,19 @@ public class OptionsPanel extends javax.swing.JPanel {
      */
     MusicController mController;
 
-    public OptionsPanel() {
+    private OptionsPanel() {
         mController = MusicController.getInstance();
         initComponents();
     }
+    
+    private static class OptionsPanelHolder {
+        public static final OptionsPanel INSTANCE = new OptionsPanel();
+    }
+
+    public static OptionsPanel getInstance() {
+        return OptionsPanel.OptionsPanelHolder.INSTANCE;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,6 +50,8 @@ public class OptionsPanel extends javax.swing.JPanel {
         musicOnButton = new javax.swing.JRadioButton();
         musicOffButton = new javax.swing.JRadioButton();
         musicLabel = new javax.swing.JLabel();
+        changeMusicBox = new javax.swing.JComboBox();
+        selectThemeLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 204, 255));
 
@@ -100,6 +111,15 @@ public class OptionsPanel extends javax.swing.JPanel {
 
         musicLabel.setText("     Music");
 
+        changeMusicBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "GameForest", "FlyingAces" }));
+        changeMusicBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeMusicBoxActionPerformed(evt);
+            }
+        });
+
+        selectThemeLabel.setText("Select Main Theme");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,34 +141,40 @@ public class OptionsPanel extends javax.swing.JPanel {
                                 .add(musicOnButton)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(musicOffButton))
+                            .add(changeMusicBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(selectThemeLabel)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                                 .add(musicLabel)
-                                .add(81, 81, 81)))))
+                                .add(75, 75, 75)))))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(10, Short.MAX_VALUE)
+                .add(musicLabel)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(musicOnButton)
                             .add(musicOffButton))
+                        .add(29, 29, 29)
+                        .add(volumeLabel)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(musicLabel)
-                        .add(7, 7, 7)
-                        .add(volumeSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(volumeLabel))
+                        .add(volumeSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .add(multipleChoiceButton)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(oddOneOutButton)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(matchingButton)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(matchingButton)
+                    .add(selectThemeLabel))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(allTypesButton)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(allTypesButton)
+                    .add(changeMusicBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(95, 95, 95))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -186,8 +212,17 @@ public class OptionsPanel extends javax.swing.JPanel {
         System.out.println("Volume: "+vol);
         mController.setVolume(vol);
     }//GEN-LAST:event_volumeSliderStateChanged
+
+    private void changeMusicBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeMusicBoxActionPerformed
+        // TODO add your handling code here:
+        String theme = (String) changeMusicBox.getSelectedItem();
+        System.out.println("Theme Selected: " + theme);
+        mController.loadThemeMusic(theme);
+    }//GEN-LAST:event_changeMusicBoxActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton allTypesButton;
+    private javax.swing.JComboBox changeMusicBox;
     private javax.swing.JToggleButton matchingButton;
     private javax.swing.JToggleButton multipleChoiceButton;
     private javax.swing.JLabel musicLabel;
@@ -195,6 +230,7 @@ public class OptionsPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton musicOnButton;
     private javax.swing.JToggleButton oddOneOutButton;
     private javax.swing.ButtonGroup onOffGroup;
+    private javax.swing.JLabel selectThemeLabel;
     private javax.swing.JLabel volumeLabel;
     private javax.swing.JSlider volumeSlider;
     // End of variables declaration//GEN-END:variables

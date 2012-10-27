@@ -25,7 +25,8 @@ public class StartScreenPanel extends javax.swing.JPanel {
         controller = PanelController.getInstance();
         mController = MusicController.getInstance();
         initComponents();
-        mController.loadThemeMusic();
+        //load default theme music and play
+        mController.loadThemeMusic("GameForest");
         mController.playMusic();
     }
 
@@ -153,10 +154,9 @@ public class StartScreenPanel extends javax.swing.JPanel {
 
     private void OptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionsActionPerformed
         // TODO add your handling code here:
-        //create instance of OptionsPanel
-        OptionsPanel optionsPanel = new OptionsPanel();
+        //OptionsPanel is a singleton
         //add optionspanel
-        controller.addPanel(optionsPanel);
+        controller.addPanel(OptionsPanel.getInstance());
     }//GEN-LAST:event_OptionsActionPerformed
 
     private void NewGameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewGameMouseEntered

@@ -37,7 +37,7 @@ public class AboutFrame extends javax.swing.JFrame {
         namesArea.setBackground(new java.awt.Color(255, 153, 153));
         namesArea.setColumns(20);
         namesArea.setRows(5);
-        namesArea.setText("Boston University MET College\nFALL 2012\nCS673 - Software Engineering\n\nSuper Kids - The Ultimate Adventure\n\nTeam Members;\n\nBenjamin Duong\nMarc Adam\nChun-Chieh Feng\nFranklin Wong\nKunal Singh\nBaris Tevfik\nPrashant Vaidyanathan\nHeng Du\nDavid Cheung\nDavid Ohayon");
+        namesArea.setText("Boston University MET College \nFALL 2012\nCS673 - Software Engineering\n\nSuper Kids - The Ultimate Adventure\n\nTeam Members;\n\nBenjamin Duong\nMarc Adam\nChun-Chieh Feng\nFranklin Wong\nKunal Singh\nBaris Tevfik\nPrashant Vaidyanathan\nHeng Du\nDavid Cheung\nDavid Ohayon\n\nMusic by www.nosoapradio.us");
         namesArea.setBorder(null);
         jScrollPane1.setViewportView(namesArea);
 
@@ -55,7 +55,7 @@ public class AboutFrame extends javax.swing.JFrame {
                         .add(26, 26, 26)
                         .add(iconLabel))
                     .add(layout.createSequentialGroup()
-                        .add(52, 52, 52)
+                        .add(60, 60, 60)
                         .add(aboutLabel)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 305, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -64,14 +64,14 @@ public class AboutFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(jScrollPane1)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(57, 57, 57)
+                        .add(aboutLabel)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(iconLabel)))
                 .addContainerGap())
-            .add(layout.createSequentialGroup()
-                .add(47, 47, 47)
-                .add(aboutLabel)
-                .add(28, 28, 28)
-                .add(iconLabel)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
