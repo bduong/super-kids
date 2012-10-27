@@ -19,6 +19,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
 
     private PanelController controller;
     private MusicController mController;
+    private OptionsPanel options;
 
     /**
      * Creates new form StartScreenPanel
@@ -26,19 +27,22 @@ public class StartScreenPanel extends javax.swing.JPanel {
     private StartScreenPanel() {
         controller = PanelController.getInstance();
         mController = MusicController.getInstance();
+        options = OptionsPanel.getInstance();
+        
         initComponents();
 
         //add a listener to see if the panel is showing.
-        //if it is showing, then play music.
+        //if it is showing and option is set to ON, then play music.
         //this is needed when the player exits to startscreen when playing the game
+        //so that the music resumes
         final StartScreenPanel panel = this;
         //load default music
         mController.loadThemeMusic("GameForest");
         panel.addHierarchyListener(new HierarchyListener() {
             public void hierarchyChanged(HierarchyEvent e) {
                 if ((HierarchyEvent.SHOWING_CHANGED & e.getChangeFlags()) != 0
-                        && panel.isShowing()) {
-                    System.out.println("StartScreen is loaded.");
+                        && panel.isShowing() && options.isMusicON()) {
+                    System.out.println("Play music in startscreen");
                     mController.playMusic();
                 }
             }
