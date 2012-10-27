@@ -42,7 +42,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
             public void hierarchyChanged(HierarchyEvent e) {
                 if ((HierarchyEvent.SHOWING_CHANGED & e.getChangeFlags()) != 0
                         && panel.isShowing() && options.isMusicON()) {
-                    System.out.println("Play music in startscreen");
+                    System.out.println("Resume theme music");
                     mController.playMusic();
                 }
             }
