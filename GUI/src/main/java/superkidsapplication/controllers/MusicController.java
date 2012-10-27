@@ -99,7 +99,7 @@ public class MusicController {
 //=============================================//
 //Inner class to play back the data from the
 // audio file.
-    class PlayThread extends Thread {
+ private class PlayThread extends Thread {
 
         byte tempBuffer[] = new byte[10000];
 
@@ -124,11 +124,7 @@ public class MusicController {
                         audioInputStream = AudioSystem.getAudioInputStream(urlOfFile);
                     }
                 }//end while
-                //Block and wait for internal buffer of the
-                // data line to empty.
-                sourceDataLine.drain();
-                sourceDataLine.close();
-
+                
             } catch (Exception e) {
                 e.printStackTrace();
                 System.exit(0);

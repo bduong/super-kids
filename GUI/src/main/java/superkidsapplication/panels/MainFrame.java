@@ -33,17 +33,18 @@ public class MainFrame extends javax.swing.JFrame {
             System.out.println("Nimbus isn't available");
         }
         initComponents();
-        startscreen = new StartScreenPanel();
-        //get panelcontroller
-        controller = PanelController.getInstance();
-        //set the mainFrame in PanelController (THIS IS DONE ONLY ONCE/ DO NOT DO IT SOMEWHERE ELSE)
-        controller.setMainFrame(this);
-        //add the startscreen
-        controller.addPanel(startscreen);
         //set icons
         setIcon();
         //center frame relative to screen
         setLocationRelativeTo(null);
+        //get the startscreen
+        startscreen = StartScreenPanel.getInstance();
+        //get panelcontroller
+        controller = PanelController.getInstance();
+        //set the mainFrame in PanelController (THIS IS DONE ONLY ONCE/ DO NOT DO IT AGAIN SOMEWHERE ELSE)
+        controller.setMainFrame(this);
+        //add the startscreen
+        controller.addPanel(startscreen);
     }
 
     /**
@@ -59,6 +60,7 @@ public class MainFrame extends javax.swing.JFrame {
         FileMenu = new javax.swing.JMenu();
         BackItem = new javax.swing.JMenuItem();
         ExitItem = new javax.swing.JMenuItem();
+        ExitAppItem = new javax.swing.JMenuItem();
         ModeMenu = new javax.swing.JMenu();
         ParentItem = new javax.swing.JMenuItem();
         ChildMenu = new javax.swing.JMenu();
@@ -90,6 +92,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         FileMenu.add(ExitItem);
+
+        ExitAppItem.setText("Exit Application");
+        ExitAppItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitAppItemActionPerformed(evt);
+            }
+        });
+        FileMenu.add(ExitAppItem);
 
         jMenuBar1.add(FileMenu);
 
@@ -176,6 +186,11 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_LearnModeActionPerformed
 
+    private void ExitAppItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitAppItemActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_ExitAppItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -213,7 +228,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     //set icon
-    public void setIcon() {
+    private void setIcon() {
         String osName = System.getProperty("os.name");
         java.net.URL url = ClassLoader.getSystemResource("characters/Boy.png");
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -223,10 +238,12 @@ public class MainFrame extends javax.swing.JFrame {
         }
         this.setIconImage(img);
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AboutItem;
     private javax.swing.JMenuItem BackItem;
     private javax.swing.JMenu ChildMenu;
+    private javax.swing.JMenuItem ExitAppItem;
     private javax.swing.JMenuItem ExitItem;
     private javax.swing.JMenu FileMenu;
     private javax.swing.JMenu HelpMenu;

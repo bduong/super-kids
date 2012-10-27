@@ -5,13 +5,15 @@
 package superkidsapplication.panels;
 
 import java.awt.Color;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import superkidsapplication.controllers.MusicController;
 import superkidsapplication.controllers.PanelController;
 
 /**
  *
  * @author david
- * 
+ *
  */
 public class StartScreenPanel extends javax.swing.JPanel {
 
@@ -21,13 +23,35 @@ public class StartScreenPanel extends javax.swing.JPanel {
     /**
      * Creates new form StartScreenPanel
      */
-    public StartScreenPanel() {
+    private StartScreenPanel() {
         controller = PanelController.getInstance();
         mController = MusicController.getInstance();
         initComponents();
-        //load default theme music and play
+
+        //add a listener to see if the panel is showing.
+        //if it is showing, then play music.
+        //this is needed when the player exits to startscreen when playing the game
+        final StartScreenPanel panel = this;
+        //load default music
         mController.loadThemeMusic("GameForest");
-        mController.playMusic();
+        panel.addHierarchyListener(new HierarchyListener() {
+            public void hierarchyChanged(HierarchyEvent e) {
+                if ((HierarchyEvent.SHOWING_CHANGED & e.getChangeFlags()) != 0
+                        && panel.isShowing()) {
+                    System.out.println("StartScreen is loaded.");
+                    mController.playMusic();
+                }
+            }
+        });
+    }
+
+    private static class StartScreenPanelHolder {
+
+        public static final StartScreenPanel INSTANCE = new StartScreenPanel();
+    }
+
+    public static StartScreenPanel getInstance() {
+        return StartScreenPanel.StartScreenPanelHolder.INSTANCE;
     }
 
     /**
@@ -143,8 +167,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
     //if new game is clicked
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
-        //create a newgame panel
-        //stop music
+        //stop music when a the game is started
         mController.stopMusic();
         //create a new game panel
         NewGamePanel gamePanel = new NewGamePanel();
@@ -195,5 +218,5 @@ public class StartScreenPanel extends javax.swing.JPanel {
     private javax.swing.JButton Options;
     private javax.swing.JLayeredPane ScreenComponents;
     // End of variables declaration//GEN-END:variables
-
+    //=============================================//
 }
