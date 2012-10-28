@@ -23,20 +23,21 @@ public class PanelController {
 
     private ArrayList<JPanel> panels;
     private MainFrame mainFrame;
-    
-    private PanelController(){
-        panels=new ArrayList<JPanel>();
+
+    private PanelController() {
+        panels = new ArrayList<JPanel>();
     }
 
     private static class PanelControllerHolder {
+
         public static final PanelController INSTANCE = new PanelController();
     }
 
     public static PanelController getInstance() {
         return PanelControllerHolder.INSTANCE;
     }
-    
-    public void setMainFrame(MainFrame mainFrame){
+
+    public void setMainFrame(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
     }
 
@@ -47,8 +48,8 @@ public class PanelController {
         panels.add(panel);
         //if we are not on start panel
         //set the panel before invisible
-        if(onStartPanel()==false){
-        panels.get(panels.size()-2).setVisible(false);
+        if (onStartPanel() == false) {
+            panels.get(panels.size() - 2).setVisible(false);
         }
         //now add this new panel to the frame itself
         mainFrame.add(panel, java.awt.FlowLayout.LEFT);
@@ -61,46 +62,64 @@ public class PanelController {
     //call goBackOnePanel instead
     public void removePanel() {
         //set last panel invisible
-        panels.get(panels.size()-1).setVisible(false);
+        panels.get(panels.size() - 1).setVisible(false);
         //then remove from list
-        panels.remove(panels.size()-1);
+        panels.remove(panels.size() - 1);
     }
 
     //are we on start panel?
     private boolean onStartPanel() {
-        if (panels.size()==1) {
+        if (panels.size() == 1) {
             return true;
         }
         return false;
     }
-    
+
     //get the current panel in the list/visible on the main frame.
-    public JPanel getCurrentPanel(){
-        return panels.get(panels.size()-1);
+    public JPanel getCurrentPanel() {
+        return panels.get(panels.size() - 1);
     }
-    
+
     //when going back only remove the last panel from the list and set the panel before that visible.
-    public void goBackOnePanel(){
-              
+    public void goBackOnePanel() {
+
         //if there is only one panel in the list then you are in the main menu, so return this function
-        if(this.onStartPanel()){
+        if (this.onStartPanel()) {
             return;
         }
         //remove last panel from list and set it invisible
         removePanel();
         //set the panel before the last panel visible
-        panels.get(panels.size()-1).setVisible(true);
+        panels.get(panels.size() - 1).setVisible(true);
     }
-    
+
     //go to main menu (startscree) directly
     //this removes all panels from the panels list
     //and sets the startscreen to visible
-    public void goToMainMenu(){
+    public void goToMainMenu() {
         //remove all panels until the first panel
-       while(panels.size()!=1){
-           removePanel();
-       } 
-       //set the startscreen visible
-       panels.get(panels.size()-1).setVisible(true);
+        while (panels.size() != 1) {
+            removePanel();
+        }
+        //set the startscreen visible
+        panels.get(panels.size() - 1).setVisible(true);
+    }
+
+    //goes back to subject selection menu if found
+    public void goToSubjectMenu() {
+        //start from back of the list to search for subject selection
+        for (int i = panels.size()-1; i > -1; i--) {
+            //if the panel name is not null
+            if (panels.get(i).getName() != null) {
+                //and if the name is eqaul to subjectselection
+                if (panels.get(i).getName().equals("SubjectSelection")) {
+                    //set the subject selection visible
+                    panels.get(i).setVisible(true);
+                    return;
+                }
+            }
+            //go back one panel until subjectselection is found
+            goBackOnePanel();
+        }
     }
 }

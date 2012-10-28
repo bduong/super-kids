@@ -28,6 +28,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         factory = QuestionController.getInstance();
         this.level=level;
         initComponents();
+        this.setName("SubjectSelection");
     }
 
     /**
