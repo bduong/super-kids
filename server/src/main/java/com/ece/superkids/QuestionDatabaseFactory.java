@@ -2,7 +2,8 @@ package com.ece.superkids;
 
 public final class QuestionDatabaseFactory {
 
-    static QuestionDatabase questionDatabase;
+    private static QuestionDatabase questionDatabase;
+    private static QuestionManager questionManager;
 
     /**
      * Factory method to get the question database. Since the database can be expensive to load,
@@ -15,5 +16,12 @@ public final class QuestionDatabaseFactory {
             questionDatabase = new FileQuestionDatabase();
         }
         return questionDatabase;
+    }
+
+    public static QuestionManager aQuestionManager() {
+        if(questionManager == null) {
+            questionManager = new FileQuestionManager();
+        }
+        return questionManager;
     }
 }
