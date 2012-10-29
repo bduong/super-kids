@@ -1,9 +1,4 @@
-/**
- * Copyright VMware 2012
- */
-
 package superkidsapplication;
-
 
 import superkidsapplication.panels.MainFrame;
 
