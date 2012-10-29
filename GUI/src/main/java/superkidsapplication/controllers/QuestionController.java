@@ -9,8 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import javax.swing.Icon;
+import javax.swing.*;
+
 import superkidsapplication.panels.QuestionPanel;
+import superkidsapplication.providers.ImageProvider;
+import superkidsapplication.providers.ResourceProviderFactory;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -27,6 +30,7 @@ public class QuestionController {
     private int count;
     private List<Icon> icons;
     private QuestionPanel qPanel;
+    private ImageProvider iconProvider = ResourceProviderFactory.anImageProvider();
 
     private QuestionController() {
         count = 0;
@@ -83,8 +87,7 @@ public class QuestionController {
                 for (int j = 0; j < 4; j++) {
                     //all pictures about questions should go to this path
                     //make all of them png's.
-                    String path = "/question/pictures/" + q.getChoices().get(j) + ".png";
-                    Icon icon = (new javax.swing.ImageIcon(getClass().getResource(path)));
+                    ImageIcon icon = iconProvider.getImage(q.getChoices().get(j));
                     icons.add(icon);
                 }
             }
