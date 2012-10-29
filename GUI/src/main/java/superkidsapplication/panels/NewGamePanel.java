@@ -4,6 +4,7 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.enums.QuestionLevel;
 import superkidsapplication.controllers.PanelController;
 
 /**
@@ -112,7 +113,7 @@ public class NewGamePanel extends javax.swing.JPanel {
     
     private void level2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level2ButtonActionPerformed
         // TODO add your handling code here:
-        SubjectSelectionPanel sPanel = new SubjectSelectionPanel("LEVEL_2");
+        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_2);
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_level2ButtonActionPerformed
@@ -122,7 +123,7 @@ public class NewGamePanel extends javax.swing.JPanel {
           
         //CATEGORIES PANEL COMES HERE.
         //QUESTIONS PANEL WILL BE ACCESSED FROM CATEGORIESPANEL
-        SubjectSelectionPanel sPanel = new SubjectSelectionPanel("LEVEL_1");
+        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_1);
         //add questionPanel
         controller.addPanel(sPanel);      
     }//GEN-LAST:event_level1ButtonActionPerformed

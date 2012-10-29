@@ -4,6 +4,8 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.enums.QuestionCategory;
+import com.ece.superkids.enums.QuestionLevel;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,12 +20,12 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
             
     private PanelController controller;
     private QuestionController factory;
-    private String level;
+    private QuestionLevel level;
 
     /**
      * Creates new form SubjectSelectionPanel
      */
-    public SubjectSelectionPanel(String level) {
+    public SubjectSelectionPanel(QuestionLevel level) {
         controller=PanelController.getInstance();
         factory = QuestionController.getInstance();
         this.level=level;
@@ -144,7 +146,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             factory.reset();
-            QuestionPanel q = factory.createQuestionPanel(level,"SHAPES");
+            QuestionPanel q = factory.createQuestionPanel(level,QuestionCategory.SHAPES);
             controller.addPanel(q);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -155,7 +157,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             factory.reset();
-            QuestionPanel q = factory.createQuestionPanel(level,"COLORS");
+            QuestionPanel q = factory.createQuestionPanel(level,QuestionCategory.COLORS);
             controller.addPanel(q);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -166,7 +168,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             factory.reset();
-            QuestionPanel q = factory.createQuestionPanel(level,"ANIMALS");
+            QuestionPanel q = factory.createQuestionPanel(level,QuestionCategory.ANIMALS);
             controller.addPanel(q);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);

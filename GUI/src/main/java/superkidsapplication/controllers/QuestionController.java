@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.*;
-
 import superkidsapplication.panels.QuestionPanel;
 import superkidsapplication.providers.ImageProvider;
 import superkidsapplication.providers.ResourceProviderFactory;
@@ -53,12 +52,12 @@ public class QuestionController {
     }
 
     //questions are fetched from the database
-    public QuestionPanel createQuestionPanel(String level, String category) throws IOException {
+    public QuestionPanel createQuestionPanel(QuestionLevel level, QuestionCategory category) throws IOException {
         //get the database
         QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabase();
         
         //get number of question in the category
-        int n = qd.getNumberOfQuestions(QuestionLevel.valueOf(level), QuestionCategory.valueOf(category));
+        int n = qd.getNumberOfQuestions(level, category);
 
         //get level questions
         while (count < n) {
@@ -67,7 +66,7 @@ public class QuestionController {
             icons = null;
 
             //get a new question
-            Question q = qd.getQuestion(QuestionLevel.valueOf(level), QuestionCategory.valueOf(category), count);
+            Question q = qd.getQuestion(level, category, count);
 
             //shuffle choices
             Collections.shuffle(q.getChoices());

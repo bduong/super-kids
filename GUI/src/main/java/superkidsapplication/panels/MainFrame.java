@@ -4,11 +4,7 @@
  */
 package superkidsapplication.panels;
 
-import com.apple.eawt.Application;
-import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 import superkidsapplication.controllers.PanelController;
 
 /**
@@ -21,20 +17,11 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     private JPanel startscreen;
-    //this list will be used to keep up with the panels that are generated.
-    //it will be useful to go back in the menu
+    //get the panel controller to manage panels
     private PanelController controller;
 
     public MainFrame() {
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-
-        } catch (Exception e) {
-            System.out.println("Nimbus isn't available");
-        }
         initComponents();
-        //set icons
-        setIcon();
         //center frame relative to screen
         setLocationRelativeTo(null);
         //get the startscreen
@@ -190,54 +177,6 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_ExitAppItemActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                MainFrame mFrame = new MainFrame();
-                mFrame.setVisible(true);
-            }
-        });
-    }
-
-    //set icon
-    private void setIcon() {
-        String osName = System.getProperty("os.name");
-        java.net.URL url = ClassLoader.getSystemResource("characters/Boy.png");
-        Toolkit kit = Toolkit.getDefaultToolkit();
-        Image img = kit.createImage(url);
-        if (osName.contains("OS X")) {
-            Application.getApplication().setDockIconImage(img);
-        }
-        this.setIconImage(img);
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AboutItem;

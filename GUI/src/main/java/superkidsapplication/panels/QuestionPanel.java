@@ -4,6 +4,8 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.enums.QuestionCategory;
+import com.ece.superkids.enums.QuestionLevel;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,14 +30,14 @@ public class QuestionPanel extends javax.swing.JPanel {
     private int correctAnswer;
     private QuestionController qBase;
     private PanelController controller;
-    private String category;
-    private String level;
+    private QuestionCategory category;
+    private QuestionLevel level;
     private JFrame result;
 
     //when creating the panel set which choice is the correct answer
     //1 is button1 , 2 is button2 and so on.
     //look at design tab to see which button is which
-    public QuestionPanel(int correctAnswer, String level, String category) {
+    public QuestionPanel(int correctAnswer, QuestionLevel level, QuestionCategory category) {
         this.category = category;
         this.correctAnswer = correctAnswer;
         this.level = level;
