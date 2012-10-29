@@ -4,6 +4,9 @@
  */
 package superkidsapplication.controllers;
 
+import superkidsapplication.providers.MusicProvider;
+import superkidsapplication.providers.ResourceProviderFactory;
+
 import java.net.URL;
 import javax.sound.sampled.*;
 
@@ -30,14 +33,16 @@ public class MusicController {
     private AudioInputStream audioInputStream;
     private SourceDataLine sourceDataLine;
     private Boolean stopPlayback;
-    private URL urlOfFile;
+    private String theme;
     private boolean firstLoad;
+    private MusicProvider musicProvider;
 
     private MusicController() {
         //initally not playing
         stopPlayback = true;
         //this the first loading of theme
         firstLoad = true;
+        musicProvider = ResourceProviderFactory.aMusicProvider();
     }
 
     private static class MusicControllerHolder {
@@ -50,11 +55,12 @@ public class MusicController {
     }
 
     //load main theme
-    public void loadThemeMusic(String theme) {
+    public void loadThemeMusic(String themeToLoad) {
+        theme = themeToLoad;
         try {
-            if (firstLoad == true) {
-                urlOfFile = getClass().getResource("/music/" + theme + ".wav");
-                audioInputStream = AudioSystem.getAudioInputStream(urlOfFile);
+            if (audioInputStream != null) audioInputStream.close();
+            if (firstLoad) {
+                audioInputStream = musicProvider.getMusicStream(theme);
                 audioFormat = audioInputStream.getFormat();
                 System.out.println("Audio Format: " + audioFormat);
 
@@ -63,9 +69,8 @@ public class MusicController {
                 sourceDataLine = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
                 firstLoad = false;
             } //then you are changing the song
-            else if (firstLoad == false) {
-                urlOfFile = getClass().getResource("/music/" + theme + ".wav");
-                audioInputStream = AudioSystem.getAudioInputStream(urlOfFile);
+            else {
+                audioInputStream = musicProvider.getMusicStream(theme);
                 System.out.println("Theme song is changed to: "+ theme);
             }
         } catch (Exception e) {
@@ -76,7 +81,7 @@ public class MusicController {
 
     public void playMusic() {
         //if the music has been stopped before...
-        if (stopPlayback == true) {
+        if (stopPlayback) {
             //then restart.
             //this prevents creating new threads when there is one already running
             stopPlayback = false;
@@ -110,7 +115,7 @@ public class MusicController {
 
                 int cnt;
                 //Keep looping until stopPlayback is set to true.
-                while (stopPlayback == false) {
+                while (!stopPlayback) {
                     cnt = audioInputStream.read(tempBuffer, 0, tempBuffer.length);
                     if (cnt > 0) {
                         //Write data to the internal buffer of
@@ -121,7 +126,8 @@ public class MusicController {
                     }//if end of stream then reset
                     if (cnt == -1) {
                         System.out.println("Reset the input(open file again)");
-                        audioInputStream = AudioSystem.getAudioInputStream(urlOfFile);
+                        audioInputStream.close();
+                        audioInputStream = musicProvider.getMusicStream(theme);
                     }
                 }//end while
                 

@@ -10,8 +10,8 @@ import java.util.Properties;
 
 public class FilePathImageProvider implements ImageProvider{
 
-    private static final String PROPERTY_FILE = "/question/image_paths.properties";
-    Map<String, String> imagePaths = new HashMap<>();
+    private static final String PROPERTY_FILE = "/providers/image_paths.properties";
+    Map<String, String> imagePaths = new HashMap<String, String>();
 
 
     public FilePathImageProvider() throws IOException {

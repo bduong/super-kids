@@ -15,15 +15,15 @@ import java.util.Map;
 
 public class FileQuestionDatabase implements QuestionDatabase{
 
-    private static String FILE_NAME = "Questions.txt";
+    private static String FILE_NAME = "/Questions.txt";
     private Gson gson = new Gson();
     private Map<QuestionLevel, Map<QuestionCategory,List<Question>>> questions = new HashMap<QuestionLevel,
             Map<QuestionCategory,List<Question>>>();
 
     public FileQuestionDatabase() {
-        File file = new File(getClass().getResource("/" + FILE_NAME).getFile());
+        InputStream in = getClass().getResourceAsStream(FILE_NAME);
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             while (true) {
                 String line = reader.readLine();
                 if (line == null) {
@@ -32,11 +32,9 @@ public class FileQuestionDatabase implements QuestionDatabase{
                 Question question = gson.fromJson(line, Question.class);
                 addQuestionToList(question);
             }
-        } catch (FileNotFoundException e) {
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     private void addQuestionToList(final Question question) {

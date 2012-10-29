@@ -30,10 +30,11 @@ public class QuestionController {
     private int count;
     private List<Icon> icons;
     private QuestionPanel qPanel;
-    private ImageProvider iconProvider = ResourceProviderFactory.anImageProvider();
+    private ImageProvider iconProvider;
 
     private QuestionController() {
         count = 0;
+        iconProvider = ResourceProviderFactory.anImageProvider();
     }
 
     private static class QuestionBaseHolder {

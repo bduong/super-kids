@@ -5,6 +5,7 @@ import java.io.IOException;
 public class ResourceProviderFactory {
 
     private static ImageProvider imageProvider;
+    private static MusicProvider musicProvider;
 
     public static ImageProvider anImageProvider() {
         if (imageProvider == null) {
@@ -15,5 +16,16 @@ public class ResourceProviderFactory {
             }
         }
         return imageProvider;
+    }
+
+    public static MusicProvider aMusicProvider() {
+        if(musicProvider == null) {
+            try {
+                musicProvider = new FilePathMusicProvider();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return musicProvider;
     }
 }
