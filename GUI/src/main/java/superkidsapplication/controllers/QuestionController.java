@@ -54,7 +54,7 @@ public class QuestionController {
     //questions are fetched from the database
     public QuestionPanel createQuestionPanel(QuestionLevel level, QuestionCategory category) throws IOException {
         //get the database
-        QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabase();
+        QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabaseWithAllQuestions();
         
         //get number of question in the category
         int n = qd.getNumberOfQuestions(level, category);

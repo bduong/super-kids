@@ -6,19 +6,19 @@ import com.ece.superkids.enums.QuestionLevel;
 
 public class FileQuestionManager implements QuestionManager{
 
+
     @Override
-    public void addQuestion(final QuestionLevel level, final QuestionCategory category, final Question question) {
+    public void addQuestion(final Question question) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public void deleteQuestion(final QuestionLevel level, final QuestionCategory category, final int questionNumber) {
+    public void deleteQuestion(final Question question) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public void editQuestion(final QuestionLevel level, final QuestionCategory category, final int questionNumber,
-                             final Question question) {
+    public void editQuestion(final Question oldQuestion, final Question newQuestion) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 }

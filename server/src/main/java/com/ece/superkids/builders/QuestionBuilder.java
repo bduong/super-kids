@@ -25,6 +25,17 @@ public class QuestionBuilder {
         return new QuestionBuilder();
     }
 
+    public QuestionBuilder copiedFrom(Question ques) {
+        question = ques.getQuestion();
+        choices = ques.getChoices();
+        answer = ques.getAnswer();
+        explaination = ques.getExplaination();
+        type = ques.getType();
+        category = ques.getCategory();
+        level = ques.getLevel();
+        return this;
+    }
+
     public QuestionBuilder asking(String question) {
         this.question = question;
         return this;

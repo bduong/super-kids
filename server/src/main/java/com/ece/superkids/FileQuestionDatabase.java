@@ -4,6 +4,7 @@ import com.ece.superkids.builders.QuestionBuilder;
 import com.ece.superkids.entities.Question;
 import com.ece.superkids.enums.QuestionCategory;
 import com.ece.superkids.enums.QuestionLevel;
+import com.ece.superkids.enums.QuestionMode;
 import com.ece.superkids.enums.QuestionType;
 import com.google.gson.Gson;
 
@@ -15,13 +16,45 @@ import java.util.Map;
 
 public class FileQuestionDatabase implements QuestionDatabase{
 
-    private static String FILE_NAME = "/Questions.txt";
+    private static final String FILE_NAME = "/Questions.txt";
+    private static final String CUSTOM_FILE_NAME = "/CustomQuestions.txt";
     private Gson gson = new Gson();
     private Map<QuestionLevel, Map<QuestionCategory,List<Question>>> questions = new HashMap<QuestionLevel,
             Map<QuestionCategory,List<Question>>>();
 
-    public FileQuestionDatabase() {
-        InputStream in = getClass().getResourceAsStream(FILE_NAME);
+    public FileQuestionDatabase(QuestionMode mode) {
+        switchMode(mode);
+    }
+
+    public void switchMode(QuestionMode mode) {
+        questions.clear();
+        switch(mode){
+            case DEFAULT_ONLY:
+                loadQuestionsFromFile(FILE_NAME);
+                break;
+            case CUSTOM_ONLY:
+                loadQuestionsFromFile(CUSTOM_FILE_NAME);
+                break;
+            case ALL:
+                loadQuestionsFromFile(FILE_NAME);
+                loadQuestionsFromFile(CUSTOM_FILE_NAME);
+                break;
+            default:
+        }
+    }
+
+    @Override
+    public int getQuestionNumber(final Question question) {
+        QuestionLevel level = question.getLevel();
+        QuestionCategory category = question.getCategory();
+        if (questions.containsKey(level) && questions.get(level).containsKey(category)) {
+            return questions.get(level).get(category).indexOf(question);
+        }
+        return -1;
+    }
+
+    private void loadQuestionsFromFile(String fileName) {
+        InputStream in = getClass().getResourceAsStream(fileName);
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             while (true) {

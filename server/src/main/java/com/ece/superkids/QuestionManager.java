@@ -6,9 +6,9 @@ import com.ece.superkids.enums.QuestionLevel;
 
 public interface QuestionManager {
 
-    public void addQuestion(QuestionLevel level, QuestionCategory category, Question question);
+    public void addQuestion(Question question);
 
-    public void deleteQuestion(QuestionLevel level, QuestionCategory category, int questionNumber);
+    public void deleteQuestion(Question question);
 
-    public void editQuestion(QuestionLevel level, QuestionCategory category, int questionNumber, Question question);
+    public void editQuestion(Question oldQuestion, Question newQuestion);
 }
