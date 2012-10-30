@@ -20,7 +20,7 @@ public class QuestionDatabaseTests {
 
     @Before
     public void setup() {
-        questionDatabase = QuestionDatabaseFactory.aQuestionDatabase();
+        questionDatabase = QuestionDatabaseFactory.aQuestionDatabaseWithAllQuestions();
         expected = QuestionBuilder.aQuestion()
                 .asking("What has four sides?")
                 .ofType(QuestionType.TEXT)

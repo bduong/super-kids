@@ -4,9 +4,9 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.QuestionDatabaseFactory;
 import com.ece.superkids.QuestionManager;
 import com.ece.superkids.entities.Question;
-import com.ece.superkids.enums.QuestionCategory;
 import com.ece.superkids.enums.QuestionLevel;
 import java.util.Iterator;
 import java.util.List;
@@ -31,7 +31,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     public EditQuestionsPanel() {
         initComponents();
         qController = QuestionController.getInstance();
-        //manager = new QuestionManager();
+        manager = QuestionDatabaseFactory.aQuestionManager();
         currentQuestion = null;
         qList1 = null;
         qList2 = null;
@@ -59,6 +59,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         level3QuestionsBox = new javax.swing.JComboBox();
         infoLabel = new javax.swing.JLabel();
         infoLabel1 = new javax.swing.JLabel();
+        responseLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(311, 300));
         setMinimumSize(new java.awt.Dimension(300, 300));
@@ -116,13 +117,21 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         infoLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
         infoLabel1.setText("Delete will remove the question from the database.");
 
+        responseLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        responseLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(143, Short.MAX_VALUE)
+                .add(infoLabel1)
+                .addContainerGap())
+            .add(layout.createSequentialGroup()
                 .add(43, 43, 43)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(responseLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 143, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(level3Label)
                     .add(infoLabel)
                     .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
@@ -140,10 +149,6 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
                                 .add(level2Label)
                                 .add(level3QuestionsBox, 0, 178, Short.MAX_VALUE)))))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
-                .add(infoLabel1)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -160,7 +165,9 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
                 .add(level3Label)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(level3QuestionsBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 42, Short.MAX_VALUE)
+                .add(responseLabel)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(infoLabel)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(questionText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -178,7 +185,8 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
          //delete the question from the database
-        //manager.deleteQuestion(currentQuestion.getLevel(), currentQuestion.getCategory(), 1);
+        manager.deleteQuestion(currentQuestion);
+        responseLabel.setText("Deleted");
         System.out.println("Question deleted: " + currentQuestion.getQuestion());
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -223,7 +231,8 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         //set its question to the text box
         editedQuestion.setQuestion(questionText.getText());
         //edit the question throught the manager
-        //manager.editQuestion(currentQuestion.getLevel(), currentQuestion.getCategory(), 1, editedQuestion);
+        manager.editQuestion(currentQuestion,editedQuestion);
+        responseLabel.setText("Saved");
         System.out.println("Question saved: " + questionText.getText());
     }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -241,7 +250,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     //fill in level 1 combo box
     private void fillInBox1() {
         //get list of questions for level2
-        qList1 = qController.getListOfQuestions(QuestionLevel.LEVEL_1);
+        qList1 = qController.getListOfCustomQuestions(QuestionLevel.LEVEL_1);
         Iterator<Question> iterator = qList1.iterator();
         while (iterator.hasNext()) {
             level1QuestionsBox.addItem(iterator.next().getQuestion());
@@ -251,7 +260,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     //fill in level 2 combo box
     private void fillInBox2() {
         //get list of questions for level2
-        qList2 = qController.getListOfQuestions(QuestionLevel.LEVEL_2);
+        qList2 = qController.getListOfCustomQuestions(QuestionLevel.LEVEL_2);
         Iterator<Question> iterator = qList2.iterator();
         while (iterator.hasNext()) {
             level2QuestionsBox.addItem(iterator.next().getQuestion());
@@ -261,7 +270,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     //fill in level 3 combo box
     private void fillInBox3() {
         //get list of questions for level2
-        qList3 = qController.getListOfQuestions(QuestionLevel.LEVEL_3);
+        qList3 = qController.getListOfCustomQuestions(QuestionLevel.LEVEL_3);
         Iterator<Question> iterator = qList3.iterator();
         while (iterator.hasNext()) {
             level3QuestionsBox.addItem(iterator.next().getQuestion());
@@ -279,6 +288,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel level3Label;
     private javax.swing.JComboBox level3QuestionsBox;
     private javax.swing.JTextField questionText;
+    private javax.swing.JLabel responseLabel;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }

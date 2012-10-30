@@ -208,6 +208,8 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         jLayeredPane2.removeAll();
         jLayeredPane2.repaint();
+        AddQuestionPanel aPanel = new AddQuestionPanel();
+        jLayeredPane2.add(aPanel);
     }//GEN-LAST:event_addQbuttonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed

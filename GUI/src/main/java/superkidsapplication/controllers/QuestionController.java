@@ -54,7 +54,7 @@ public class QuestionController {
     //questions are fetched from the database
     public QuestionPanel createQuestionPanel(QuestionLevel level, QuestionCategory category) throws IOException {
         //get the database
-        QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabase();
+        QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabaseWithAllQuestions();
 
         //get number of question in the category
         int n = qd.getNumberOfQuestions(level, category);
@@ -111,9 +111,10 @@ public class QuestionController {
         return 0;
     }
 
-    public List getListOfQuestions(QuestionLevel level) {
-        //get the database
-        QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabase();
+    //get list of custom question for given level
+    public List getListOfCustomQuestions(QuestionLevel level) {
+        //get the database of custom questions
+        QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabaseWithOnlyCustomQuestions();
 
         int i = 0;
 
@@ -132,5 +133,30 @@ public class QuestionController {
             i = 0;
         }
         return qList;
+    }
+
+    //use with caution
+    //deletes all custom added questions
+    public void deleteAllCustomQuestions() {
+        QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabaseWithOnlyCustomQuestions();
+
+        QuestionManager qm = QuestionDatabaseFactory.aQuestionManager();
+
+        int i=0;
+        
+        for (QuestionLevel l : QuestionLevel.values()) {
+            for (QuestionCategory c : QuestionCategory.values()) {
+                //get number of question in the category
+                int n = qd.getNumberOfQuestions(l, c);
+                while (i < n) {
+                    //get the question
+                    Question q = qd.getQuestion(l, c, i);
+                    //delete the question
+                    qm.deleteQuestion(q);
+                    i++;
+                }
+                i = 0;
+            }
+        }
     }
 }

@@ -4,7 +4,10 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.QuestionDatabaseFactory;
+import com.ece.superkids.QuestionManager;
 import java.util.Arrays;
+import superkidsapplication.controllers.QuestionController;
 
 /**
  *
@@ -15,8 +18,11 @@ public class ResetGamePanel extends javax.swing.JPanel {
     /**
      * Creates new form ResetGamePanel
      */
+    private QuestionController qController;
+    
     public ResetGamePanel() {
         initComponents();
+        qController= QuestionController.getInstance();
     }
 
     /**
@@ -112,6 +118,7 @@ public class ResetGamePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         char[] input = passwordField.getPassword();
         if (isPasswordCorrect(input)) {
+            qController.deleteAllCustomQuestions();
             resposeLabel.setText("Game has been resetted.");
         }
         else{

@@ -94,7 +94,6 @@ public class OptionsPanel extends javax.swing.JPanel {
         volumeLabel.setText("Volume");
 
         onOffGroup.add(musicOnButton);
-        musicOnButton.setSelected(true);
         musicOnButton.setText("ON");
         musicOnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +102,7 @@ public class OptionsPanel extends javax.swing.JPanel {
         });
 
         onOffGroup.add(musicOffButton);
+        musicOffButton.setSelected(true);
         musicOffButton.setText("OFF");
         musicOffButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
