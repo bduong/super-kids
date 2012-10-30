@@ -84,7 +84,9 @@ public class FileQuestionDatabase implements QuestionDatabase{
 
     @Override
     public Question getQuestion(final QuestionLevel level, final QuestionCategory category, final int number) {
-        if (questions.get(level).get(category).size() <= number) return null;
+        if (questions.get(level).get(category).size() <= number) {
+            return null;
+        }
         return questions.get(level).get(category).get(number);
     }
 
@@ -106,14 +108,21 @@ public class FileQuestionDatabase implements QuestionDatabase{
 
 	@Override
 	public int getNumberOfQuestions(final QuestionLevel level, final QuestionCategory category) {
-		if (!questions.get(level).containsKey(category)) return 0;
+        if (!questions.containsKey(level)) {
+            return 0;
+        }
+        if (!questions.get(level).containsKey(category)) {
+            return 0;
+        }
 		return questions.get(level).get(category).size();
 	}
 
 	@Override
 	public int getNumberOfQuestions(final QuestionLevel level) {
 		int sum = 0;
-		if (!questions.containsKey(level)) return sum;
+        if (!questions.containsKey(level)) {
+            return sum;
+        }
 
         for (List<Question> category : questions.get(level).values()) {
             sum += category.size();
