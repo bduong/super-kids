@@ -31,7 +31,9 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         userButton = new javax.swing.JButton();
         editQbutton = new javax.swing.JButton();
+        addQbutton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
+        jLayeredPane2 = new javax.swing.JLayeredPane();
         backgroundLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -72,8 +74,34 @@ public class ParentalControlPanel extends javax.swing.JPanel {
                 editQbuttonMouseEntered(evt);
             }
         });
-        editQbutton.setBounds(100, 340, 180, 29);
+        editQbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editQbuttonActionPerformed(evt);
+            }
+        });
+        editQbutton.setBounds(90, 390, 200, 29);
         jLayeredPane1.add(editQbutton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        addQbutton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        addQbutton.setForeground(new java.awt.Color(255, 255, 255));
+        addQbutton.setText("Add a New Question");
+        addQbutton.setBorderPainted(false);
+        addQbutton.setContentAreaFilled(false);
+        addQbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addQbuttonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addQbuttonMouseEntered(evt);
+            }
+        });
+        addQbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addQbuttonActionPerformed(evt);
+            }
+        });
+        addQbutton.setBounds(80, 340, 230, 29);
+        jLayeredPane1.add(addQbutton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         resetButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         resetButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,8 +116,19 @@ public class ParentalControlPanel extends javax.swing.JPanel {
                 resetButtonMouseEntered(evt);
             }
         });
-        resetButton.setBounds(110, 380, 170, 50);
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+        resetButton.setBounds(110, 430, 170, 50);
         jLayeredPane1.add(resetButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLayeredPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLayeredPane2.setPreferredSize(new java.awt.Dimension(330, 370));
+        jLayeredPane2.setRequestFocusEnabled(false);
+        jLayeredPane2.setBounds(370, 120, 370, 370);
+        jLayeredPane1.add(jLayeredPane2, javax.swing.JLayeredPane.PALETTE_LAYER);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/parentalpanelbackground.png"))); // NOI18N
         backgroundLabel.setBounds(0, -40, 800, 600);
@@ -113,6 +152,8 @@ public class ParentalControlPanel extends javax.swing.JPanel {
 
     private void userButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userButtonActionPerformed
         // TODO add your handling code here:
+        jLayeredPane2.removeAll();
+        jLayeredPane2.repaint();
     }//GEN-LAST:event_userButtonActionPerformed
 
     private void userButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userButtonMouseEntered
@@ -145,10 +186,43 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         resetButton.setForeground(Color.white);
     }//GEN-LAST:event_resetButtonMouseExited
 
+    private void editQbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editQbuttonActionPerformed
+        // TODO add your handling code here:
+        jLayeredPane2.removeAll();
+        jLayeredPane2.repaint();
+        EditQuestionsPanel editPanel = new EditQuestionsPanel();
+        jLayeredPane2.add(editPanel);
+    }//GEN-LAST:event_editQbuttonActionPerformed
+
+    private void addQbuttonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addQbuttonMouseExited
+        // TODO add your handling code here:
+        addQbutton.setForeground(Color.white);
+    }//GEN-LAST:event_addQbuttonMouseExited
+
+    private void addQbuttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addQbuttonMouseEntered
+        // TODO add your handling code here:
+        addQbutton.setForeground(Color.yellow);
+    }//GEN-LAST:event_addQbuttonMouseEntered
+
+    private void addQbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addQbuttonActionPerformed
+        // TODO add your handling code here:
+        jLayeredPane2.removeAll();
+        jLayeredPane2.repaint();
+    }//GEN-LAST:event_addQbuttonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        // TODO add your handling code here:
+        jLayeredPane2.removeAll();
+        jLayeredPane2.repaint();
+        ResetGamePanel rPanel = new ResetGamePanel();
+        jLayeredPane2.add(rPanel);
+    }//GEN-LAST:event_resetButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addQbutton;
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JButton editQbutton;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton userButton;
     // End of variables declaration//GEN-END:variables

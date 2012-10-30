@@ -5,6 +5,7 @@
 package superkidsapplication.panels;
 
 import com.ece.superkids.enums.QuestionLevel;
+import java.awt.Color;
 import superkidsapplication.controllers.PanelController;
 
 /**
@@ -16,11 +17,10 @@ public class NewGamePanel extends javax.swing.JPanel {
     /**
      * Creates new form NewGamePanel
      */
-    private MainFrame mainFrame;
     private PanelController controller;
-    
+
     public NewGamePanel() {
-        controller=PanelController.getInstance();
+        controller = PanelController.getInstance();
         initComponents();
     }
 
@@ -34,9 +34,7 @@ public class NewGamePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        level4Button = new javax.swing.JButton();
         level3Button = new javax.swing.JButton();
-        level5Button = new javax.swing.JButton();
         level2Button = new javax.swing.JButton();
         level1Button = new javax.swing.JButton();
         backgoundLabel = new javax.swing.JLabel();
@@ -44,49 +42,67 @@ public class NewGamePanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(153, 204, 255));
         setMinimumSize(new java.awt.Dimension(800, 600));
 
-        level4Button.setText("Level 4");
-        level4Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                level4ButtonActionPerformed(evt);
+        level3Button.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        level3Button.setForeground(new java.awt.Color(255, 255, 255));
+        level3Button.setText("Level 3");
+        level3Button.setBorderPainted(false);
+        level3Button.setContentAreaFilled(false);
+        level3Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                level3ButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                level3ButtonMouseEntered(evt);
             }
         });
-        level4Button.setBounds(210, 470, 88, 29);
-        jLayeredPane1.add(level4Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        level3Button.setText("Level 3");
         level3Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 level3ButtonActionPerformed(evt);
             }
         });
-        level3Button.setBounds(580, 320, 88, 29);
+        level3Button.setBounds(558, 329, 110, 110);
         jLayeredPane1.add(level3Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        level5Button.setText("Level 5");
-        level5Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                level5ButtonActionPerformed(evt);
+        level2Button.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        level2Button.setForeground(new java.awt.Color(255, 255, 255));
+        level2Button.setText("Level 2");
+        level2Button.setBorderPainted(false);
+        level2Button.setContentAreaFilled(false);
+        level2Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                level2ButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                level2ButtonMouseEntered(evt);
             }
         });
-        level5Button.setBounds(450, 470, 88, 29);
-        jLayeredPane1.add(level5Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        level2Button.setText("Level 2");
         level2Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 level2ButtonActionPerformed(evt);
             }
         });
-        level2Button.setBounds(340, 320, 88, 29);
+        level2Button.setBounds(340, 339, 110, 90);
         jLayeredPane1.add(level2Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        level1Button.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        level1Button.setForeground(new java.awt.Color(255, 255, 255));
         level1Button.setText("Level 1");
+        level1Button.setBorderPainted(false);
+        level1Button.setContentAreaFilled(false);
+        level1Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                level1ButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                level1ButtonMouseEntered(evt);
+            }
+        });
         level1Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 level1ButtonActionPerformed(evt);
             }
         });
-        level1Button.setBounds(100, 320, 88, 29);
+        level1Button.setBounds(110, 339, 130, 90);
         jLayeredPane1.add(level1Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         backgoundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/newgamebackground.png"))); // NOI18N
@@ -110,7 +126,6 @@ public class NewGamePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     //FOR EACH LEVEL I THINK WE SHOULD HAVE A DIFFERENT PANEL RATHER THAN USING THE SAME PANEL
-    
     private void level2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level2ButtonActionPerformed
         // TODO add your handling code here:
         SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_2);
@@ -120,42 +135,54 @@ public class NewGamePanel extends javax.swing.JPanel {
 
     private void level1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level1ButtonActionPerformed
         // TODO add your handling code here
-          
         //CATEGORIES PANEL COMES HERE.
         //QUESTIONS PANEL WILL BE ACCESSED FROM CATEGORIESPANEL
         SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_1);
         //add questionPanel
-        controller.addPanel(sPanel);      
+        controller.addPanel(sPanel);
     }//GEN-LAST:event_level1ButtonActionPerformed
 
     private void level3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level3ButtonActionPerformed
         // TODO add your handling code here:
-        //SubjectSelectionPanel sPanel = new SubjectSelectionPanel("LEVEL_3");
+        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_3);
         //add questionPanel
-        //controller.addPanel(sPanel);
+        controller.addPanel(sPanel);
     }//GEN-LAST:event_level3ButtonActionPerformed
 
-    private void level4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level4ButtonActionPerformed
+    private void level1ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level1ButtonMouseEntered
         // TODO add your handling code here:
-        //SubjectSelectionPanel sPanel = new SubjectSelectionPanel("LEVEL_4");
-        //add questionPanel
-        //controller.addPanel(sPanel);
-    }//GEN-LAST:event_level4ButtonActionPerformed
+        level1Button.setForeground(Color.yellow);
+    }//GEN-LAST:event_level1ButtonMouseEntered
 
-    private void level5ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level5ButtonActionPerformed
+    private void level1ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level1ButtonMouseExited
         // TODO add your handling code here:
-        //SubjectSelectionPanel sPanel = new SubjectSelectionPanel("LEVEL_5");
-        //add questionPanel
-        //controller.addPanel(sPanel);
-    }//GEN-LAST:event_level5ButtonActionPerformed
+        level1Button.setForeground(Color.white);
+    }//GEN-LAST:event_level1ButtonMouseExited
 
+    private void level2ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level2ButtonMouseEntered
+        // TODO add your handling code here:
+        level2Button.setForeground(Color.yellow);
+    }//GEN-LAST:event_level2ButtonMouseEntered
+
+    private void level2ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level2ButtonMouseExited
+        // TODO add your handling code here:
+        level2Button.setForeground(Color.white);
+    }//GEN-LAST:event_level2ButtonMouseExited
+
+    private void level3ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level3ButtonMouseEntered
+        // TODO add your handling code here:
+        level3Button.setForeground(Color.yellow);
+    }//GEN-LAST:event_level3ButtonMouseEntered
+
+    private void level3ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level3ButtonMouseExited
+        // TODO add your handling code here:
+        level3Button.setForeground(Color.white);
+    }//GEN-LAST:event_level3ButtonMouseExited
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgoundLabel;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton level1Button;
     private javax.swing.JButton level2Button;
     private javax.swing.JButton level3Button;
-    private javax.swing.JButton level4Button;
-    private javax.swing.JButton level5Button;
     // End of variables declaration//GEN-END:variables
 }

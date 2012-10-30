@@ -41,6 +41,11 @@
       <artifactId>jmf</artifactId>
       <version>2.1.1e</version>
     </dependency>
+    <dependency>
+      <groupId>unknown.binary</groupId>
+      <artifactId>AbsoluteLayout</artifactId>
+      <version>SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>

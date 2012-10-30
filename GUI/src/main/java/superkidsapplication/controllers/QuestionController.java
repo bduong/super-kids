@@ -55,7 +55,7 @@ public class QuestionController {
     public QuestionPanel createQuestionPanel(QuestionLevel level, QuestionCategory category) throws IOException {
         //get the database
         QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabase();
-        
+
         //get number of question in the category
         int n = qd.getNumberOfQuestions(level, category);
 
@@ -70,7 +70,7 @@ public class QuestionController {
 
             //shuffle choices
             Collections.shuffle(q.getChoices());
-         
+
             //find answer
             int ans = findAnswer(q.getAnswer(), q.getChoices());
 
@@ -109,5 +109,28 @@ public class QuestionController {
             }
         }
         return 0;
+    }
+
+    public List getListOfQuestions(QuestionLevel level) {
+        //get the database
+        QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabase();
+
+        int i = 0;
+
+        List<Question> qList = new ArrayList<Question>();
+
+        for (QuestionCategory c : QuestionCategory.values()) {
+            //get number of question in the category
+            int n = qd.getNumberOfQuestions(level, c);
+            while (i < n) {
+                //get the question
+                Question q = qd.getQuestion(level, c, i);
+                //add to list
+                qList.add(q);
+                i++;
+            }
+            i = 0;
+        }
+        return qList;
     }
 }
