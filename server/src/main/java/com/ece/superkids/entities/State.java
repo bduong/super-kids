@@ -3,22 +3,19 @@
  */
 package com.ece.superkids.entities;
 
-import com.ece.superkids.enums.QuestionLevel;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
 
+import com.ece.superkids.enums.QuestionLevel;
 
 public class State {
 
     private QuestionLevel currentLevel;
     private Question currentQuestion;
-    private Integer numberOfCorrectAnswers;
-    private Integer numberOfWrongAnswers;
+    private Map<Question, Integer> scores;
 
-    public State() {
-        numberOfCorrectAnswers = 0;
-        numberOfWrongAnswers = 0;
-    }
-
-
+    public State() {}
 
     public QuestionLevel getCurrentLevel() {
         return currentLevel;
@@ -36,29 +33,46 @@ public class State {
         this.currentQuestion = currentQuestion;
     }
 
-    public Integer getNumberOfCorrectAnswers() {
-        return numberOfCorrectAnswers;
+    public boolean addScore(Question question, Integer score) {
+        if(!scores.containsKey(question)) {
+            scores.put(question, score);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void setNumberOfCorrectAnswers(Integer numberOfCorrectAnswers) {
-        this.numberOfCorrectAnswers = numberOfCorrectAnswers;
+    public Integer getTotalScore() {
+        Integer score = 0;
+        Iterator it = scores.entrySet().iterator();
+        while(it.hasNext()) {
+            Map.Entry pairs = (Map.Entry)it.next();
+            score += scores.get(pairs.getKey());
+        }
+        return score;
     }
 
-    public void incrementNumberOfCorrectAnswers() {
-        this.numberOfCorrectAnswers++;;
+    public Map<Question, Integer> getScores(int scoreLevel) {
+        Map<Question, Integer> score = new HashMap<Question, Integer>();
+        Iterator it = scores.entrySet().iterator();
+        while(it.hasNext()) {
+            Map.Entry pairs = (Map.Entry)it.next();
+            if(scores.get(pairs.getKey()).equals(scoreLevel)) {
+                score.put((Question)pairs.getKey(), (Integer)pairs.getValue());
+            }
+        }
+        return score;
     }
 
-    public Integer getNumberOfWrongAnswers() {
-        return numberOfWrongAnswers;
+    public Map<Question, Integer> getAllScores() {
+        return scores;
     }
 
-    public void setNumberOfWrongAnswers(Integer numberOfWrongAnswers) {
-        this.numberOfWrongAnswers = numberOfWrongAnswers;
-    }
-    
-    public void incrementNumberOfWrongAnswers() {
-        this.numberOfWrongAnswers++;
-    }
+
+
+
+
+
 
 
 }
