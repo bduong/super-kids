@@ -58,6 +58,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Super Kids: The Ultimate Adventure");
+        setBounds(new java.awt.Rectangle(0, 0, 800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setName("mainframe"); // NOI18N
         setResizable(false);

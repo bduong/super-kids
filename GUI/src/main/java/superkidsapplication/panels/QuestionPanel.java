@@ -58,19 +58,85 @@ public class QuestionPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        choice1Button = new javax.swing.JButton();
-        choice2Button = new javax.swing.JButton();
-        choice3Button = new javax.swing.JButton();
-        choice4Button = new javax.swing.JButton();
-        characterIconLabel = new javax.swing.JLabel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         questionLabel = new javax.swing.JLabel();
         scoreNumLabel = new javax.swing.JLabel();
         scoreLabel = new javax.swing.JLabel();
         superKidNameLabel = new javax.swing.JLabel();
         nextQButton = new javax.swing.JButton();
+        CharacterPanel = new javax.swing.JPanel();
+        characterIconLabel = new javax.swing.JLabel();
+        ChoicePanel = new javax.swing.JPanel();
+        choice1Button = new javax.swing.JButton();
+        choice2Button = new javax.swing.JButton();
+        choice3Button = new javax.swing.JButton();
+        choice4Button = new javax.swing.JButton();
+        background = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(153, 204, 255));
+        setLocation(new java.awt.Point(0, -40));
         setPreferredSize(new java.awt.Dimension(800, 600));
+
+        jLayeredPane1.setLocation(new java.awt.Point(0, 0));
+        jLayeredPane1.setPreferredSize(new java.awt.Dimension(800, 600));
+        jLayeredPane1.setSize(new java.awt.Dimension(800, 600));
+
+        questionLabel.setText("Question Comes Here");
+        questionLabel.setBounds(360, 130, 137, 16);
+        jLayeredPane1.add(questionLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        scoreNumLabel.setText("00");
+        scoreNumLabel.setBounds(720, 50, 16, 16);
+        jLayeredPane1.add(scoreNumLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        scoreLabel.setText("Score");
+        scoreLabel.setBounds(670, 50, 34, 16);
+        jLayeredPane1.add(scoreLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        superKidNameLabel.setText("Super Kid: John Doe");
+        superKidNameLabel.setBounds(30, 380, 124, 16);
+        jLayeredPane1.add(superKidNameLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        nextQButton.setBackground(new java.awt.Color(153, 0, 0));
+        nextQButton.setForeground(new java.awt.Color(255, 255, 255));
+        nextQButton.setText("NEXT QUESTION");
+        nextQButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextQButtonActionPerformed(evt);
+            }
+        });
+        nextQButton.setBounds(640, 540, 146, 29);
+        jLayeredPane1.add(nextQButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        CharacterPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CharacterPanel.setOpaque(false);
+
+        characterIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
+
+        javax.swing.GroupLayout CharacterPanelLayout = new javax.swing.GroupLayout(CharacterPanel);
+        CharacterPanel.setLayout(CharacterPanelLayout);
+        CharacterPanelLayout.setHorizontalGroup(
+            CharacterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+            .addGroup(CharacterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(CharacterPanelLayout.createSequentialGroup()
+                    .addGap(0, 28, Short.MAX_VALUE)
+                    .addComponent(characterIconLabel)
+                    .addGap(0, 29, Short.MAX_VALUE)))
+        );
+        CharacterPanelLayout.setVerticalGroup(
+            CharacterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+            .addGroup(CharacterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(CharacterPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(characterIconLabel)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        CharacterPanel.setBounds(0, 400, 190, 200);
+        jLayeredPane1.add(CharacterPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        ChoicePanel.setOpaque(false);
 
         choice1Button.setText("Choice 1");
         choice1Button.setPreferredSize(new java.awt.Dimension(150, 150));
@@ -104,93 +170,49 @@ public class QuestionPanel extends javax.swing.JPanel {
             }
         });
 
-        characterIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
+        javax.swing.GroupLayout ChoicePanelLayout = new javax.swing.GroupLayout(ChoicePanel);
+        ChoicePanel.setLayout(ChoicePanelLayout);
+        ChoicePanelLayout.setHorizontalGroup(
+            ChoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ChoicePanelLayout.createSequentialGroup()
+                .addComponent(choice1Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addComponent(choice2Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(ChoicePanelLayout.createSequentialGroup()
+                .addComponent(choice3Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(choice4Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        ChoicePanelLayout.setVerticalGroup(
+            ChoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ChoicePanelLayout.createSequentialGroup()
+                .addGroup(ChoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(choice1Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(choice2Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(ChoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(choice4Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(choice3Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
-        questionLabel.setText("Question Comes Here");
+        ChoicePanel.setBounds(230, 160, 430, 340);
+        jLayeredPane1.add(ChoicePanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        scoreNumLabel.setText("00");
-
-        scoreLabel.setText("Score");
-
-        superKidNameLabel.setText("Super Kid: John Doe");
-
-        nextQButton.setBackground(new java.awt.Color(153, 0, 0));
-        nextQButton.setForeground(new java.awt.Color(255, 255, 255));
-        nextQButton.setText("NEXT QUESTION");
-        nextQButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextQButtonActionPerformed(evt);
-            }
-        });
+        background.setIcon(new javax.swing.ImageIcon("/Users/david/Documents/workspace/super-kids/GUI/src/main/resources/backgrounds/QuestionScreen.png")); // NOI18N
+        background.setBounds(new java.awt.Rectangle(0, 0, 800, 600));
+        background.setIconTextGap(0);
+        background.setBounds(0, 0, 800, 600);
+        jLayeredPane1.add(background, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(scoreLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(scoreNumLabel)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(characterIconLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(choice2Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(choice1Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(171, 171, 171)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(choice4Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(choice3Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(45, 45, 45))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(nextQButton)
-                                .addGap(27, 27, 27))))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(superKidNameLabel)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(questionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(questionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(scoreNumLabel)
-                            .addComponent(scoreLabel))
-                        .addGap(168, 168, 168)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(choice1Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(choice3Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(superKidNameLabel)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 15, Short.MAX_VALUE)
-                        .addComponent(characterIconLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(choice2Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(choice4Button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextQButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -266,11 +288,15 @@ public class QuestionPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_nextQButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CharacterPanel;
+    private javax.swing.JPanel ChoicePanel;
+    private javax.swing.JLabel background;
     private javax.swing.JLabel characterIconLabel;
     private javax.swing.JButton choice1Button;
     private javax.swing.JButton choice2Button;
     private javax.swing.JButton choice3Button;
     private javax.swing.JButton choice4Button;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton nextQButton;
     private javax.swing.JLabel questionLabel;
     private javax.swing.JLabel scoreLabel;

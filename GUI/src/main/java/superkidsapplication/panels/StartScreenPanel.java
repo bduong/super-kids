@@ -19,7 +19,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
 
     private PanelController controller;
     private MusicController mController;
-    private OptionsPanel options;
+    private SoundPanel sound_options;
 
     /**
      * Creates new form StartScreenPanel
@@ -27,7 +27,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
     private StartScreenPanel() {
         controller = PanelController.getInstance();
         mController = MusicController.getInstance();
-        options = OptionsPanel.getInstance();
+        sound_options = SoundPanel.getInstance();
         
         initComponents();
 
@@ -41,7 +41,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
         panel.addHierarchyListener(new HierarchyListener() {
             public void hierarchyChanged(HierarchyEvent e) {
                 if ((HierarchyEvent.SHOWING_CHANGED & e.getChangeFlags()) != 0
-                        && panel.isShowing() && options.isMusicON()) {
+                        && panel.isShowing() && sound_options.isMusicON()) {
                     System.out.println("Resume theme music");
                     mController.playMusic();
                 }
@@ -172,7 +172,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
         //stop music when a the game is started
-        mController.stopMusic();
+        //mController.stopMusic();
         //create a new game panel
         NewGamePanel gamePanel = new NewGamePanel();
         //add new panel
@@ -183,7 +183,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         //OptionsPanel is a singleton
         //add optionspanel
-        controller.addPanel(OptionsPanel.getInstance());
+        controller.addPanel(new OptionPanel());
     }//GEN-LAST:event_OptionsActionPerformed
 
     private void NewGameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewGameMouseEntered
