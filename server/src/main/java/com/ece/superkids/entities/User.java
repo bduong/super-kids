@@ -37,4 +37,8 @@ public class User {
     public void setState(State state) {
         this.state = state;
     }
+
+    public void addScore(Question question, Integer score) {
+        state.addScore(question, score);
+    }
 }
