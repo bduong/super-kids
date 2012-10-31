@@ -15,7 +15,9 @@ public class State {
     private Question currentQuestion;
     private Map<Question, Integer> scores;
 
-    public State() {}
+    public State() {
+        scores = new HashMap<Question, Integer>();
+    }
 
     public QuestionLevel getCurrentLevel() {
         return currentLevel;
