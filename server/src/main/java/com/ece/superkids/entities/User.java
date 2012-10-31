@@ -1,31 +1,40 @@
 package com.ece.superkids.entities;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class User {
 
-  private String name;
-  private int score;
+    private int id;
+    private String name;
+    private State state;
 
-  public User() {
-    name = "no name user";
-    score = 0;
-  }
+    public User(String name) {
+        this.name = name;
+        state = new State();
+    }
 
-  public User(String name) {
-    this.name = name;
-    score = 0;
-  }
+    public int getId() {
+        return id;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-  public String getName() {
-    return name;
-  }
-  public void setScore(int score) {
-    this.score = score;
-  }
-  public int getScore() {
-    return score;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
 }
