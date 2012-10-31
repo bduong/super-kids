@@ -16,7 +16,7 @@ public enum QuestionLevel {
     private List<QuestionCategory> categories;
 
     QuestionLevel(QuestionCategory ... levelCategories) {
-        categories = new ArrayList<>();
+        categories = new ArrayList<QuestionCategory>();
         Collections.addAll(categories, levelCategories);
     }
 
