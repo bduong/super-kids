@@ -4,8 +4,6 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.QuestionDatabaseFactory;
-import com.ece.superkids.QuestionManager;
 import java.util.Arrays;
 import superkidsapplication.controllers.QuestionController;
 

@@ -1,7 +1,6 @@
-package com.ece.superkids.entities;
+package com.ece.superkids.users.entities;
 
-import java.util.Map;
-import java.util.HashMap;
+import com.ece.superkids.questions.entities.Question;
 
 public class User {
 

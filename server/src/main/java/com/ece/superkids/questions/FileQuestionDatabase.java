@@ -1,11 +1,9 @@
-package com.ece.superkids;
+package com.ece.superkids.questions;
 
-import com.ece.superkids.builders.QuestionBuilder;
-import com.ece.superkids.entities.Question;
-import com.ece.superkids.enums.QuestionCategory;
-import com.ece.superkids.enums.QuestionLevel;
-import com.ece.superkids.enums.QuestionMode;
-import com.ece.superkids.enums.QuestionType;
+import com.ece.superkids.questions.entities.Question;
+import com.ece.superkids.questions.enums.QuestionCategory;
+import com.ece.superkids.questions.enums.QuestionLevel;
+import com.ece.superkids.questions.enums.QuestionMode;
 import com.google.gson.Gson;
 
 import java.io.*;

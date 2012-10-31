@@ -1,6 +1,6 @@
-package com.ece.superkids;
+package com.ece.superkids.questions;
 
-import com.ece.superkids.enums.QuestionMode;
+import com.ece.superkids.questions.enums.QuestionMode;
 
 public final class QuestionDatabaseFactory {
 

@@ -4,8 +4,8 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.enums.QuestionCategory;
-import com.ece.superkids.enums.QuestionLevel;
+import com.ece.superkids.questions.enums.QuestionCategory;
+import com.ece.superkids.questions.enums.QuestionLevel;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

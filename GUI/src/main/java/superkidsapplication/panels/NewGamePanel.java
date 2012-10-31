@@ -4,7 +4,7 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.enums.QuestionLevel;
+import com.ece.superkids.questions.enums.QuestionLevel;
 import java.awt.Color;
 import superkidsapplication.controllers.PanelController;
 

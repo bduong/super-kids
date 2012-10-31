@@ -1,10 +1,9 @@
-package com.ece.superkids;
+package com.ece.superkids.users;
 
-import com.ece.superkids.entities.User;
+import com.ece.superkids.users.entities.User;
 import com.google.gson.Gson;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

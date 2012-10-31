@@ -1,6 +1,6 @@
-package com.ece.superkids;
+package com.ece.superkids.users;
 
-import com.ece.superkids.entities.User;
+import com.ece.superkids.users.entities.User;
 
 public class FileUserManager implements UserManager {
   @Override

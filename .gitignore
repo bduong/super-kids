@@ -10,7 +10,7 @@ target/*
 # IDEA Intellij Files *
 .idea/*
 *.iml
-
+*.DS_Store
 # Netbeans Files #
 .nbproject/*
 build.xml

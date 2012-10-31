@@ -1,13 +1,14 @@
 /**
  * @author M4rc Adam
  */
-package com.ece.superkids.entities;
+package com.ece.superkids.users.entities;
 
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import com.ece.superkids.enums.QuestionLevel;
+import com.ece.superkids.questions.enums.QuestionLevel;
+import com.ece.superkids.questions.entities.Question;
 
 public class State {
 

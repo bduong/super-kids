@@ -1,8 +1,6 @@
-package com.ece.superkids;
+package com.ece.superkids.questions;
 
-import com.ece.superkids.entities.Question;
-import com.ece.superkids.enums.QuestionCategory;
-import com.ece.superkids.enums.QuestionLevel;
+import com.ece.superkids.questions.entities.Question;
 
 public interface QuestionManager {
 

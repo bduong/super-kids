@@ -1,9 +1,9 @@
-package com.ece.superkids.builders;
+package com.ece.superkids.questions.builders;
 
-import com.ece.superkids.entities.Question;
-import com.ece.superkids.enums.QuestionCategory;
-import com.ece.superkids.enums.QuestionLevel;
-import com.ece.superkids.enums.QuestionType;
+import com.ece.superkids.questions.entities.Question;
+import com.ece.superkids.questions.enums.QuestionCategory;
+import com.ece.superkids.questions.enums.QuestionLevel;
+import com.ece.superkids.questions.enums.QuestionType;
 
 import java.util.ArrayList;
 import java.util.Collections;

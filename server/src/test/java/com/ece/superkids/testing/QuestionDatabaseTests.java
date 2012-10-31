@@ -1,12 +1,12 @@
 package com.ece.superkids.testing;
 
-import com.ece.superkids.QuestionDatabase;
-import com.ece.superkids.QuestionDatabaseFactory;
-import com.ece.superkids.builders.QuestionBuilder;
-import com.ece.superkids.entities.Question;
-import com.ece.superkids.enums.QuestionCategory;
-import com.ece.superkids.enums.QuestionLevel;
-import com.ece.superkids.enums.QuestionType;
+import com.ece.superkids.questions.QuestionDatabase;
+import com.ece.superkids.questions.QuestionDatabaseFactory;
+import com.ece.superkids.questions.builders.QuestionBuilder;
+import com.ece.superkids.questions.entities.Question;
+import com.ece.superkids.questions.enums.QuestionCategory;
+import com.ece.superkids.questions.enums.QuestionLevel;
+import com.ece.superkids.questions.enums.QuestionType;
 import org.junit.Before;
 import org.junit.Test;
 

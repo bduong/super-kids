@@ -1,7 +1,7 @@
 /**
  * @author M4rc Adam
  */
-package com.ece.superkids.entities;
+package com.ece.superkids.users.entities;
 
 import java.util.ArrayList;
 

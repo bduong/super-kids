@@ -1,4 +1,4 @@
-package com.ece.superkids.enums;
+package com.ece.superkids.questions.enums;
 
 public enum QuestionCategory {
     //Level 1
