@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FileUserDatabase  {
+public class FileUserDatabase  implements UserDatabase {
   private static final String FILE_NAME_USER = "/Users.txt";
   private Gson gson;
   private Map<String, User> users;
@@ -65,6 +65,10 @@ public class FileUserDatabase  {
       } else {
           return null;
       }
+  }
+
+  public Map<String, User> getUsers() {
+      return users;
   }
 
 }
