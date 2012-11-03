@@ -8,5 +8,7 @@ public interface UserManager {
 
     public void deleteUser(User user);
 
-    public void editUser(User oldUser, User newUser) ;
+    public void updateUser(User oldUser, User new1User) ;
+
+    public User getUser(String name);
 }
