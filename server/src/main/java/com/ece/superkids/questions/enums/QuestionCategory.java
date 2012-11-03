@@ -4,5 +4,9 @@ public enum QuestionCategory {
     //Level 1
     SHAPES, COLORS, ANIMALS,
 
-    FOOD, GEOGRAPHY, PLANETS, STATIONARY, INSTRUMENTS
+    //Level 2
+    FOOD, GEOGRAPHY, PLANETS,
+
+    //Level 3
+    STATIONARY, INSTRUMENTS
 }

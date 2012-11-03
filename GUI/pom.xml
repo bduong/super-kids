@@ -16,7 +16,7 @@
   <repositories>
     <repository>
       <id>Third-Party-Jars</id>
-      <url>file:${project.basedir}/lib</url>
+      <url>file:${project.basedir}${file.separator}lib</url>
     </repository>
   </repositories>
 
@@ -58,6 +58,21 @@
             <include>**/*Tests.java</include>
           </includes>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <configuration>
+          <outputDirectory> ${project.build.directory}/surefire-reports </outputDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>

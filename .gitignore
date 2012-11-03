@@ -1,7 +1,6 @@
 *.class
 
 # Package Files #
-*.jar
 *.war
 *.ear
 target/*
@@ -15,7 +14,7 @@ target/*
 .nbproject/*
 build.xml
 nb-build.xml
-*/nbactions.xml
+*nbactions.xml
 * Eclipse Files #
 .project
 .classhpath

@@ -3,6 +3,7 @@
  */
 package com.ece.superkids.users.entities;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,7 +11,7 @@ import java.util.Iterator;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.entities.Question;
 
-public class State {
+public class State implements Serializable {
 
     private QuestionLevel currentLevel;
     private Question currentQuestion;
