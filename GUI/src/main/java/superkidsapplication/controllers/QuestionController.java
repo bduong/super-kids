@@ -69,13 +69,13 @@ public class QuestionController {
 
             //get a new question
             Question q = qd.getQuestion(level, category, count);
-
+            
             //shuffle choices
             Collections.shuffle(q.getChoices());
 
             //find answer
             int ans = findAnswer(q.getAnswer(), q.getChoices());
-
+            
             //create new question panel
             qPanel = new QuestionPanel(ans, level, category);
 

@@ -245,7 +245,7 @@ public class QuestionPanel extends javax.swing.JPanel {
             if (result != null) {
                 result.setVisible(false);
             }
-            //get te next question
+            //get the next question
             QuestionPanel qP = qBase.createQuestionPanel(level, category);
             //if the returned questionPanel is not null then add to frame through the controller
             if (qP != null) {
