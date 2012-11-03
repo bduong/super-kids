@@ -39,6 +39,8 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(800, 600));
 
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(800, 600));
+        jLayeredPane1.setPreferredSize(new java.awt.Dimension(800, 600));
+        jLayeredPane1.setSize(new java.awt.Dimension(800, 600));
 
         userButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         userButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,26 +129,23 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         jLayeredPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLayeredPane2.setPreferredSize(new java.awt.Dimension(330, 370));
         jLayeredPane2.setRequestFocusEnabled(false);
-        jLayeredPane2.setBounds(370, 120, 370, 370);
+        jLayeredPane2.setBounds(390, 160, 370, 370);
         jLayeredPane1.add(jLayeredPane2, javax.swing.JLayeredPane.PALETTE_LAYER);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/parentalpanelbackground.png"))); // NOI18N
-        backgroundLabel.setBounds(0, -40, 800, 600);
+        backgroundLabel.setBounds(new java.awt.Rectangle(0, 0, 800, 600));
+        backgroundLabel.setBounds(0, 0, 800, 600);
         jLayeredPane1.add(backgroundLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 800, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 853, Short.MAX_VALUE))
+            .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 640, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 387, Short.MAX_VALUE))
+            .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

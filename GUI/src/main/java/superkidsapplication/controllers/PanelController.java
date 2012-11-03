@@ -52,7 +52,7 @@ public class PanelController {
             panels.get(panels.size() - 2).setVisible(false);
         }
         //now add this new panel to the frame itself
-        mainFrame.add(panel, java.awt.FlowLayout.LEFT);
+        mainFrame.contentArea.add(panel, java.awt.BorderLayout.CENTER);
         //and change the visiblity to true
         panel.setVisible(true);
     }

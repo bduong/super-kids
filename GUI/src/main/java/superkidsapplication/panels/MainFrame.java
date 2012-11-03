@@ -43,6 +43,7 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contentArea = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
         BackItem = new javax.swing.JMenuItem();
@@ -58,10 +59,18 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Super Kids: The Ultimate Adventure");
-        setBounds(new java.awt.Rectangle(0, 0, 800, 600));
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setLocation(new java.awt.Point(0, 0));
+        setMinimumSize(new java.awt.Dimension(800, 640));
         setName("mainframe"); // NOI18N
         setResizable(false);
+        setSize(new java.awt.Dimension(800, 640));
+
+        contentArea.setBounds(new java.awt.Rectangle(0, 0, 800, 600));
+        contentArea.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(contentArea, java.awt.BorderLayout.CENTER);
+
+        jMenuBar1.setMaximumSize(new java.awt.Dimension(800, 22));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(800, 22));
 
         FileMenu.setText("File");
 
@@ -191,6 +200,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu ModeMenu;
     private javax.swing.JMenuItem ParentItem;
     private javax.swing.JMenuItem QMode;
+    public javax.swing.JPanel contentArea;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
