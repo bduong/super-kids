@@ -1,5 +1,6 @@
 package com.ece.superkids.questions;
 
+import com.ece.superkids.FileManagerImpl;
 import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
@@ -15,29 +16,34 @@ import java.util.Map;
 public class FileQuestionDatabase implements QuestionDatabase{
 
     private static final String FILE_NAME = "/Questions.txt";
-    private static final String CUSTOM_FILE_NAME = "/CustomQuestions.txt";
+    private static File CUSTOM_FILE_NAME;
     private Gson gson = new Gson();
     private Map<QuestionLevel, Map<QuestionCategory,List<Question>>> questions = new HashMap<QuestionLevel,
             Map<QuestionCategory,List<Question>>>();
 
     public FileQuestionDatabase(QuestionMode mode) {
+        CUSTOM_FILE_NAME = new FileManagerImpl().getCustomQuestionsFile();
         switchMode(mode);
     }
 
     public void switchMode(QuestionMode mode) {
         questions.clear();
-        switch(mode){
-            case DEFAULT_ONLY:
-                loadQuestionsFromFile(FILE_NAME);
-                break;
-            case CUSTOM_ONLY:
-                loadQuestionsFromFile(CUSTOM_FILE_NAME);
-                break;
-            case ALL:
-                loadQuestionsFromFile(FILE_NAME);
-                loadQuestionsFromFile(CUSTOM_FILE_NAME);
-                break;
-            default:
+        try{
+            switch(mode){
+                case DEFAULT_ONLY:
+                    loadQuestionsFromStream(getClass().getResourceAsStream(FILE_NAME));
+                    break;
+                case CUSTOM_ONLY:
+                    loadQuestionsFromStream(new FileInputStream(CUSTOM_FILE_NAME));
+                    break;
+                case ALL:
+                    loadQuestionsFromStream(getClass().getResourceAsStream(FILE_NAME));
+                    loadQuestionsFromStream(new FileInputStream(CUSTOM_FILE_NAME));
+                    break;
+                default:
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -51,8 +57,7 @@ public class FileQuestionDatabase implements QuestionDatabase{
         return -1;
     }
 
-    private void loadQuestionsFromFile(String fileName) {
-        InputStream in = getClass().getResourceAsStream(fileName);
+    private void loadQuestionsFromStream(InputStream in) {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             while (true) {
@@ -104,20 +109,20 @@ public class FileQuestionDatabase implements QuestionDatabase{
         }
     }
 
-	@Override
-	public int getNumberOfQuestions(final QuestionLevel level, final QuestionCategory category) {
+    @Override
+    public int getNumberOfQuestions(final QuestionLevel level, final QuestionCategory category) {
         if (!questions.containsKey(level)) {
             return 0;
         }
         if (!questions.get(level).containsKey(category)) {
             return 0;
         }
-		return questions.get(level).get(category).size();
-	}
+        return questions.get(level).get(category).size();
+    }
 
-	@Override
-	public int getNumberOfQuestions(final QuestionLevel level) {
-		int sum = 0;
+    @Override
+    public int getNumberOfQuestions(final QuestionLevel level) {
+        int sum = 0;
         if (!questions.containsKey(level)) {
             return sum;
         }
@@ -127,5 +132,5 @@ public class FileQuestionDatabase implements QuestionDatabase{
         }
 
         return sum;
-	}
+    }
 }
