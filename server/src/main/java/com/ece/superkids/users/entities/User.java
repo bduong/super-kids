@@ -4,6 +4,7 @@
 package com.ece.superkids.users.entities;
 
 import com.ece.superkids.questions.entities.Question;
+import com.ece.superkids.questions.enums.QuestionLevel;
 
 import java.io.Serializable;
 
@@ -43,7 +44,15 @@ public class User implements Serializable {
         this.state = state;
     }
 
-    public void addScore(Question question, Integer score) {
+    public void setCurrentLevel(QuestionLevel level) {
+        state.setCurrentLevel(level);
+    }
+
+    public void setCurrentQuestion(Question question) {
+        state.setCurrentQuestion(question);
+    }
+
+    public void saveScore(Question question, Integer score) {
         state.addScore(question, score);
     }
 }
