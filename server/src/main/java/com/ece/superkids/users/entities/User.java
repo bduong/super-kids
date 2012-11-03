@@ -1,12 +1,18 @@
+/**
+ * @author M4rc Adam
+ */
 package com.ece.superkids.users.entities;
 
 import com.ece.superkids.questions.entities.Question;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private int id;
     private String name;
     private State state;
+    // private History history;
 
     public User(String name) {
         this.name = name;
