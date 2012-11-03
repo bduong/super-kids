@@ -18,7 +18,7 @@ import superkidsapplication.controllers.QuestionController;
 
 /**
  *
- * @author Prashant & Baris
+ * @author Prashant & Baris & David C
  */
 public class QuestionPanel extends javax.swing.JPanel {
 
@@ -62,9 +62,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         questionLabel = new javax.swing.JLabel();
         scoreNumLabel = new javax.swing.JLabel();
         scoreLabel = new javax.swing.JLabel();
-        superKidNameLabel = new javax.swing.JLabel();
         nextQButton = new javax.swing.JButton();
-        CharacterPanel = new javax.swing.JPanel();
+        superKidNameLabel = new javax.swing.JLabel();
         characterIconLabel = new javax.swing.JLabel();
         ChoicePanel = new javax.swing.JPanel();
         choice1Button = new javax.swing.JButton();
@@ -73,28 +72,28 @@ public class QuestionPanel extends javax.swing.JPanel {
         choice4Button = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
-        setLocation(new java.awt.Point(0, -40));
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jLayeredPane1.setLocation(new java.awt.Point(0, 0));
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(800, 600));
         jLayeredPane1.setSize(new java.awt.Dimension(800, 600));
 
+        questionLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        questionLabel.setForeground(new java.awt.Color(255, 255, 255));
         questionLabel.setText("Question Comes Here");
-        questionLabel.setBounds(360, 130, 137, 16);
+        questionLabel.setBounds(230, 120, 450, 40);
         jLayeredPane1.add(questionLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        scoreNumLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        scoreNumLabel.setForeground(new java.awt.Color(255, 255, 255));
         scoreNumLabel.setText("00");
-        scoreNumLabel.setBounds(720, 50, 16, 16);
+        scoreNumLabel.setBounds(720, 10, 70, 40);
         jLayeredPane1.add(scoreNumLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        scoreLabel.setText("Score");
-        scoreLabel.setBounds(670, 50, 34, 16);
+        scoreLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        scoreLabel.setForeground(new java.awt.Color(255, 255, 255));
+        scoreLabel.setText("Score:");
+        scoreLabel.setBounds(630, 10, 80, 40);
         jLayeredPane1.add(scoreLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        superKidNameLabel.setText("Super Kid: John Doe");
-        superKidNameLabel.setBounds(30, 380, 124, 16);
-        jLayeredPane1.add(superKidNameLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         nextQButton.setBackground(new java.awt.Color(153, 0, 0));
         nextQButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,37 +103,20 @@ public class QuestionPanel extends javax.swing.JPanel {
                 nextQButtonActionPerformed(evt);
             }
         });
-        nextQButton.setBounds(640, 540, 146, 29);
+        nextQButton.setBounds(636, 540, 150, 40);
         jLayeredPane1.add(nextQButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        CharacterPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        CharacterPanel.setOpaque(false);
+        superKidNameLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        superKidNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        superKidNameLabel.setText("Super Kid: John Doe");
+        superKidNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        superKidNameLabel.setBounds(20, 570, 190, 17);
+        jLayeredPane1.add(superKidNameLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         characterIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
-
-        javax.swing.GroupLayout CharacterPanelLayout = new javax.swing.GroupLayout(CharacterPanel);
-        CharacterPanel.setLayout(CharacterPanelLayout);
-        CharacterPanelLayout.setHorizontalGroup(
-            CharacterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
-            .addGroup(CharacterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(CharacterPanelLayout.createSequentialGroup()
-                    .addGap(0, 28, Short.MAX_VALUE)
-                    .addComponent(characterIconLabel)
-                    .addGap(0, 29, Short.MAX_VALUE)))
-        );
-        CharacterPanelLayout.setVerticalGroup(
-            CharacterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
-            .addGroup(CharacterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(CharacterPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(characterIconLabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        CharacterPanel.setBounds(0, 400, 190, 200);
-        jLayeredPane1.add(CharacterPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        characterIconLabel.setPreferredSize(new java.awt.Dimension(200, 200));
+        characterIconLabel.setBounds(10, 350, 200, 233);
+        jLayeredPane1.add(characterIconLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         ChoicePanel.setOpaque(false);
 
@@ -198,7 +180,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         ChoicePanel.setBounds(230, 160, 430, 340);
         jLayeredPane1.add(ChoicePanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        background.setIcon(new javax.swing.ImageIcon("/Users/david/Documents/workspace/super-kids/GUI/src/main/resources/backgrounds/QuestionScreen.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/QuestionScreen.png"))); // NOI18N
         background.setBounds(new java.awt.Rectangle(0, 0, 800, 600));
         background.setIconTextGap(0);
         background.setBounds(0, 0, 800, 600);
@@ -288,7 +270,6 @@ public class QuestionPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_nextQButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel CharacterPanel;
     private javax.swing.JPanel ChoicePanel;
     private javax.swing.JLabel background;
     private javax.swing.JLabel characterIconLabel;

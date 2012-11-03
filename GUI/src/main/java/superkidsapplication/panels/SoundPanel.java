@@ -61,6 +61,8 @@ public class SoundPanel extends javax.swing.JPanel {
             }
         });
 
+        volumeLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        volumeLabel.setForeground(new java.awt.Color(255, 255, 255));
         volumeLabel.setText("Volume");
 
         onOffGroup.add(musicOnButton);
@@ -80,6 +82,8 @@ public class SoundPanel extends javax.swing.JPanel {
             }
         });
 
+        musicLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        musicLabel.setForeground(new java.awt.Color(255, 255, 255));
         musicLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         musicLabel.setText("Music");
 
@@ -90,6 +94,8 @@ public class SoundPanel extends javax.swing.JPanel {
             }
         });
 
+        selectThemeLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        selectThemeLabel.setForeground(new java.awt.Color(255, 255, 255));
         selectThemeLabel.setText("Select Main Theme");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
@@ -111,7 +117,7 @@ public class SoundPanel extends javax.swing.JPanel {
                     .add(layout.createSequentialGroup()
                         .add(54, 54, 54)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(volumeSlider, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                            .add(volumeSlider, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                             .add(volumeLabel))))
                 .add(29, 29, 29))
         );
@@ -132,7 +138,7 @@ public class SoundPanel extends javax.swing.JPanel {
                 .add(selectThemeLabel)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(changeMusicBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

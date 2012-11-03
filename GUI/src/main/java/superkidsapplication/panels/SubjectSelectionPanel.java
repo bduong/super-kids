@@ -44,9 +44,6 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         title = new javax.swing.JLabel();
-        userphoto = new javax.swing.JLabel();
-        username = new javax.swing.JLabel();
-        score = new javax.swing.JLabel();
         subject1 = new javax.swing.JButton();
         subject2 = new javax.swing.JButton();
         subject3 = new javax.swing.JButton();
@@ -66,22 +63,6 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         title.setText("Adventure island map");
         title.setBounds(170, 90, 520, 70);
         jLayeredPane1.add(title, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        userphoto.setForeground(new java.awt.Color(255, 255, 51));
-        userphoto.setText("user photo");
-        userphoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        userphoto.setBounds(660, 10, 60, 60);
-        jLayeredPane1.add(userphoto, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        username.setForeground(new java.awt.Color(255, 255, 51));
-        username.setText("username");
-        username.setBounds(730, 20, 61, 16);
-        jLayeredPane1.add(username, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        score.setForeground(new java.awt.Color(255, 255, 0));
-        score.setText("score");
-        score.setBounds(740, 40, 34, 16);
-        jLayeredPane1.add(score, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         subject1.setText("Shapes");
         subject1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,12 +198,9 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JLabel score;
     private javax.swing.JButton subject1;
     private javax.swing.JButton subject2;
     private javax.swing.JButton subject3;
     private javax.swing.JLabel title;
-    private javax.swing.JLabel username;
-    private javax.swing.JLabel userphoto;
     // End of variables declaration//GEN-END:variables
 }
