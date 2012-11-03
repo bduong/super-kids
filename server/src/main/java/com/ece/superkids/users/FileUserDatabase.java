@@ -1,73 +1,55 @@
 package com.ece.superkids.users;
 
 import com.ece.superkids.users.entities.User;
-import com.google.gson.Gson;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
 
 public class FileUserDatabase  implements UserDatabase {
-  private static final String FILE_NAME_USER = "/Users.txt";
-  private Gson gson;
-  private Map<String, User> users;
+
+    String userHome;
 
   public FileUserDatabase() {
-      gson = new Gson();
-      users = new HashMap<String, User>();
+      userHome = System.getProperty( "user.home" );
+  }
+  
+  // serialize the user
+  public void saveUser(User user) {
+      String filename = user.getName() + ".ser";
+      try {
+          OutputStream file = new FileOutputStream(filename);
+          OutputStream buffer = new BufferedOutputStream( file );
+          ObjectOutput output = new ObjectOutputStream( buffer );
+          try {
+              output.writeObject(user);
+          } finally {
+              output.close();
+          }
+          
+      } catch(Exception e) {
+          System.out.println("Could not serialize user: " + user.getName());
+          e.printStackTrace();
+      }
   }
 
-  private void loadUsersFromFile(String fileName) {
-      users = new HashMap<String, User>();
-      InputStream in = getClass().getResourceAsStream(fileName);
+  // deserialize the user
+  public User getUser(String name) {
+      String filename = name + ".ser";
+      User user = null;
       try {
-          BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-          while (true) {
-              String line = reader.readLine();
-              if (line == null) {
-                  break;
-              }
-              User user = gson.fromJson(line, User.class);
-              String name = user.getName();
-              users.put(name, user);
+          InputStream file = new FileInputStream(filename);
+          InputStream buffer = new BufferedInputStream( file );
+          ObjectInput input = new ObjectInputStream ( buffer );
+          try {
+              user = (User)input.readObject();
+          } finally {
+              input.close();
           }
       } catch(Exception e) {
-
+          System.out.println("Could not deserialize file: " + filename);
+          e.printStackTrace();
+      } finally {
+          return user;
       }
-  }
-
-  public boolean saveUser(String name) {
-      User user = new User(name);
-      if(!users.containsKey(name)) {
-          File file = new File(getClass().getResource("/" + FILE_NAME_USER).getFile());
-          try {
-            FileWriter writer = new FileWriter(file, true);
-            writer.write(gson.toJson(user));
-            writer.write('\n');
-            writer.close();
-
-            users.put(name, user);
-          } catch(Exception e) {
-              // e.printStackTrace();
-              System.out.println("Error saving user to file");
-              return false;
-          }
-          return true;
-      } else {
-          return false;
-      }
-  }
-
-  public User getUser(String name) {
-      if(users.containsKey(name)) {
-          return users.get(name);
-      } else {
-          return null;
-      }
-  }
-
-  public Map<String, User> getUsers() {
-      return users;
   }
 
 }

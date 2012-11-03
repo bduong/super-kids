@@ -6,6 +6,6 @@ public interface UserDatabase {
 
     public User getUser(String name);
     
-    public boolean saveUser(String name);
+    public void saveUser(User user);
 
 }
