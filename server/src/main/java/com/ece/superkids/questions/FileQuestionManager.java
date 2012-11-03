@@ -10,7 +10,7 @@ import java.io.*;
 public class FileQuestionManager implements QuestionManager{
 
     private static File customQuestionsFile;
-    private FileManager fileManager = new FileManagerImpl();
+    private FileManager fileManager = FileManagerImpl.getInstance();
     private Gson gson;
 
     public FileQuestionManager() {
@@ -43,7 +43,6 @@ public class FileQuestionManager implements QuestionManager{
         String questionString = gson.toJson(question);
         try {
             File tempFile = File.createTempFile("customQuestions", ".new");
-            tempFile.deleteOnExit();
             FileWriter writer = new FileWriter(tempFile);
             BufferedReader reader = new BufferedReader(new FileReader(customQuestionsFile));
             String line;
