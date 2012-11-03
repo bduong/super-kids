@@ -6,6 +6,7 @@ package superkidsapplication.panels;
 
 import com.ece.superkids.questions.QuestionDatabaseFactory;
 import com.ece.superkids.questions.QuestionManager;
+import com.ece.superkids.questions.builders.QuestionBuilder;
 import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.enums.QuestionType;
@@ -358,7 +359,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
         //create a new question (editedQuestion)
-        Question editedQuestion = currentQuestion;
+        Question editedQuestion = QuestionBuilder.aQuestion().copiedFrom(currentQuestion).build();
         //set question
         editedQuestion.setQuestion(questionText.getName());
         //set choices
