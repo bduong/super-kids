@@ -11,7 +11,7 @@ public class FileUserDatabase  implements UserDatabase {
   public FileUserDatabase() {
       userHome = System.getProperty( "user.home" );
   }
-  
+
   // serialize the user
   public void saveUser(User user) {
       String filename = user.getName() + ".ser";
@@ -50,6 +50,20 @@ public class FileUserDatabase  implements UserDatabase {
       } finally {
           return user;
       }
+  }
+
+  // delete user object file
+  public boolean deleteUser(String name) {
+      File file = new File(name+".ser");
+      return file.delete();
+  }
+
+  // update user object file
+  public void updateUser(User oldUser, User newUser) {
+      String fileName = oldUser.getName() + ".ser";
+      String newFileName = newUser.getName() + ".ser";
+      deleteUser(oldUser.getName());
+      saveUser(newUser);
   }
 
 }
