@@ -4,6 +4,7 @@
 package com.ece.superkids.users.entities;
 
 import com.ece.superkids.questions.entities.Question;
+import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
 
 import java.io.Serializable;
@@ -13,7 +14,7 @@ public class User implements Serializable {
     private int id;
     private String name;
     private State state;
-    // private History history;
+    private History history;
 
     public User(String name) {
         this.name = name;
@@ -55,4 +56,10 @@ public class User implements Serializable {
     public void saveScore(Question question, Integer score) {
         state.addScore(question, score);
     }
+
+    public void newState(QuestionCategory category, QuestionLevel level) {
+        history.saveToHistory(category, level, state);
+        state = new State();
+    }
+
 }
