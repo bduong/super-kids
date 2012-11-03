@@ -3,6 +3,7 @@ package com.ece.superkids.users;
 import com.ece.superkids.users.entities.User;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class FileUserDatabase  implements UserDatabase {
 
@@ -10,6 +11,25 @@ public class FileUserDatabase  implements UserDatabase {
 
   public FileUserDatabase() {
       userHome = System.getProperty( "user.home" );
+  }
+
+  private User getUserFromFile(String filename) {
+      User user = null;
+      try {
+          InputStream file = new FileInputStream(filename);
+          InputStream buffer = new BufferedInputStream( file );
+          ObjectInput input = new ObjectInputStream ( buffer );
+          try {
+              user = (User)input.readObject();
+          } finally {
+              input.close();
+          }
+      } catch(Exception e) {
+          System.out.println("Could not deserialize file: " + filename);
+          e.printStackTrace();
+      } finally {
+          return user;
+      }
   }
 
   // serialize the user
@@ -64,6 +84,20 @@ public class FileUserDatabase  implements UserDatabase {
       String newFileName = newUser.getName() + ".ser";
       deleteUser(oldUser.getName());
       saveUser(newUser);
+  }
+
+  public ArrayList<User> getAllUsers() {
+      File dir = new File(userHome);
+      File[] files = dir.listFiles(new FilenameFilter() {
+          public boolean accept(File dir, String name) {
+              return name.toLowerCase().endsWith(".ser");
+          }
+      });
+      ArrayList<User> users = new ArrayList();
+      for(int i=0; i<files.length; i++) {
+          users.add(getUserFromFile(files[i].getName()));
+      }
+      return users;
   }
 
 }
