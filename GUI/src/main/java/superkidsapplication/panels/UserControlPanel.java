@@ -20,6 +20,8 @@ public class UserControlPanel extends javax.swing.JPanel {
     /**
      * Creates new form UserControlPanel
      */
+    FileUserManager uM  = new FileUserManager();
+    
     public UserControlPanel() {
         initComponents();
         fillBox();
@@ -40,6 +42,9 @@ public class UserControlPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+
+        setBounds(new java.awt.Rectangle(0, 0, 300, 300));
+        setOpaque(false);
 
         nameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,16 +117,17 @@ public class UserControlPanel extends javax.swing.JPanel {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         User user = new User(nameField.getText());
-        FileUserManager uM = new FileUserManager();
+        uM = new FileUserManager();
         uM.addUser(user);
-        System.out.println(uM.getUser("BARIS").getName());
+        fillBox();
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        FileUserManager uM = new FileUserManager();
+        uM = new FileUserManager();
         User user = uM.getUser((String)usersBox.getSelectedItem());
         uM.deleteUser(user);
+        fillBox();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -134,10 +140,11 @@ public class UserControlPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void fillBox() {
-        List usersList = uM.getAllUser(); 
-        Iterator<Question> iterator = usersList.iterator();
+        List usersList = uM.getAllUsers(); 
+        Iterator<User> iterator = usersList.iterator();
         while (iterator.hasNext()) {
-            usersBox.addItem(iterator.next().getQuestion());
+            System.out.println(iterator.next().getName());
+            usersBox.addItem(iterator.next().getName());
         }
     }
 }

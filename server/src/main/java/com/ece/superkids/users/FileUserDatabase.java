@@ -1,22 +1,27 @@
 package com.ece.superkids.users;
 
 import com.ece.superkids.users.entities.User;
-
 import java.io.*;
 import java.util.ArrayList;
 
 public class FileUserDatabase  implements UserDatabase {
 
     String userHome;
+    String path;
 
   public FileUserDatabase() {
       userHome = System.getProperty( "user.home" );
+      File directory = new File(userHome+File.separator+".superkidsdata");
+      if(!directory.exists()){
+          directory.mkdirs();
+      }
+      path = directory.getAbsolutePath()+File.separator;
   }
 
   private User getUserFromFile(String filename) {
       User user = null;
       try {
-          InputStream file = new FileInputStream(filename);
+          InputStream file = new FileInputStream(path+filename);
           InputStream buffer = new BufferedInputStream( file );
           ObjectInput input = new ObjectInputStream ( buffer );
           try {
@@ -36,7 +41,7 @@ public class FileUserDatabase  implements UserDatabase {
   public void saveUser(User user) {
       String filename = user.getName() + ".ser";
       try {
-          OutputStream file = new FileOutputStream(filename);
+          OutputStream file = new FileOutputStream(path+filename);
           OutputStream buffer = new BufferedOutputStream( file );
           ObjectOutput output = new ObjectOutputStream( buffer );
           try {
@@ -56,7 +61,7 @@ public class FileUserDatabase  implements UserDatabase {
       String filename = name + ".ser";
       User user = null;
       try {
-          InputStream file = new FileInputStream(filename);
+          InputStream file = new FileInputStream(path+filename);
           InputStream buffer = new BufferedInputStream( file );
           ObjectInput input = new ObjectInputStream ( buffer );
           try {
