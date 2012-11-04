@@ -64,6 +64,8 @@ public class ScoresHistory extends javax.swing.JPanel {
         jSpinner1 = new javax.swing.JSpinner();
         jTabbedPane1 = new javax.swing.JTabbedPane();
 
+        setBounds(new java.awt.Rectangle(0, 0, 300, 300));
+
         jTabbedPane1.setName("historyTabPanel"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

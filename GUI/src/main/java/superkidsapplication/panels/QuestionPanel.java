@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.QuestionController;
+import superkidsapplication.controllers.TTSController;
 
 /**
  *
@@ -38,6 +39,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     //1 is button1 , 2 is button2 and so on.
     //look at design tab to see which button is which
     public QuestionPanel(int correctAnswer, QuestionLevel level, QuestionCategory category) {
+        this.setName("Question");
         this.category = category;
         this.correctAnswer = correctAnswer;
         this.level = level;
@@ -90,8 +92,9 @@ public class QuestionPanel extends javax.swing.JPanel {
 
         questionLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         questionLabel.setForeground(new java.awt.Color(255, 255, 255));
-        questionLabel.setText("Question Comes Here");
-        questionLabel.setBounds(230, 120, 450, 40);
+        questionLabel.setText("Question goes here");
+        questionLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        questionLabel.setBounds(20, 130, 770, 30);
         jLayeredPane1.add(questionLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         scoreNumLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
@@ -114,7 +117,7 @@ public class QuestionPanel extends javax.swing.JPanel {
                 nextQButtonActionPerformed(evt);
             }
         });
-        nextQButton.setBounds(636, 540, 150, 40);
+        nextQButton.setBounds(606, 530, 180, 50);
         jLayeredPane1.add(nextQButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         superKidNameLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -211,6 +214,8 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     private void choice1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice1ButtonActionPerformed
         // TODO add your handling code here:
+        TTSController.TTS(this.choice1Button.getText());
+        
         if (correctAnswer == 1) {
             correctAnswerClicked();
         } else {
@@ -219,6 +224,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_choice1ButtonActionPerformed
 
     private void choice3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice3ButtonActionPerformed
+        TTSController.TTS(this.choice3Button.getText());
+        
         if (correctAnswer == 3) {
             correctAnswerClicked();
         } else {
@@ -227,6 +234,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_choice3ButtonActionPerformed
 
     private void choice2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice2ButtonActionPerformed
+        TTSController.TTS(this.choice2Button.getText());
+        
         if (correctAnswer == 2) {
             correctAnswerClicked();
         } else {
@@ -235,6 +244,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_choice2ButtonActionPerformed
 
     private void choice4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice4ButtonActionPerformed
+        TTSController.TTS(this.choice4Button.getText());
+        
         if (correctAnswer == 4) {
             correctAnswerClicked();
         } else {
@@ -247,8 +258,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             //if the button is clicked when it says "pick a new category" then go to subject menu
-            if (nextQButton.getText().equals("PICK A NEW CATEGORY")) {
-                controller.goToSubjectMenu();
+            if (nextQButton.getText().equals("Done")) {
+                controller.addPanel(new ScoreScreenPanel());
                 return; //return this function
             }
             //// here when a question is answered correctly we get a new question panel and add to frame
@@ -256,25 +267,16 @@ public class QuestionPanel extends javax.swing.JPanel {
             if (result != null) {
                 result.setVisible(false);
             }
-            //get te next question
+            //get the next question
             QuestionPanel qP = qBase.createQuestionPanel(level, category);
             //if the returned questionPanel is not null then add to frame through the controller
             if (qP != null) {
                 controller.addPanel(qP);
                 //if returned questionpanel is null then there are no more 
             } else {
-                nextQButton.setText("PICK A NEW CATEGORY");
+                nextQButton.setText("Done");
 
-
-                //say "no more questions"//ONLY WORKS IN MAC
-                if (System.getProperty("os.name").contains("OS X")) {
-                    try {
-                        //say the question (only works in MAC)
-                        Runtime.getRuntime().exec(new String[]{"say", "no more questions"});
-                    } catch (IOException ex) {
-                        Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+                TTSController.TTS("No more questions");
             }
         } catch (IOException ex) {
             Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -283,12 +285,7 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     private void RepeatSoundButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepeatSoundButtonActionPerformed
         // TODO add your handling code here:
-        try {
-                //say the question (only works in MAC)
-                Runtime.getRuntime().exec(new String[]{"say", this.questionLabel.getText()});
-            } catch (IOException ex) {
-                Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        TTSController.TTS(this.questionLabel.getText());
         
     }//GEN-LAST:event_RepeatSoundButtonActionPerformed
 
@@ -315,11 +312,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     public void setQuestion(String qText, Icon icon) throws IOException {
         questionLabel.setIcon(icon);
         questionLabel.setText(qText);
-
-        if (System.getProperty("os.name").contains("OS X")) {
-            //say the question (only works in MAC)
-            Runtime.getRuntime().exec(new String[]{"say", qText});
-        }
+        
+        TTSController.TTS(qText);
     }
 
     //set text and/or icons for buttons

@@ -233,7 +233,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Question q = new Question();
         //set question
-        q.setQuestion(questionField.getName());
+        q.setQuestion(questionField.getText());
         //set level
         q.setLevel((QuestionLevel) levelBox.getSelectedItem());
         //set category

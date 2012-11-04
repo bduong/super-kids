@@ -4,7 +4,9 @@
  */
 package superkidsapplication.panels;
 
-import javax.swing.JPanel;
+import com.ece.superkids.users.ParentManager;
+import com.ece.superkids.users.UserDatabaseFactory;
+import java.awt.Component;
 import superkidsapplication.controllers.PanelController;
 
 /**
@@ -16,22 +18,25 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    private JPanel startscreen;
     //get the panel controller to manage panels
     private PanelController controller;
+    private ParentManager pM;
 
     public MainFrame() {
         initComponents();
         //center frame relative to screen
         setLocationRelativeTo(null);
-        //get the startscreen
-        startscreen = StartScreenPanel.getInstance();
         //get panelcontroller
         controller = PanelController.getInstance();
         //set the mainFrame in PanelController (THIS IS DONE ONLY ONCE/ DO NOT DO IT AGAIN SOMEWHERE ELSE)
         controller.setMainFrame(this);
-        //add the startscreen
-        controller.addPanel(startscreen);
+        pM = UserDatabaseFactory.aParentManager();
+        if (pM.doesParentExist()) {
+            //go to userselectionpanel
+            controller.addPanel(new UserSelectionPanel());
+        } else if (!pM.doesParentExist()) {
+            controller.addPanel(new InitialSetupPanel());
+        }
     }
 
     /**
@@ -63,9 +68,13 @@ public class MainFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 640));
         setName("mainframe"); // NOI18N
         setResizable(false);
-        setSize(new java.awt.Dimension(800, 640));
 
         contentArea.setBounds(new java.awt.Rectangle(0, 0, 800, 600));
+        contentArea.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                contentAreaComponentAdded(evt);
+            }
+        });
         contentArea.setLayout(new java.awt.BorderLayout());
         getContentPane().add(contentArea, java.awt.BorderLayout.CENTER);
 
@@ -176,7 +185,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void QModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QModeActionPerformed
         // TODO add your handling code here:
-        controller.goToMainMenu();
+        //NEED TO IMPLEMENT THIS BETTER WAY
+        //controller.goToMainMenu();
     }//GEN-LAST:event_QModeActionPerformed
 
     private void LearnModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LearnModeActionPerformed
@@ -187,19 +197,47 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_ExitAppItemActionPerformed
-    
+
+    //take care of menu buttons when a new component is added to main frame
+    private void contentAreaComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_contentAreaComponentAdded
+        // TODO add your handling code here:
+        /*
+        Component component = (Component) evt.getChild();
+        if (component.getName() != null && component.getName().equals("InitialSetup")) {
+            ExitItem.setEnabled(false);
+            BackItem.setEnabled(false);
+            ChildMenu.setEnabled(false);
+            ParentItem.setEnabled(false);
+        } else if (component.getName() != null && component.getName().equals("StartScreen")) {
+            BackItem.setEnabled(false);
+            ExitItem.setEnabled(false);
+            ChildMenu.setEnabled(true);
+            ParentItem.setEnabled(true);
+        } else if (component.getName() != null && component.getName().equals("UserSelection")) {
+            BackItem.setEnabled(false);
+            ExitItem.setEnabled(false);
+            ChildMenu.setEnabled(false);
+        } else {
+            ExitItem.setEnabled(true);
+            BackItem.setEnabled(true);
+            ChildMenu.setEnabled(true);
+            ParentItem.setEnabled(true);
+        }
+        * */
+    }//GEN-LAST:event_contentAreaComponentAdded
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AboutItem;
-    private javax.swing.JMenuItem BackItem;
-    private javax.swing.JMenu ChildMenu;
+    public javax.swing.JMenuItem BackItem;
+    public javax.swing.JMenu ChildMenu;
     private javax.swing.JMenuItem ExitAppItem;
-    private javax.swing.JMenuItem ExitItem;
+    public javax.swing.JMenuItem ExitItem;
     private javax.swing.JMenu FileMenu;
     private javax.swing.JMenu HelpMenu;
-    private javax.swing.JMenuItem LearnMode;
+    public javax.swing.JMenuItem LearnMode;
     private javax.swing.JMenu ModeMenu;
-    private javax.swing.JMenuItem ParentItem;
-    private javax.swing.JMenuItem QMode;
+    public javax.swing.JMenuItem ParentItem;
+    public javax.swing.JMenuItem QMode;
     public javax.swing.JPanel contentArea;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables

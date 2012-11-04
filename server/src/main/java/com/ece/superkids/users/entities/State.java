@@ -17,6 +17,7 @@ public class State implements Serializable {
     private QuestionLevel currentLevel;
     private Question currentQuestion;
     private Map<Question, Integer> scores;
+    static final long serialVersionUID = -6618469841122132321L;
 
     public State() {
         scores = new HashMap<Question, Integer>();

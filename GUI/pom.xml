@@ -12,6 +12,9 @@
 
   <artifactId>GUI</artifactId>
   <name>User Interface</name>
+  <properties>
+    <mary.tts.version>5.1-SNAPSHOT</mary.tts.version>
+  </properties>
 
   <repositories>
     <repository>
@@ -19,7 +22,6 @@
       <url>file:${project.basedir}${file.separator}lib</url>
     </repository>
   </repositories>
-
 
   <dependencies>
     <dependency>
@@ -44,6 +46,22 @@
       <groupId>com.apple</groupId>
       <artifactId>AppleJavaExtensions</artifactId>
       <version>1.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>marytts</groupId>
+      <artifactId>marytts-runtime</artifactId>
+      <version>${mary.tts.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>marytts</groupId>
+      <artifactId>marytts-lang-en</artifactId>
+      <version>${mary.tts.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>marytts</groupId>
+      <artifactId>voice-cmu-slt-hsmm</artifactId>
+      <version>${mary.tts.version}</version>
     </dependency>
   </dependencies>
 

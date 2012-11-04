@@ -2,8 +2,6 @@ package superkidsapplication;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-
-import com.apple.eawt.Application;
 import superkidsapplication.panels.MainFrame;
 
 public class SuperKids {

@@ -25,6 +25,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
      * Creates new form StartScreenPanel
      */
     private StartScreenPanel() {
+        this.setName("StartScreen");
         controller = PanelController.getInstance();
         mController = MusicController.getInstance();
         sound_options = SoundPanel.getInstance();

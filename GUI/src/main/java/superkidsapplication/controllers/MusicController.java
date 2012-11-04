@@ -4,11 +4,9 @@
  */
 package superkidsapplication.controllers;
 
+import javax.sound.sampled.*;
 import superkidsapplication.providers.MusicProvider;
 import superkidsapplication.providers.ResourceProviderFactory;
-
-import java.net.URL;
-import javax.sound.sampled.*;
 
 /**
  * @author baris

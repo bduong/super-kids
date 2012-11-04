@@ -4,6 +4,8 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.users.ParentManager;
+import com.ece.superkids.users.UserDatabaseFactory;
 import java.util.Arrays;
 import superkidsapplication.controllers.QuestionController;
 
@@ -17,6 +19,7 @@ public class ResetGamePanel extends javax.swing.JPanel {
      * Creates new form ResetGamePanel
      */
     private QuestionController qController;
+    ParentManager pM = UserDatabaseFactory.aParentManager();
     
     public ResetGamePanel() {
         initComponents();
@@ -114,8 +117,8 @@ public class ResetGamePanel extends javax.swing.JPanel {
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
-        char[] input = passwordField.getPassword();
-        if (isPasswordCorrect(input)) {
+        String input = new String(passwordField.getPassword());
+        if (pM.checkParentPassword(input)) {
             qController.deleteAllCustomQuestions();
             resposeLabel.setText("Game has been resetted.");
         }
@@ -123,20 +126,6 @@ public class ResetGamePanel extends javax.swing.JPanel {
             resposeLabel.setText("Wrong password! Try again.");
         }
     }//GEN-LAST:event_resetButtonActionPerformed
-
-    private static boolean isPasswordCorrect(char[] input) {
-    boolean isCorrect = true;
-    char[] correctPassword = { 't', 'o', 'o', 'r'};
-
-    if (input.length != correctPassword.length) {
-        isCorrect = false;
-    } else {
-        isCorrect = Arrays.equals (input, correctPassword);
-    }
-    //Zero out the password.
-    Arrays.fill(correctPassword,'0');
-    return isCorrect;
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel enterLabel;

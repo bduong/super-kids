@@ -16,6 +16,7 @@ public class ParentalControlPanel extends javax.swing.JPanel {
      * Creates new form ParentalControlPanel
      */
     public ParentalControlPanel() {
+        setName("ParentalControl");
         initComponents();
     }
 
@@ -153,6 +154,8 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         jLayeredPane2.removeAll();
         jLayeredPane2.repaint();
+        UserControlPanel uPanel = new UserControlPanel();
+        jLayeredPane2.add(uPanel);
     }//GEN-LAST:event_userButtonActionPerformed
 
     private void userButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userButtonMouseEntered
