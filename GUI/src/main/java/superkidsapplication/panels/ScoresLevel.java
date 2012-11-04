@@ -5,6 +5,7 @@
 package superkidsapplication.panels;
 
 import com.ece.superkids.questions.enums.QuestionLevel;
+import superkidsapplication.controllers.PanelController;
 
 /**
  *
@@ -13,11 +14,13 @@ import com.ece.superkids.questions.enums.QuestionLevel;
 public class ScoresLevel extends javax.swing.JPanel {
     
     public static QuestionLevel levelques;
+    public PanelController c;
     /**
      * Creates new form ScoresLevel
      */
     public ScoresLevel() {
         initComponents();
+        c= PanelController.getInstance();
     }
 
     /**
@@ -32,6 +35,10 @@ public class ScoresLevel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+
+        setBounds(new java.awt.Rectangle(0, 0, 300, 300));
+        setMaximumSize(new java.awt.Dimension(300, 300));
+        setPreferredSize(new java.awt.Dimension(300, 300));
 
         jButton1.setText("Level 1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +89,8 @@ public class ScoresLevel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         levelques = QuestionLevel.LEVEL_1;
+        c.addPanel(new ScoresHistory());
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
