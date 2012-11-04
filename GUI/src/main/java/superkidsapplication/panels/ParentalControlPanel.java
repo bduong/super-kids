@@ -16,6 +16,7 @@ public class ParentalControlPanel extends javax.swing.JPanel {
      * Creates new form ParentalControlPanel
      */
     public ParentalControlPanel() {
+        setName("ParentalControl");
         initComponents();
     }
 

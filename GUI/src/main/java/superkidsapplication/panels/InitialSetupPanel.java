@@ -19,6 +19,7 @@ public class InitialSetupPanel extends javax.swing.JPanel {
     ParentManager pM = UserDatabaseFactory.aParentManager();
 
     public InitialSetupPanel() {
+        setName("InitialSetup");
         initComponents();
     }
 
@@ -107,7 +108,7 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         String pass1 = new String(passField.getPassword());
         String pass2 = new String(passField2.getPassword());
         if(pass1.length()<8){
-            warnLabel.setText("Lenght must be at least 8.");
+            warnLabel.setText("Length must be at least 8.");
             return;
         }
         if (pass1.equals(pass2)) {

@@ -39,6 +39,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     //1 is button1 , 2 is button2 and so on.
     //look at design tab to see which button is which
     public QuestionPanel(int correctAnswer, QuestionLevel level, QuestionCategory category) {
+        this.setName("Question");
         this.category = category;
         this.correctAnswer = correctAnswer;
         this.level = level;

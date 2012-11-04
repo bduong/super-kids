@@ -2,6 +2,7 @@ package superkidsapplication.controllers;
 
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import superkidsapplication.events.PanelListener;
 import superkidsapplication.panels.MainFrame;
 
 /*
@@ -23,6 +24,7 @@ public class PanelController {
 
     private ArrayList<JPanel> panels;
     private MainFrame mainFrame;
+    private PanelListener listener;
 
     private PanelController() {
         panels = new ArrayList<JPanel>();
@@ -39,12 +41,13 @@ public class PanelController {
 
     public void setMainFrame(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
+        listener=new PanelListener(mainFrame);
     }
 
     //add to panels list.
     //add to mainFrame.
     public void addPanel(JPanel panel) {
-        //first add panel to list
+        //first add to list
         panels.add(panel);
         //if we are not on start panel
         //set the panel before invisible
@@ -53,6 +56,10 @@ public class PanelController {
         }
         //now add this new panel to the frame itself
         mainFrame.contentArea.add(panel, java.awt.BorderLayout.CENTER);
+        //need to trigger setvisible true in listener so need to set it to false first
+        panel.setVisible(false);
+         //add to listener
+        listener.addPanel(panel);
         //and change the visiblity to true
         panel.setVisible(true);
     }
@@ -66,6 +73,7 @@ public class PanelController {
         //then remove from list
         panels.remove(panels.size() - 1);
     }
+
 
     //are we on start panel?
     private boolean onStartPanel() {
@@ -93,19 +101,25 @@ public class PanelController {
         panels.get(panels.size() - 1).setVisible(true);
     }
 
-    //go to main menu (startscree) directly
-    //this removes all panels from the panels list
-    //and sets the startscreen to visible
+    //go to main menu (startscreenpanel)
     public void goToMainMenu() {
-        //remove all panels until the first panel
-        while (panels.size() != 1) {
-            removePanel();
+        //start from back of the list to search for start screen
+        for (int i = panels.size() - 1; i > -1; i--) {
+            //if the panel name is not null
+            if (panels.get(i).getName() != null) {
+                //and if the name is eqaul to start screen
+                if (panels.get(i).getName().equals("StartScreen")) {
+                    //set the subject selection visible
+                    
+                    panels.get(i).setVisible(true);
+                    return;
+                }
+            }
+            //go back one panel until subjectselection is found
+            goBackOnePanel();
         }
-        //set the startscreen visible
-        panels.get(panels.size() - 1).setVisible(true);
     }
-
-    //goes back to subject selection menu if found
+//goes back to subject selection menu if found
     public void goToSubjectMenu() {
         //start from back of the list to search for subject selection
         for (int i = panels.size() - 1; i > -1; i--) {
