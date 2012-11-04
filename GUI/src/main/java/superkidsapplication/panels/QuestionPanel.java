@@ -6,6 +6,7 @@ package superkidsapplication.panels;
 
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
+import java.awt.Color;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -90,8 +91,9 @@ public class QuestionPanel extends javax.swing.JPanel {
 
         questionLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         questionLabel.setForeground(new java.awt.Color(255, 255, 255));
-        questionLabel.setText("Question Comes Here");
-        questionLabel.setBounds(230, 120, 450, 40);
+        questionLabel.setText("Question Comes Here ........................");
+        questionLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        questionLabel.setBounds(230, 50, 460, 110);
         jLayeredPane1.add(questionLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         scoreNumLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
@@ -114,7 +116,7 @@ public class QuestionPanel extends javax.swing.JPanel {
                 nextQButtonActionPerformed(evt);
             }
         });
-        nextQButton.setBounds(636, 540, 150, 40);
+        nextQButton.setBounds(606, 530, 180, 50);
         jLayeredPane1.add(nextQButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         superKidNameLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -247,8 +249,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             //if the button is clicked when it says "pick a new category" then go to subject menu
-            if (nextQButton.getText().equals("PICK A NEW CATEGORY")) {
-                controller.goToSubjectMenu();
+            if (nextQButton.getText().equals("Done")) {
+                controller.addPanel(new ScoreScreenPanel());
                 return; //return this function
             }
             //// here when a question is answered correctly we get a new question panel and add to frame
@@ -263,7 +265,7 @@ public class QuestionPanel extends javax.swing.JPanel {
                 controller.addPanel(qP);
                 //if returned questionpanel is null then there are no more 
             } else {
-                nextQButton.setText("PICK A NEW CATEGORY");
+                nextQButton.setText("Done");
 
 
                 //say "no more questions"//ONLY WORKS IN MAC
