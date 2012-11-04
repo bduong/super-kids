@@ -75,6 +75,18 @@ public class User implements Serializable {
         return state.getCurrentLevel();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof User)) {
+           return false;
+        }
+        User user2 = (User)obj;
+        if (!(id == user2.id))  return false;
+        if (!name.equals(user2.name))  return false;
+
+        return true;
+    }
+
 
 
 }
