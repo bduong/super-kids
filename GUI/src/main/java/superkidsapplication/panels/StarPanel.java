@@ -6,7 +6,7 @@ package superkidsapplication.panels;
 
 /**
  *
- * @author david
+ * @author david C
  */
 public class StarPanel extends javax.swing.JPanel {
 

@@ -6,7 +6,6 @@ package superkidsapplication.panels;
 
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
-import java.awt.Color;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.QuestionController;
+import superkidsapplication.controllers.TTSController;
 
 /**
  *
@@ -91,9 +91,9 @@ public class QuestionPanel extends javax.swing.JPanel {
 
         questionLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         questionLabel.setForeground(new java.awt.Color(255, 255, 255));
-        questionLabel.setText("Question Comes Here ........................");
+        questionLabel.setText("Question goes here");
         questionLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        questionLabel.setBounds(230, 50, 460, 110);
+        questionLabel.setBounds(20, 130, 770, 30);
         jLayeredPane1.add(questionLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         scoreNumLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
@@ -213,6 +213,8 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     private void choice1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice1ButtonActionPerformed
         // TODO add your handling code here:
+        TTSController.TTS(this.choice1Button.getText());
+        
         if (correctAnswer == 1) {
             correctAnswerClicked();
         } else {
@@ -221,6 +223,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_choice1ButtonActionPerformed
 
     private void choice3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice3ButtonActionPerformed
+        TTSController.TTS(this.choice3Button.getText());
+        
         if (correctAnswer == 3) {
             correctAnswerClicked();
         } else {
@@ -229,6 +233,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_choice3ButtonActionPerformed
 
     private void choice2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice2ButtonActionPerformed
+        TTSController.TTS(this.choice2Button.getText());
+        
         if (correctAnswer == 2) {
             correctAnswerClicked();
         } else {
@@ -237,6 +243,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_choice2ButtonActionPerformed
 
     private void choice4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice4ButtonActionPerformed
+        TTSController.TTS(this.choice4Button.getText());
+        
         if (correctAnswer == 4) {
             correctAnswerClicked();
         } else {
@@ -267,16 +275,7 @@ public class QuestionPanel extends javax.swing.JPanel {
             } else {
                 nextQButton.setText("Done");
 
-
-                //say "no more questions"//ONLY WORKS IN MAC
-                if (System.getProperty("os.name").contains("OS X")) {
-                    try {
-                        //say the question (only works in MAC)
-                        Runtime.getRuntime().exec(new String[]{"say", "no more questions"});
-                    } catch (IOException ex) {
-                        Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+                TTSController.TTS("No more questions");
             }
         } catch (IOException ex) {
             Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -285,12 +284,7 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     private void RepeatSoundButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepeatSoundButtonActionPerformed
         // TODO add your handling code here:
-        try {
-                //say the question (only works in MAC)
-                Runtime.getRuntime().exec(new String[]{"say", this.questionLabel.getText()});
-            } catch (IOException ex) {
-                Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        TTSController.TTS(this.questionLabel.getText());
         
     }//GEN-LAST:event_RepeatSoundButtonActionPerformed
 
@@ -317,11 +311,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     public void setQuestion(String qText, Icon icon) throws IOException {
         questionLabel.setIcon(icon);
         questionLabel.setText(qText);
-
-        if (System.getProperty("os.name").contains("OS X")) {
-            //say the question (only works in MAC)
-            Runtime.getRuntime().exec(new String[]{"say", qText});
-        }
+        
+        TTSController.TTS(qText);
     }
 
     //set text and/or icons for buttons

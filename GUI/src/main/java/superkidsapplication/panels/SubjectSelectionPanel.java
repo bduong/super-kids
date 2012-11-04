@@ -4,17 +4,17 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.QuestionController;
+import superkidsapplication.controllers.TTSController;
 
 /**
  *
- * @author Heng
+ * @author Heng & David C
  */
 public class SubjectSelectionPanel extends javax.swing.JPanel {
             
@@ -31,6 +31,9 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         this.level=level;
         initComponents();
         this.setName("SubjectSelection");
+        subject1.setText(level.getCategories().get(0).toString());
+        subject2.setText(level.getCategories().get(1).toString());
+        subject3.setText(level.getCategories().get(2).toString());
     }
 
     /**
@@ -127,7 +130,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             factory.reset();
-            QuestionPanel q = factory.createQuestionPanel(level,QuestionCategory.SHAPES);
+            QuestionPanel q = factory.createQuestionPanel(level,level.getCategories().get(0));
             controller.addPanel(q);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -138,7 +141,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             factory.reset();
-            QuestionPanel q = factory.createQuestionPanel(level,QuestionCategory.COLORS);
+            QuestionPanel q = factory.createQuestionPanel(level,level.getCategories().get(1));
             controller.addPanel(q);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,7 +152,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             factory.reset();
-            QuestionPanel q = factory.createQuestionPanel(level,QuestionCategory.ANIMALS);
+            QuestionPanel q = factory.createQuestionPanel(level,level.getCategories().get(2));
             controller.addPanel(q);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -158,41 +161,17 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private void subject1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subject1MouseEntered
         // TODO add your handling code here:
-              //say "no more questions"//ONLY WORKS IN MAC
-                if (System.getProperty("os.name").contains("OS X")) {
-                    try {
-                        //say the question (only works in MAC)
-                        Runtime.getRuntime().exec(new String[]{"say", "SHAPES"});
-                    } catch (IOException ex) {
-                        Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+        TTSController.TTS(subject1.getText());
     }//GEN-LAST:event_subject1MouseEntered
 
     private void subject3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subject3MouseEntered
         // TODO add your handling code here:
-              //say "no more questions"//ONLY WORKS IN MAC
-                if (System.getProperty("os.name").contains("OS X")) {
-                    try {
-                        //say the question (only works in MAC)
-                        Runtime.getRuntime().exec(new String[]{"say", "ANIMALS"});
-                    } catch (IOException ex) {
-                        Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+        TTSController.TTS(subject3.getText());
     }//GEN-LAST:event_subject3MouseEntered
 
     private void subject2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subject2MouseEntered
         // TODO add your handling code here:
-              //say "no more questions"//ONLY WORKS IN MAC
-                if (System.getProperty("os.name").contains("OS X")) {
-                    try {
-                        //say the question (only works in MAC)
-                        Runtime.getRuntime().exec(new String[]{"say", "COLORS"});
-                    } catch (IOException ex) {
-                        Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+        TTSController.TTS(subject2.getText());
     }//GEN-LAST:event_subject2MouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

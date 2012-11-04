@@ -4,15 +4,13 @@
  */
 package superkidsapplication.panels;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import superkidsapplication.controllers.PanelController;
+import superkidsapplication.controllers.TTSController;
 
 /**
  *
- * @author david
+ * @author david C
  */
 public class ScoreScreenPanel extends javax.swing.JPanel {
 
@@ -37,17 +35,12 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
             stars.add(i, new StarPanel());
             this.starPanel.add(stars.get(i));
         }
-        
-        try {
-            //say the question (only works in MAC)
-            if (num_stars < 4) {
-                Runtime.getRuntime().exec(new String[]{"say", "Good Job!"});
-            }
-            else {
-                Runtime.getRuntime().exec(new String[]{"say", "Excellent Job!"});
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (num_stars < 4) {
+            TTSController.TTS("Good Job!");
+        }
+        else {
+            TTSController.TTS("Excellent Job!");
         }
         
     }
