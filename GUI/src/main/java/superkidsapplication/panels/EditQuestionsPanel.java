@@ -8,6 +8,7 @@ import com.ece.superkids.questions.QuestionDatabaseFactory;
 import com.ece.superkids.questions.QuestionManager;
 import com.ece.superkids.questions.builders.QuestionBuilder;
 import com.ece.superkids.questions.entities.Question;
+import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.enums.QuestionType;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     private QuestionController qController;
     private QuestionManager manager;
     private Question currentQuestion;
+    private QuestionBuilder qBuilder;
     private List<Question> qList1;
     private List<Question> qList2;
     private List<Question> qList3;
@@ -36,6 +38,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         initComponents();
         qController = QuestionController.getInstance();
         manager = QuestionDatabaseFactory.aQuestionManager();
+        qBuilder = QuestionBuilder.aQuestion();
         currentQuestion = null;
         qList1 = null;
         qList2 = null;
@@ -361,7 +364,8 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         //create a new question (editedQuestion)
         Question editedQuestion = QuestionBuilder.aQuestion().copiedFrom(currentQuestion).build();
         //set question
-        editedQuestion.setQuestion(questionText.getName());
+        editedQuestion.setQuestion(questionText.getText());
+        //Question
         //set choices
         List<String> choice = new ArrayList<String>();
         choice.add(choice1Text.getText());

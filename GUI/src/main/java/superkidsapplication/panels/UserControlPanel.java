@@ -42,6 +42,7 @@ public class UserControlPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBounds(new java.awt.Rectangle(0, 0, 300, 300));
         setOpaque(false);
@@ -70,6 +71,8 @@ public class UserControlPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Add a new User");
 
+        jLabel3.setText("Users");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,24 +80,29 @@ public class UserControlPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(48, 48, 48)
-                        .add(usersBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 166, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(18, 18, 18)
-                        .add(deleteButton))
-                    .add(layout.createSequentialGroup()
                         .add(12, 12, 12)
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel2)
                             .add(addButton)
-                            .add(nameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                            .add(nameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(layout.createSequentialGroup()
+                        .add(48, 48, 48)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel3)
+                            .add(layout.createSequentialGroup()
+                                .add(usersBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 166, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(18, 18, 18)
+                                .add(deleteButton)))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(37, 37, 37)
+                .add(15, 15, 15)
+                .add(jLabel3)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(usersBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(deleteButton))
@@ -135,15 +143,16 @@ public class UserControlPanel extends javax.swing.JPanel {
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox usersBox;
     // End of variables declaration//GEN-END:variables
 
     private void fillBox() {
+        usersBox.removeAllItems();
         List usersList = uM.getAllUsers(); 
         Iterator<User> iterator = usersList.iterator();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next().getName());
             usersBox.addItem(iterator.next().getName());
         }
     }

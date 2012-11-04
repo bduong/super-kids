@@ -22,7 +22,7 @@ public class FileQuestionDatabase implements QuestionDatabase{
             Map<QuestionCategory,List<Question>>>();
 
     public FileQuestionDatabase(QuestionMode mode) {
-        CUSTOM_FILE_NAME = new FileManagerImpl().getCustomQuestionsFile();
+        CUSTOM_FILE_NAME = FileManagerImpl.getInstance().getCustomQuestionsFile();
         switchMode(mode);
     }
 

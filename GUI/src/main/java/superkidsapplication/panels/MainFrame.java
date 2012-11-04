@@ -16,7 +16,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    private JPanel startscreen;
+    
     //get the panel controller to manage panels
     private PanelController controller;
 
@@ -24,14 +24,12 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         //center frame relative to screen
         setLocationRelativeTo(null);
-        //get the startscreen
-        startscreen = StartScreenPanel.getInstance();
         //get panelcontroller
         controller = PanelController.getInstance();
         //set the mainFrame in PanelController (THIS IS DONE ONLY ONCE/ DO NOT DO IT AGAIN SOMEWHERE ELSE)
         controller.setMainFrame(this);
-        //add the startscreen
-        controller.addPanel(startscreen);
+        //go to user selection panel
+        controller.addPanel(new UserSelectionPanel());
     }
 
     /**

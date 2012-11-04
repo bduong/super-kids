@@ -1,5 +1,6 @@
 package com.ece.superkids.users;
 
+import com.ece.superkids.FileManagerImpl;
 import com.ece.superkids.users.entities.User;
 import java.io.*;
 import java.util.ArrayList;
@@ -10,12 +11,9 @@ public class FileUserDatabase  implements UserDatabase {
     String path;
 
   public FileUserDatabase() {
-      userHome = System.getProperty( "user.home" );
-      File directory = new File(userHome+File.separator+".superkidsdata");
-      if(!directory.exists()){
-          directory.mkdirs();
-      }
-      path = directory.getAbsolutePath()+File.separator;
+      userHome = FileManagerImpl.getInstance().getDirectory().getAbsolutePath();
+      path = userHome+File.separator;
+      System.out.println(path);
   }
 
   private User getUserFromFile(String filename) {
@@ -79,7 +77,7 @@ public class FileUserDatabase  implements UserDatabase {
 
   // delete user object file
   public boolean deleteUser(String name) {
-      File file = new File(name+".ser");
+      File file = new File(path+name+".ser");
       return file.delete();
   }
 
@@ -92,7 +90,7 @@ public class FileUserDatabase  implements UserDatabase {
   }
 
   public ArrayList<User> getAllUsers() {
-      File dir = new File(userHome);
+      File dir = new File(path);
       File[] files = dir.listFiles(new FilenameFilter() {
           public boolean accept(File dir, String name) {
               return name.toLowerCase().endsWith(".ser");
