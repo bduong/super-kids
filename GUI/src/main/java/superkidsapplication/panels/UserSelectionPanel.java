@@ -8,7 +8,6 @@ import com.ece.superkids.users.FileUserManager;
 import com.ece.superkids.users.entities.User;
 import java.util.Iterator;
 import java.util.List;
-import javax.swing.JPanel;
 import superkidsapplication.controllers.PanelController;
 
 /**
@@ -26,6 +25,7 @@ public class UserSelectionPanel extends javax.swing.JPanel {
     FileUserManager uM = new FileUserManager();
 
     public UserSelectionPanel() {
+        this.setName("UserSelection");
         initComponents();
         //get the startscreen
         startscreen = StartScreenPanel.getInstance();

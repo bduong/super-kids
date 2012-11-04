@@ -44,7 +44,7 @@ public class PanelController {
     //add to panels list.
     //add to mainFrame.
     public void addPanel(JPanel panel) {
-        //first add to list
+        //first add panel to list
         panels.add(panel);
         //if we are not on start panel
         //set the panel before invisible
@@ -108,7 +108,7 @@ public class PanelController {
     //goes back to subject selection menu if found
     public void goToSubjectMenu() {
         //start from back of the list to search for subject selection
-        for (int i = panels.size()-1; i > -1; i--) {
+        for (int i = panels.size() - 1; i > -1; i--) {
             //if the panel name is not null
             if (panels.get(i).getName() != null) {
                 //and if the name is eqaul to subjectselection

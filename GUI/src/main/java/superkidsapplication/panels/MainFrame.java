@@ -28,7 +28,7 @@ public class MainFrame extends javax.swing.JFrame {
         controller = PanelController.getInstance();
         //set the mainFrame in PanelController (THIS IS DONE ONLY ONCE/ DO NOT DO IT AGAIN SOMEWHERE ELSE)
         controller.setMainFrame(this);
-        //go to user selection panel
+        //go to userselectionpanel
         controller.addPanel(new UserSelectionPanel());
     }
 
@@ -61,7 +61,6 @@ public class MainFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 640));
         setName("mainframe"); // NOI18N
         setResizable(false);
-        setSize(new java.awt.Dimension(800, 640));
 
         contentArea.setBounds(new java.awt.Rectangle(0, 0, 800, 600));
         contentArea.setLayout(new java.awt.BorderLayout());
@@ -188,10 +187,10 @@ public class MainFrame extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AboutItem;
-    private javax.swing.JMenuItem BackItem;
-    private javax.swing.JMenu ChildMenu;
+    public javax.swing.JMenuItem BackItem;
+    public javax.swing.JMenu ChildMenu;
     private javax.swing.JMenuItem ExitAppItem;
-    private javax.swing.JMenuItem ExitItem;
+    public javax.swing.JMenuItem ExitItem;
     private javax.swing.JMenu FileMenu;
     private javax.swing.JMenu HelpMenu;
     private javax.swing.JMenuItem LearnMode;
