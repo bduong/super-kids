@@ -1,7 +1,5 @@
 package com.ece.superkids;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -9,6 +7,7 @@ public class FileManagerImpl implements FileManager {
 
     private static String fileDirectory;
     private static final String customQuestionsFile = "customQuestions.txt";
+    private static final String customImagePathFile = "custom_image_paths.properties";
 
     private FileManagerImpl() {
         String userHome = System.getProperty("user.home");
@@ -36,17 +35,32 @@ public class FileManagerImpl implements FileManager {
     }
 
     @Override
-    public File getUserFile(final String userName) {
+    public File getUserFile(final String userFile) {
+        File customFile = new File(fileDirectory + File.separator + userFile);
+        if (customFile.exists()){
+            return customFile;
+        }
         return null;
     }
 
     @Override
     public File getImagePathsFile() {
-        return null;
+        File customFile = new File(fileDirectory + File.separator + customImagePathFile);
+        if (!customFile.exists())
+            try {
+                customFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        return customFile;
     }
 
     @Override
     public File getDirectory() {
-        return new File(fileDirectory);
+        File directory = new File(fileDirectory);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+        return directory;
     }
 }

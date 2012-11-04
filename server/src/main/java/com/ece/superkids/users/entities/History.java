@@ -9,9 +9,7 @@ import com.ece.superkids.questions.enums.QuestionCategory;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Queue;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Iterator;
 
 public class History {
@@ -35,7 +33,7 @@ public class History {
         }
     }
     
-    public Map<Question, ArrayList<Integer>> getHistory(QuestionCategory category, QuestionLevel level) {
+    public Map<Question, ArrayList<Integer>> getHistorye(QuestionCategory category, QuestionLevel level) {
         String key = category.toString() + ":" + level.toString();
         Map<Question, ArrayList<Integer>> questionToScores = new HashMap();
         if(questionToList.containsKey(key)) {
@@ -63,5 +61,42 @@ public class History {
             return null;
         }
     }
+    
+    public Object[][] getHistory(QuestionCategory category, QuestionLevel level) {
+        
+        Map<Question, ArrayList<Integer>> map = getHistorye(category, level);
+        Iterator it = map.entrySet().iterator();
+        int counter = 0;
+        while(it.hasNext())  {
+            Map.Entry pairs = (Map.Entry)it.next();
+            counter ++;
+        }
+        Object o[][] = new Object[counter][6];
+        it = map.entrySet().iterator();
+        int index = 0;
+        while(it.hasNext()) {
+            Map.Entry pairs = (Map.Entry)it.next();
+            ArrayList<Integer> scoresList = (ArrayList<Integer>)pairs.getValue();
+            o[index][0] = pairs.getValue();
+            for(int i=0; i<scoresList.size(); i++) {
+                o[index][i] = scoresList.get(i);
+            }
+            index++;
+        }
+        return o;
+
+    }
+
+    public Object[][] getHistoryTest() {
+        Object o[][] = new Object[10][6];
+        for(int i=0; i<o.length; i++) {
+            o[i][0] = "Question" + i;
+            for(int j=1; j<6; j++) {
+                o[i][j] = i*i;
+            }
+        }
+        return o;
+    }
+
 
 }

@@ -1,5 +1,9 @@
 package superkidsapplication.providers;
 
+import com.ece.superkids.FileManagerImpl;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
@@ -11,15 +15,19 @@ import javax.swing.*;
 public class FilePathImageProvider implements ImageProvider{
 
     private static final String PROPERTY_FILE = "/providers/image_paths.properties";
-    Map<String, String> imagePaths = new HashMap<String, String>();
-
+    private static File CUSTOM_PROPERTY_FILE = FileManagerImpl.getInstance().getImagePathsFile();
+    Map<String, Path> imagePaths = new HashMap<String, Path>();
 
     public FilePathImageProvider() throws IOException {
-        loadImagePaths();
+        loadAllImagePaths();
     }
 
-    private void loadImagePaths() throws IOException {
-        InputStream in = getClass().getResourceAsStream(PROPERTY_FILE);
+    private void loadAllImagePaths() throws IOException {
+        loadImagePaths(getClass().getResourceAsStream(PROPERTY_FILE), Mode.DEFAULT);
+        loadImagePaths(new FileInputStream(CUSTOM_PROPERTY_FILE), Mode.CUSTOM);
+    }
+
+    private void loadImagePaths(InputStream in, Mode mode) throws IOException {
         Properties filePaths = new Properties();
         filePaths.load(in);
         in.close();
@@ -28,14 +36,19 @@ public class FilePathImageProvider implements ImageProvider{
 
         while (e.hasMoreElements()) {
             String key = (String) e.nextElement();
-            imagePaths.put(key, filePaths.getProperty(key));
+            imagePaths.put(key, new Path(filePaths.getProperty(key), mode));
         }
     }
 
     @Override
     public ImageIcon getImage(final String key) {
-        String path = imagePaths.get(key.toLowerCase());
-        return new ImageIcon(getClass().getResource(path));
+        String path = imagePaths.get(key.toLowerCase()).getPath();
+        Mode mode = imagePaths.get(key.toLowerCase()).getMode();
+        if (mode == Mode.DEFAULT) {
+            return new ImageIcon(getClass().getResource(path));
+        } else {
+            return new ImageIcon(path);
+        }
 
     }
 
@@ -43,7 +56,7 @@ public class FilePathImageProvider implements ImageProvider{
     public void refresh() {
         imagePaths.clear();
         try {
-            loadImagePaths();
+            loadAllImagePaths();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,6 +65,28 @@ public class FilePathImageProvider implements ImageProvider{
     public void printAllImagePaths() {
         for (String key : imagePaths.keySet()) {
             System.out.println(key + " -- " + imagePaths.get(key));
+        }
+    }
+
+    private enum Mode{
+        CUSTOM, DEFAULT
+    }
+
+    private class Path{
+        private String path;
+        private Mode mode;
+
+        private Path(final String path, final Mode mode) {
+            this.path = path;
+            this.mode = mode;
+        }
+
+        public String getPath() {
+            return path;
+        }
+
+        public Mode getMode() {
+            return mode;
         }
     }
 }

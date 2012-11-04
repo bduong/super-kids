@@ -59,6 +59,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        RepeatSoundButton = new javax.swing.JButton();
         questionLabel = new javax.swing.JLabel();
         scoreNumLabel = new javax.swing.JLabel();
         scoreLabel = new javax.swing.JLabel();
@@ -76,6 +77,16 @@ public class QuestionPanel extends javax.swing.JPanel {
 
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(800, 600));
         jLayeredPane1.setSize(new java.awt.Dimension(800, 600));
+
+        RepeatSoundButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/soundicon.png"))); // NOI18N
+        RepeatSoundButton.setContentAreaFilled(false);
+        RepeatSoundButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RepeatSoundButtonActionPerformed(evt);
+            }
+        });
+        RepeatSoundButton.setBounds(690, 510, 97, 80);
+        jLayeredPane1.add(RepeatSoundButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         questionLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         questionLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -269,8 +280,21 @@ public class QuestionPanel extends javax.swing.JPanel {
             Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_nextQButtonActionPerformed
+
+    private void RepeatSoundButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepeatSoundButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+                //say the question (only works in MAC)
+                Runtime.getRuntime().exec(new String[]{"say", this.questionLabel.getText()});
+            } catch (IOException ex) {
+                Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }//GEN-LAST:event_RepeatSoundButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ChoicePanel;
+    private javax.swing.JButton RepeatSoundButton;
     private javax.swing.JLabel background;
     private javax.swing.JLabel characterIconLabel;
     private javax.swing.JButton choice1Button;
@@ -341,7 +365,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         } else if (a == 4) {
             scoreNumLabel.setText("3");
         }
-
+        
+        this.RepeatSoundButton.setVisible(false);
         nextQButton.setVisible(true);
     }
 
