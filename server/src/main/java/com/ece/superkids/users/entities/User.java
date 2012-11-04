@@ -11,11 +11,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     static final long serialVersionUID = -6618469841127325812L;
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 71200f34f2d05431a2ae2cdd485c0f175a76bf15
     private int id;
     private String name;
     private State state;
@@ -70,5 +66,15 @@ public class User implements Serializable {
     public Object[][] getHistory() {
         return history.getHistoryTest();
     }
+    
+    public Question getCurrentQuestion() {
+        return state.getCurrentQuestion();
+    }
+    
+    public QuestionLevel getCurrentLevel() {
+        return state.getCurrentLevel();
+    }
+
+
 
 }
