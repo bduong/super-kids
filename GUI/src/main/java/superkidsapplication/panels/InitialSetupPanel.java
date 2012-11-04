@@ -6,6 +6,7 @@ package superkidsapplication.panels;
 
 import com.ece.superkids.users.ParentManager;
 import com.ece.superkids.users.UserDatabaseFactory;
+import superkidsapplication.controllers.PanelController;
 
 /**
  *
@@ -17,10 +18,13 @@ public class InitialSetupPanel extends javax.swing.JPanel {
      * Creates new form InitialSetupPanel
      */
     ParentManager pM = UserDatabaseFactory.aParentManager();
+    PanelController pC;
 
     public InitialSetupPanel() {
         setName("InitialSetup");
         initComponents();
+        nextButton.setVisible(false);
+        pC = PanelController.getInstance();
     }
 
     /**
@@ -39,6 +43,7 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         warnLabel = new javax.swing.JLabel();
         passField = new javax.swing.JPasswordField();
         passField2 = new javax.swing.JPasswordField();
+        nextButton = new javax.swing.JButton();
 
         jLabel1.setText("Initial Setup");
 
@@ -62,25 +67,39 @@ public class InitialSetupPanel extends javax.swing.JPanel {
             }
         });
 
+        nextButton.setText("Next");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(43, 43, 43)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 233, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(passField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                            .add(passField2))
-                        .add(26, 26, 26)
+                        .add(43, 43, 43)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(jLabel3)))
-                    .add(okButton)
-                    .add(jLabel1))
-                .addContainerGap(79, Short.MAX_VALUE))
+                            .add(layout.createSequentialGroup()
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                    .add(passField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                    .add(passField2))
+                                .add(26, 26, 26)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel2)
+                                    .add(jLabel3)))
+                            .add(okButton)
+                            .add(jLabel1)))
+                    .add(layout.createSequentialGroup()
+                        .add(23, 23, 23)
+                        .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 387, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .add(44, 44, 44)
+                        .add(nextButton)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -99,7 +118,9 @@ public class InitialSetupPanel extends javax.swing.JPanel {
                 .add(okButton)
                 .add(18, 18, 18)
                 .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(nextButton)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -107,15 +128,15 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String pass1 = new String(passField.getPassword());
         String pass2 = new String(passField2.getPassword());
-        if(pass1.length()<8){
+        if (pass1.length() < 8) {
             warnLabel.setText("Length must be at least 8.");
             return;
         }
         if (pass1.equals(pass2)) {
             pM.changeParentPassword(new String(passField.getPassword()));
-            warnLabel.setText("Parent password created.");
-        }
-        else if (!pass1.equals(pass2)){
+            warnLabel.setText("Parent password successfully created.");
+            nextButton.setVisible(true);
+        } else if (!pass1.equals(pass2)) {
             warnLabel.setText("Passwords don't match.");
         }
     }//GEN-LAST:event_okButtonActionPerformed
@@ -123,10 +144,16 @@ public class InitialSetupPanel extends javax.swing.JPanel {
     private void passFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passFieldActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        // TODO add your handling code here:
+        pC.addPanel(new ParentalControlPanel());
+    }//GEN-LAST:event_nextButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton nextButton;
     private javax.swing.JButton okButton;
     private javax.swing.JPasswordField passField;
     private javax.swing.JPasswordField passField2;

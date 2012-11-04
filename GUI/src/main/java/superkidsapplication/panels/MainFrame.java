@@ -185,7 +185,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void QModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QModeActionPerformed
         // TODO add your handling code here:
-        controller.goToMainMenu();
+        //NEED TO IMPLEMENT THIS BETTER WAY
+        //controller.goToMainMenu();
     }//GEN-LAST:event_QModeActionPerformed
 
     private void LearnModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LearnModeActionPerformed

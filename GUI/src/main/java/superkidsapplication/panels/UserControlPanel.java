@@ -43,6 +43,7 @@ public class UserControlPanel extends javax.swing.JPanel {
         deleteButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        warnLabel = new javax.swing.JLabel();
 
         setBounds(new java.awt.Rectangle(0, 0, 300, 300));
         setOpaque(false);
@@ -73,6 +74,9 @@ public class UserControlPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Users");
 
+        warnLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        warnLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,21 +84,24 @@ public class UserControlPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(12, 12, 12)
-                        .add(jLabel1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(addButton)
-                            .add(nameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                    .add(layout.createSequentialGroup()
                         .add(48, 48, 48)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel3)
                             .add(layout.createSequentialGroup()
                                 .add(usersBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 166, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(18, 18, 18)
-                                .add(deleteButton)))))
+                                .add(deleteButton))))
+                    .add(layout.createSequentialGroup()
+                        .add(12, 12, 12)
+                        .add(jLabel1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel2)
+                            .add(nameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(addButton)
+                            .add(layout.createSequentialGroup()
+                                .add(6, 6, 6)
+                                .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -106,7 +113,7 @@ public class UserControlPanel extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(usersBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(deleteButton))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 81, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 75, Short.MAX_VALUE)
                 .add(jLabel2)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -114,7 +121,9 @@ public class UserControlPanel extends javax.swing.JPanel {
                     .add(jLabel1))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(addButton)
-                .add(56, 56, 56))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -124,9 +133,14 @@ public class UserControlPanel extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
+        if(nameField.getText().contains(" ")||nameField.getText().isEmpty()){
+            warnLabel.setText("Illegal Name");
+            return;
+        }
         User user = new User(nameField.getText());
         uM = new FileUserManager();
         uM.addUser(user);
+        warnLabel.setText("User Added");
         fillBox();
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -146,6 +160,7 @@ public class UserControlPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox usersBox;
+    private javax.swing.JLabel warnLabel;
     // End of variables declaration//GEN-END:variables
 
     private void fillBox() {

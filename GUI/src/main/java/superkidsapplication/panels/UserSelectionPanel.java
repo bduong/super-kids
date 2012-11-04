@@ -15,16 +15,16 @@ import superkidsapplication.controllers.PanelController;
  *
  * @author baris
  */
-public class UserSelectionPanel extends javax.swing.JPanel {
+public final class UserSelectionPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form UserSelectionPanel
      */
-    private StartScreenPanel startscreen ;
+    private StartScreenPanel startscreen;
     //get the panel controller to manage panels
     private PanelController controller;
     UserManager uM = UserDatabaseFactory.aUserManager();
-
+    
     public UserSelectionPanel() {
         this.setName("UserSelection");
         initComponents();
@@ -103,16 +103,15 @@ public class UserSelectionPanel extends javax.swing.JPanel {
     private void usersBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usersBoxActionPerformed
-
+    
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        if(usersBox.getItemCount()==0){
+        if (usersBox.getItemCount() == 0) {
             warnLabel.setText("Please add a child first.");
             return;
         }
         controller.addPanel(startscreen);
     }//GEN-LAST:event_loginButtonActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
