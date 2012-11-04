@@ -62,4 +62,8 @@ public class User implements Serializable {
         state = new State();
     }
 
+    public Object[][] getHistory() {
+        return history.getHistoryTest();
+    }
+
 }
