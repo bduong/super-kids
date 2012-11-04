@@ -9,9 +9,7 @@ import com.ece.superkids.questions.enums.QuestionCategory;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Queue;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Iterator;
 
 public class History {
@@ -89,6 +87,16 @@ public class History {
 
     }
 
+    public Object[][] getHistoryTest(QuestionCategory category, QuestionLevel level) {
+        Object o[][] = new Object[10][6];
+        for(int i=0; i<o.length; i++) {
+            o[i][0] = "Question" + i;
+            for(int j=1; j<6; j++) {
+                o[i][j] = i*i;
+            }
+        }
+        return o;
+    }
 
 
 }
