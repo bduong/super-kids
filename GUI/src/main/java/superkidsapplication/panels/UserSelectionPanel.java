@@ -4,7 +4,8 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.users.FileUserManager;
+import com.ece.superkids.users.UserDatabaseFactory;
+import com.ece.superkids.users.UserManager;
 import com.ece.superkids.users.entities.User;
 import java.util.Iterator;
 import java.util.List;
@@ -22,7 +23,7 @@ public class UserSelectionPanel extends javax.swing.JPanel {
     private StartScreenPanel startscreen ;
     //get the panel controller to manage panels
     private PanelController controller;
-    FileUserManager uM = new FileUserManager();
+    UserManager uM = UserDatabaseFactory.aUserManager();
 
     public UserSelectionPanel() {
         this.setName("UserSelection");

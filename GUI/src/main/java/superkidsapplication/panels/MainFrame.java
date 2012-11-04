@@ -4,7 +4,8 @@
  */
 package superkidsapplication.panels;
 
-import javax.swing.JPanel;
+import com.ece.superkids.users.ParentManager;
+import com.ece.superkids.users.UserDatabaseFactory;
 import superkidsapplication.controllers.PanelController;
 
 /**
@@ -16,10 +17,10 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    
     //get the panel controller to manage panels
     private PanelController controller;
-
+    private ParentManager pM;
+    
     public MainFrame() {
         initComponents();
         //center frame relative to screen
@@ -28,8 +29,13 @@ public class MainFrame extends javax.swing.JFrame {
         controller = PanelController.getInstance();
         //set the mainFrame in PanelController (THIS IS DONE ONLY ONCE/ DO NOT DO IT AGAIN SOMEWHERE ELSE)
         controller.setMainFrame(this);
-        //go to userselectionpanel
-        controller.addPanel(new UserSelectionPanel());
+        pM = UserDatabaseFactory.aParentManager();
+        if (pM.doesParentExist()) {
+            //go to userselectionpanel
+            controller.addPanel(new UserSelectionPanel());
+        } else if (!pM.doesParentExist()) {
+            controller.addPanel(new InitialSetupPanel());
+        }
     }
 
     /**
@@ -158,33 +164,32 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.goToMainMenu();
     }//GEN-LAST:event_ExitItemActionPerformed
-
+    
     private void AboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutItemActionPerformed
         // TODO add your handling code here:
         AboutFrame about = new AboutFrame();
         about.setVisible(true);
     }//GEN-LAST:event_AboutItemActionPerformed
-
+    
     private void ParentItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParentItemActionPerformed
         // TODO add your handling code here:
         ParentalControlPanel parentPanel = new ParentalControlPanel();
         controller.addPanel(parentPanel);
     }//GEN-LAST:event_ParentItemActionPerformed
-
+    
     private void QModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QModeActionPerformed
         // TODO add your handling code here:
         controller.goToMainMenu();
     }//GEN-LAST:event_QModeActionPerformed
-
+    
     private void LearnModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LearnModeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LearnModeActionPerformed
-
+    
     private void ExitAppItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitAppItemActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_ExitAppItemActionPerformed
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AboutItem;
     public javax.swing.JMenuItem BackItem;

@@ -4,8 +4,8 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.users.FileUserManager;
+import com.ece.superkids.users.UserDatabaseFactory;
 import com.ece.superkids.users.UserManager;
 import com.ece.superkids.users.entities.User;
 import java.util.Iterator;
@@ -20,7 +20,7 @@ public class UserControlPanel extends javax.swing.JPanel {
     /**
      * Creates new form UserControlPanel
      */
-    FileUserManager uM  = new FileUserManager();
+    UserManager uM  = UserDatabaseFactory.aUserManager();
     
     public UserControlPanel() {
         initComponents();
