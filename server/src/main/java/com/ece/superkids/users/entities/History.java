@@ -87,7 +87,7 @@ public class History {
 
     }
 
-    public Object[][] getHistoryTest(QuestionCategory category, QuestionLevel level) {
+    public Object[][] getHistoryTest() {
         Object o[][] = new Object[10][6];
         for(int i=0; i<o.length; i++) {
             o[i][0] = "Question" + i;
