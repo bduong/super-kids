@@ -13,8 +13,8 @@ public class FileUserManager implements UserManager {
     }
 
     @Override
-    public void deleteUser(final User user) {
-        fileUserDatabase.deleteUser(user.getName());;
+    public void deleteUser(final String name) {
+        fileUserDatabase.deleteUser(name);
     }
 
     @Override
