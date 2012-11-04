@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.io.Serializable;
 
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.entities.Question;
@@ -57,6 +58,8 @@ public class State implements Serializable {
         return score;
     }
 
+
+
     public Map<Question, Integer> getScores(int scoreLevel) {
         Map<Question, Integer> score = new HashMap<Question, Integer>();
         Iterator it = scores.entrySet().iterator();
@@ -72,12 +75,4 @@ public class State implements Serializable {
     public Map<Question, Integer> getAllScores() {
         return scores;
     }
-
-
-
-
-
-
-
-
 }

@@ -11,8 +11,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.io.Serializable;
 
-public class History {
+public class History implements Serializable {
     
     private Map<String, ArrayList<State>> questionToList;
 
@@ -23,7 +24,6 @@ public class History {
     public void saveToHistory(QuestionCategory category, QuestionLevel level, State state) {
         String key = category.toString() + ":" + level.toString();
         if(questionToList.containsKey(key)) {
-            // get array
             ArrayList<State> states = (ArrayList<State>)questionToList.get(key);
             states.add(state);
         } else {
@@ -31,6 +31,7 @@ public class History {
             states.add(state);
             questionToList.put(key, states);
         }
+        System.out.println("State added to history");
     }
     
     public Map<Question, ArrayList<Integer>> getHistorye(QuestionCategory category, QuestionLevel level) {
