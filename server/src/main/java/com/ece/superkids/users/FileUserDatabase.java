@@ -69,7 +69,7 @@ public class FileUserDatabase  implements UserDatabase {
           }
       } catch(Exception e) {
           System.out.println("Could not deserialize file: " + filename);
-          e.printStackTrace();
+          // e.printStackTrace();
       } finally {
           return user;
       }
