@@ -45,21 +45,6 @@
       <artifactId>AppleJavaExtensions</artifactId>
       <version>1.6</version>
     </dependency>
-    <dependency>
-      <groupId>marytts</groupId>
-      <artifactId>marytts-runtime</artifactId>
-      <version>5.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>marytts</groupId>
-      <artifactId>marytts-lang-en</artifactId>
-      <version>5.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>marytts</groupId>
-      <artifactId>voice-cmu-slt-hsmm</artifactId>
-      <version>5.1-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 
   <build>
