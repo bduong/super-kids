@@ -6,8 +6,11 @@ import com.ece.superkids.questions.enums.QuestionType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class Question {
+public class Question implements Serializable {
+    
+    static final long serialVersionUID = -6618469841127325813L;
 
     private String question;
     private List<String> choices;
