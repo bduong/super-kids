@@ -9,7 +9,7 @@
 {"question":"Which country is not in Europe","choices":["Iceland","Italy","Greenland","Romania"],"answer":"Greenland","explaination":"","type":"TEXT", "category":"GEOGRAPHY","level":"LEVEL_2"}
 {"question":"Which continent contains the equator?","choices":["Africa","Europe","North America","Antarctica"],"answer":"Africa","explaination":"","type":"TEXT", "category":"GEOGRAPHY","level":"LEVEL_2"}
 {"question":"What continent contains Egypt?","choices":["Africa","Europe","Asia","South America"],"answer":"Africa","explaination":"","type":"TEXT", "category":"GEOGRAPHY","level":"LEVEL_2"}
-{"question":"Which planet is closest to the Sun?","choices":["Mecury","Venus","Earth","Mars"],"answer":"Mercury","explaination":"","type":"TEXT", "category":"PLANETS","level":"LEVEL_2"}
+{"question":"Which planet is closest to the Sun?","choices":["Mercury","Venus","Earth","Mars"],"answer":"Mercury","explaination":"","type":"TEXT", "category":"PLANETS","level":"LEVEL_2"}
 {"question":"Which planet is the largest in the Solar System?","choices":["Saturn","Earth","The Sun","Jupiter"],"answer":"Jupiter","explaination":"","type":"TEXT", "category":"PLANETS","level":"LEVEL_2"}
 {"question":"Which planet is made of gas?","choices":["Saturn","Neptune","Mars","Earth"],"answer":"Saturn","explaination":"","type":"TEXT", "category":"PLANETS","level":"LEVEL_2"}
 {"question":"Which one is not a vegetable?","choices":["Apple","Broccoli","Mushroom","Onion"],"answer":"Apple","explaination":"","type":"TEXT", "category":"FOOD","level":"LEVEL_2"}

@@ -6,8 +6,8 @@ package superkidsapplication.panels;
 
 import com.ece.superkids.users.ParentManager;
 import com.ece.superkids.users.UserDatabaseFactory;
-import java.awt.Component;
 import superkidsapplication.controllers.PanelController;
+import superkidsapplication.events.Session;
 
 /**
  *
@@ -21,9 +21,14 @@ public class MainFrame extends javax.swing.JFrame {
     //get the panel controller to manage panels
     private PanelController controller;
     private ParentManager pM;
+    private Session session = Session.aSession();
 
     public MainFrame() {
         initComponents();
+        logoutButton.setVisible(false);
+        jMenuBar1.add(logoutButton);
+        //add the listener to button 
+        logoutButton.addActionListener(session);
         //center frame relative to screen
         setLocationRelativeTo(null);
         //get panelcontroller
@@ -48,6 +53,7 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        logoutButton = new javax.swing.JButton();
         contentArea = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
@@ -62,6 +68,14 @@ public class MainFrame extends javax.swing.JFrame {
         HelpMenu = new javax.swing.JMenu();
         AboutItem = new javax.swing.JMenuItem();
 
+        logoutButton.setText("Logout");
+        logoutButton.setBorderPainted(false);
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Super Kids: The Ultimate Adventure");
         setLocation(new java.awt.Point(0, 0));
@@ -69,12 +83,6 @@ public class MainFrame extends javax.swing.JFrame {
         setName("mainframe"); // NOI18N
         setResizable(false);
 
-        contentArea.setBounds(new java.awt.Rectangle(0, 0, 800, 600));
-        contentArea.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                contentAreaComponentAdded(evt);
-            }
-        });
         contentArea.setLayout(new java.awt.BorderLayout());
         getContentPane().add(contentArea, java.awt.BorderLayout.CENTER);
 
@@ -185,8 +193,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void QModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QModeActionPerformed
         // TODO add your handling code here:
-        //NEED TO IMPLEMENT THIS BETTER WAY
-        //controller.goToMainMenu();
+        controller.goToMainMenu();
     }//GEN-LAST:event_QModeActionPerformed
 
     private void LearnModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LearnModeActionPerformed
@@ -198,33 +205,13 @@ public class MainFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_ExitAppItemActionPerformed
 
-    //take care of menu buttons when a new component is added to main frame
-    private void contentAreaComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_contentAreaComponentAdded
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
-        /*
-        Component component = (Component) evt.getChild();
-        if (component.getName() != null && component.getName().equals("InitialSetup")) {
-            ExitItem.setEnabled(false);
-            BackItem.setEnabled(false);
-            ChildMenu.setEnabled(false);
-            ParentItem.setEnabled(false);
-        } else if (component.getName() != null && component.getName().equals("StartScreen")) {
-            BackItem.setEnabled(false);
-            ExitItem.setEnabled(false);
-            ChildMenu.setEnabled(true);
-            ParentItem.setEnabled(true);
-        } else if (component.getName() != null && component.getName().equals("UserSelection")) {
-            BackItem.setEnabled(false);
-            ExitItem.setEnabled(false);
-            ChildMenu.setEnabled(false);
-        } else {
-            ExitItem.setEnabled(true);
-            BackItem.setEnabled(true);
-            ChildMenu.setEnabled(true);
-            ParentItem.setEnabled(true);
-        }
-        * */
-    }//GEN-LAST:event_contentAreaComponentAdded
+        //logout
+        session.logout();
+        //go to main menu which is user selection when there is no one logged in
+        controller.goToMainMenu();
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AboutItem;
@@ -240,5 +227,6 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JMenuItem QMode;
     public javax.swing.JPanel contentArea;
     private javax.swing.JMenuBar jMenuBar1;
+    public javax.swing.JButton logoutButton;
     // End of variables declaration//GEN-END:variables
 }
