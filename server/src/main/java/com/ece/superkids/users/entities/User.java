@@ -6,10 +6,11 @@ package com.ece.superkids.users.entities;
 import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
-
 import java.io.Serializable;
 
 public class User implements Serializable {
+
+    static final long serialVersionUID = -6618469841127325812L;
 
     private int id;
     private String name;
