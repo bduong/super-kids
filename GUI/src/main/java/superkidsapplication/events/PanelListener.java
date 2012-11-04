@@ -11,6 +11,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.JPanel;
 import superkidsapplication.panels.MainFrame;
+import superkidsapplication.panels.UserSelectionPanel;
 
 /**
  *
@@ -54,6 +55,9 @@ public class PanelListener implements ComponentListener,
             frame.ExitItem.setEnabled(false);
             frame.ChildMenu.setEnabled(false);
             frame.ParentItem.setEnabled(true);
+            //refill the box
+            UserSelectionPanel panel = (UserSelectionPanel)component;
+            panel.fillBox();
         } else if (component.getName() != null && component.getName().equals("ParentalControl")) {
             frame.BackItem.setEnabled(true);
             frame.ExitItem.setEnabled(false);
