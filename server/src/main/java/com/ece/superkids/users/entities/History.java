@@ -34,7 +34,7 @@ public class History implements Serializable {
         System.out.println("State added to history");
     }
     
-    public Map<Question, ArrayList<Integer>> getHistorye(QuestionCategory category, QuestionLevel level) {
+    public Map<Question, ArrayList<Integer>> getHistoryMap(QuestionCategory category, QuestionLevel level) {
         String key = category.toString() + ":" + level.toString();
         Map<Question, ArrayList<Integer>> questionToScores = new HashMap();
         if(questionToList.containsKey(key)) {
@@ -65,7 +65,7 @@ public class History implements Serializable {
     
     public Object[][] getHistory(QuestionCategory category, QuestionLevel level) {
         
-        Map<Question, ArrayList<Integer>> map = getHistorye(category, level);
+        Map<Question, ArrayList<Integer>> map = getHistoryMap(category, level);
         Iterator it = map.entrySet().iterator();
         int counter = 0;
         while(it.hasNext())  {
