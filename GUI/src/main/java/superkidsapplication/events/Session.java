@@ -73,7 +73,7 @@ public class Session implements ActionListener {
     }
 
     public boolean isUserLoggedIn(User user) {
-        if (currentUser.getName().equals(user.getName())){
+        if (currentUser!=null&&currentUser.getName().equals(user.getName())){
             return true;
         } else {
             return false;
