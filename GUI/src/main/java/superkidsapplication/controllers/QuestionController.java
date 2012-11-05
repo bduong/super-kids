@@ -8,7 +8,6 @@ import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import superkidsapplication.panels.QuestionPanel;
 /*
@@ -62,9 +61,6 @@ public class QuestionController {
         while (count < n) {
             //get a new question
             Question q = qd.getQuestion(level, category, count);
-            
-            //shuffle choices
-            Collections.shuffle(q.getChoices());
 
             //create new question panel
             qPanel = new QuestionPanel(q);

@@ -202,13 +202,22 @@ public class StartScreenPanel extends javax.swing.JPanel {
             if (q != null) {
                 number = qD.getQuestionNumber(q);
             }
-            System.out.println("Continue question:"+q.getQuestion()+" index:"+number);
-            //and set number in question controller
-            qController.setCount(number);
-            //create the question panel
-            QuestionPanel qPanel = qController.createQuestionPanel(q.getLevel(), q.getCategory());
-            //display the questionpanel
-            controller.addPanel(qPanel);
+            else{
+                return;
+            }
+            //if returned number is -1, then question is not found in the database
+            if (number != -1) {
+                System.out.println("Continue question:" + q.getQuestion() + " index:" + number);
+                //and set number in question controller
+                qController.setCount(number);
+                //create the question panel
+                QuestionPanel qPanel = qController.createQuestionPanel(q.getLevel(), q.getCategory());
+                //display the questionpanel
+                controller.addPanel(qPanel);
+            }
+            else{
+                System.out.println("Cannot find saved question.");
+            }
         } catch (IOException ex) {
             Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
         }

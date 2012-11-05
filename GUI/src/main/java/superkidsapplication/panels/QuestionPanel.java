@@ -4,6 +4,7 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.questions.builders.QuestionBuilder;
 import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
@@ -11,6 +12,7 @@ import com.ece.superkids.questions.enums.QuestionType;
 import com.ece.superkids.users.entities.User;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,13 +48,15 @@ public class QuestionPanel extends javax.swing.JPanel {
     private List<Icon> icons;
     private ImageProvider iconProvider;
     private Question question;
+    private Question originalQuestion;
 
     //when creating the panel set which choice is the correct answer
     //1 is button1 , 2 is button2 and so on.
     //look at design tab to see which button is which
     public QuestionPanel(Question question) {
         this.setName("Question");
-        this.question=question;
+        this.question = question;
+        this.originalQuestion = QuestionBuilder.aQuestion().copiedFrom(question).build();
         this.category = question.getCategory();
         this.level = question.getLevel();
         qBase = QuestionController.getInstance();
@@ -63,6 +67,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         a = 0;
         iconProvider = ResourceProviderFactory.anImageProvider();
         fillQuestion();
+        saveQuestion();
     }
 
     /**
@@ -292,9 +297,6 @@ public class QuestionPanel extends javax.swing.JPanel {
 
                 TTSController.TTS("No more questions");
             }
-           //save the this question before going to next question(save state)
-            User user = session.getLoggedInUser();
-            user.setCurrentQuestion(question);
         } catch (IOException ex) {
             Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -393,6 +395,12 @@ public class QuestionPanel extends javax.swing.JPanel {
             a++;
         }
     }
+    
+    private void saveQuestion(){
+            //save this question to the user's current question
+            User user = session.getLoggedInUser();
+            user.setCurrentQuestion(originalQuestion);  
+    }
 
     //fill question panel
     private void fillQuestion() {
@@ -402,7 +410,11 @@ public class QuestionPanel extends javax.swing.JPanel {
             icons = null;
             //set the question, question can have an icon as well. it is set to null for now.
             setQuestion(question.getQuestion(), null);
-
+            
+            //shuffle choices
+            Collections.shuffle(question.getChoices());
+            
+            //find the correct answer
             correctAnswer = findAnswer(question.getAnswer(), question.getChoices());
             //if the type is PICTURES then create icons
             if (question.getType() == QuestionType.PICTURE) {
