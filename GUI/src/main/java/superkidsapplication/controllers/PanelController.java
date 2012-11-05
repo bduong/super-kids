@@ -1,6 +1,8 @@
 package superkidsapplication.controllers;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import superkidsapplication.events.PanelListener;
 import superkidsapplication.events.Session;
@@ -105,6 +107,7 @@ public class PanelController {
 
     //go to main menu (startscreenpanel)
     public void goToMainMenu() {
+        boolean found = false;
         String startScreenName="";
         if (session.isUserLoggedIn()){
             startScreenName="StartScreen";
@@ -118,6 +121,7 @@ public class PanelController {
             if (panels.get(i).getName() != null) {
                 //and if the name is eqaul to start screen
                 if (panels.get(i).getName().equals(startScreenName)) {
+                    found=true;
                     //set the subject selection visible                    
                     panels.get(i).setVisible(true);
                     return;
@@ -125,6 +129,20 @@ public class PanelController {
             }
             //go back one panel until subjectselection is found
             goBackOnePanel();
+        }
+        //if not found then create you self.
+        if(found==false){
+            try {
+                try {
+                    this.addPanel((JPanel)Class.forName("superkidsapplication.panels."+startScreenName+"Panel").newInstance());
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(PanelController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (InstantiationException ex) {
+                Logger.getLogger(PanelController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(PanelController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 //goes back to subject selection menu if found
