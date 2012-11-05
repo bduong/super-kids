@@ -151,7 +151,8 @@ public class UserControlPanel extends javax.swing.JPanel {
             warnLabel.setText("User logged in. Cannot Delete");
             return;
         }
-        uM.deleteUser((String)usersBox.getSelectedItem());
+        String name = (String)usersBox.getSelectedItem();
+        uM.deleteUser(name);
         warnLabel.setText("User Deleted");
         fillBox();
     }//GEN-LAST:event_deleteButtonActionPerformed

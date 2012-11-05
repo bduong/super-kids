@@ -187,8 +187,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void ParentItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParentItemActionPerformed
         // TODO add your handling code here:
-        ParentalControlPanel parentPanel = new ParentalControlPanel();
-        controller.addPanel(parentPanel);
+        AuthFrame frame = new AuthFrame();
+        frame.setVisible(true);
     }//GEN-LAST:event_ParentItemActionPerformed
 
     private void QModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QModeActionPerformed
