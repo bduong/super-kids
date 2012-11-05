@@ -5,6 +5,8 @@
 package superkidsapplication.controllers;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import superkidsapplication.tts.MarySpeechController;
 import superkidsapplication.tts.SpeechController;
 
@@ -15,7 +17,7 @@ import superkidsapplication.tts.SpeechController;
 public class TTSController {
     
     //Use this if you want to have text to speech
-    public static void TTS(String string) throws Exception
+    public static void TTS(String string)
     {
         //Mac Only
         if (System.getProperty("os.name").contains("OS X")) {
@@ -28,7 +30,11 @@ public class TTSController {
         //if not on MAC
         else{
             SpeechController mary = MarySpeechController.getInstance();
-            mary.say(string);
+            try {
+                mary.say(string);
+            } catch (Exception ex) {
+                Logger.getLogger(TTSController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
    

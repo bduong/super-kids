@@ -29,7 +29,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         initComponents();
         choiceSelected = 0;
         qm = QuestionDatabaseFactory.aQuestionManager();
-        fillBoxes();
+        fillLevelBox();
     }
 
     /**
@@ -102,6 +102,12 @@ public class AddQuestionPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Choice 3");
 
+        levelBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                levelBoxActionPerformed(evt);
+            }
+        });
+
         buttonGroup1.add(choice2Button);
         choice2Button.setText("Set Answer");
         choice2Button.addActionListener(new java.awt.event.ActionListener() {
@@ -159,14 +165,13 @@ public class AddQuestionPanel extends javax.swing.JPanel {
                                     .add(choice4Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 146, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(choice2Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 146, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(choice1Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 146, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                .add(org.jdesktop.layout.GroupLayout.LEADING, questionField)
-                                .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                                    .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 124, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                    .add(levelBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                    .add(catBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
+                            .add(questionField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 240, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(layout.createSequentialGroup()
+                                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 124, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(levelBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(catBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 99, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                     .add(layout.createSequentialGroup()
                         .add(70, 70, 70)
                         .add(addButton)
@@ -275,6 +280,13 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         choiceSelected = 3;
     }//GEN-LAST:event_choice4ButtonActionPerformed
+
+    private void levelBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelBoxActionPerformed
+        // TODO add your handling code here:
+        QuestionLevel level = (QuestionLevel) levelBox.getSelectedItem();
+        fillCatBox(level);
+    }//GEN-LAST:event_levelBoxActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -297,12 +309,16 @@ public class AddQuestionPanel extends javax.swing.JPanel {
     private javax.swing.JTextField questionField;
     // End of variables declaration//GEN-END:variables
 
-    private void fillBoxes() {
-        for (QuestionCategory c : QuestionCategory.values()) {
-            catBox.addItem(c);
-        }
+    private void fillLevelBox() {
         for (QuestionLevel l : QuestionLevel.values()) {
             levelBox.addItem(l);
+        }
+    }
+
+    private void fillCatBox(QuestionLevel l) {
+        catBox.removeAllItems();
+        for (QuestionCategory c : l.getCategories()) {
+            catBox.addItem(c);
         }
     }
 }
