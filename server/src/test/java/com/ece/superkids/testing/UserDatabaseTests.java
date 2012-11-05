@@ -11,18 +11,18 @@ import org.junit.Test;
 import org.junit.After;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
 
 import com.ece.superkids.questions.entities.*;
 import com.ece.superkids.questions.enums.*;
 
 import com.ece.superkids.users.FileUserManager;
 import com.ece.superkids.users.entities.User;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserDatabaseTests {
     private FileUserManager fileUserManager = new FileUserManager();
-    private User expected;
+    private User expectedUser;
 
     private Question expectedQuestion;
     private QuestionLevel expectedLevel;
@@ -31,8 +31,8 @@ public class UserDatabaseTests {
     public void setup() {
 
         // setup user
-        expected = new User("xuser");
-        expected.setId(1234);
+        expectedUser = new User("xuser");
+        expectedUser.setId(1234);
 
         // setup level
         expectedLevel = QuestionLevel.LEVEL_1;
@@ -53,21 +53,20 @@ public class UserDatabaseTests {
         expectedQuestion.setExplaination("xplanation");
 
         // set current question and level for user
-        expected.saveScore(expectedQuestion ,3);
-        expected.setCurrentQuestion(expectedQuestion);
-        expected.setCurrentLevel(expectedLevel);
+        expectedUser.setCurrentQuestion(expectedQuestion);
+        expectedUser.setCurrentLevel(expectedLevel);
 
         // create a new state
-//        expected.newState(QuestionCategory.SHAPES, QuestionLevel.LEVEL_1);
 
-        fileUserManager.addUser(expected);
+
+        fileUserManager.addUser(expectedUser);
     }
 
     @Test
     public void usersAreAdded() {
         User actual = fileUserManager.getUser("xuser");
-        assertEquals(actual.getName(), expected.getName());
-        assertEquals(actual.getId(), expected.getId());
+        assertEquals(actual.getName(), expectedUser.getName());
+        assertEquals(actual.getId(), expectedUser.getId());
     }
 
     @Test
@@ -81,11 +80,34 @@ public class UserDatabaseTests {
 
     }
 
+
+
     @Test
+    public void addScore() {
+        Integer expectedScore = 4;
+        expectedUser.saveScore(expectedQuestion, expectedScore);
+        Map<Question, Integer> map = new HashMap();
+        map = expectedUser.getState().getAllScores();
+        Integer actualScore = map.get(expectedQuestion);
+        assertEquals(expectedScore, actualScore);
+    }
+
+    @Test
+    public void newState() {
+
+    }
+
+    @Test
+    public void checkHistory() {
+        
+    }
+    
+    @After
     public void usersAreDeleted() {
         fileUserManager.deleteUser("xuser");
         User testUser = fileUserManager.getUser("xuser");
         assertEquals(testUser, null);
     }
+
 
 }

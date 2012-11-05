@@ -20,6 +20,7 @@ public class User implements Serializable {
     public User(String name) {
         this.name = name;
         state = new State();
+        history = new History();
     }
 
     public int getId() {
