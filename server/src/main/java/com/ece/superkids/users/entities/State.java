@@ -3,7 +3,6 @@
  */
 package com.ece.superkids.users.entities;
 
-import java.io.Serializable;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,13 +10,34 @@ import java.io.Serializable;
 
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.entities.Question;
+import com.ece.superkids.questions.enums.QuestionCategory;
 
 public class State implements Serializable {
 
     private QuestionLevel currentLevel;
     private Question currentQuestion;
+    private QuestionCategory questionCategory;
+    private QuestionLevel questionLevel;
     private Map<Question, Integer> scores;
     static final long serialVersionUID = -6618469841122132321L;
+    
+    
+    public QuestionCategory getQuestionCategory() {
+        return questionCategory;
+    }
+
+    public void setQuestionCategory(QuestionCategory questionCategory) {
+        this.questionCategory = questionCategory;
+    }
+
+    public QuestionLevel getQuestionLevel() {
+        return questionLevel;
+    }
+
+    public void setQuestionLevel(QuestionLevel questionLevel) {
+        this.questionLevel = questionLevel;
+    }
+
 
     public State() {
         scores = new HashMap<Question, Integer>();
