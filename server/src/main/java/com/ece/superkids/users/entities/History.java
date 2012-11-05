@@ -7,6 +7,7 @@ import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.enums.QuestionCategory;
 
+import java.io.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -33,7 +34,6 @@ public class History implements Serializable {
             states.add(state);
             questionToList.put(key, states);
         }
-        System.out.println("State added to history");
     }
     
     public Map<Question, ArrayList<Integer>> getHistoryMap(QuestionCategory category, QuestionLevel level) {
@@ -41,13 +41,14 @@ public class History implements Serializable {
         Map<Question, ArrayList<Integer>> questionToScores = new HashMap();
         if(questionToList.containsKey(key)) {
             ArrayList<State> states = (ArrayList<State>)questionToList.get(key);
-
             for(int i=0; i<states.size(); i++) {
                 Iterator it = states.get(i).getAllScores().entrySet().iterator();
                 while(it.hasNext()) {
                     Map.Entry pairs = (Map.Entry)it.next();
                     Question questionKey = (Question)pairs.getKey();
+
                     if(questionToScores.containsKey(questionKey)) {
+
                         ArrayList<Integer> listOfScores = (ArrayList<Integer>)questionToScores.get(questionKey);
                         listOfScores.add((Integer)pairs.getValue());
                         questionToScores.put(questionKey, listOfScores);
@@ -67,7 +68,7 @@ public class History implements Serializable {
     
     public Object[][] getHistory(QuestionCategory category, QuestionLevel level) {
         
-        Map<Question, ArrayList<Integer>> map = getHistoryMap(category, level);
+        Map<Question, ArrayList<Integer>> map = this.getHistoryMap(category, level);
         Iterator it = map.entrySet().iterator();
         int counter = 0;
         while(it.hasNext())  {
@@ -80,8 +81,8 @@ public class History implements Serializable {
         while(it.hasNext()) {
             Map.Entry pairs = (Map.Entry)it.next();
             ArrayList<Integer> scoresList = (ArrayList<Integer>)pairs.getValue();
-            o[index][0] = ((Question)pairs.getValue()).getQuestion();
-            for(int i=0; i<scoresList.size(); i++) {
+            o[index][0] = ((Question)pairs.getKey()).getQuestion();
+            for(int i=1; i<scoresList.size(); i++) {
                 o[index][i] = scoresList.get(i);
             }
             index++;
