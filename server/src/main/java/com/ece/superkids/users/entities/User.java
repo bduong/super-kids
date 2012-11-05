@@ -64,7 +64,10 @@ public class User implements Serializable {
         state = new State();
     }
 
-    public Object[][] getHistory() {
+    public Object[][] getHistory(QuestionCategory questionCategory, QuestionLevel questionLevel) {
+        return history.getHistory(questionCategory, questionLevel);
+    }
+    public Object[][] getHistoryTest() {
         return history.getHistoryTest();
     }
     
@@ -91,3 +94,4 @@ public class User implements Serializable {
 
 
 }
+
