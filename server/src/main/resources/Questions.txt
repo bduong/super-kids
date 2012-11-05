@@ -24,13 +24,14 @@
 {"question":"Which is not a Disney Character?","choices":["Donald Duck","Goofy","Mickey Mouse","Dexter"],"answer":"Dexter","explaination":"","type":"TEXT", "category":"ANIMALS","level":"LEVEL_2"}
 {"question":"Which is the largest continent in the world?","choices":["Africa","Europe","Asia","Antarctica"],"answer":"Asia","explaination":"","type":"TEXT", "category":"GEOGRAPHY","level":"LEVEL_2"}
 {"question":"Which continent is the coldest?","choices":["Australia","Africa","Europe","Antarctica"],"answer":"Antarctica","explaination":"","type":"TEXT", "category":"GEOGRAPHY","level":"LEVEL_2"}
-{"question":"Which color is not in the rainbow?","choices":["Green","Blue","Purple","Black"],"answer":"Black","explaination":"","type":"TEXT", "category":"COLORS","level":"LEVEL_2"}
-{"question":"How many sides does a hexagon have?","choices":["6","8","5","7"],"answer":"6","explaination":"","type":"TEXT", "category":"SHAPES","level":"LEVEL_2"}
+{"question":"Which color is not in the rainbow?","choices":["Green","Blue","Purple","Black"],"answer":"Black","explaination":"","type":"TEXT", "category":"COLORS","level":"LEVEL_1"}
+{"question":"How many sides does a hexagon have?","choices":["6","8","5","7"],"answer":"6","explaination":"","type":"TEXT", "category":"SHAPES","level":"LEVEL_1"}
 {"question":"Which animal has stripes","choices":["Horse","Zebra","Giraffe","Hippo"],"answer":"Zebra","explaination":"","type":"TEXT", "category":"ANIMALS","level":"LEVEL_2"}
-{"question":"What color do you get from mixing blue and yellow?","choices":["Black","Orange","Red","Green"],"answer":"Green","explaination":"","type":"TEXT", "category":"COLORS","level":"LEVEL_3"}
-{"question":"Which food is a root?","choices":["Tomato","Radish","Corn","Pepper"],"answer":"Radish","explaination":"","type":"TEXT", "category":"FOOD","level":"LEVEL_3"}
-{"question":"What color is the inside of a canteloupe?","choices":["Green","Red","Orange","Blue"],"answer":"Orange","explaination":"","type":"TEXT", "category":"COLORS","level":"LEVEL_3"}
+{"question":"What color do you get from mixing blue and yellow?","choices":["Black","Orange","Red","Green"],"answer":"Green","explaination":"","type":"TEXT", "category":"COLORS","level":"LEVEL_1"}
+{"question":"Which food is a root?","choices":["Tomato","Radish","Corn","Pepper"],"answer":"Radish","explaination":"","type":"TEXT", "category":"FOOD","level":"LEVEL_2"}
+{"question":"What color is the inside of a canteloupe?","choices":["Green","Red","Orange","Blue"],"answer":"Orange","explaination":"","type":"TEXT", "category":"COLORS","level":"LEVEL_1"}
 {"question":"What measures length?","choices":["Calculator","Ruler","Scale","Pencil"],"answer":"Ruler","explaination":"","type":"TEXT", "category":"STATIONARY","level":"LEVEL_3"}
 {"question":"What instrument is a brass?","choices":["Violin","Piano","Trumpet","Flute"],"answer":"Trumpet","explaination":"","type":"TEXT", "category":"INSTRUMENTS","level":"LEVEL_3"}
-{"question":"Which one is not a planet?","choices":["Neptune","Saturn","The Sun","Earth"],"answer":"The Sun","explaination":"","type":"TEXT", "category":"PLANETS","level":"LEVEL_3"}
-{"question":"What does a caterpillar become?","choices":["Moth","Butterfly","Slug","Cricket"],"answer":"Butterfly","explaination":"","type":"TEXT", "category":"ANIMALS","level":"LEVEL_3"}
+{"question":"Which one is not a planet?","choices":["Neptune","Saturn","The Sun","Earth"],"answer":"The Sun","explaination":"","type":"TEXT", "category":"PLANETS","level":"LEVEL_2"}
+{"question":"What does a caterpillar become?","choices":["Moth","Butterfly","Slug","Cricket"],"answer":"Butterfly","explaination":"","type":"TEXT", "category":"ANIMALS","level":"LEVEL_1"}
+{"question":"Body question test","choices":["test1","test2","test3","test4"],"answer":"test4","explaination":"","type":"TEXT", "category":"BODYPARTS","level":"LEVEL_3"}
