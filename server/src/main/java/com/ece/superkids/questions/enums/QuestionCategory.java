@@ -8,5 +8,5 @@ public enum QuestionCategory {
     FOOD, GEOGRAPHY, PLANETS,
 
     //Level 3
-    STATIONARY, INSTRUMENTS
+    STATIONARY, INSTRUMENTS, BODYPARTS
 }
