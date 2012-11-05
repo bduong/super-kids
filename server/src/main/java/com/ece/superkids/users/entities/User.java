@@ -60,13 +60,14 @@ public class User implements Serializable {
     }
 
     public void newState(QuestionCategory category, QuestionLevel level) {
-        history.saveToHistory(category, level, state);
+        history.saveToHistory(state);
         state = new State();
     }
 
     public Object[][] getHistory(QuestionCategory questionCategory, QuestionLevel questionLevel) {
         return history.getHistory(questionCategory, questionLevel);
     }
+
     public Object[][] getHistoryTest() {
         return history.getHistoryTest();
     }
