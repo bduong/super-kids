@@ -49,10 +49,12 @@ public class User implements Serializable {
 
     public void setCurrentLevel(QuestionLevel level) {
         state.setCurrentLevel(level);
+        state.setQuestionLevel(level);
     }
 
     public void setCurrentQuestion(Question question) {
         state.setCurrentQuestion(question);
+        state.setQuestionCategory(question.getCategory());
     }
 
     public void saveScore(Question question, Integer score) {

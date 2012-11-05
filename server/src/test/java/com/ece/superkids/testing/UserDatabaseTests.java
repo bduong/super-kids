@@ -16,6 +16,7 @@ import com.ece.superkids.questions.entities.*;
 import com.ece.superkids.questions.enums.*;
 
 import com.ece.superkids.users.FileUserManager;
+import com.ece.superkids.users.entities.History;
 import com.ece.superkids.users.entities.User;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,10 +56,7 @@ public class UserDatabaseTests {
         // set current question and level for user
         expectedUser.setCurrentQuestion(expectedQuestion);
         expectedUser.setCurrentLevel(expectedLevel);
-
-        // create a new state
-
-
+        
         fileUserManager.addUser(expectedUser);
     }
 
@@ -79,9 +77,7 @@ public class UserDatabaseTests {
         assertEquals(actualLevel, expectedLevel);
 
     }
-
-
-
+    
     @Test
     public void addScore() {
         Integer expectedScore = 4;
@@ -89,19 +85,19 @@ public class UserDatabaseTests {
         Map<Question, Integer> map = new HashMap();
         map = expectedUser.getState().getAllScores();
         Integer actualScore = map.get(expectedQuestion);
-        assertEquals(expectedScore, actualScore);
-    }
-
-    @Test
-    public void newState() {
-
-    }
-
-    @Test
-    public void checkHistory() {
         
+        assertEquals(expectedScore, actualScore);
+
+        expectedUser.newState(QuestionCategory.COLORS, QuestionLevel.LEVEL_2);
+        map = new HashMap();
+        map = expectedUser.getState().getAllScores();
+        assertEquals(map.size(), 0);
+        Object[][] objects = new Object[1][2];
+        objects = expectedUser.getHistory(QuestionCategory.SHAPES, QuestionLevel.LEVEL_1);
+        System.out.println(objects.length);
+        assertEquals("xquestion", objects[0][0]);
     }
-    
+
     @After
     public void usersAreDeleted() {
         fileUserManager.deleteUser("xuser");
