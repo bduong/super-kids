@@ -75,7 +75,7 @@ public class UserDatabaseTests {
         Question actualQuestion = actual.getState().getCurrentQuestion();
         QuestionLevel actualLevel = actual.getState().getCurrentLevel();
 
-   //     assertEquals(actualQuestion, expectedQuestion);
+        assertEquals(actualQuestion, expectedQuestion);
         assertEquals(actualLevel, expectedLevel);
 
     }
@@ -90,6 +90,16 @@ public class UserDatabaseTests {
         map = expectedUser.getState().getAllScores();
         Integer actualScore = map.get(expectedQuestion);
         assertEquals(expectedScore, actualScore);
+    }
+
+    @Test
+    public void newState() {
+
+    }
+
+    @Test
+    public void checkHistory() {
+        
     }
     
     @After
