@@ -28,7 +28,7 @@ public class PanelController {
     private ArrayList<JPanel> panels;
     private MainFrame mainFrame;
     private PanelListener listener;
-    private Session session=Session.aSession();
+    private Session session = Session.aSession();
 
     private PanelController() {
         panels = new ArrayList<JPanel>();
@@ -45,7 +45,7 @@ public class PanelController {
 
     public void setMainFrame(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
-        listener=new PanelListener(mainFrame);
+        listener = new PanelListener(mainFrame);
     }
 
     //add to panels list.
@@ -62,7 +62,7 @@ public class PanelController {
         mainFrame.contentArea.add(panel, java.awt.BorderLayout.CENTER);
         //need to trigger setvisible true in listener so need to set it to false first
         panel.setVisible(false);
-         //add to listener
+        //add to listener
         listener.addPanel(panel);
         //and change the visiblity to true
         panel.setVisible(true);
@@ -77,7 +77,6 @@ public class PanelController {
         //then remove from list
         panels.remove(panels.size() - 1);
     }
-
 
     //are we on start panel?
     private boolean onStartPanel() {
@@ -108,12 +107,11 @@ public class PanelController {
     //go to main menu (startscreenpanel)
     public void goToMainMenu() {
         boolean found = false;
-        String startScreenName="";
-        if (session.isUserLoggedIn()){
-            startScreenName="StartScreen";
-        }
-        else{
-            startScreenName="UserSelection";
+        String startScreenName = "";
+        if (session.isUserLoggedIn()) {
+            startScreenName = "StartScreen";
+        } else {
+            startScreenName = "UserSelection";
         }
         //start from back of the list to search for start screen
         for (int i = panels.size() - 1; i > -1; i--) {
@@ -121,7 +119,6 @@ public class PanelController {
             if (panels.get(i).getName() != null) {
                 //and if the name is eqaul to start screen
                 if (panels.get(i).getName().equals(startScreenName)) {
-                    found=true;
                     //set the subject selection visible                    
                     panels.get(i).setVisible(true);
                     return;
@@ -131,10 +128,10 @@ public class PanelController {
             goBackOnePanel();
         }
         //if not found then create you self.
-        if(found==false){
+        if (found == false) {
             try {
                 try {
-                    this.addPanel((JPanel)Class.forName("superkidsapplication.panels."+startScreenName+"Panel").newInstance());
+                    this.addPanel((JPanel) Class.forName("superkidsapplication.panels." + startScreenName + "Panel").newInstance());
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(PanelController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -146,9 +143,11 @@ public class PanelController {
         }
     }
 //goes back to subject selection menu if found
+
     public void goToSubjectMenu() {
         //start from back of the list to search for subject selection
         for (int i = panels.size() - 1; i > -1; i--) {
+            System.out.println(panels.get(i).getName());
             //if the panel name is not null
             if (panels.get(i).getName() != null) {
                 //and if the name is eqaul to subjectselection

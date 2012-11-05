@@ -2,10 +2,10 @@
 {"question":"What is round?","choices":["Square","Circle","Triangle","Rectangle"],"answer":"Circle","explaination":"A square has four equal sides","type":"TEXT","category":"SHAPES","level":"LEVEL_1"}
 {"question":"Which is a square?","choices":["Square","circle","triangle","rectangle"],"answer":"Square","explaination":"A circle is round","type":"PICTURE","category":"SHAPES","level":"LEVEL_1"}
 {"question":"Which shape is red?","choices":["Square","circle","triangle","rectangle"],"answer":"Square","explaination":"A square has four equal sides","type":"PICTURE","category":"COLORS","level":"LEVEL_1"}
-{"question":"Which is a dog?","choices":["dog","giraffe","whale","elephant"],"answer":"dog","explanation":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
-{"question":"Which is an elephant?","choices":["dog","giraffe","whale","elephant"],"answer":"elephant","explanation":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
-{"question":"Which is a giraffe?","choices":["dog","giraffe","whale","elephant"],"answer":"giraffe","explanation":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
-{"question":"Which is a whale?","choices":["dog","giraffe","whale","elephant"],"answer":"whale","explanation":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
+{"question":"Which is a dog?","choices":["dog","giraffe","whale","elephant"],"answer":"dog","explianation":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
+{"question":"Which is an elephant?","choices":["dog","giraffe","whale","elephant"],"answer":"elephant","explaination":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
+{"question":"Which is a giraffe?","choices":["dog","giraffe","whale","elephant"],"answer":"giraffe","explaination":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
+{"question":"Which is a whale?","choices":["dog","giraffe","whale","elephant"],"answer":"whale","explaination":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
 {"question":"Which country is not in Europe","choices":["Iceland","Italy","Greenland","Romania"],"answer":"Greenland","explaination":"","type":"TEXT", "category":"GEOGRAPHY","level":"LEVEL_2"}
 {"question":"Which continent contains the equator?","choices":["Africa","Europe","North America","Antarctica"],"answer":"Africa","explaination":"","type":"TEXT", "category":"GEOGRAPHY","level":"LEVEL_2"}
 {"question":"What continent contains Egypt?","choices":["Africa","Europe","Asia","South America"],"answer":"Africa","explaination":"","type":"TEXT", "category":"GEOGRAPHY","level":"LEVEL_2"}

@@ -17,7 +17,7 @@ import superkidsapplication.controllers.TTSController;
  * @author Heng & David C
  */
 public class SubjectSelectionPanel extends javax.swing.JPanel {
-            
+
     private PanelController controller;
     private QuestionController factory;
     private QuestionLevel level;
@@ -26,11 +26,11 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
      * Creates new form SubjectSelectionPanel
      */
     public SubjectSelectionPanel(QuestionLevel level) {
-        controller=PanelController.getInstance();
-        factory = QuestionController.getInstance();
-        this.level=level;
-        initComponents();
         this.setName("SubjectSelection");
+        controller = PanelController.getInstance();
+        factory = QuestionController.getInstance();
+        this.level = level;
+        initComponents();
         subject1.setText(level.getCategories().get(0).toString());
         subject2.setText(level.getCategories().get(1).toString());
         subject3.setText(level.getCategories().get(2).toString());
@@ -130,7 +130,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             factory.reset();
-            QuestionPanel q = factory.createQuestionPanel(level,level.getCategories().get(0));
+            QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(0));
             controller.addPanel(q);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -141,7 +141,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             factory.reset();
-            QuestionPanel q = factory.createQuestionPanel(level,level.getCategories().get(1));
+            QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(1));
             controller.addPanel(q);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -152,7 +152,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             factory.reset();
-            QuestionPanel q = factory.createQuestionPanel(level,level.getCategories().get(2));
+            QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(2));
             controller.addPanel(q);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -173,7 +173,6 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         TTSController.TTS(subject2.getText());
     }//GEN-LAST:event_subject2MouseEntered
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JLayeredPane jLayeredPane1;

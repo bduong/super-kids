@@ -55,7 +55,6 @@ public class UserDatabaseTests {
 
         // set current question and level for user
         expectedUser.setCurrentQuestion(expectedQuestion);
-        expectedUser.setCurrentLevel(expectedLevel);
         
         fileUserManager.addUser(expectedUser);
     }

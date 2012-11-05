@@ -58,6 +58,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
         textLabel = new javax.swing.JLabel();
         avatar = new javax.swing.JLabel();
         starPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         jLayeredPane1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -80,6 +81,10 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
         starPanel.setOpaque(false);
         starPanel.setBounds(30, 440, 750, 150);
         jLayeredPane1.add(starPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel1.setText("Click anywhere on the screen ");
+        jLabel1.setBounds(300, 110, 210, 16);
+        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/ScoreScreen.png"))); // NOI18N
         background.setBounds(0, 0, 800, 600);
@@ -105,6 +110,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel avatar;
     private javax.swing.JLabel background;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel starPanel;
     private javax.swing.JLabel textLabel;
