@@ -43,14 +43,14 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <Component id="nameField" min="-2" pref="133" max="-2" attributes="0"/>
                           <Component id="addButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="warnLabel" min="-2" pref="190" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="warnLabel" min="-2" pref="315" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

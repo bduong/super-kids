@@ -4,12 +4,12 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.users.FileUserManager;
 import com.ece.superkids.users.UserDatabaseFactory;
 import com.ece.superkids.users.UserManager;
 import com.ece.superkids.users.entities.User;
 import java.util.Iterator;
 import java.util.List;
+import superkidsapplication.events.Session;
 
 /**
  *
@@ -20,7 +20,8 @@ public class UserControlPanel extends javax.swing.JPanel {
     /**
      * Creates new form UserControlPanel
      */
-    UserManager uM  = UserDatabaseFactory.aUserManager();
+    private UserManager uM  = UserDatabaseFactory.aUserManager();
+    private Session session = Session.aSession();
     
     public UserControlPanel() {
         initComponents();
@@ -98,11 +99,11 @@ public class UserControlPanel extends javax.swing.JPanel {
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel2)
                             .add(nameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(addButton)
-                            .add(layout.createSequentialGroup()
-                                .add(6, 6, 6)
-                                .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                            .add(addButton)))
+                    .add(layout.createSequentialGroup()
+                        .add(27, 27, 27)
+                        .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 315, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -138,7 +139,6 @@ public class UserControlPanel extends javax.swing.JPanel {
             return;
         }
         User user = new User(nameField.getText());
-        uM = new FileUserManager();
         uM.addUser(user);
         warnLabel.setText("User Added");
         fillBox();
@@ -146,9 +146,14 @@ public class UserControlPanel extends javax.swing.JPanel {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        uM = new FileUserManager();
         User user = uM.getUser((String)usersBox.getSelectedItem());
-        uM.deleteUser(user);
+        if(session.isUserLoggedIn(user)){
+            warnLabel.setText("User logged in. Cannot Delete");
+            return;
+        }
+        String name = (String)usersBox.getSelectedItem();
+        uM.deleteUser(name);
+        warnLabel.setText("User Deleted");
         fillBox();
     }//GEN-LAST:event_deleteButtonActionPerformed
 

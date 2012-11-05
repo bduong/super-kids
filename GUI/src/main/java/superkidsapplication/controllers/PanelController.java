@@ -3,6 +3,7 @@ package superkidsapplication.controllers;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import superkidsapplication.events.PanelListener;
+import superkidsapplication.events.Session;
 import superkidsapplication.panels.MainFrame;
 
 /*
@@ -25,6 +26,7 @@ public class PanelController {
     private ArrayList<JPanel> panels;
     private MainFrame mainFrame;
     private PanelListener listener;
+    private Session session=Session.aSession();
 
     private PanelController() {
         panels = new ArrayList<JPanel>();
@@ -103,14 +105,20 @@ public class PanelController {
 
     //go to main menu (startscreenpanel)
     public void goToMainMenu() {
+        String startScreenName="";
+        if (session.isUserLoggedIn()){
+            startScreenName="StartScreen";
+        }
+        else{
+            startScreenName="UserSelection";
+        }
         //start from back of the list to search for start screen
         for (int i = panels.size() - 1; i > -1; i--) {
             //if the panel name is not null
             if (panels.get(i).getName() != null) {
                 //and if the name is eqaul to start screen
-                if (panels.get(i).getName().equals("StartScreen")) {
-                    //set the subject selection visible
-                    
+                if (panels.get(i).getName().equals(startScreenName)) {
+                    //set the subject selection visible                    
                     panels.get(i).setVisible(true);
                     return;
                 }

@@ -10,6 +10,7 @@ import com.ece.superkids.users.entities.User;
 import java.util.Iterator;
 import java.util.List;
 import superkidsapplication.controllers.PanelController;
+import superkidsapplication.events.Session;
 
 /**
  *
@@ -23,8 +24,9 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
     private StartScreenPanel startscreen;
     //get the panel controller to manage panels
     private PanelController controller;
-    UserManager uM = UserDatabaseFactory.aUserManager();
-    
+    private UserManager uM = UserDatabaseFactory.aUserManager();
+    private Session session = Session.aSession();
+
     public UserSelectionPanel() {
         this.setName("UserSelection");
         initComponents();
@@ -103,13 +105,23 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
     private void usersBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usersBoxActionPerformed
-    
+
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         if (usersBox.getItemCount() == 0) {
             warnLabel.setText("Please add a child first.");
             return;
         }
+        //get user
+        User user = uM.getUser((String) usersBox.getSelectedItem());
+        //login
+        if (session.login(user) == false) {
+            warnLabel.setText("Already logged in");
+            return;
+        }
+        //change the button visibility in the main frame
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.logoutButton.setVisible(true);
         controller.addPanel(startscreen);
     }//GEN-LAST:event_loginButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
