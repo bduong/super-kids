@@ -215,7 +215,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
                 //display the questionpanel
                 controller.addPanel(qPanel);
             }
-            else{
+            else if(number ==-1){
                 System.out.println("Cannot find saved question.");
             }
         } catch (IOException ex) {

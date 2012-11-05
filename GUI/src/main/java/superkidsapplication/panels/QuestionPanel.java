@@ -68,6 +68,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         iconProvider = ResourceProviderFactory.anImageProvider();
         fillQuestion();
         saveQuestion();
+        //set super kid name
+        superKidNameLabel.setText("Super Kid: "+ session.getLoggedInUser().getName().toUpperCase());
     }
 
     /**
@@ -294,7 +296,7 @@ public class QuestionPanel extends javax.swing.JPanel {
                 //if returned questionpanel is null then there are no more 
             } else {
                 nextQButton.setText("Done");
-
+                //if no more questions
                 TTSController.TTS("No more questions");
             }
         } catch (IOException ex) {
