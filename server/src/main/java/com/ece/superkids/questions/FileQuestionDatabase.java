@@ -52,7 +52,13 @@ public class FileQuestionDatabase implements QuestionDatabase{
         QuestionLevel level = question.getLevel();
         QuestionCategory category = question.getCategory();
         if (questions.containsKey(level) && questions.get(level).containsKey(category)) {
-            return questions.get(level).get(category).indexOf(question);
+            int count = 0;
+            for (Question q : questions.get(level).get(category)) {
+                if (question.equals(q)) {
+                    return count;
+                }
+                count++;
+            }
         }
         return -1;
     }
