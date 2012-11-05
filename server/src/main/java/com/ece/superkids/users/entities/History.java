@@ -21,7 +21,9 @@ public class History implements Serializable {
         questionToList = new HashMap();
     }
 
-    public void saveToHistory(QuestionCategory category, QuestionLevel level, State state) {
+    public void saveToHistory(State state) {
+        QuestionCategory category = state.getQuestionCategory();
+        QuestionLevel level = state.getQuestionLevel();
         String key = category.toString() + ":" + level.toString();
         if(questionToList.containsKey(key)) {
             ArrayList<State> states = (ArrayList<State>)questionToList.get(key);
@@ -78,7 +80,7 @@ public class History implements Serializable {
         while(it.hasNext()) {
             Map.Entry pairs = (Map.Entry)it.next();
             ArrayList<Integer> scoresList = (ArrayList<Integer>)pairs.getValue();
-            o[index][0] = pairs.getValue();
+            o[index][0] = ((Question)pairs.getValue()).getQuestion();
             for(int i=0; i<scoresList.size(); i++) {
                 o[index][i] = scoresList.get(i);
             }
