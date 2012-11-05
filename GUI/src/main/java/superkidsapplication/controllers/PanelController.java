@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import superkidsapplication.events.PanelListener;
 import superkidsapplication.events.Session;
 import superkidsapplication.panels.MainFrame;
+import superkidsapplication.panels.SubjectSelectionPanel;
 
 /*
  * To change this template, choose Tools | Templates
@@ -145,9 +146,9 @@ public class PanelController {
 //goes back to subject selection menu if found
 
     public void goToSubjectMenu() {
+        boolean found = false;
         //start from back of the list to search for subject selection
         for (int i = panels.size() - 1; i > -1; i--) {
-            System.out.println(panels.get(i).getName());
             //if the panel name is not null
             if (panels.get(i).getName() != null) {
                 //and if the name is eqaul to subjectselection
@@ -159,6 +160,9 @@ public class PanelController {
             }
             //go back one panel until subjectselection is found
             goBackOnePanel();
+        }
+        if(found==false){
+            this.addPanel(new SubjectSelectionPanel(session.getLoggedInUser().getState().getCurrentLevel()));
         }
     }
 }
