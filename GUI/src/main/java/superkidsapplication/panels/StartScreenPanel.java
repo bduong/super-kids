@@ -68,11 +68,13 @@ public class StartScreenPanel extends javax.swing.JPanel {
     ///called from panel listener
     //everytime startscreen is visible
     public void doContinueGame() {
-        Question q = session.getLoggedInUser().getCurrentQuestion();
-        if (q == null) {
-            ContinueGame.setVisible(false);
-        } else {
-            ContinueGame.setVisible(true);
+        if (session.getLoggedInUser() != null) {
+            Question q = session.getLoggedInUser().getCurrentQuestion();
+            if (q == null) {
+                ContinueGame.setVisible(false);
+            } else {
+                ContinueGame.setVisible(true);
+            }
         }
     }
 
@@ -201,8 +203,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
             //if returned q is null, then no saved current question
             if (q != null) {
                 number = qD.getQuestionNumber(q);
-            }
-            else{
+            } else {
                 return;
             }
             //if returned number is -1, then question is not found in the database
@@ -214,8 +215,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
                 QuestionPanel qPanel = qController.createQuestionPanel(q.getLevel(), q.getCategory());
                 //display the questionpanel
                 controller.addPanel(qPanel);
-            }
-            else if(number ==-1){
+            } else if (number == -1) {
                 System.out.println("Cannot find saved question.");
             }
         } catch (IOException ex) {
