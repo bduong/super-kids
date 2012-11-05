@@ -84,7 +84,7 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
 
         warnLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         warnLabel.setForeground(new java.awt.Color(255, 0, 0));
-        warnLabel.setBounds(0, 0, 0, 0);
+        warnLabel.setBounds(80, 270, 260, 50);
         jLayeredPane1.add(warnLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         helloLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
