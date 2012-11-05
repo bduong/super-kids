@@ -2,7 +2,7 @@ package com.ece.superkids.users;
 
 import com.ece.superkids.FileManager;
 import com.ece.superkids.FileManagerImpl;
-import com.sun.istack.internal.NotNull;
+//import com.sun.istack.internal.NotNull;
 import java.io.*;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -42,7 +42,7 @@ public class FileParentManager implements ParentManager{
     }
 
     @Override
-    public boolean changeParentPassword(@NotNull final String newPass) {
+    public boolean changeParentPassword(final String newPass) {
         try{
             if(!doesParentExist()){
                 File parentFile = new File(createFileName());
