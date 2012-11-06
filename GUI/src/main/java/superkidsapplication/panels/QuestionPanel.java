@@ -66,7 +66,9 @@ public class QuestionPanel extends javax.swing.JPanel {
         nextQButton.setVisible(false);
         a = 0;
         iconProvider = ResourceProviderFactory.anImageProvider();
+        //fill the panel
         fillQuestion();
+        //save question to logged in user's state
         saveQuestion();
         //set super kid name
         superKidNameLabel.setText("Super Kid: "+ session.getLoggedInUser().getName().toUpperCase());

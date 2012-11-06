@@ -33,6 +33,8 @@ public class AboutFrame extends javax.swing.JFrame {
         iconLabel = new javax.swing.JLabel();
         aboutLabel = new javax.swing.JLabel();
 
+        setResizable(false);
+
         namesArea.setEditable(false);
         namesArea.setBackground(new java.awt.Color(255, 153, 153));
         namesArea.setColumns(20);
