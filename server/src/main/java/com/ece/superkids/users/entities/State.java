@@ -84,4 +84,19 @@ public class State implements Serializable {
     public Map<Question, Integer> getAllScores() {
         return scores;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof State)) {
+           return false;
+        }
+        
+        State state = (State)object;
+        if(!(currentQuestion == state.currentQuestion)) return false;
+        if (!(currentLevel == state.currentLevel))  return false;
+        if (!currentCategory.equals(state.currentCategory))  return false;
+
+        return true;
+
+    }
 }
