@@ -7,12 +7,15 @@ import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.enums.QuestionCategory;
 
+import com.ece.superkids.users.entities.*;
+
 import java.io.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.io.Serializable;
+
 
 public class History implements Serializable {
     

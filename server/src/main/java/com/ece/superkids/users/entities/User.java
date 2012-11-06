@@ -7,6 +7,7 @@ import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.users.UserDatabaseFactory;
+import com.ece.superkids.users.FileUserManager;
 import com.ece.superkids.users.UserManager;
 import java.io.Serializable;
 
@@ -18,8 +19,7 @@ public class User implements Serializable {
     private String name;
     private State state;
     private History history;
-
-    static private UserManager userManager = UserDatabaseFactory.aUserManager();
+    
 
     public User(String name) {
         this.name = name;
@@ -54,6 +54,8 @@ public class User implements Serializable {
 
     public void setCurrentQuestion(Question question) {
         state.setCurrentQuestion(question);
+        state.setCurrentLevel(question.getLevel());
+        state.setCurrentCategory(question.getCategory());
         saveState();
     }
 
@@ -64,12 +66,14 @@ public class User implements Serializable {
     public void newState(QuestionCategory category, QuestionLevel level) {
         history.saveToHistory(state);
         state = new State();
+        state.setCurrentCategory(category);
+        state.setCurrentLevel(level);
         saveState();
     }
 
     public void saveState() {
-        userManager.addUser(this);
-        userManager.updateUser(this, this);
+        (new FileUserManager()).addUser(this);
+        (new FileUserManager()).updateUser(this, this);
     }
 
     public Object[][] getHistory(QuestionCategory questionCategory, QuestionLevel questionLevel) {

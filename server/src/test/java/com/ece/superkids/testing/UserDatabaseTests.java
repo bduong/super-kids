@@ -14,9 +14,9 @@ import static org.junit.Assert.assertEquals;
 
 import com.ece.superkids.questions.entities.*;
 import com.ece.superkids.questions.enums.*;
-
 import com.ece.superkids.users.FileUserManager;
-import com.ece.superkids.users.entities.History;
+import com.ece.superkids.users.UserDatabaseFactory;
+
 import com.ece.superkids.users.entities.User;
 import java.util.HashMap;
 import java.util.Map;
@@ -91,6 +91,8 @@ public class UserDatabaseTests {
         map = new HashMap();
         map = expectedUser.getState().getAllScores();
         assertEquals(map.size(), 0);
+
+
         Object[][] objects = new Object[1][2];
         objects = expectedUser.getHistory(QuestionCategory.SHAPES, QuestionLevel.LEVEL_1);
         System.out.println(objects.length);
@@ -100,12 +102,9 @@ public class UserDatabaseTests {
     
     @After
     public void usersAreDeleted() {
-        /*
         fileUserManager.deleteUser("xuser");
         User testUser = fileUserManager.getUser("xuser");
         assertEquals(testUser, null);
-         * 
-         */
     }
 
 
