@@ -90,7 +90,7 @@ public class History implements Serializable {
         return o;
 
     }
-
+    
     public Object[][] getHistoryTest() {
         Object o[][] = new Object[10][6];
         for(int i=0; i<o.length; i++) {
