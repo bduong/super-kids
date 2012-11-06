@@ -30,10 +30,15 @@ public class ParentalControlPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        ParentLabel = new javax.swing.JLabel();
+        jLayeredPane3 = new javax.swing.JLayeredPane();
+        optionPanel = new javax.swing.JPanel();
         userButton = new javax.swing.JButton();
         editQbutton = new javax.swing.JButton();
         addQbutton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
+        changePassword = new javax.swing.JButton();
+        highlight = new javax.swing.JLabel();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         backgroundLabel = new javax.swing.JLabel();
 
@@ -43,11 +48,22 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(800, 600));
         jLayeredPane1.setSize(new java.awt.Dimension(800, 600));
 
+        ParentLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 30)); // NOI18N
+        ParentLabel.setForeground(new java.awt.Color(255, 255, 255));
+        ParentLabel.setText("Parental Controls");
+        ParentLabel.setBounds(70, 180, 270, 90);
+        jLayeredPane1.add(ParentLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        optionPanel.setOpaque(false);
+
         userButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         userButton.setForeground(new java.awt.Color(255, 255, 255));
         userButton.setText("Add/Delete Child");
         userButton.setBorderPainted(false);
         userButton.setContentAreaFilled(false);
+        userButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        userButton.setIconTextGap(0);
+        userButton.setPreferredSize(new java.awt.Dimension(303, 33));
         userButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 userButtonMouseExited(evt);
@@ -61,14 +77,14 @@ public class ParentalControlPanel extends javax.swing.JPanel {
                 userButtonActionPerformed(evt);
             }
         });
-        userButton.setBounds(63, 290, 260, 29);
-        jLayeredPane1.add(userButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        optionPanel.add(userButton);
 
         editQbutton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         editQbutton.setForeground(new java.awt.Color(255, 255, 255));
         editQbutton.setText("Edit Questions");
         editQbutton.setBorderPainted(false);
         editQbutton.setContentAreaFilled(false);
+        editQbutton.setPreferredSize(new java.awt.Dimension(303, 33));
         editQbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 editQbuttonMouseExited(evt);
@@ -82,14 +98,14 @@ public class ParentalControlPanel extends javax.swing.JPanel {
                 editQbuttonActionPerformed(evt);
             }
         });
-        editQbutton.setBounds(90, 390, 200, 29);
-        jLayeredPane1.add(editQbutton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        optionPanel.add(editQbutton);
 
         addQbutton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         addQbutton.setForeground(new java.awt.Color(255, 255, 255));
         addQbutton.setText("Add a New Question");
         addQbutton.setBorderPainted(false);
         addQbutton.setContentAreaFilled(false);
+        addQbutton.setPreferredSize(new java.awt.Dimension(303, 33));
         addQbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 addQbuttonMouseExited(evt);
@@ -103,14 +119,14 @@ public class ParentalControlPanel extends javax.swing.JPanel {
                 addQbuttonActionPerformed(evt);
             }
         });
-        addQbutton.setBounds(80, 340, 230, 29);
-        jLayeredPane1.add(addQbutton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        optionPanel.add(addQbutton);
 
         resetButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         resetButton.setForeground(new java.awt.Color(255, 255, 255));
         resetButton.setText("Reset Game");
         resetButton.setBorderPainted(false);
         resetButton.setContentAreaFilled(false);
+        resetButton.setPreferredSize(new java.awt.Dimension(303, 33));
         resetButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 resetButtonMouseExited(evt);
@@ -124,8 +140,38 @@ public class ParentalControlPanel extends javax.swing.JPanel {
                 resetButtonActionPerformed(evt);
             }
         });
-        resetButton.setBounds(110, 430, 170, 50);
-        jLayeredPane1.add(resetButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        optionPanel.add(resetButton);
+
+        changePassword.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        changePassword.setForeground(new java.awt.Color(255, 255, 255));
+        changePassword.setText("Change Password");
+        changePassword.setBorderPainted(false);
+        changePassword.setContentAreaFilled(false);
+        changePassword.setPreferredSize(new java.awt.Dimension(303, 33));
+        changePassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                changePasswordMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                changePasswordMouseEntered(evt);
+            }
+        });
+        changePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePasswordActionPerformed(evt);
+            }
+        });
+        optionPanel.add(changePassword);
+
+        optionPanel.setBounds(0, 0, 310, 260);
+        jLayeredPane3.add(optionPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        highlight.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/HighlightedButton.png"))); // NOI18N
+        highlight.setBounds(50, 240, 303, 33);
+        jLayeredPane3.add(highlight, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLayeredPane3.setBounds(40, 280, 310, 240);
+        jLayeredPane1.add(jLayeredPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLayeredPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLayeredPane2.setPreferredSize(new java.awt.Dimension(330, 370));
@@ -133,8 +179,7 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         jLayeredPane2.setBounds(390, 160, 370, 370);
         jLayeredPane1.add(jLayeredPane2, javax.swing.JLayeredPane.PALETTE_LAYER);
 
-        backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/parentalpanelbackground.png"))); // NOI18N
-        backgroundLabel.setBounds(new java.awt.Rectangle(0, 0, 800, 600));
+        backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/BasicScreen2.png"))); // NOI18N
         backgroundLabel.setBounds(0, 0, 800, 600);
         jLayeredPane1.add(backgroundLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -152,6 +197,8 @@ public class ParentalControlPanel extends javax.swing.JPanel {
 
     private void userButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userButtonActionPerformed
         // TODO add your handling code here:
+        this.highlight.setLocation(this.userButton.getLocation());
+        
         jLayeredPane2.removeAll();
         jLayeredPane2.repaint();
         UserControlPanel uPanel = new UserControlPanel();
@@ -190,6 +237,7 @@ public class ParentalControlPanel extends javax.swing.JPanel {
 
     private void editQbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editQbuttonActionPerformed
         // TODO add your handling code here:
+        this.highlight.setLocation(this.editQbutton.getLocation());
         jLayeredPane2.removeAll();
         jLayeredPane2.repaint();
         EditQuestionsPanel editPanel = new EditQuestionsPanel();
@@ -208,6 +256,7 @@ public class ParentalControlPanel extends javax.swing.JPanel {
 
     private void addQbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addQbuttonActionPerformed
         // TODO add your handling code here:
+        this.highlight.setLocation(this.addQbutton.getLocation());
         jLayeredPane2.removeAll();
         jLayeredPane2.repaint();
         AddQuestionPanel aPanel = new AddQuestionPanel();
@@ -216,17 +265,43 @@ public class ParentalControlPanel extends javax.swing.JPanel {
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
+        this.highlight.setLocation(this.resetButton.getLocation());
         jLayeredPane2.removeAll();
         jLayeredPane2.repaint();
         ResetGamePanel rPanel = new ResetGamePanel();
         jLayeredPane2.add(rPanel);
     }//GEN-LAST:event_resetButtonActionPerformed
+
+    private void changePasswordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changePasswordMouseExited
+        // TODO add your handling code here:
+        changePassword.setForeground(Color.white);
+    }//GEN-LAST:event_changePasswordMouseExited
+
+    private void changePasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changePasswordMouseEntered
+        // TODO add your handling code here:
+        changePassword.setForeground(Color.yellow);
+    }//GEN-LAST:event_changePasswordMouseEntered
+
+    private void changePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordActionPerformed
+        // TODO add your handling code here:
+        this.highlight.setLocation(this.changePassword.getLocation());
+        jLayeredPane2.removeAll();
+        jLayeredPane2.repaint();
+        ChangePassPanel cPanel = new ChangePassPanel();
+        jLayeredPane2.add(cPanel);
+    }//GEN-LAST:event_changePasswordActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ParentLabel;
     private javax.swing.JButton addQbutton;
     private javax.swing.JLabel backgroundLabel;
+    private javax.swing.JButton changePassword;
     private javax.swing.JButton editQbutton;
+    private javax.swing.JLabel highlight;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
+    private javax.swing.JLayeredPane jLayeredPane3;
+    private javax.swing.JPanel optionPanel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton userButton;
     // End of variables declaration//GEN-END:variables

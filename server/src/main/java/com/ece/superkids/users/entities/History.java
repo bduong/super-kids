@@ -23,8 +23,8 @@ public class History implements Serializable {
     }
 
     public void saveToHistory(State state) {
-        QuestionCategory category = state.getQuestionCategory();
-        QuestionLevel level = state.getQuestionLevel();
+        QuestionCategory category = state.getCurrentCategory();
+        QuestionLevel level = state.getCurrentLevel();
         String key = category.toString() + ":" + level.toString();
         if(questionToList.containsKey(key)) {
             ArrayList<State> states = (ArrayList<State>)questionToList.get(key);

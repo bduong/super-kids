@@ -83,8 +83,8 @@ public class FileUserDatabase  implements UserDatabase {
 
   // update user object file
   public void updateUser(User oldUser, User newUser) {
-      String fileName = oldUser.getName() + ".ser";
-      String newFileName = newUser.getName() + ".ser";
+      String fileName = path+oldUser.getName() + ".ser";
+      String newFileName = path+newUser.getName() + ".ser";
       deleteUser(oldUser.getName());
       saveUser(newUser);
   }

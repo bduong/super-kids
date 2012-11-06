@@ -4,18 +4,28 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.questions.builders.QuestionBuilder;
+import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
+import com.ece.superkids.questions.enums.QuestionType;
+import com.ece.superkids.users.entities.User;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.QuestionController;
 import superkidsapplication.controllers.TTSController;
+import superkidsapplication.events.Session;
+import superkidsapplication.providers.ImageProvider;
+import superkidsapplication.providers.ResourceProviderFactory;
 
 /**
  *
@@ -34,21 +44,32 @@ public class QuestionPanel extends javax.swing.JPanel {
     private QuestionCategory category;
     private QuestionLevel level;
     private JFrame result;
+    private Session session = Session.aSession();
+    private List<Icon> icons;
+    private ImageProvider iconProvider;
+    private Question question;
+    private Question originalQuestion;
 
     //when creating the panel set which choice is the correct answer
     //1 is button1 , 2 is button2 and so on.
     //look at design tab to see which button is which
-    public QuestionPanel(int correctAnswer, QuestionLevel level, QuestionCategory category) {
+    public QuestionPanel(Question question) {
         this.setName("Question");
-        this.category = category;
-        this.correctAnswer = correctAnswer;
-        this.level = level;
+        this.question = question;
+        this.originalQuestion = QuestionBuilder.aQuestion().copiedFrom(question).build();
+        this.category = question.getCategory();
+        this.level = question.getLevel();
         qBase = QuestionController.getInstance();
         controller = PanelController.getInstance();
         initComponents();
         //initally next button is not visible becomes visible if the question is answered correctly
         nextQButton.setVisible(false);
         a = 0;
+        iconProvider = ResourceProviderFactory.anImageProvider();
+        fillQuestion();
+        saveQuestion();
+        //set super kid name
+        superKidNameLabel.setText("Super Kid: "+ session.getLoggedInUser().getName().toUpperCase());
     }
 
     /**
@@ -215,7 +236,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     private void choice1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice1ButtonActionPerformed
         // TODO add your handling code here:
         TTSController.TTS(this.choice1Button.getText());
-        
+
         if (correctAnswer == 1) {
             correctAnswerClicked();
         } else {
@@ -225,7 +246,7 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     private void choice3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice3ButtonActionPerformed
         TTSController.TTS(this.choice3Button.getText());
-        
+
         if (correctAnswer == 3) {
             correctAnswerClicked();
         } else {
@@ -235,7 +256,7 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     private void choice2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice2ButtonActionPerformed
         TTSController.TTS(this.choice2Button.getText());
-        
+
         if (correctAnswer == 2) {
             correctAnswerClicked();
         } else {
@@ -245,7 +266,7 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     private void choice4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice4ButtonActionPerformed
         TTSController.TTS(this.choice4Button.getText());
-        
+
         if (correctAnswer == 4) {
             correctAnswerClicked();
         } else {
@@ -275,7 +296,7 @@ public class QuestionPanel extends javax.swing.JPanel {
                 //if returned questionpanel is null then there are no more 
             } else {
                 nextQButton.setText("Done");
-
+                //if no more questions
                 TTSController.TTS("No more questions");
             }
         } catch (IOException ex) {
@@ -286,9 +307,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     private void RepeatSoundButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepeatSoundButtonActionPerformed
         // TODO add your handling code here:
         TTSController.TTS(this.questionLabel.getText());
-        
-    }//GEN-LAST:event_RepeatSoundButtonActionPerformed
 
+    }//GEN-LAST:event_RepeatSoundButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ChoicePanel;
     private javax.swing.JButton RepeatSoundButton;
@@ -312,7 +332,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     public void setQuestion(String qText, Icon icon) throws IOException {
         questionLabel.setIcon(icon);
         questionLabel.setText(qText);
-        
+
         TTSController.TTS(qText);
     }
 
@@ -359,7 +379,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         } else if (a == 4) {
             scoreNumLabel.setText("3");
         }
-        
+
         this.RepeatSoundButton.setVisible(false);
         nextQButton.setVisible(true);
     }
@@ -376,5 +396,53 @@ public class QuestionPanel extends javax.swing.JPanel {
         if (a < 4) {
             a++;
         }
+    }
+    
+    private void saveQuestion(){
+            //save this question to the user's current question
+            User user = session.getLoggedInUser();
+            user.setCurrentQuestion(originalQuestion);  
+    }
+
+    //fill question panel
+    private void fillQuestion() {
+        try {
+            //initally icons is null
+            //if the question type is PICTURE then a new arraylist is created.
+            icons = null;
+            //set the question, question can have an icon as well. it is set to null for now.
+            setQuestion(question.getQuestion(), null);
+            
+            //shuffle choices
+            Collections.shuffle(question.getChoices());
+            
+            //find the correct answer
+            correctAnswer = findAnswer(question.getAnswer(), question.getChoices());
+            //if the type is PICTURES then create icons
+            if (question.getType() == QuestionType.PICTURE) {
+                //create a new list
+                icons = new ArrayList<Icon>();
+                for (int j = 0; j < 4; j++) {
+                    //all pictures about questions should go to this path
+                    //make all of them png's.
+                    ImageIcon icon = iconProvider.getImage(question.getChoices().get(j));
+                    icons.add(icon);
+                }
+            }
+            //set the choices 
+            setChoices(question.getChoices(), icons);
+        } catch (IOException ex) {
+            Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+     //find the index of answer
+    private int findAnswer(String answer, List<String> choices) {
+        for (int i = 0; i < choices.size(); i++) {
+            if (choices.get(i).equals(answer)) {
+                return i + 1;
+            }
+        }
+        return 0;
     }
 }

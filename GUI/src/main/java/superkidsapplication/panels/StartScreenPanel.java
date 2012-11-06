@@ -4,11 +4,22 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.questions.QuestionDatabase;
+import com.ece.superkids.questions.QuestionDatabaseFactory;
+import com.ece.superkids.questions.entities.Question;
+import com.ece.superkids.questions.enums.QuestionCategory;
+import com.ece.superkids.questions.enums.QuestionLevel;
+import com.ece.superkids.users.entities.User;
 import java.awt.Color;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import superkidsapplication.controllers.MusicController;
 import superkidsapplication.controllers.PanelController;
+import superkidsapplication.controllers.QuestionController;
+import superkidsapplication.events.Session;
 
 /**
  *
@@ -19,7 +30,10 @@ public class StartScreenPanel extends javax.swing.JPanel {
 
     private PanelController controller;
     private MusicController mController;
+    private QuestionController qController;
     private SoundPanel sound_options;
+    private Session session;
+    private QuestionDatabase qD;
 
     /**
      * Creates new form StartScreenPanel
@@ -29,7 +43,10 @@ public class StartScreenPanel extends javax.swing.JPanel {
         controller = PanelController.getInstance();
         mController = MusicController.getInstance();
         sound_options = SoundPanel.getInstance();
-        
+        qController = QuestionController.getInstance();
+        session = Session.aSession();
+        qD = QuestionDatabaseFactory.aQuestionDatabaseWithAllQuestions();
+
         initComponents();
 
         //add a listener to see if the panel is showing.
@@ -48,6 +65,20 @@ public class StartScreenPanel extends javax.swing.JPanel {
                 }
             }
         });
+    }
+
+    //display continue button???
+    ///called from panel listener
+    //everytime startscreen is visible
+    public void doContinueGame() {
+        if (session.getLoggedInUser() != null) {
+            Question q = session.getLoggedInUser().getState().getCurrentQuestion();
+            if (q == null) {
+                ContinueGame.setVisible(false);
+            } else {
+                ContinueGame.setVisible(true);
+            }
+        }
     }
 
     private static class StartScreenPanelHolder {
@@ -166,14 +197,46 @@ public class StartScreenPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ContinueGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinueGameActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            //get the question that user has been playing before
+            User user = session.getLoggedInUser();
+            Question q = user.getState().getCurrentQuestion();
+            //get question number
+            int number = 0;
+            //if returned q is null, then no saved current question
+            if (q != null) {
+                number = qD.getQuestionNumber(q);
+            } else {
+                return;
+            }
+            //if returned number is -1, then question is not found in the database
+            if (number != -1) {
+                System.out.println("Continue question:" + q.getQuestion() + " index:" + number);
+                //and set number in question controller
+                qController.setCount(number);
+                //create the question panel
+                QuestionPanel qPanel = qController.createQuestionPanel(q.getLevel(), q.getCategory());
+                //display the questionpanel
+                controller.addPanel(qPanel);
+                //if cannot find the question go to subject selection
+            } else if (number == -1) {
+                user.getState().getCurrentLevel();
+                QuestionLevel lev = user.getState().getCurrentLevel();
+                controller.addPanel(new SubjectSelectionPanel(lev));
+                System.out.println("Cannot find saved question.");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_ContinueGameActionPerformed
 
     //if new game is clicked
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
-        //stop music when a the game is started
-        //mController.stopMusic();
+        //clear current question
+        session.getLoggedInUser().setCurrentQuestion(null);
         //create a new game panel
         NewGamePanel gamePanel = new NewGamePanel();
         //add new panel

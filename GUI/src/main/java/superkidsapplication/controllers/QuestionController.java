@@ -6,15 +6,11 @@ import com.ece.superkids.questions.QuestionManager;
 import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
-import com.ece.superkids.questions.enums.QuestionType;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import javax.swing.*;
 import superkidsapplication.panels.QuestionPanel;
-import superkidsapplication.providers.ImageProvider;
-import superkidsapplication.providers.ResourceProviderFactory;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -29,13 +25,10 @@ import superkidsapplication.providers.ResourceProviderFactory;
 public class QuestionController {
 
     private int count;
-    private List<Icon> icons;
     private QuestionPanel qPanel;
-    private ImageProvider iconProvider;
 
     private QuestionController() {
         count = 0;
-        iconProvider = ResourceProviderFactory.anImageProvider();
     }
 
     private static class QuestionBaseHolder {
@@ -52,6 +45,10 @@ public class QuestionController {
     public void reset() {
         count = 0;
     }
+    
+    public void setCount(int number){
+        count = number;
+    }
 
     //questions are fetched from the database
     public QuestionPanel createQuestionPanel(QuestionLevel level, QuestionCategory category) throws IOException {
@@ -63,54 +60,20 @@ public class QuestionController {
 
         //get level questions
         while (count < n) {
-            //initally icons is null
-            //if the question type is PICTURE then a new arraylist is created.
-            icons = null;
-
             //get a new question
             Question q = qd.getQuestion(level, category, count);
-            
-            //shuffle choices
-            Collections.shuffle(q.getChoices());
 
-            //find answer
-            int ans = findAnswer(q.getAnswer(), q.getChoices());
-            
             //create new question panel
-            qPanel = new QuestionPanel(ans, level, category);
+            qPanel = new QuestionPanel(q);
 
-            //set the question, question can have an icon as well. it is set to null for now.
-            qPanel.setQuestion(q.getQuestion(), null);
-
-            //if the type is PICTURES then create icons
-            if (q.getType() == QuestionType.PICTURE) {
-                //create a new list
-                icons = new ArrayList<Icon>();
-                for (int j = 0; j < 4; j++) {
-                    //all pictures about questions should go to this path
-                    //make all of them png's.
-                    ImageIcon icon = iconProvider.getImage(q.getChoices().get(j));
-                    icons.add(icon);
-                }
-            }
-            //set the choices 
-            qPanel.setChoices(q.getChoices(), icons);
+            //increment counter
             count++;
+
             //return the panel
             return qPanel;
         }
         //if returned is null then no more questions in the category of that level available.
         return null;
-    }
-
-    //find the index of answer
-    private int findAnswer(String answer, List<String> choices) {
-        for (int i = 0; i < choices.size(); i++) {
-            if (choices.get(i).equals(answer)) {
-                return i + 1;
-            }
-        }
-        return 0;
     }
 
     //get list of custom question for given level
@@ -144,8 +107,8 @@ public class QuestionController {
 
         QuestionManager qm = QuestionDatabaseFactory.aQuestionManager();
 
-        int i=0;
-        
+        int i = 0;
+
         for (QuestionLevel l : QuestionLevel.values()) {
             for (QuestionCategory c : QuestionCategory.values()) {
                 //get number of question in the category

@@ -43,18 +43,16 @@ public class User implements Serializable {
         return state;
     }
 
-    public void setState(State state) {
+    private void setState(State state) {
         this.state = state;
-    }
-
-    public void setCurrentLevel(QuestionLevel level) {
-        state.setCurrentLevel(level);
-        state.setQuestionLevel(level);
     }
 
     public void setCurrentQuestion(Question question) {
         state.setCurrentQuestion(question);
-        state.setQuestionCategory(question.getCategory());
+        if(question!=null){
+            state.setCurrentLevel(question.getLevel());
+            state.setCurrentCategory(question.getCategory());
+        }
     }
 
     public void saveScore(Question question, Integer score) {
@@ -74,14 +72,6 @@ public class User implements Serializable {
         return history.getHistoryTest();
     }
     
-    public Question getCurrentQuestion() {
-        return state.getCurrentQuestion();
-    }
-    
-    public QuestionLevel getCurrentLevel() {
-        return state.getCurrentLevel();
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof User)) {

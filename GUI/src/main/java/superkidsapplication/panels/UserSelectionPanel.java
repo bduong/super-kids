@@ -46,18 +46,32 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        usersBox = new javax.swing.JComboBox();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
+        usersBox = new javax.swing.JComboBox();
         loginButton = new javax.swing.JButton();
         warnLabel = new javax.swing.JLabel();
+        helloLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(800, 600));
+
+        jLayeredPane1.setPreferredSize(new java.awt.Dimension(800, 600));
+
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Select the User");
+        jLabel1.setBounds(60, 140, 290, 80);
+        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         usersBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usersBoxActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Select the User");
+        usersBox.setBounds(80, 230, 230, 27);
+        jLayeredPane1.add(usersBox, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -65,45 +79,48 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
                 loginButtonActionPerformed(evt);
             }
         });
+        loginButton.setBounds(150, 399, 79, 60);
+        jLayeredPane1.add(loginButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         warnLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         warnLabel.setForeground(new java.awt.Color(255, 0, 0));
+        warnLabel.setBounds(80, 270, 260, 50);
+        jLayeredPane1.add(warnLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        helloLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        helloLabel.setForeground(new java.awt.Color(255, 255, 255));
+        helloLabel.setBounds(420, 460, 360, 50);
+        jLayeredPane1.add(helloLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
+        jLabel2.setBounds(490, 230, 140, 220);
+        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/BasicScreen.png"))); // NOI18N
+        background.setText("jLabel2");
+        background.setMaximumSize(new java.awt.Dimension(800, 600));
+        background.setMinimumSize(new java.awt.Dimension(800, 600));
+        background.setPreferredSize(new java.awt.Dimension(800, 600));
+        background.setBounds(0, -10, 800, 620);
+        jLayeredPane1.add(background, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 231, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(layout.createSequentialGroup()
-                            .add(47, 47, 47)
-                            .add(jLabel1))
-                        .add(layout.createSequentialGroup()
-                            .add(39, 39, 39)
-                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                .add(loginButton)
-                                .add(usersBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 240, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(121, Short.MAX_VALUE))
+            .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 800, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(54, 54, 54)
-                .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(usersBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(loginButton)
-                .add(18, 18, 18)
-                .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 612, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void usersBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersBoxActionPerformed
         // TODO add your handling code here:
+        helloLabel.setText("Hello! My name is "+usersBox.getSelectedItem()+".");
     }//GEN-LAST:event_usersBoxActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
@@ -125,7 +142,11 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
         controller.addPanel(startscreen);
     }//GEN-LAST:event_loginButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel helloLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton loginButton;
     private javax.swing.JComboBox usersBox;
     private javax.swing.JLabel warnLabel;

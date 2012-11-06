@@ -9,9 +9,7 @@ import static com.ece.superkids.questions.enums.QuestionCategory.*;
 public enum QuestionLevel {
     LEVEL_1(SHAPES, COLORS, ANIMALS),
     LEVEL_2(FOOD, GEOGRAPHY, PLANETS),
-    LEVEL_3(STATIONARY, INSTRUMENTS),
-    LEVEL_4(SHAPES),
-    LEVEL_5(INSTRUMENTS);
+    LEVEL_3(STATIONARY, INSTRUMENTS, BODYPARTS);
 
     private List<QuestionCategory> categories;
 

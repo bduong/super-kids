@@ -11,6 +11,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.JPanel;
 import superkidsapplication.panels.MainFrame;
+import superkidsapplication.panels.StartScreenPanel;
 import superkidsapplication.panels.UserSelectionPanel;
 
 /**
@@ -50,6 +51,8 @@ public class PanelListener implements ComponentListener,
             frame.ExitItem.setEnabled(false);
             frame.ChildMenu.setEnabled(true);
             frame.ParentItem.setEnabled(true);
+            StartScreenPanel start = (StartScreenPanel) component;
+            start.doContinueGame();
         } else if (component.getName() != null && component.getName().equals("UserSelection")) {
             frame.BackItem.setEnabled(false);
             frame.ExitItem.setEnabled(false);

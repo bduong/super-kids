@@ -5,6 +5,10 @@
 package superkidsapplication.controllers;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import superkidsapplication.tts.MarySpeechController;
+import superkidsapplication.tts.SpeechController;
 
 /**
  *
@@ -21,6 +25,15 @@ public class TTSController {
                 Runtime.getRuntime().exec(new String[]{"say", string});
             } catch (IOException ex) {
                 //Something
+            }
+        }
+        //if not on MAC
+        else{
+            SpeechController mary = MarySpeechController.getInstance();
+            try {
+                mary.say(string);
+            } catch (Exception ex) {
+                Logger.getLogger(TTSController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
