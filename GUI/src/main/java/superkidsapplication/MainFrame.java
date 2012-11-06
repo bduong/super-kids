@@ -4,7 +4,7 @@
  */
 package superkidsapplication;
 
-import com.apple.eawt.Application;
+//import com.apple.eawt.Application;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
@@ -166,7 +166,7 @@ public class MainFrame extends javax.swing.JFrame {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Image img = kit.createImage(url);
         if (osName.contains("OS X")) {
-            Application.getApplication().setDockIconImage(img);
+//            Application.getApplication().setDockIconImage(img);
         }
         this.setIconImage(img);
     }

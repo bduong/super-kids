@@ -12,7 +12,8 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
             
     private PanelController controller;
     private QuestionBase factory;
-
+    private TutorialBase factory2;
+    public boolean tutorial = false;
     /**
      * Creates new form SubjectSelectionJPanel
      */
@@ -22,7 +23,15 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         factory = QuestionBase.getInstance();
         initComponents();
     }
-
+    
+    public SubjectSelectionJPanel(String text) {
+        tutorial = true;
+        System.out.println("TUTORIAL SELECTION");
+        controller=PanelController.getInstance();
+        factory2 = TutorialBase.getInstance();
+        initComponents();
+        title.setText(text);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,7 +54,6 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
         setAlignmentX(0.0F);
         setAlignmentY(0.0F);
         setPreferredSize(new java.awt.Dimension(800, 600));
-        setSize(new java.awt.Dimension(800, 600));
 
         jLayeredPane1.setAlignmentX(0.0F);
         jLayeredPane1.setAlignmentY(0.0F);
@@ -53,8 +61,9 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
 
         title.setFont(new java.awt.Font("Chalkduster", 0, 36)); // NOI18N
         title.setForeground(new java.awt.Color(255, 255, 51));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Adventure island map");
-        title.setBounds(170, 90, 520, 70);
+        title.setBounds(120, 90, 520, 70);
         jLayeredPane1.add(title, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         userphoto.setForeground(new java.awt.Color(255, 255, 51));
@@ -65,12 +74,12 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
 
         username.setForeground(new java.awt.Color(255, 255, 51));
         username.setText("username");
-        username.setBounds(730, 20, 61, 16);
+        username.setBounds(730, 20, 47, 14);
         jLayeredPane1.add(username, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         score.setForeground(new java.awt.Color(255, 255, 0));
         score.setText("score");
-        score.setBounds(740, 40, 34, 16);
+        score.setBounds(740, 40, 26, 14);
         jLayeredPane1.add(score, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         subject1.setText("Shapes");
@@ -119,23 +128,49 @@ public class SubjectSelectionJPanel extends javax.swing.JPanel {
 
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
         // TODO add your handling code here:
-        factory.reset();
-        QuestionPanel q = factory.createQuestionPanel("shapes");
-        controller.addPanel(q);
+
+        if (tutorial){
+            factory2.reset();
+            String str = "shapes";
+            TutorialPanel q = factory2.createTutorialPanel(str);
+            controller.addPanel(q);
+        }
+        else{ 
+            factory.reset();
+            QuestionPanel q = factory.createQuestionPanel("shapes");
+            controller.addPanel(q);
+        }
+
     }//GEN-LAST:event_subject1ActionPerformed
 
     private void subject2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject2ActionPerformed
         // TODO add your handling code here:
-        factory.reset();
-        QuestionPanel q = factory.createQuestionPanel("colors");
-        controller.addPanel(q);
+        if (tutorial){
+            factory2.reset();
+            String str = "colors";
+            TutorialPanel q = factory2.createTutorialPanel(str);
+            controller.addPanel(q);
+        }
+        else{ 
+            factory.reset();
+            QuestionPanel q = factory.createQuestionPanel("colors");
+            controller.addPanel(q);
+        }
     }//GEN-LAST:event_subject2ActionPerformed
 
     private void subject3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject3ActionPerformed
         // TODO add your handling code here:
-        factory.reset();
-        QuestionPanel q = factory.createQuestionPanel("animals");
-        controller.addPanel(q);
+        if (tutorial){
+            factory2.reset();
+            String str = "animals";
+            TutorialPanel q = factory2.createTutorialPanel(str);
+            controller.addPanel(q);
+        }
+        else{ 
+            factory.reset();
+            QuestionPanel q = factory.createQuestionPanel("animals");
+            controller.addPanel(q);
+        }
     }//GEN-LAST:event_subject3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

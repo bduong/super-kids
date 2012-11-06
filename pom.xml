@@ -8,8 +8,8 @@
     <artifactId>super-kids</artifactId>
     <version>1.0</version>
   <modules>
-    <module>GUI</module>
     <module>server</module>
+    <module>GUI</module>
   </modules>
   <packaging>pom</packaging>
 
