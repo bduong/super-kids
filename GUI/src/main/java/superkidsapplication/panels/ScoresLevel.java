@@ -38,6 +38,7 @@ public class ScoresLevel extends javax.swing.JPanel {
 
         setBounds(new java.awt.Rectangle(0, 0, 300, 300));
         setMaximumSize(new java.awt.Dimension(300, 300));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(300, 300));
 
         jButton1.setText("Level 1");
@@ -66,18 +67,18 @@ public class ScoresLevel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
+                .addGap(14, 14, 14)
                 .addComponent(jButton1)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addGap(50, 50, 50)
+                .addGap(30, 30, 30)
                 .addComponent(jButton3)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)

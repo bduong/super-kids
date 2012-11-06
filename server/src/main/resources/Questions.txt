@@ -2,7 +2,7 @@
 {"question":"What is round?","choices":["Square","Circle","Triangle","Rectangle"],"answer":"Circle","explaination":"A square has four equal sides","type":"TEXT","category":"SHAPES","level":"LEVEL_1"}
 {"question":"Which is a square?","choices":["Square","circle","triangle","rectangle"],"answer":"Square","explaination":"A circle is round","type":"PICTURE","category":"SHAPES","level":"LEVEL_1"}
 {"question":"Which shape is red?","choices":["Square","circle","triangle","rectangle"],"answer":"Square","explaination":"A square has four equal sides","type":"PICTURE","category":"COLORS","level":"LEVEL_1"}
-{"question":"Which is a dog?","choices":["dog","giraffe","whale","elephant"],"answer":"dog","explianation":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
+{"question":"Which is a dog?","choices":["dog","giraffe","whale","elephant"],"answer":"dog","explaination":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
 {"question":"Which is an elephant?","choices":["dog","giraffe","whale","elephant"],"answer":"elephant","explaination":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
 {"question":"Which is a giraffe?","choices":["dog","giraffe","whale","elephant"],"answer":"giraffe","explaination":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
 {"question":"Which is a whale?","choices":["dog","giraffe","whale","elephant"],"answer":"whale","explaination":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
