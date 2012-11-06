@@ -31,7 +31,6 @@ public class CorrectAnswerFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setResizable(false);
-        setType(java.awt.Window.Type.POPUP);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);

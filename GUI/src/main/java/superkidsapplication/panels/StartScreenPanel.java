@@ -202,6 +202,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
             //get the question that user has been playing before
             User user = session.getLoggedInUser();
             Question q = user.getState().getCurrentQuestion();
+            System.out.println(q.getQuestion()+q.getAnswer()+q.getExplaination()+q.getChoices()+q.getLevel()+q.getCategory()+q.getType());
             //get question number
             int number = 0;
             //if returned q is null, then no saved current question
