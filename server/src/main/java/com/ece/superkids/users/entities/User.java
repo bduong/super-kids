@@ -54,10 +54,6 @@ public class User implements Serializable {
 
     public void setCurrentQuestion(Question question) {
         state.setCurrentQuestion(question);
-        if(question!=null){
-            state.setCurrentLevel(question.getLevel());
-            state.setCurrentCategory(question.getCategory());
-        }
         saveState();
     }
 
@@ -72,6 +68,7 @@ public class User implements Serializable {
     }
 
     public void saveState() {
+        userManager.addUser(this);
         userManager.updateUser(this, this);
     }
 
