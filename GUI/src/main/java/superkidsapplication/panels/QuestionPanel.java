@@ -416,7 +416,7 @@ public class QuestionPanel extends javax.swing.JPanel {
             setQuestion(question.getQuestion(), null);
             
             //shuffle choices
-            Collections.shuffle(question.getChoices());
+           // Collections.shuffle(question.getChoices());
             
             //find the correct answer
             correctAnswer = findAnswer(question.getAnswer(), question.getChoices());
