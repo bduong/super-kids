@@ -36,6 +36,7 @@ public class InitialSetupPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -44,8 +45,16 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         passField = new javax.swing.JPasswordField();
         passField2 = new javax.swing.JPasswordField();
         nextButton = new javax.swing.JButton();
+        background = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 600));
+
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Initial Setup");
+        jLabel1.setBounds(90, 140, 240, 40);
+        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         okButton.setText("OK");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -53,19 +62,31 @@ public class InitialSetupPanel extends javax.swing.JPanel {
                 okButtonActionPerformed(evt);
             }
         });
+        okButton.setBounds(110, 340, 75, 29);
+        jLayeredPane1.add(okButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setText("Enter Password");
+        jLabel2.setBounds(250, 240, 95, 20);
+        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setText("Again");
+        jLabel3.setBounds(250, 290, 36, 30);
+        jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         warnLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         warnLabel.setForeground(new java.awt.Color(255, 0, 0));
+        warnLabel.setBounds(390, 300, 390, 60);
+        jLayeredPane1.add(warnLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         passField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passFieldActionPerformed(evt);
             }
         });
+        passField.setBounds(70, 240, 170, 28);
+        jLayeredPane1.add(passField, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        passField2.setBounds(70, 290, 170, 28);
+        jLayeredPane1.add(passField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         nextButton.setText("Next");
         nextButton.addActionListener(new java.awt.event.ActionListener() {
@@ -73,54 +94,24 @@ public class InitialSetupPanel extends javax.swing.JPanel {
                 nextButtonActionPerformed(evt);
             }
         });
+        nextButton.setBounds(650, 370, 90, 40);
+        jLayeredPane1.add(nextButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/BasicScreen.png"))); // NOI18N
+        background.setBounds(0, 0, 800, 600);
+        jLayeredPane1.add(background, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(43, 43, 43)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                    .add(passField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                                    .add(passField2))
-                                .add(26, 26, 26)
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel2)
-                                    .add(jLabel3)))
-                            .add(okButton)
-                            .add(jLabel1)))
-                    .add(layout.createSequentialGroup()
-                        .add(23, 23, 23)
-                        .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 387, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(44, 44, 44)
-                        .add(nextButton)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 800, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(79, 79, 79)
-                .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(passField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(passField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(okButton)
-                .add(18, 18, 18)
-                .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(nextButton)
-                .addContainerGap(18, Short.MAX_VALUE))
+            .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -129,7 +120,7 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         String pass1 = new String(passField.getPassword());
         String pass2 = new String(passField2.getPassword());
         if (pass1.length() < 8) {
-            warnLabel.setText("Length must be at least 8.");
+            warnLabel.setText("Length must be at least 8 characters.");
             return;
         }
         if (pass1.equals(pass2)) {
@@ -150,9 +141,11 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         pC.addPanel(new ParentalControlPanel());
     }//GEN-LAST:event_nextButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton okButton;
     private javax.swing.JPasswordField passField;
