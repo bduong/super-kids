@@ -48,8 +48,6 @@ public class StateSavedTests {
 
     @Test
     public void setCurrentQuestionTest() {
-
-        
         testUser.setCurrentQuestion(question);
         testUser.saveState();
     }
@@ -61,8 +59,7 @@ public class StateSavedTests {
 
         assertEquals(question.getQuestion(), actualQuestion.getQuestion());
         assertEquals(question.getExplaination(), actualQuestion.getExplaination());
-        System.out.println("Question Explanation is : " + actualQuestion.getExplaination());
-         
+
     }
 
 
