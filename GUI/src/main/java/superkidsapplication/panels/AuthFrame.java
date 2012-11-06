@@ -112,7 +112,6 @@ public class AuthFrame extends javax.swing.JFrame {
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
         okButton.doClick();
-        okPressed();
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void passwordFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_passwordFieldCaretUpdate
@@ -132,7 +131,7 @@ public class AuthFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String input = new String(passwordField.getPassword());
         if (pM.checkParentPassword(input)) {
-            this.dispose();
+            this.setVisible(false);
             ParentalControlPanel parentPanel = new ParentalControlPanel();
             controller.addPanel(parentPanel);
         } else {
