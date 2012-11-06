@@ -256,6 +256,8 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         q.setAnswer(choice.get(choiceSelected));
         //set type
         q.setType(QuestionType.TEXT);
+        //set explanation
+        q.setExplaination("");
         //add question
         qm.addQuestion(q);
         jLabel5.setText("Question Added");
