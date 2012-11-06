@@ -24,6 +24,7 @@ public class User implements Serializable {
         this.name = name;
         state = new State();
         history = new History();
+        fileUserManager = new FileUserManager();
     }
 
     public int getId() {
@@ -53,10 +54,6 @@ public class User implements Serializable {
 
     public void setCurrentQuestion(Question question) {
         state.setCurrentQuestion(question);
-        if(question!=null){
-            state.setCurrentLevel(question.getLevel());
-            state.setCurrentCategory(question.getCategory());
-        }
         saveState();
     }
 
@@ -71,6 +68,7 @@ public class User implements Serializable {
     }
 
     public void saveState() {
+        fileUserManager.addUser(this);
         fileUserManager.updateUser(this, this);
     }
 
