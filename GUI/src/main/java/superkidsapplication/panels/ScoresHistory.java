@@ -32,6 +32,33 @@ public class ScoresHistory extends javax.swing.JPanel {
         session = Session.aSession();
         //get user
         user = session.getLoggedInUser();
+        initComponents();
+        level = QuestionLevel.LEVEL_1;
+        //JPanel tab2 = new JPanel();
+        //JPanel tab3 = new JPanel();
+        category = level.getCategories();
+        //QuestionCategory.values();
+        user = new User("Prashant");
+        for(int i =0; i< category.size(); i++)
+        {   
+            Object data[][] = user.getHistoryTest();
+        /*    Object data[][] = {
+            {"Q1", new Integer(1),new Integer(2),new Integer(3),new Integer(4),new Integer(5)},
+            {"Q2", new Integer(6),new Integer(7),new Integer(8),new Integer(9),new Integer(10)},
+            {"Q3", new Integer(11),new Integer(12),new Integer(13),new Integer(14),new Integer(15)},
+            {"Q4", new Integer(16),new Integer(17),new Integer(18),new Integer(19),new Integer(20)},
+            {"Q5", new Integer(21),new Integer(22),new Integer(23),new Integer(24),new Integer(25)},
+            
+        };*/
+            
+            String Columnname[] = {"Question Number","Attempt 1","Attempt 2","Attempt 3","Attempt 4","Attempt 5"};
+            
+            table[i] = new JTable(data,Columnname);
+            JScrollPane spTable = new JScrollPane(table[i]);
+            
+            jTabbedPane1.addTab(category.get(i).toString(),spTable);
+        }
+        
     }
 
     /**

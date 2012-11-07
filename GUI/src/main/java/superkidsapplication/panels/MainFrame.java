@@ -4,6 +4,7 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.users.ParentManager;
 import com.ece.superkids.users.UserDatabaseFactory;
 import superkidsapplication.controllers.PanelController;
@@ -42,9 +43,6 @@ public class MainFrame extends javax.swing.JFrame {
         } else if (!pM.doesParentExist()) {
             controller.addPanel(new InitialSetupPanel());
         }
-        
-        ///GO BACK IS NOT VISIBLE FOR NOW
-        BackItem.setVisible(false);
     }
 
     /**
@@ -202,6 +200,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void LearnModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LearnModeActionPerformed
         // TODO add your handling code here:
         SubjectSelectionPanel sPanel = new SubjectSelectionPanel();
+        //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_LearnModeActionPerformed
 

@@ -81,7 +81,6 @@ public class History implements Serializable {
     
     public Object[][] getHistory(QuestionCategory category, QuestionLevel level) {
         Map<Question, ArrayList<Integer>> map = this.getHistoryMap(category, level);
-       
         if(map.size()!=0) {
             Iterator it = map.entrySet().iterator();
             int counter = 0;
