@@ -12,6 +12,10 @@ import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 
+/**
+ *
+ * @author elm
+ */
 public class State implements Serializable {
 
     private QuestionLevel currentLevel;
@@ -19,7 +23,9 @@ public class State implements Serializable {
     private QuestionCategory currentCategory;
     private Map<Question, Integer> scores;
     static final long serialVersionUID = -6618469841122132321L;
-    
+
+    /** Contstructor for state.
+     */
     public State() {
         scores = new HashMap<Question, Integer>();
     }
@@ -67,8 +73,6 @@ public class State implements Serializable {
         return score;
     }
 
-
-
     public Map<Question, Integer> getScores(int scoreLevel) {
         Map<Question, Integer> score = new HashMap<Question, Integer>();
         Iterator it = scores.entrySet().iterator();
@@ -97,6 +101,6 @@ public class State implements Serializable {
         if (!currentCategory.equals(state.currentCategory))  return false;
 
         return true;
-
     }
+    
 }

@@ -67,13 +67,18 @@ public class User implements Serializable {
         state.addScore(question, score);
     }
 
-    public void newState(QuestionCategory category, QuestionLevel level) {
+    public void endState() {
         history.saveToHistory(state);
+    }
+
+    public void newState(QuestionCategory category, QuestionLevel level) {
         state = new State();
         state.setCurrentCategory(category);
         state.setCurrentLevel(level);
         saveState();
     }
+
+
 
     public void saveState() {
         (new FileUserManager()).addUser(this);

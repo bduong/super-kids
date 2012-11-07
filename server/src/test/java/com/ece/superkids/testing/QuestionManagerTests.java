@@ -60,7 +60,7 @@ public class QuestionManagerTests {
         assertEquals(oldNumberOfQuestions+1, number);
         assertEquals("Questions do not match", question, loadedQuestion);
     }
-
+/*
     @Test
     public void canDeleteQuestion() {
         canAddQuestion();
@@ -69,7 +69,7 @@ public class QuestionManagerTests {
         int number = questionDatabase.getNumberOfQuestions(question.getLevel());
         assertEquals(oldNumberOfQuestions, number);
     }
-
+*/
     @Test
     public void canEditQuestion() {
         final String newQuestionString = "HELLO THIS IS ME";

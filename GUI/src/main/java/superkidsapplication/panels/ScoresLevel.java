@@ -21,6 +21,7 @@ public class ScoresLevel extends javax.swing.JPanel {
     public ScoresLevel() {
         initComponents();
         c= PanelController.getInstance();
+        //
     }
 
     /**
@@ -90,13 +91,16 @@ public class ScoresLevel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         levelques = QuestionLevel.LEVEL_1;
-        c.addPanel(new ScoresHistory());
+        ScoresHistory scr = new ScoresHistory();
+        
+        c.addPanel(scr);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         levelques = QuestionLevel.LEVEL_2;
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

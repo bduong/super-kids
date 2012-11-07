@@ -53,7 +53,7 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Initial Setup");
-        jLabel1.setBounds(90, 140, 240, 40);
+        jLabel1.setBounds(90, 160, 240, 40);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         okButton.setText("OK");
@@ -62,15 +62,19 @@ public class InitialSetupPanel extends javax.swing.JPanel {
                 okButtonActionPerformed(evt);
             }
         });
-        okButton.setBounds(110, 340, 75, 29);
+        okButton.setBounds(70, 340, 80, 40);
         jLayeredPane1.add(okButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Enter Password");
-        jLabel2.setBounds(250, 240, 95, 20);
+        jLabel2.setBounds(245, 240, 110, 30);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Again");
-        jLabel3.setBounds(250, 290, 36, 30);
+        jLabel3.setBounds(245, 290, 70, 30);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         warnLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
