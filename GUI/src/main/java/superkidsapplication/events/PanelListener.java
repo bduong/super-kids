@@ -78,6 +78,12 @@ public class PanelListener implements ComponentListener,
             frame.ChildMenu.setEnabled(true);
             frame.ParentItem.setEnabled(true);
         } 
+         else if (component.getName() != null && component.getName().equals("Learning")) {
+            frame.BackItem.setEnabled(false);
+            frame.ExitItem.setEnabled(false);
+            frame.ChildMenu.setEnabled(true);
+            frame.ParentItem.setEnabled(true);
+         }
         else {
             frame.ExitItem.setEnabled(true);
             frame.BackItem.setEnabled(true);

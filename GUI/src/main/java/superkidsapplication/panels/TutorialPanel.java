@@ -23,7 +23,7 @@ public class TutorialPanel extends javax.swing.JPanel {
      */
 
     public TutorialPanel(String category) {
-                    
+        this.setName("Learning");           
         initComponents();
         jLabel1.setText(category);  
     }
