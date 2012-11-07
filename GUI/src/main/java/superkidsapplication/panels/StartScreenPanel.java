@@ -220,7 +220,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
             //if the category is not finished get the current question
             Question q;
             //get question number
-            int number = 0;
+            int number;
             //if returned q is null, then no saved current question
             if (s != null) {
                 q = s.getCurrentQuestion();

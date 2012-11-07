@@ -23,6 +23,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     private PanelController controller = PanelController.getInstance();
     
     public ScoreScreenPanel() {
+        this.setName("ScoreScreen");
         initComponents();
         displayStars();
     }

@@ -71,6 +71,12 @@ public class PanelListener implements ComponentListener,
             frame.ExitItem.setEnabled(true);
             frame.ChildMenu.setEnabled(true);
             frame.ParentItem.setEnabled(true);
+        }
+        else if (component.getName() != null && component.getName().equals("ScoreScreen")) {
+            frame.BackItem.setEnabled(false);
+            frame.ExitItem.setEnabled(false);
+            frame.ChildMenu.setEnabled(true);
+            frame.ParentItem.setEnabled(true);
         } 
         else {
             frame.ExitItem.setEnabled(true);
