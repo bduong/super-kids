@@ -48,7 +48,6 @@ public class QuestionPanel extends javax.swing.JPanel {
     private List<Icon> icons;
     private ImageProvider iconProvider;
     private Question question;
-    private Question originalQuestion;
 
     //when creating the panel set which choice is the correct answer
     //1 is button1 , 2 is button2 and so on.
@@ -56,7 +55,6 @@ public class QuestionPanel extends javax.swing.JPanel {
     public QuestionPanel(Question question) {
         this.setName("Question");
         this.question = question;
-        this.originalQuestion = QuestionBuilder.aQuestion().copiedFrom(question).build();
         this.category = question.getCategory();
         this.level = question.getLevel();
         qBase = QuestionController.getInstance();
@@ -288,14 +286,14 @@ public class QuestionPanel extends javax.swing.JPanel {
             //// here when a question is answered correctly we get a new question panel and add to frame
             //set result frame to invisible if no more questions
             if (result != null) {
-                //save the score
-                session.getLoggedInUser().saveScore(question, score);
                 result.setVisible(false);
             }
             //get the next question
             QuestionPanel qP = qBase.createQuestionPanel(level, category);
             //if the returned questionPanel is not null then add to frame through the controller
             if (qP != null) {
+                 //save the score
+                session.getLoggedInUser().saveScore(question, score);
                 controller.addPanel(qP);
                 //if returned questionpanel is null then there are no more 
             } else {
@@ -405,7 +403,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     private void saveQuestion(){
             //save this question to the user's current question
             User user = session.getLoggedInUser();
-            user.setCurrentQuestion(originalQuestion);  
+            user.setCurrentQuestion(question);  
     }
 
     //fill question panel

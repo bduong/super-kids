@@ -42,6 +42,9 @@ public class MainFrame extends javax.swing.JFrame {
         } else if (!pM.doesParentExist()) {
             controller.addPanel(new InitialSetupPanel());
         }
+        
+        ///GO BACK IS NOT VISIBLE FOR NOW
+        BackItem.setVisible(false);
     }
 
     /**

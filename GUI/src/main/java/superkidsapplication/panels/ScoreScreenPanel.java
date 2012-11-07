@@ -7,6 +7,7 @@ package superkidsapplication.panels;
 import java.util.ArrayList;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.TTSController;
+import superkidsapplication.events.Session;
 
 /**
  *
@@ -17,17 +18,20 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     /**
      * Creates new form ScoreScreenPanel
      */
+    private Session session = Session.aSession();
     private ArrayList<StarPanel> stars = new ArrayList(5);
     private PanelController controller = PanelController.getInstance();
     
     public ScoreScreenPanel() {
         initComponents();
         displayStars();
+        //end the state for user
+        session.getLoggedInUser().endState();
     }
     
     private void displayStars()
     {
-        int Score = 75; //Scoring for the category
+        int Score = 75; //scoring for the category
         int num_stars = Score / 20; //One star per 20points
         
         for (int i = 0; i < num_stars; i++)

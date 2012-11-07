@@ -202,6 +202,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
             //get the question that user has been playing before
             User user = session.getLoggedInUser();
             Question q = user.getState().getCurrentQuestion();
+            System.out.println(q);
             //get question number
             int number = 0;
             //if returned q is null, then no saved current question
@@ -235,6 +236,8 @@ public class StartScreenPanel extends javax.swing.JPanel {
     //if new game is clicked
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
+        //set game on to false
+        //session.getLoggedInUser().setGameOn(false);
         //create a new game panel
         NewGamePanel gamePanel = new NewGamePanel();
         //add new panel
