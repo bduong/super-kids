@@ -25,8 +25,6 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     public ScoreScreenPanel() {
         initComponents();
         displayStars();
-        //end the state for user
-        session.getLoggedInUser().endState();
     }
     
     private void displayStars()
@@ -111,6 +109,8 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     private void jLayeredPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLayeredPane1MouseClicked
         // TODO add your handling code here:
         controller.goToSubjectMenu();
+         //end the state for user
+        session.getLoggedInUser().endState();
     }//GEN-LAST:event_jLayeredPane1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -21,6 +21,7 @@ public class History implements Serializable {
     
     private Map<String, ArrayList<State>> questionToList;
     private boolean gameOn;
+    private boolean levelFinished;
 
     public History() {
         questionToList = new HashMap();
@@ -30,9 +31,15 @@ public class History implements Serializable {
     public void setGameOn(boolean value) {
         gameOn = value;
     }
+    
     public boolean getGameOn() {
-        // do checking on hashmap to see if user is done with all categories
+        // do checking on hashmap to see if user is done with all categories in all levels
         return gameOn;
+    }
+    
+     public boolean isLevelFinished(QuestionLevel level) {
+        //do check to see if user is done with this level by checking all categories in that level
+        return levelFinished;
     }
 
     public void saveToHistory(State state) {

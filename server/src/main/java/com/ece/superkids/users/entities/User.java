@@ -58,6 +58,10 @@ public class User implements Serializable {
     public boolean isGameOn() {
         return history.getGameOn();
     }
+    
+    public boolean isCurrentLevelFinished(){
+        return history.isLevelFinished(this.state.getCurrentLevel());
+    }
 
     public void setCurrentQuestion(Question question) {
         history.setGameOn(true);
@@ -72,6 +76,7 @@ public class User implements Serializable {
     }
 
     public void endState() {
+        state.categoryFinished();
         history.saveToHistory(state);
     }
 

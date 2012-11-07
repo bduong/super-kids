@@ -9,6 +9,7 @@ import com.ece.superkids.questions.QuestionDatabaseFactory;
 import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
+import com.ece.superkids.users.entities.State;
 import com.ece.superkids.users.entities.User;
 import java.awt.Color;
 import java.awt.event.HierarchyEvent;
@@ -199,13 +200,30 @@ public class StartScreenPanel extends javax.swing.JPanel {
     private void ContinueGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinueGameActionPerformed
         try {
             // TODO add your handling code here:
-            //get the question that user has been playing before
+            //get the user that is logged in
             User user = session.getLoggedInUser();
-            Question q = user.getState().getCurrentQuestion();
+            //if the current level is finished go to level selection
+            if (user.isCurrentLevelFinished()) {
+                QuestionLevel lev = user.getState().getCurrentLevel();
+                controller.addPanel(new NewGamePanel());
+                return;
+            }
+            //if the level is not finished
+            //get the state of user
+            State s = user.getState();
+            //if the category is finished then go to the subject selection
+            if (s.isCategoryFinished() == true) {
+                QuestionLevel lev = user.getState().getCurrentLevel();
+                controller.addPanel(new SubjectSelectionPanel(lev));
+                return;
+            }
+            //if the category is not finished get the current question
+            Question q;
             //get question number
             int number = 0;
             //if returned q is null, then no saved current question
-            if (q != null) {
+            if (s != null) {
+                q = s.getCurrentQuestion();
                 number = qD.getQuestionNumber(q);
             } else {
                 return;

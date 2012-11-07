@@ -171,7 +171,7 @@ public class OptionPanel extends javax.swing.JPanel {
         ReportHighlight.setVisible(true);
         ContentArea.removeAll();
         ContentArea.repaint();
-        ContentArea.add(new ScoresHistory());
+        ContentArea.add(new ScoresHistoryPanel());
     }//GEN-LAST:event_ReportCardButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

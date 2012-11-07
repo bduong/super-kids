@@ -21,6 +21,7 @@ public class State implements Serializable {
     private QuestionLevel currentLevel;
     private Question currentQuestion;
     private QuestionCategory currentCategory;
+    private boolean categoryFinished;
     private Map<Question, Integer> scores;
     static final long serialVersionUID = -6618469841122132321L;
 
@@ -28,6 +29,7 @@ public class State implements Serializable {
      */
     public State() {
         scores = new HashMap<Question, Integer>();
+        categoryFinished=false;
     }
     
     public QuestionCategory getCurrentCategory() {
@@ -96,11 +98,25 @@ public class State implements Serializable {
         }
         
         State state = (State)object;
-        if(!(currentQuestion == state.currentQuestion)) return false;
-        if (!(currentLevel == state.currentLevel))  return false;
+        if(!currentQuestion.equals(state.currentQuestion)) return false;
+        if (!currentLevel.equals(state.currentLevel))  return false;
         if (!currentCategory.equals(state.currentCategory))  return false;
 
         return true;
+    }
+
+    /**
+     * @return the categoryFinished
+     */
+    public boolean isCategoryFinished() {
+        return categoryFinished;
+    }
+
+    /**
+     * @param categoryFinished the categoryFinished to set
+     */
+    public void categoryFinished() {
+        this.categoryFinished = true;
     }
     
 }
