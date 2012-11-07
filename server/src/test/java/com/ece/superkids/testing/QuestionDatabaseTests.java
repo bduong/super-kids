@@ -23,8 +23,8 @@ public class QuestionDatabaseTests {
         questionDatabase = QuestionDatabaseFactory.aQuestionDatabaseWithAllQuestions();
         expected = QuestionBuilder.aQuestion()
                 .asking("What has four sides?")
-                .ofType(QuestionType.TEXT)
-                .withChoices("Square", "Circle", "Triangle", "Oval")
+                .ofType(QuestionType.PICTURE)
+                .withChoices("Square", "circle", "triangle", "hexagon")
                 .withAnswer("Square")
                 .withExplaination("A square has four equal sides")
                 .ofLevel(QuestionLevel.LEVEL_1)
