@@ -82,25 +82,29 @@ public class History implements Serializable {
     public Object[][] getHistory(QuestionCategory category, QuestionLevel level) {
         
         Map<Question, ArrayList<Integer>> map = this.getHistoryMap(category, level);
-        Iterator it = map.entrySet().iterator();
-        int counter = 0;
-        while(it.hasNext())  {
-            Map.Entry pairs = (Map.Entry)it.next();
-            counter ++;
-        }
-        Object o[][] = new Object[counter][6];
-        it = map.entrySet().iterator();
-        int index = 0;
-        while(it.hasNext()) {
-            Map.Entry pairs = (Map.Entry)it.next();
-            ArrayList<Integer> scoresList = (ArrayList<Integer>)pairs.getValue();
-            o[index][0] = ((Question)pairs.getKey()).getQuestion();
-            for(int i=1; i<scoresList.size(); i++) {
-                o[index][i] = scoresList.get(i);
+        if(map.size()!=0) {
+            Iterator it = map.entrySet().iterator();
+            int counter = 0;
+            while(it.hasNext())  {
+                Map.Entry pairs = (Map.Entry)it.next();
+                counter ++;
             }
-            index++;
+            Object o[][] = new Object[counter][6];
+            it = map.entrySet().iterator();
+            int index = 0;
+            while(it.hasNext()) {
+                Map.Entry pairs = (Map.Entry)it.next();
+                ArrayList<Integer> scoresList = (ArrayList<Integer>)pairs.getValue();
+                o[index][0] = ((Question)pairs.getKey()).getQuestion();
+                for(int i=1; i<scoresList.size(); i++) {
+                    o[index][i] = scoresList.get(i);
+                }
+                index++;
+            }
+            return o;
+        } else {
+            return null;
         }
-        return o;
 
     }
     

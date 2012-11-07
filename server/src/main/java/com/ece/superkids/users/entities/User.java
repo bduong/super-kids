@@ -79,8 +79,6 @@ public class User implements Serializable {
         saveState();
     }
 
-
-
     public void saveState() {
         (new FileUserManager()).addUser(this);
         (new FileUserManager()).updateUser(this, this);
