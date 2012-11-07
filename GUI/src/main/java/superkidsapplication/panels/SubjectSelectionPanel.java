@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.QuestionController;
 import superkidsapplication.controllers.TTSController;
+import superkidsapplication.controllers.TutorialController;
 
 /**
  *
@@ -20,7 +21,9 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private PanelController controller;
     private QuestionController factory;
+    private TutorialController factory2;
     private QuestionLevel level;
+    private boolean tutorial;
 
     /**
      * Creates new form SubjectSelectionPanel
@@ -36,6 +39,18 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         subject3.setText(level.getCategories().get(2).toString());
     }
 
+    public SubjectSelectionPanel() {
+        this.setName("TutorialSelection");
+        tutorial = true;
+        controller = PanelController.getInstance();
+        factory2 = TutorialController.getInstance();
+        this.level = level.LEVEL_1;
+        initComponents();
+        subject1.setText(level.getCategories().get(0).toString());
+        subject2.setText(level.getCategories().get(1).toString());
+        subject3.setText(level.getCategories().get(2).toString());
+        //jLayeredPane1.setName("Tutorial Mode");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -129,9 +144,16 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
         try {
             // TODO add your handling code here:
+            if (tutorial){
+            factory2.reset();
+            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
+            controller.addPanel(q);
+            }
+            else{
             factory.reset();
             QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(0));
             controller.addPanel(q);
+            }
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -140,9 +162,16 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private void subject2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject2ActionPerformed
         try {
             // TODO add your handling code here:
+            if (tutorial){
+            factory2.reset();
+            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(1).toString());
+            controller.addPanel(q);
+            }
+            else{
             factory.reset();
             QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(1));
             controller.addPanel(q);
+            }
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -151,9 +180,16 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private void subject3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject3ActionPerformed
         try {
             // TODO add your handling code here:
+            if (tutorial){
+            factory2.reset();
+            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(2).toString());
+            controller.addPanel(q);
+            }
+            else{
             factory.reset();
             QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(2));
             controller.addPanel(q);
+            }
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
