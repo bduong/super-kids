@@ -36,7 +36,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     /**
      * Creates new form QuestionPanel
      */
-    public int score;
+    private int score;
+    private int scoreValue;
     //points to which choice is correct
     private int correctAnswer;
     private QuestionController qBase;
@@ -69,7 +70,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         //save question to logged in user's state
         saveQuestion();
         //set super kid name
-        superKidNameLabel.setText("Super Kid: "+ session.getLoggedInUser().getName());
+        superKidNameLabel.setText("Super Kid: " + session.getLoggedInUser().getName());
     }
 
     /**
@@ -278,22 +279,23 @@ public class QuestionPanel extends javax.swing.JPanel {
     private void nextQButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextQButtonActionPerformed
         try {
             // TODO add your handling code here:
-            //if the button is clicked when it says "pick a new category" then go to subject menu
+            //set result frame(wronganswer-correctanswer) to invisible if next button clicked
+            if (result != null) {
+                result.setVisible(false);
+            }
+            //if we are done with this category
+            //then go to scorescreen panel
             if (nextQButton.getText().equals("Done")) {
                 controller.addPanel(new ScoreScreenPanel());
                 return; //return this function
             }
             //// here when a question is answered correctly we get a new question panel and add to frame
-            //set result frame to invisible if no more questions
-            if (result != null) {
-                result.setVisible(false);
-            }
-            //get the next question
+            //get the next questionpanel
             QuestionPanel qP = qBase.createQuestionPanel(level, category);
             //if the returned questionPanel is not null then add to frame through the controller
             if (qP != null) {
-                 //save the score
-                session.getLoggedInUser().saveScore(question, score);
+                //save the score
+                session.getLoggedInUser().saveScore(question, scoreValue);
                 controller.addPanel(qP);
                 //if returned questionpanel is null then there are no more 
             } else {
@@ -373,12 +375,16 @@ public class QuestionPanel extends javax.swing.JPanel {
         }
 
         if (score == 1) {
+            scoreValue=10;
             scoreNumLabel.setText("10");
         } else if (score == 2) {
+            scoreValue=7;
             scoreNumLabel.setText("7");
         } else if (score == 3) {
+            scoreValue=5;
             scoreNumLabel.setText("5");
         } else if (score == 4) {
+            scoreValue=3;
             scoreNumLabel.setText("3");
         }
 
@@ -399,11 +405,11 @@ public class QuestionPanel extends javax.swing.JPanel {
             score++;
         }
     }
-    
-    private void saveQuestion(){
-            //save this question to the user's current question
-            User user = session.getLoggedInUser();
-            user.setCurrentQuestion(question);  
+
+    private void saveQuestion() {
+        //save this question to the user's current question
+        User user = session.getLoggedInUser();
+        user.setCurrentQuestion(question);
     }
 
     //fill question panel
@@ -414,12 +420,18 @@ public class QuestionPanel extends javax.swing.JPanel {
             icons = null;
             //set the question, question can have an icon as well. it is set to null for now.
             setQuestion(question.getQuestion(), null);
-            
+
             //shuffle choices
-           // Collections.shuffle(question.getChoices());
-            
+            List<String> shuffledChoices = new ArrayList<String>();
+            shuffledChoices.add(question.getChoices().get(0));
+            shuffledChoices.add(question.getChoices().get(1));
+            shuffledChoices.add(question.getChoices().get(2));
+            shuffledChoices.add(question.getChoices().get(3));
+
+            Collections.shuffle(shuffledChoices);
+
             //find the correct answer
-            correctAnswer = findAnswer(question.getAnswer(), question.getChoices());
+            correctAnswer = findAnswer(question.getAnswer(), shuffledChoices);
             //if the type is PICTURES then create icons
             if (question.getType() == QuestionType.PICTURE) {
                 //create a new list
@@ -427,18 +439,18 @@ public class QuestionPanel extends javax.swing.JPanel {
                 for (int j = 0; j < 4; j++) {
                     //all pictures about questions should go to this path
                     //make all of them png's.
-                    ImageIcon icon = iconProvider.getImage(question.getChoices().get(j));
+                    ImageIcon icon = iconProvider.getImage(shuffledChoices.get(j));
                     icons.add(icon);
                 }
             }
             //set the choices 
-            setChoices(question.getChoices(), icons);
+            setChoices(shuffledChoices, icons);
         } catch (IOException ex) {
             Logger.getLogger(QuestionPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-     //find the index of answer
+
+    //find the index of answer
     private int findAnswer(String answer, List<String> choices) {
         for (int i = 0; i < choices.size(); i++) {
             if (choices.get(i).equals(answer)) {

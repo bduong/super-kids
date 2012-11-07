@@ -18,47 +18,20 @@ import superkidsapplication.events.Session;
  */
 public class ScoresHistory extends javax.swing.JPanel {
 
-    public QuestionLevel questionlevel;
-    public List<QuestionCategory> category;
-    public JTable table[] = new JTable[3];
-    public User user;
+    private QuestionLevel level;
+    private List<QuestionCategory> category;
+    private JTable table[] = new JTable[3];
+    private User user;
     private Session session; 
     /*   
      * Creates new form ScoresHistory
      */
-//    ScrollPane Historybox = new ScrollPane();
-    // JTabbedPane historytab = new JTabbedPane();
     public ScoresHistory() {
         initComponents();
+        //get session
         session = Session.aSession();
-        questionlevel = QuestionLevel.LEVEL_1;
-        //JPanel tab2 = new JPanel();
-        //JPanel tab3 = new JPanel();
-        category = questionlevel.getCategories();
-        //QuestionCategory.values();
+        //get user
         user = session.getLoggedInUser();
-        for (int i = 0; i < category.size(); i++) {
-            Object data[][] = user.getHistory(questionlevel.getCategories().get(i), questionlevel);
-            /*    Object data[][] = {
-             {"Q1", new Integer(1),new Integer(2),new Integer(3),new Integer(4),new Integer(5)},
-             {"Q2", new Integer(6),new Integer(7),new Integer(8),new Integer(9),new Integer(10)},
-             {"Q3", new Integer(11),new Integer(12),new Integer(13),new Integer(14),new Integer(15)},
-             {"Q4", new Integer(16),new Integer(17),new Integer(18),new Integer(19),new Integer(20)},
-             {"Q5", new Integer(21),new Integer(22),new Integer(23),new Integer(24),new Integer(25)},
-            
-             };*/
-
-            String Columnname[] = {"Question Number", "Attempt 1", "Attempt 2", "Attempt 3", "Attempt 4", "Attempt 5"};
-
-            table[i] = new JTable(data, Columnname);
-            JScrollPane spTable = new JScrollPane(table[i]);
-
-            jTabbedPane1.addTab(category.get(i).toString(), spTable);
-        }
-
-
-
-
     }
 
     /**
@@ -70,13 +43,11 @@ public class ScoresHistory extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSpinner1 = new javax.swing.JSpinner();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        setBounds(new java.awt.Rectangle(0, 0, 300, 300));
         setMaximumSize(new java.awt.Dimension(300, 300));
         setMinimumSize(new java.awt.Dimension(300, 300));
         setPreferredSize(new java.awt.Dimension(300, 300));
@@ -137,19 +108,12 @@ public class ScoresHistory extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        questionlevel = QuestionLevel.LEVEL_1;
-        category = questionlevel.getCategories();
+        level = QuestionLevel.LEVEL_1;
+        category = level.getCategories();
         jTabbedPane1.removeAll();
         for (int i = 0; i < category.size(); i++) {
-            Object data[][] = user.getHistory(questionlevel.getCategories().get(i), questionlevel);
-            /*    Object data[][] = {
-             {"Q1", new Integer(1),new Integer(2),new Integer(3),new Integer(4),new Integer(5)},
-             {"Q2", new Integer(6),new Integer(7),new Integer(8),new Integer(9),new Integer(10)},
-             {"Q3", new Integer(11),new Integer(12),new Integer(13),new Integer(14),new Integer(15)},
-             {"Q4", new Integer(16),new Integer(17),new Integer(18),new Integer(19),new Integer(20)},
-             {"Q5", new Integer(21),new Integer(22),new Integer(23),new Integer(24),new Integer(25)},
-            
-             };*/
+            Object data[][] = user.getHistory(level.getCategories().get(i), level);
+           
 
             String Columnname[] = {"Question Number", "Attempt 1", "Attempt 2", "Attempt 3", "Attempt 4", "Attempt 5"};
 
@@ -162,11 +126,11 @@ public class ScoresHistory extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        questionlevel = QuestionLevel.LEVEL_2;
-        category = questionlevel.getCategories();
+        level = QuestionLevel.LEVEL_2;
+        category = level.getCategories();
         jTabbedPane1.removeAll();
         for (int i = 0; i < category.size(); i++) {
-            Object data[][] = user.getHistory(questionlevel.getCategories().get(i), questionlevel);
+            Object data[][] = user.getHistory(level.getCategories().get(i), level);
             /*    Object data[][] = {
              {"Q1", new Integer(1),new Integer(2),new Integer(3),new Integer(4),new Integer(5)},
              {"Q2", new Integer(6),new Integer(7),new Integer(8),new Integer(9),new Integer(10)},
@@ -187,11 +151,11 @@ public class ScoresHistory extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        questionlevel = QuestionLevel.LEVEL_3;
-        category = questionlevel.getCategories();
+        level = QuestionLevel.LEVEL_3;
+        category = level.getCategories();
         jTabbedPane1.removeAll();
         for (int i = 0; i < category.size(); i++) {
-            Object data[][] = user.getHistory(QuestionLevel.LEVEL_1.getCategories().get(i), questionlevel);
+            Object data[][] = user.getHistory(QuestionLevel.LEVEL_1.getCategories().get(i), level);
             /*    Object data[][] = {
              {"Q1", new Integer(1),new Integer(2),new Integer(3),new Integer(4),new Integer(5)},
              {"Q2", new Integer(6),new Integer(7),new Integer(8),new Integer(9),new Integer(10)},
@@ -213,7 +177,6 @@ public class ScoresHistory extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
