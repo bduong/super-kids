@@ -5,42 +5,33 @@
 package superkidsapplication.events;
 
 import com.ece.superkids.users.entities.User;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
 /**
  *
  * @author baris
  */
-public class Session implements ActionListener {
+public class Session{
 
     User currentUser = null;
 
     private Session() {
         System.out.println("Session created");
     }
-
-    public void actionPerformed(ActionEvent e) {
-        JButton button = (JButton) e.getSource();
-        if (isUserLoggedIn() == false) {
-            button.setVisible(false);
-        }
-        if (isUserLoggedIn() == true) {
-            button.setVisible(false);
-        }
-    }
-
+    
     private static class SessionHolder {
-
         public static final Session aSession = new Session();
     }
 
+    /**
+     * Get a session.
+     */
     public static Session aSession() {
-
         return Session.SessionHolder.aSession;
     }
 
+    /**
+     * Login user.
+     */
     public boolean login(User user) {
         if (currentUser == null) {
             currentUser = user;
@@ -52,6 +43,9 @@ public class Session implements ActionListener {
         }
     }
 
+    /**
+     * Logout user.
+     */
     public boolean logout() {
         if (currentUser != null) {
             String tmpUser = currentUser.getName();
@@ -64,6 +58,9 @@ public class Session implements ActionListener {
         }
     }
 
+    /**
+     * Is any user logged in?.
+     */
     public boolean isUserLoggedIn() {
         if (currentUser == null) {
             return false;
@@ -72,6 +69,9 @@ public class Session implements ActionListener {
         }
     }
 
+    /**
+     * Is specific user logged in?.
+     */
     public boolean isUserLoggedIn(User user) {
         if (currentUser!=null&&currentUser.getName().equals(user.getName())){
             return true;
@@ -80,6 +80,9 @@ public class Session implements ActionListener {
         }
     }
 
+    /**
+     * Get the user logged in.
+     */
     public User getLoggedInUser() {
         return currentUser;
     }

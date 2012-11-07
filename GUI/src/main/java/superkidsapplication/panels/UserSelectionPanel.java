@@ -136,7 +136,7 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
             warnLabel.setText("Already logged in");
             return;
         }
-        //change the button visibility in the main frame
+        //change the logout button visibility in the main frame
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
         frame.logoutButton.setVisible(true);
         controller.addPanel(startscreen);

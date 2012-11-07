@@ -5,6 +5,7 @@
 package superkidsapplication.panels;
 
 import java.util.ArrayList;
+import java.util.Map;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.TTSController;
 import superkidsapplication.events.Session;
@@ -21,31 +22,40 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     private Session session = Session.aSession();
     private ArrayList<StarPanel> stars = new ArrayList(5);
     private PanelController controller = PanelController.getInstance();
-    
+
     public ScoreScreenPanel() {
         this.setName("ScoreScreen");
         initComponents();
         displayStars();
+        //end the state for user
+        session.getLoggedInUser().endState();
     }
-    
-    private void displayStars()
-    {
-        int Score = 75; //scoring for the category
-        int num_stars = Score / 20; //One star per 20points
-        
-        for (int i = 0; i < num_stars; i++)
-        {
+
+    private void displayStars() {
+        //get total score for this level
+        int totalscore = session.getLoggedInUser().getState().getTotalScore();
+        //get the scores size
+        Map scores = session.getLoggedInUser().getState().getAllScores();
+        //find average score
+        int score = totalscore / scores.size(); //scoring for the category
+        int num_stars = score / 2; //One star per 2points
+        System.out.println(totalscore + " " + scores.size() + " " + score);
+        System.out.println(num_stars);
+        for (int i = 0; i < num_stars; i++) {
             stars.add(i, new StarPanel());
             this.starPanel.add(stars.get(i));
         }
 
+        if(num_stars == 1){
+             this.jLabel1.setText("Good Job");
+             TTSController.TTS("Good Job! You should try this level again.");
+        }
         if (num_stars < 4) {
             TTSController.TTS("Good Job!");
-        }
-        else {
+        } else {
             TTSController.TTS("Excellent Job!");
         }
-        
+
     }
 
     /**
@@ -82,7 +92,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
         jLayeredPane1.add(avatar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         starPanel.setOpaque(false);
-        starPanel.setBounds(30, 430, 750, 150);
+        starPanel.setBounds(0, 430, 800, 150);
         jLayeredPane1.add(starPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
@@ -110,10 +120,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     private void jLayeredPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLayeredPane1MouseClicked
         // TODO add your handling code here:
         controller.goToSubjectMenu();
-         //end the state for user
-        session.getLoggedInUser().endState();
     }//GEN-LAST:event_jLayeredPane1MouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel avatar;
     private javax.swing.JLabel background;

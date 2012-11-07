@@ -277,6 +277,8 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     //if NEXT button is clicked go to next question
     private void nextQButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextQButtonActionPerformed
+        //save the score
+        session.getLoggedInUser().saveScore(question, scoreValue);
         try {
             // TODO add your handling code here:
             //set result frame(wronganswer-correctanswer) to invisible if next button clicked
@@ -294,8 +296,6 @@ public class QuestionPanel extends javax.swing.JPanel {
             QuestionPanel qP = qBase.createQuestionPanel(level, category);
             //if the returned questionPanel is not null then add to frame through the controller
             if (qP != null) {
-                //save the score
-                session.getLoggedInUser().saveScore(question, scoreValue);
                 controller.addPanel(qP);
                 //if returned questionpanel is null then there are no more 
             } else {
@@ -358,7 +358,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     }
 
     /**
-     * when the correct answer is clicked this method is called from the button action
+     * when the correct answer is clicked this method is called from the button
+     * action
      */
     private void correctAnswerClicked() {
         if (result != null) {
@@ -376,16 +377,16 @@ public class QuestionPanel extends javax.swing.JPanel {
         }
 
         if (score == 1) {
-            scoreValue=10;
+            scoreValue = 10;
             scoreNumLabel.setText("10");
         } else if (score == 2) {
-            scoreValue=7;
+            scoreValue = 7;
             scoreNumLabel.setText("7");
         } else if (score == 3) {
-            scoreValue=5;
+            scoreValue = 5;
             scoreNumLabel.setText("5");
         } else if (score == 4) {
-            scoreValue=3;
+            scoreValue = 3;
             scoreNumLabel.setText("3");
         }
 
@@ -413,14 +414,14 @@ public class QuestionPanel extends javax.swing.JPanel {
      * save this question to the logged in user's current question
      */
     private void saveQuestion() {
-        
+
         User user = session.getLoggedInUser();
         user.setCurrentQuestion(question);
     }
 
-   /**
-    * fill question panel
-    */
+    /**
+     * fill question panel
+     */
     private void fillQuestion() {
         try {
             //initally icons is null

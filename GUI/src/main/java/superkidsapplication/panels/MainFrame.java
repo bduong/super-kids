@@ -4,7 +4,6 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.users.ParentManager;
 import com.ece.superkids.users.UserDatabaseFactory;
 import superkidsapplication.controllers.PanelController;
@@ -26,10 +25,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     public MainFrame() {
         initComponents();
+        //logout button is initally invisible
         logoutButton.setVisible(false);
+        //add it to menu bar
         jMenuBar1.add(logoutButton);
-        //add the listener to button 
-        logoutButton.addActionListener(session);
         //center frame relative to screen
         setLocationRelativeTo(null);
         //get panelcontroller
@@ -216,6 +215,8 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         //logout
         session.logout();
+        //set visibility of logout to false
+        this.logoutButton.setVisible(false);
         //go to main menu which is user selection when there is no one logged in
         controller.goToMainMenu();
     }//GEN-LAST:event_logoutButtonActionPerformed
