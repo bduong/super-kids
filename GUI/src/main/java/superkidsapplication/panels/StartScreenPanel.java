@@ -4,49 +4,38 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.questions.QuestionDatabase;
-import com.ece.superkids.questions.QuestionDatabaseFactory;
-import com.ece.superkids.questions.entities.Question;
-import com.ece.superkids.questions.enums.QuestionCategory;
-import com.ece.superkids.questions.enums.QuestionLevel;
-import com.ece.superkids.users.entities.State;
-import com.ece.superkids.users.entities.User;
 import java.awt.Color;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import superkidsapplication.controllers.GameController;
 import superkidsapplication.controllers.MusicController;
 import superkidsapplication.controllers.PanelController;
-import superkidsapplication.controllers.QuestionController;
 import superkidsapplication.events.Session;
 
 /**
  *
- * @author david
+ * @author david & baris
  *
  */
 public class StartScreenPanel extends javax.swing.JPanel {
 
-    private PanelController controller;
     private MusicController mController;
-    private QuestionController qController;
     private SoundPanel sound_options;
     private Session session;
-    private QuestionDatabase qD;
+    private GameController gController;
+    private PanelController pController;
 
     /**
      * Creates new form StartScreenPanel
      */
     private StartScreenPanel() {
         this.setName("StartScreen");
-        controller = PanelController.getInstance();
+
         mController = MusicController.getInstance();
         sound_options = SoundPanel.getInstance();
-        qController = QuestionController.getInstance();
-        session = Session.aSession();
-        qD = QuestionDatabaseFactory.aQuestionDatabaseWithAllQuestions();
+        gController = GameController.getInstance();
+        pController = PanelController.getInstance();
+        session=Session.aSession();
 
         initComponents();
 
@@ -68,10 +57,12 @@ public class StartScreenPanel extends javax.swing.JPanel {
         });
     }
 
-    //display continue button???
-    ///called from panel listener
-    //everytime startscreen is visible
-    public void doContinueGame() {
+    /**
+     *display continue button???
+     *called from panel listener
+     *everytime startscreen is visible
+    */
+    public void isContinueGameVisible() {
         if (session.getLoggedInUser() != null) {
             boolean gameOn = session.getLoggedInUser().isGameOn();
             if (gameOn == true) {
@@ -83,7 +74,6 @@ public class StartScreenPanel extends javax.swing.JPanel {
     }
 
     private static class StartScreenPanelHolder {
-
         public static final StartScreenPanel INSTANCE = new StartScreenPanel();
     }
 
@@ -198,74 +188,19 @@ public class StartScreenPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ContinueGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinueGameActionPerformed
-        try {
-            // TODO add your handling code here:
-            //get the user that is logged in
-            User user = session.getLoggedInUser();
-            //if the current level is finished go to level selection
-            if (user.isCurrentLevelFinished()) {
-                QuestionLevel lev = user.getState().getCurrentLevel();
-                controller.addPanel(new NewGamePanel());
-                return;
-            }
-            //if the level is not finished
-            //get the state of user
-            State s = user.getState();
-            //if the category is finished then go to the subject selection
-            if (s.isCategoryFinished() == true) {
-                QuestionLevel lev = user.getState().getCurrentLevel();
-                controller.addPanel(new SubjectSelectionPanel(lev));
-                return;
-            }
-            //if the category is not finished get the current question
-            Question q;
-            //get question number
-            int number;
-            //if returned q is null, then no saved current question
-            if (s != null) {
-                q = s.getCurrentQuestion();
-                number = qD.getQuestionNumber(q);
-            } else {
-                return;
-            }
-            //if returned number is -1, then question is not found in the database
-            if (number != -1) {
-                System.out.println("Continue question:" + q.getQuestion() + " index:" + number);
-                //and set number in question controller
-                qController.setCount(number);
-                //create the question panel
-                QuestionPanel qPanel = qController.createQuestionPanel(q.getLevel(), q.getCategory());
-                //display the questionpanel
-                controller.addPanel(qPanel);
-                //if cannot find the question go to subject selection
-            } else if (number == -1) {
-                user.getState().getCurrentLevel();
-                QuestionLevel lev = user.getState().getCurrentLevel();
-                controller.addPanel(new SubjectSelectionPanel(lev));
-                System.out.println("Cannot find saved question.");
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(StartScreenPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        gController.continueGame();
     }//GEN-LAST:event_ContinueGameActionPerformed
 
     //if new game is clicked
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
-        //set game on to false
-        session.getLoggedInUser().setGameOn(false);
-        //create a new game panel
-        NewGamePanel gamePanel = new NewGamePanel();
-        //add new panel
-        controller.addPanel(gamePanel);
+        gController.newGame();
     }//GEN-LAST:event_NewGameActionPerformed
 
     private void OptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionsActionPerformed
         // TODO add your handling code here:
-        //OptionsPanel is a singleton
         //add optionspanel
-        controller.addPanel(new OptionPanel());
+        pController.addPanel(new OptionPanel());
     }//GEN-LAST:event_OptionsActionPerformed
 
     private void NewGameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewGameMouseEntered

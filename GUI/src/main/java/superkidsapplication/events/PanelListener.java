@@ -52,7 +52,7 @@ public class PanelListener implements ComponentListener,
             frame.ChildMenu.setEnabled(true);
             frame.ParentItem.setEnabled(true);
             StartScreenPanel start = (StartScreenPanel) component;
-            start.doContinueGame();
+            start.isContinueGameVisible();
         } else if (component.getName() != null && component.getName().equals("UserSelection")) {
             frame.BackItem.setEnabled(false);
             frame.ExitItem.setEnabled(false);

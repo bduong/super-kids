@@ -4,7 +4,6 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.questions.builders.QuestionBuilder;
 import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
@@ -63,6 +62,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         initComponents();
         //initally next button is not visible becomes visible if the question is answered correctly
         nextQButton.setVisible(false);
+        //score is initally zero
         score = 0;
         iconProvider = ResourceProviderFactory.anImageProvider();
         //fill the panel
@@ -333,16 +333,15 @@ public class QuestionPanel extends javax.swing.JPanel {
     //set the question and the choices
     //they can have a text or an icon (image)
     //if no icon is wanted then pass an empty list into icon parameter
-    public void setQuestion(String qText, Icon icon) throws IOException {
+    private void setQuestion(String qText, Icon icon) throws IOException {
         questionLabel.setIcon(icon);
         questionLabel.setText(qText);
-
+        //say the question text
         TTSController.TTS(qText);
     }
 
     //set text and/or icons for buttons
-    public void setChoices(List<String> choices, List<Icon> icons) {
-
+    private void setChoices(List<String> choices, List<Icon> icons) {
         if (icons != null) {
             choice1Button.setIcon(icons.get(0));
             choice2Button.setIcon(icons.get(1));
@@ -358,7 +357,9 @@ public class QuestionPanel extends javax.swing.JPanel {
         }
     }
 
-    //when the correct answer is clicked this method is called from the button action
+    /**
+     * when the correct answer is clicked this method is called from the button action
+     */
     private void correctAnswerClicked() {
         if (result != null) {
             result.setVisible(false);
@@ -392,7 +393,9 @@ public class QuestionPanel extends javax.swing.JPanel {
         nextQButton.setVisible(true);
     }
 
-    //when the wrong answer is selected
+    /**
+     * when the wrong answer is selected
+     */
     private void wrongAnswerClicked(JButton button) {
         button.setEnabled(false);
         if (result != null) {
@@ -406,13 +409,18 @@ public class QuestionPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * save this question to the logged in user's current question
+     */
     private void saveQuestion() {
-        //save this question to the user's current question
+        
         User user = session.getLoggedInUser();
         user.setCurrentQuestion(question);
     }
 
-    //fill question panel
+   /**
+    * fill question panel
+    */
     private void fillQuestion() {
         try {
             //initally icons is null
@@ -450,7 +458,9 @@ public class QuestionPanel extends javax.swing.JPanel {
         }
     }
 
-    //find the index of answer
+    /**
+     * find the index of answer
+     */
     private int findAnswer(String answer, List<String> choices) {
         for (int i = 0; i < choices.size(); i++) {
             if (choices.get(i).equals(answer)) {

@@ -8,6 +8,7 @@ import com.ece.superkids.questions.enums.QuestionLevel;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import superkidsapplication.controllers.GameController;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.QuestionController;
 import superkidsapplication.controllers.TTSController;
@@ -21,11 +22,11 @@ import superkidsapplication.events.Session;
 public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private PanelController controller;
-    private QuestionController factory;
     private TutorialController factory2;
     private QuestionLevel level;
     private boolean tutorial;
     private Session session;
+    private GameController gController;
 
     /**
      * Creates new form SubjectSelectionPanel
@@ -33,7 +34,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     public SubjectSelectionPanel(QuestionLevel level) {
         this.setName("SubjectSelection");
         controller = PanelController.getInstance();
-        factory = QuestionController.getInstance();
+        gController = GameController.getInstance();
         session = Session.aSession();
         this.level = level;
         initComponents();
@@ -146,59 +147,35 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            if (tutorial) {
-                factory2.reset();
-                TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
-                controller.addPanel(q);
-            } else {
-                //create a new state for the user
-                session.getLoggedInUser().newState(level.getCategories().get(0), level);
-                factory.reset();
-                QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(0));
-                controller.addPanel(q);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
+        // TODO add your handling code here:
+        if (tutorial) {
+            factory2.reset();
+            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
+            controller.addPanel(q);
+        } else {
+            gController.newSubject(level, 0);
         }
     }//GEN-LAST:event_subject1ActionPerformed
 
     private void subject2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject2ActionPerformed
-        try {
-            // TODO add your handling code here:
-            if (tutorial) {
-                factory2.reset();
-                TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(1).toString());
-                controller.addPanel(q);
-            } else {
-                //create a new state for the user
-                session.getLoggedInUser().newState(level.getCategories().get(0), level);
-                factory.reset();
-                QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(1));
-                controller.addPanel(q);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
+         // TODO add your handling code here:
+        if (tutorial) {
+            factory2.reset();
+            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
+            controller.addPanel(q);
+        } else {
+            gController.newSubject(level, 1);
         }
     }//GEN-LAST:event_subject2ActionPerformed
 
     private void subject3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject3ActionPerformed
-        try {
-            // TODO add your handling code here:
-            if (tutorial) {
-                factory2.reset();
-                TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(2).toString());
-                controller.addPanel(q);
-            } else {
-                //create a new state for the user
-                session.getLoggedInUser().newState(level.getCategories().get(0), level);
-                factory.reset();
-                QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(2));
-                controller.addPanel(q);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
+         // TODO add your handling code here:
+        if (tutorial) {
+            factory2.reset();
+            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
+            controller.addPanel(q);
+        } else {
+            gController.newSubject(level, 2);
         }
     }//GEN-LAST:event_subject3ActionPerformed
 
