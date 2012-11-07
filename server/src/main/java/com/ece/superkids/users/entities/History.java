@@ -20,9 +20,19 @@ import java.io.Serializable;
 public class History implements Serializable {
     
     private Map<String, ArrayList<State>> questionToList;
+    private boolean gameOn;
 
     public History() {
         questionToList = new HashMap();
+        gameOn = false;
+    }
+
+    public void setGameOn(boolean value) {
+        gameOn = value;
+    }
+    public boolean getGameOn() {
+        // do checking on hashmap to see if user is done with all categories
+        return gameOn;
     }
 
     public void saveToHistory(State state) {
