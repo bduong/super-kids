@@ -19,7 +19,6 @@ public class User implements Serializable {
     private String name;
     private State state;
     private History history;
-    
 
     public User(String name) {
         this.name = name;
@@ -52,7 +51,13 @@ public class User implements Serializable {
         saveState();
     }
 
+    public boolean isGameOn() {
+        return history.getGameOn();
+    }
+
     public void setCurrentQuestion(Question question) {
+        history.setGameOn(true);
+        
         state.setCurrentQuestion(question);
         state.setCurrentLevel(question.getLevel());
         state.setCurrentCategory(question.getCategory());
