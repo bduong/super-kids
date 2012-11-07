@@ -57,7 +57,6 @@ public class User implements Serializable {
 
     public void setCurrentQuestion(Question question) {
         history.setGameOn(true);
-        
         state.setCurrentQuestion(question);
         state.setCurrentLevel(question.getLevel());
         state.setCurrentCategory(question.getCategory());
