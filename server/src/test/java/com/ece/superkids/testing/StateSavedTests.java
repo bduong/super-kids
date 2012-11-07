@@ -49,7 +49,7 @@ public class StateSavedTests {
     @Test
     public void setCurrentQuestionTest() {
         testUser.setCurrentQuestion(question);
-        testUser.saveState();
+        testUser.saveUser();
     }
     
     @Test 

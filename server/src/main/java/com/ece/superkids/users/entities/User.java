@@ -48,11 +48,12 @@ public class User implements Serializable {
 
     private void setState(State state) {
         this.state = state;
-        saveState();
+        saveUser();
     }
     
     public void setGameOn(boolean set){
         this.history.setGameOn(set);
+        saveUser();
     }
 
     public boolean isGameOn() {
@@ -68,7 +69,7 @@ public class User implements Serializable {
         state.setCurrentQuestion(question);
         state.setCurrentLevel(question.getLevel());
         state.setCurrentCategory(question.getCategory());
-        saveState();
+        saveUser();
     }
 
     public void saveScore(Question question, Integer score) {
@@ -76,18 +77,20 @@ public class User implements Serializable {
     }
 
     public void endState() {
+        //category is finished
         state.categoryFinished();
         history.saveToHistory(state);
+        saveUser();
     }
 
     public void newState(QuestionCategory category, QuestionLevel level) {
         state = new State();
         state.setCurrentCategory(category);
         state.setCurrentLevel(level);
-        saveState();
+        saveUser();
     }
 
-    public void saveState() {
+    public void saveUser() {
         (new FileUserManager()).addUser(this);
         (new FileUserManager()).updateUser(this, this);
     }
