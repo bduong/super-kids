@@ -7,7 +7,7 @@ package superkidsapplication.panels;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import java.util.List;
-import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 /**
  *
@@ -24,11 +24,10 @@ public class ScoresHistory extends javax.swing.JPanel {
     public ScoresHistory() {
         initComponents();
         questionlevel = QuestionLevel.LEVEL_1;
-        JPanel tab[] = new JPanel[3];
         JTable table[] = new JTable[3];
         //JPanel tab2 = new JPanel();
         //JPanel tab3 = new JPanel();
-        category = ScoresLevel.levelques.getCategories();
+        category = questionlevel.getCategories();
         //QuestionCategory.values();
         
         for(int i =0; i< category.size(); i++)
@@ -44,11 +43,13 @@ public class ScoresHistory extends javax.swing.JPanel {
         };
             
             String Columnname[] = {"Question Number","Attempt 1","Attempt 2","Attempt 3","Attempt 4","Attempt 5"};
-            table[i] = new JTable(data,Columnname);
-            tab[i].add(table[i]);
             
-            jTabbedPane1.addTab(category.get(i).toString(),tab[i]);
+            table[i] = new JTable(data,Columnname);
+            JScrollPane spTable = new JScrollPane(table[i]);
+            
+            jTabbedPane1.addTab(category.get(i).toString(),spTable);
         }
+        
         
         
         
@@ -69,6 +70,7 @@ public class ScoresHistory extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        setBounds(new java.awt.Rectangle(0, 0, 300, 300));
         setMinimumSize(new java.awt.Dimension(300, 300));
         setPreferredSize(new java.awt.Dimension(300, 300));
 
@@ -92,26 +94,27 @@ public class ScoresHistory extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(35, 35, 35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
