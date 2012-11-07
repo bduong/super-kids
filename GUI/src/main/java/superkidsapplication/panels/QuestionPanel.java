@@ -71,7 +71,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         //save question to logged in user's state
         saveQuestion();
         //set super kid name
-        superKidNameLabel.setText("Super Kid: "+ session.getLoggedInUser().getName().toUpperCase());
+        superKidNameLabel.setText("Super Kid: "+ session.getLoggedInUser().getName());
     }
 
     /**

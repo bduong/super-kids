@@ -79,11 +79,13 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
         jLayeredPane1.add(avatar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         starPanel.setOpaque(false);
-        starPanel.setBounds(30, 440, 750, 150);
+        starPanel.setBounds(30, 430, 750, 150);
         jLayeredPane1.add(starPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel1.setText("Click anywhere on the screen ");
-        jLabel1.setBounds(300, 110, 210, 16);
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Click to continue");
+        jLabel1.setBounds(690, 580, 110, 16);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/ScoreScreen.png"))); // NOI18N
