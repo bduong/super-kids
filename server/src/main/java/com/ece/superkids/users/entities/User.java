@@ -50,6 +50,10 @@ public class User implements Serializable {
         this.state = state;
         saveState();
     }
+    
+    public void setGameOn(boolean set){
+        this.history.setGameOn(set);
+    }
 
     public boolean isGameOn() {
         return history.getGameOn();
@@ -77,8 +81,6 @@ public class User implements Serializable {
         state.setCurrentLevel(level);
         saveState();
     }
-
-
 
     public void saveState() {
         (new FileUserManager()).addUser(this);
