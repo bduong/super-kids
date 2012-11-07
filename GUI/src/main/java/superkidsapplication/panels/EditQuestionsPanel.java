@@ -43,7 +43,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         qList1 = null;
         qList2 = null;
         qList3 = null;
-        choiceSelected = 0;
+        choiceSelected = -1;
         fillInBoxes();
     }
 
@@ -319,7 +319,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         int i = level2QuestionsBox.getSelectedIndex();
         //set the current question to the one selected
         currentQuestion = qList2.get(i);
-         //set choices
+        //set choices
         choice1Text.setText(currentQuestion.getChoices().get(0));
         choice2Text.setText(currentQuestion.getChoices().get(1));
         choice3Text.setText(currentQuestion.getChoices().get(2));
@@ -351,7 +351,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         int i = level3QuestionsBox.getSelectedIndex();
         //set the current question to the one selected
         currentQuestion = qList3.get(i);
-         //set choices
+        //set choices
         choice1Text.setText(currentQuestion.getChoices().get(0));
         choice2Text.setText(currentQuestion.getChoices().get(1));
         choice3Text.setText(currentQuestion.getChoices().get(2));
@@ -376,7 +376,9 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         //set answer
         buttonGroup1.getSelection();
         //set answer
-        editedQuestion.setAnswer(choice.get(choiceSelected));
+        if (choiceSelected != -1) {
+            editedQuestion.setAnswer(choice.get(choiceSelected));
+        }
         //set type
         editedQuestion.setType(QuestionType.TEXT);
         //edit question

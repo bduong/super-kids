@@ -36,7 +36,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     /**
      * Creates new form QuestionPanel
      */
-    public int a;
+    public int score;
     //points to which choice is correct
     private int correctAnswer;
     private QuestionController qBase;
@@ -64,7 +64,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         initComponents();
         //initally next button is not visible becomes visible if the question is answered correctly
         nextQButton.setVisible(false);
-        a = 0;
+        score = 0;
         iconProvider = ResourceProviderFactory.anImageProvider();
         //fill the panel
         fillQuestion();
@@ -288,6 +288,8 @@ public class QuestionPanel extends javax.swing.JPanel {
             //// here when a question is answered correctly we get a new question panel and add to frame
             //set result frame to invisible if no more questions
             if (result != null) {
+                //save the score
+                session.getLoggedInUser().saveScore(question, score);
                 result.setVisible(false);
             }
             //get the next question
@@ -368,17 +370,17 @@ public class QuestionPanel extends javax.swing.JPanel {
         choice3Button.setEnabled(false);
         choice4Button.setEnabled(false);
         //update score
-        if (a < 4) {
-            a++;
+        if (score < 4) {
+            score++;
         }
 
-        if (a == 1) {
+        if (score == 1) {
             scoreNumLabel.setText("10");
-        } else if (a == 2) {
+        } else if (score == 2) {
             scoreNumLabel.setText("7");
-        } else if (a == 3) {
+        } else if (score == 3) {
             scoreNumLabel.setText("5");
-        } else if (a == 4) {
+        } else if (score == 4) {
             scoreNumLabel.setText("3");
         }
 
@@ -395,8 +397,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         result = new WrongAnswerFrame();
         result.setVisible(true);
         //update score 
-        if (a < 4) {
-            a++;
+        if (score < 4) {
+            score++;
         }
     }
     

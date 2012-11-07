@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.QuestionController;
 import superkidsapplication.controllers.TTSController;
+import superkidsapplication.events.Session;
 
 /**
  *
@@ -21,12 +22,14 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private PanelController controller;
     private QuestionController factory;
     private QuestionLevel level;
+    private Session session;
 
     /**
      * Creates new form SubjectSelectionPanel
      */
     public SubjectSelectionPanel(QuestionLevel level) {
         this.setName("SubjectSelection");
+        session = Session.aSession();
         controller = PanelController.getInstance();
         factory = QuestionController.getInstance();
         this.level = level;
@@ -132,6 +135,8 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
             factory.reset();
             QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(0));
             controller.addPanel(q);
+            //create a new state for user
+            session.getLoggedInUser().newState(level.getCategories().get(0),level);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -143,6 +148,8 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
             factory.reset();
             QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(1));
             controller.addPanel(q);
+            //create a new state for user
+            session.getLoggedInUser().newState(level.getCategories().get(1),level);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -154,6 +161,8 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
             factory.reset();
             QuestionPanel q = factory.createQuestionPanel(level, level.getCategories().get(2));
             controller.addPanel(q);
+            //create a new state for user
+            session.getLoggedInUser().newState(level.getCategories().get(2),level);
         } catch (IOException ex) {
             Logger.getLogger(SubjectSelectionPanel.class.getName()).log(Level.SEVERE, null, ex);
         }

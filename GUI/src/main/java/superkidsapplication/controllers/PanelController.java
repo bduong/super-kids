@@ -7,7 +7,9 @@ import javax.swing.JPanel;
 import superkidsapplication.events.PanelListener;
 import superkidsapplication.events.Session;
 import superkidsapplication.panels.MainFrame;
+import superkidsapplication.panels.StartScreenPanel;
 import superkidsapplication.panels.SubjectSelectionPanel;
+import superkidsapplication.panels.UserSelectionPanel;
 
 /*
  * To change this template, choose Tools | Templates
@@ -130,17 +132,12 @@ public class PanelController {
         }
         //if not found then create you self.
         if (found == false) {
-            try {
-                try {
-                    this.addPanel((JPanel) Class.forName("superkidsapplication.panels." + startScreenName + "Panel").newInstance());
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(PanelController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } catch (InstantiationException ex) {
-                Logger.getLogger(PanelController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(PanelController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+          if(startScreenName.equals("StartScreen")){
+              this.addPanel(StartScreenPanel.getInstance());
+          }
+          if(startScreenName.equals("UserSelection")){
+              this.addPanel(new UserSelectionPanel());
+          }
         }
     }
 //goes back to subject selection menu if found

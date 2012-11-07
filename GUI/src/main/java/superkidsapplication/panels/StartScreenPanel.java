@@ -72,11 +72,11 @@ public class StartScreenPanel extends javax.swing.JPanel {
     //everytime startscreen is visible
     public void doContinueGame() {
         if (session.getLoggedInUser() != null) {
-            Question q = session.getLoggedInUser().getState().getCurrentQuestion();
-            if (q == null) {
-                ContinueGame.setVisible(false);
-            } else {
+            boolean gameOn = session.getLoggedInUser().isGameOn();
+            if (gameOn == true) {
                 ContinueGame.setVisible(true);
+            } else {
+                ContinueGame.setVisible(false);
             }
         }
     }
@@ -202,7 +202,6 @@ public class StartScreenPanel extends javax.swing.JPanel {
             //get the question that user has been playing before
             User user = session.getLoggedInUser();
             Question q = user.getState().getCurrentQuestion();
-            System.out.println(q.getQuestion()+q.getAnswer()+q.getExplaination()+q.getChoices()+q.getLevel()+q.getCategory()+q.getType());
             //get question number
             int number = 0;
             //if returned q is null, then no saved current question
@@ -236,8 +235,6 @@ public class StartScreenPanel extends javax.swing.JPanel {
     //if new game is clicked
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
-        //clear current question
-        session.getLoggedInUser().setCurrentQuestion(null);
         //create a new game panel
         NewGamePanel gamePanel = new NewGamePanel();
         //add new panel
