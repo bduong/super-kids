@@ -63,6 +63,12 @@
       <artifactId>voice-cmu-slt-hsmm</artifactId>
       <version>${mary.tts.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <version>2.0.0</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
 
   <build>
