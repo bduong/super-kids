@@ -48,6 +48,7 @@
       <version>1.6</version>
     </dependency>
 
+    <!--TTS Dependencies-->
     <dependency>
       <groupId>marytts</groupId>
       <artifactId>marytts-runtime</artifactId>
@@ -63,6 +64,14 @@
       <artifactId>voice-cmu-slt-hsmm</artifactId>
       <version>${mary.tts.version}</version>
     </dependency>
+
+    <!--Video Player-->
+    <dependency>
+      <groupId>xuggle</groupId>
+      <artifactId>xuggle-xuggler</artifactId>
+      <version>5.2</version>
+    </dependency>
+
     <dependency>
       <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
