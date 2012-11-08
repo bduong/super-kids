@@ -14,6 +14,7 @@
   <name>User Interface</name>
   <properties>
     <mary.tts.version>5.1-SNAPSHOT</mary.tts.version>
+    <jfx.version>2.2</jfx.version>
   </properties>
 
   <repositories>
@@ -77,11 +78,29 @@
       <artifactId>hsqldb</artifactId>
       <version>2.0.0</version>
       <type>jar</type>
+   </dependency>
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx</artifactId>
+      <version>2.0</version>
+      <systemPath>${java.home}/lib/jfxrt.jar</systemPath>
+      <scope>system</scope>
+    </dependency>
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-ant</artifactId>
+      <version>2.0</version>
+      <systemPath>${java.home}/../lib/ant-javafx.jar</systemPath>
+      <scope>system</scope>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -134,5 +153,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>
