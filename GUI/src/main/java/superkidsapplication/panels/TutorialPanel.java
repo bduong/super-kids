@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Icon;
 import superkidsapplication.controllers.TutorialController;
+import java.awt.BorderLayout;
 /**
  *
  * @author FRANKs
@@ -21,11 +22,26 @@ public class TutorialPanel extends javax.swing.JPanel {
     /**
      * Creates new form TutorialPanel
      */
+    
+    private VideoPlayerPanel videoplayerpanel=null;
 
     public TutorialPanel(String category) {
                     
         initComponents();
-        jLabel1.setText(category);  
+        jLabel1.setText(category);
+        if (category.equals("SHAPES"))
+        {
+            videoplayerpanel=new VideoPlayerPanel("file:///../../../resources/videos/shapes.mp4");
+        }
+        if (category.equals("COLORS"))
+        {
+            videoplayerpanel=new VideoPlayerPanel("file:///../../../resources/videos/colors.mp4");
+        }
+        if (category.equals("ANIMALS"))
+        {
+            videoplayerpanel=new VideoPlayerPanel("file:///../../../resources/videos/animals.mp4");
+        }
+        //this.add(videoplayerpanel,BorderLayout.CENTER);
     }
 
     /**
