@@ -10,7 +10,8 @@ import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.Icon;
+import javax.swing.*;
+
 import superkidsapplication.controllers.TutorialController;
 import java.awt.BorderLayout;
 /**
@@ -88,4 +89,11 @@ public class TutorialPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
+
+    public static void main(String [] args) {
+        JFrame frame = new JFrame();
+        frame.add(new TutorialPanel("SHAPES"));
+        frame.pack();
+        frame.setVisible(true);
+    }
 }

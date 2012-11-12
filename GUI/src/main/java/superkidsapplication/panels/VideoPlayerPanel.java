@@ -39,9 +39,7 @@ public class VideoPlayerPanel extends JPanel{
     }
     
     private void initAndShowGUI(){
-        
-        
-        
+
         this.add(jfxpanel,BorderLayout.CENTER);
         this.setVisible(true);
         
