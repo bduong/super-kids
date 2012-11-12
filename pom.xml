@@ -15,6 +15,12 @@
   </modules>
   <packaging>pom</packaging>
 
+  <repositories>
+    <repository>
+      <id>Dropbox</id>
+      <url>https://dl.dropbox.com/u/2469167/mvn-repo</url>
+    </repository>
+  </repositories>
 
   <dependencyManagement>
     <dependencies>
