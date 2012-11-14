@@ -4,45 +4,70 @@
  */
 package superkidsapplication.panels;
 
-import com.ece.superkids.*;
-import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
-import com.ece.superkids.questions.enums.QuestionLevel;
-import java.util.ArrayList;
-import java.util.List;
+
 import javax.swing.*;
 
-import superkidsapplication.controllers.TutorialController;
-import java.awt.BorderLayout;
+import superkidsapplication.video.VideoPlayer;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author FRANKs
  */
-public class TutorialPanel extends javax.swing.JPanel {
+public class TutorialPanel extends javax.swing.JPanel implements ActionListener{
 
     /**
      * Creates new form TutorialPanel
      */
-    
-    private VideoPlayerPanel videoplayerpanel=null;
 
-    public TutorialPanel(String category) {
-        this.setName("Learning");           
+    private static VideoPlayer player;
+    private String fileName;
+    private static JButton play;
+
+    public TutorialPanel(QuestionCategory category) {
+        this.setName("Learning");
         initComponents();
-        jLabel1.setText(category);
-        if (category.equals("SHAPES"))
-        {
-            videoplayerpanel=new VideoPlayerPanel("file:///../../../resources/videos/shapes.mp4");
+        jLabel1.setText(category.toString());
+        player = new VideoPlayer();
+
+        play = new JButton("Play");
+        play.setBounds(80, 80, 40, 40);
+        play.addActionListener(this);
+        JPanel panel = player.getViewingPanel();
+        panel.setBackground(Color.BLACK);
+        panel.setBounds(80, 180, panel.getPreferredSize().width, panel.getPreferredSize().height);
+        jLayeredPane1.add(panel, JLayeredPane.PALETTE_LAYER);
+        jLayeredPane1.add(play, JLayeredPane.POPUP_LAYER);
+
+        switch (category) {
+            case SHAPES:
+                fileName = "/videos/shapes.mp4";
+                break;
+            case COLORS:
+                fileName = "/videos/colors.mp4";
+                break;
+            case ANIMALS:
+                fileName = "/videos/animals.mp4";
+                break;
+            default:
         }
-        if (category.equals("COLORS"))
-        {
-            videoplayerpanel=new VideoPlayerPanel("file:///../../../resources/videos/colors.mp4");
-        }
-        if (category.equals("ANIMALS"))
-        {
-            videoplayerpanel=new VideoPlayerPanel("file:///../../../resources/videos/animals.mp4");
-        }
-        //this.add(videoplayerpanel,BorderLayout.CENTER);
+
+    }
+
+    public void play() {
+        long time = System.currentTimeMillis();
+        player.play(fileName);
+        System.out.println(System.currentTimeMillis() - time);
+        time = System.currentTimeMillis();
+        repaint();
+        System.out.println("Repaint");
+        player.run();
+        System.out.println(System.currentTimeMillis() - time);
+
     }
 
     /**
@@ -68,7 +93,8 @@ public class TutorialPanel extends javax.swing.JPanel {
         jLabel1.setBounds(0, 90, 800, 60);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/QuestionScreen.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/QuestionScreen.png"))); //
+        // NOI18N
         jLabel2.setText("jLabel2");
         jLabel2.setBounds(0, 0, 800, 600);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -76,12 +102,12 @@ public class TutorialPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -92,8 +118,19 @@ public class TutorialPanel extends javax.swing.JPanel {
 
     public static void main(String [] args) {
         JFrame frame = new JFrame();
-        frame.add(new TutorialPanel("SHAPES"));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        TutorialPanel panel = new TutorialPanel(QuestionCategory.SHAPES);
+        frame.add(panel);
         frame.pack();
+        //play.setEnabled(false);
         frame.setVisible(true);
+        panel.play();
+
+        //play.setEnabled(true);
+    }
+
+    @Override
+    public void actionPerformed(final ActionEvent e) {
+       play();
     }
 }

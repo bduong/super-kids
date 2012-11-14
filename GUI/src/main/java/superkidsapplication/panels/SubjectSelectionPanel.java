@@ -150,8 +150,9 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (tutorial) {
             factory2.reset();
-            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
+            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0));
             controller.addPanel(q);
+            q.play();
         } else {
             gController.newSubject(level, 0);
         }
@@ -161,7 +162,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
          // TODO add your handling code here:
         if (tutorial) {
             factory2.reset();
-            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
+            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0));
             controller.addPanel(q);
         } else {
             gController.newSubject(level, 1);
@@ -172,7 +173,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
          // TODO add your handling code here:
         if (tutorial) {
             factory2.reset();
-            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
+            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0));
             controller.addPanel(q);
         } else {
             gController.newSubject(level, 2);

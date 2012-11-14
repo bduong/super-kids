@@ -42,7 +42,7 @@ public class TutorialController {
     }
 
     //we need a better method where a new question is fetched in from the server when this method is called.
-    public TutorialPanel createTutorialPanel(String category) {
+    public TutorialPanel createTutorialPanel(QuestionCategory category) {
         TutorialPanel qPanel;
         System.out.println("create tutorial panel");
         qPanel = new TutorialPanel(category);

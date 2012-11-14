@@ -2,8 +2,11 @@ package superkidsapplication.video;
 
 
 import com.xuggle.mediatool.MediaListenerAdapter;
+import com.xuggle.mediatool.event.IAudioSamplesEvent;
 import com.xuggle.mediatool.event.IVideoPictureEvent;
+import com.xuggle.xuggler.IAudioSamples;
 
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -13,6 +16,7 @@ public class VideoViewer extends MediaListenerAdapter {
     private static int mVideoStreamIndex = -1;
     private JPanel panel;
     private BufferedImage image;
+    private SourceDataLine audio;
 
     public VideoViewer() {
         image = new BufferedImage(640, 400, BufferedImage.TYPE_3BYTE_BGR);
@@ -41,8 +45,34 @@ public class VideoViewer extends MediaListenerAdapter {
             else
                 return;
         }
+        System.out.println("Hello");
         image = event.getImage();
         panel.repaint();
+    }
+
+    @Override
+    public void onAudioSamples(final IAudioSamplesEvent event) {
+        IAudioSamples samples = event.getAudioSamples();
+        if( audio == null) {
+            try {
+                AudioFormat format = new AudioFormat(samples.getSampleRate(), (int) samples.getSampleBitDepth(),
+                        samples.getChannels(), true, false);
+
+                DataLine.Info info = new DataLine.Info(SourceDataLine.class,
+                        format);
+
+                audio = (SourceDataLine) AudioSystem.getLine(info);
+                audio.open(format);
+                audio.start();
+
+            } catch (LineUnavailableException e) {
+                e.printStackTrace();
+            }
+        }
+        if(audio != null) {
+            int size = samples.getSize();
+            audio.write(samples.getData().getByteArray(0, size), 0, size);
+        }
     }
 
 }
