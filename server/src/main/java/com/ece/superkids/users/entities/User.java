@@ -43,6 +43,7 @@ public class User implements Serializable {
     public State getState() {
         return state;
     }
+
     private void setState(State state) {
         this.state = state;
         saveUser();
@@ -51,6 +52,7 @@ public class User implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
+
     public String getImage() {
         return image;
     }
@@ -82,7 +84,7 @@ public class User implements Serializable {
 
     public void endState() {
         //category is finished
-        state.categoryFinished();
+        state.setCurrentCategory(null);
         history.saveToHistory(state);
         saveUser();
     }
