@@ -19,6 +19,7 @@ public class User implements Serializable {
     private String name;
     private State state;
     private History history;
+    private String image;
 
     public User(String name) {
         this.name = name;
@@ -29,15 +30,12 @@ public class User implements Serializable {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -45,12 +43,18 @@ public class User implements Serializable {
     public State getState() {
         return state;
     }
-
     private void setState(State state) {
         this.state = state;
         saveUser();
     }
     
+    public void setImage(String image) {
+        this.image = image;
+    }
+    public String getImage() {
+        return image;
+    }
+
     public void setGameOn(boolean set){
         this.history.setGameOn(set);
         saveUser();
@@ -114,10 +118,6 @@ public class User implements Serializable {
 
         return true;
     }
-
-
-
-
 
 }
 
