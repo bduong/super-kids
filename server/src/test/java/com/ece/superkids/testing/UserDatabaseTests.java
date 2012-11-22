@@ -96,6 +96,7 @@ public class UserDatabaseTests {
         Object[][] objects = new Object[1][2];
         objects = expectedUser.getHistory(QuestionCategory.SHAPES, QuestionLevel.LEVEL_1);
         System.out.println(objects.length);
+        System.out.println("objects 0 1 is: " + objects[0][1]);
         assertEquals("xquestion", objects[0][0]);
     }
 
