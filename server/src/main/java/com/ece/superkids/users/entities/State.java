@@ -61,7 +61,6 @@ public class State implements Serializable {
             return false;
         }
     }
-
     public Integer getTotalScore() {
         Integer score = 0;
         Iterator it = scores.entrySet().iterator();
@@ -71,7 +70,6 @@ public class State implements Serializable {
         }
         return score;
     }
-
     public Map<Question, Integer> getScores(int scoreLevel) {
         Map<Question, Integer> score = new HashMap<Question, Integer>();
         Iterator it = scores.entrySet().iterator();
@@ -83,7 +81,6 @@ public class State implements Serializable {
         }
         return score;
     }
-
     public Map<Question, Integer> getAllScores() {
         return scores;
     }
