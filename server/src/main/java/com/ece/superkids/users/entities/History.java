@@ -7,40 +7,76 @@ import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.enums.QuestionCategory;
 
-import com.ece.superkids.users.entities.*;
-
-import java.io.*;
+import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.io.Serializable;
 
-
 public class History implements Serializable {
-    
+
     private Map<String, ArrayList<State>> questionToList;
-    private boolean gameOn;
-    private boolean levelFinished;
+    private boolean gameStarted;
+
+    private static Map<QuestionLevel, ArrayList<QuestionCategory>> levelToCategories;
+    
+    /* whenever new categories are added these lists need to be updated, else the history won't be able to know if the user is done with the level */
+    private QuestionCategory level1Categories[] = {QuestionCategory.SHAPES, QuestionCategory.COLORS, QuestionCategory.ANIMALS};
+    private QuestionCategory level2Categories[] = {QuestionCategory.FOOD, QuestionCategory.GEOGRAPHY, QuestionCategory.PLANETS};
+    private QuestionCategory level3Categories[] = {QuestionCategory.STATIONARY, QuestionCategory.INSTRUMENTS, QuestionCategory.BODYPARTS};
+    
+    /* whenever new levels are added this needs to be updated, else the history won't be able to know if the user is done with the game */
+    private QuestionLevel gameLevels[] = {QuestionLevel.LEVEL_1, QuestionLevel.LEVEL_2, QuestionLevel.LEVEL_3};
+
+    
+    private void init() {
+        levelToCategories = new HashMap<QuestionLevel, ArrayList<QuestionCategory>>();
+        levelToCategories.put(QuestionLevel.LEVEL_1, new ArrayList<QuestionCategory>(Arrays.asList(level1Categories)));
+        levelToCategories.put(QuestionLevel.LEVEL_2, new ArrayList<QuestionCategory>(Arrays.asList(level2Categories)));
+        levelToCategories.put(QuestionLevel.LEVEL_3, new ArrayList<QuestionCategory>(Arrays.asList(level3Categories)));
+    }
 
     public History() {
         questionToList = new HashMap();
-        gameOn = false;
+        gameStarted = false;
+        init();
     }
 
-    public void setGameOn(boolean value) {
-        gameOn = value;
+    public void setGameStarted() {
+        gameStarted = true;
     }
-    
+    public boolean getGameStarted() {
+        return gameStarted;
+    }
+
+    /* use this function to see if you wanna show 'continue game' button or not */
     public boolean getGameOn() {
-        // do checking on hashmap to see if user is done with all categories in all levels
-        return gameOn;
+        return (gameStarted && !isGameFinished());
     }
-    
+
+    /* call this to see if the level is finished */
      public boolean isLevelFinished(QuestionLevel level) {
-        //do check to see if user is done with this level by checking all categories in that level
-        return levelFinished;
+         ArrayList<QuestionCategory> questionCategoryList = levelToCategories.get(level);
+         for(int i=0; i<questionCategoryList.size(); i++) {
+             String key = questionCategoryList.get(i) + ":" + level;
+             if(!questionToList.containsKey(key)) {
+                 return false;
+             }
+         }
+        return true;
     }
+
+     /* call to see if the game is finished */
+     public boolean isGameFinished() {
+         ArrayList<QuestionLevel> gameLevelsList = new ArrayList<QuestionLevel>(Arrays.asList(gameLevels));
+         for(int i=0; i<gameLevelsList.size(); i++) {
+             if(!isLevelFinished(gameLevelsList.get(i))) {
+                 return false;
+             }
+         }
+         return true;
+     }
 
     public void saveToHistory(State state) {
         QuestionCategory category = state.getCurrentCategory();
@@ -48,6 +84,9 @@ public class History implements Serializable {
         String key = category.toString() + ":" + level.toString();
         if(questionToList.containsKey(key)) {
             ArrayList<State> states = (ArrayList<State>)questionToList.get(key);
+            if(states.size()==5) {
+                states.remove(0);
+            }
             states.add(state);
         } else {
             ArrayList<State> states = new ArrayList();
@@ -102,8 +141,8 @@ public class History implements Serializable {
                 Map.Entry pairs = (Map.Entry)it.next();
                 ArrayList<Integer> scoresList = (ArrayList<Integer>)pairs.getValue();
                 o[index][0] = ((Question)pairs.getKey()).getQuestion();
-                for(int i=1; i<scoresList.size(); i++) {
-                    o[index][i] = scoresList.get(i);
+                for(int i=1; i<scoresList.size()+1; i++) {
+                    o[index][i] = scoresList.get(i-1);
                 }
                 index++;
             }
