@@ -30,6 +30,7 @@ public class GameController {
     private Session session;
     private QuestionDatabase qD;
 
+    //a Facade object
     private GameController() {
         qController = QuestionController.getInstance();
         controller = PanelController.getInstance();
@@ -39,7 +40,6 @@ public class GameController {
     }
 
     private static class GameControllerHolder {
-
         public static final GameController INSTANCE = new GameController();
     }
 
