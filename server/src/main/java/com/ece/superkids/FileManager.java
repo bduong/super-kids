@@ -4,11 +4,13 @@ import java.io.File;
 
 public interface FileManager {
 
-    File getCustomQuestionsFile();
+    public File getCustomQuestionsFile();
 
-    File getUserFile(String userFile);
+    public File getUserFile(String userFile);
 
-    File getImagePathsFile();
+    public File getImagePathsFile();
 
-    File getDirectory();
+    public File getDirectory();
+
+    public File getImagesDirectory();
 }

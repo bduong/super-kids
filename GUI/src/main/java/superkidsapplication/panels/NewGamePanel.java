@@ -34,6 +34,7 @@ public class NewGamePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel1 = new javax.swing.JLabel();
         level3Button = new javax.swing.JButton();
         level2Button = new javax.swing.JButton();
         level1Button = new javax.swing.JButton();
@@ -42,11 +43,20 @@ public class NewGamePanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(153, 204, 255));
         setMinimumSize(new java.awt.Dimension(800, 600));
 
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("New Game");
+        jLabel1.setBounds(90, 160, 210, 40);
+        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         level3Button.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         level3Button.setForeground(new java.awt.Color(255, 255, 255));
+        level3Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/levelbutton.png"))); // NOI18N
         level3Button.setText("Level 3");
         level3Button.setBorderPainted(false);
         level3Button.setContentAreaFilled(false);
+        level3Button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        level3Button.setIconTextGap(0);
         level3Button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 level3ButtonMouseExited(evt);
@@ -60,14 +70,17 @@ public class NewGamePanel extends javax.swing.JPanel {
                 level3ButtonActionPerformed(evt);
             }
         });
-        level3Button.setBounds(558, 329, 110, 110);
+        level3Button.setBounds(540, 330, 190, 110);
         jLayeredPane1.add(level3Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         level2Button.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         level2Button.setForeground(new java.awt.Color(255, 255, 255));
+        level2Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/levelbutton.png"))); // NOI18N
         level2Button.setText("Level 2");
         level2Button.setBorderPainted(false);
         level2Button.setContentAreaFilled(false);
+        level2Button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        level2Button.setIconTextGap(0);
         level2Button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 level2ButtonMouseExited(evt);
@@ -81,14 +94,17 @@ public class NewGamePanel extends javax.swing.JPanel {
                 level2ButtonActionPerformed(evt);
             }
         });
-        level2Button.setBounds(340, 339, 110, 90);
+        level2Button.setBounds(310, 330, 190, 110);
         jLayeredPane1.add(level2Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         level1Button.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         level1Button.setForeground(new java.awt.Color(255, 255, 255));
+        level1Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/levelbutton.png"))); // NOI18N
         level1Button.setText("Level 1");
         level1Button.setBorderPainted(false);
         level1Button.setContentAreaFilled(false);
+        level1Button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        level1Button.setIconTextGap(0);
         level1Button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 level1ButtonMouseExited(evt);
@@ -102,10 +118,10 @@ public class NewGamePanel extends javax.swing.JPanel {
                 level1ButtonActionPerformed(evt);
             }
         });
-        level1Button.setBounds(110, 339, 130, 90);
+        level1Button.setBounds(80, 330, 190, 110);
         jLayeredPane1.add(level1Button, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        backgoundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/newgamebackground.png"))); // NOI18N
+        backgoundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/BasicScreen3.png"))); // NOI18N
         backgoundLabel.setBounds(0, 0, 800, 600);
         jLayeredPane1.add(backgoundLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -114,14 +130,14 @@ public class NewGamePanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 1133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 201, Short.MAX_VALUE))
+                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 800, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 719, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 154, Short.MAX_VALUE))
+                .add(jLayeredPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 600, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -180,6 +196,7 @@ public class NewGamePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_level3ButtonMouseExited
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgoundLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton level1Button;
     private javax.swing.JButton level2Button;

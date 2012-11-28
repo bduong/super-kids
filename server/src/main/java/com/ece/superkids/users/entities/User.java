@@ -19,6 +19,7 @@ public class User implements Serializable {
     private String name;
     private State state;
     private History history;
+    private String image;
 
     public User(String name) {
         this.name = name;
@@ -29,30 +30,31 @@ public class User implements Serializable {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public State getState() {
         return state;
     }
-
     private void setState(State state) {
         this.state = state;
         saveUser();
     }
-    
+    public void setImage(String image) {
+        this.image = image;
+    }
+    public String getImage() {
+        return image;
+    }
+
     public void setGameOn(boolean set){
-        this.history.setGameOn(set);
+        this.history.setGameStarted();
         saveUser();
     }
 
@@ -65,7 +67,7 @@ public class User implements Serializable {
     }
 
     public void setCurrentQuestion(Question question) {
-        history.setGameOn(true);
+        history.setGameStarted();
         state.setCurrentQuestion(question);
         state.setCurrentLevel(question.getLevel());
         state.setCurrentCategory(question.getCategory());
@@ -75,21 +77,46 @@ public class User implements Serializable {
     public void saveScore(Question question, Integer score) {
         state.addScore(question, score);
     }
-
-    public void endState() {
-        //category is finished
-        state.categoryFinished();
-        history.saveToHistory(state);
-        saveUser();
-    }
-
+    
+    /* call this function whenever you click on a new category and level */
     public void newState(QuestionCategory category, QuestionLevel level) {
+        /* clear the old state and create a new one */
         state = new State();
+
+        /* set category and level to the new state */
         state.setCurrentCategory(category);
         state.setCurrentLevel(level);
+
+        /* save the user into the ser file */
         saveUser();
     }
 
+    /* call this function when you're done with a category and level (after the stars screen) */
+    public void endState() {
+        /* save the state to the history */
+        history.saveToHistory(state);
+        /* clear the category so that whenever the game loads again, the user goes to category selection */
+        state.setCurrentCategory(null);
+        /* save the user in the ser file */
+        saveUser();
+    }
+
+    /* adapters for the state functions */
+    public QuestionCategory getCurrentCategory() {
+        return state.getCurrentCategory();
+    }
+    public void setCurrentCategory(QuestionCategory currentCategory) {
+        state.setCurrentCategory(currentCategory);
+    }
+
+    public QuestionLevel getCurrentLevel() {
+        return state.getCurrentLevel();
+    }
+    public void setCurrentLevel(QuestionLevel currentLevel) {
+        state.setCurrentLevel(currentLevel);
+    }
+
+    /* call this function to save user in database, this is automatically called when endState is called */
     public void saveUser() {
         (new FileUserManager()).addUser(this);
         (new FileUserManager()).updateUser(this, this);
@@ -114,10 +141,6 @@ public class User implements Serializable {
 
         return true;
     }
-
-
-
-
 
 }
 
