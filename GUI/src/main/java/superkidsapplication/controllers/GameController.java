@@ -95,11 +95,14 @@ public class GameController {
             //get the state of user
             State s = user.getState();
             //if the category is finished then go to the subject selection
+            /*
             if (s.isCategoryFinished() == true) {
                 QuestionLevel lev = user.getState().getCurrentLevel();
                 controller.addPanel(new SubjectSelectionPanel(lev));
                 return;
             }
+            */
+            
             //if the category is not finished get the current question
             Question q;
             //get question number

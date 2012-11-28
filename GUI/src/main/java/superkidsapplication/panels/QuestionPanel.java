@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.QuestionController;
 import superkidsapplication.controllers.TTSController;
+import superkidsapplication.customui.ImageButton;
 import superkidsapplication.events.Session;
 import superkidsapplication.providers.ImageProvider;
 import superkidsapplication.providers.ResourceProviderFactory;
@@ -71,6 +72,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         saveQuestion();
         //set super kid name
         superKidNameLabel.setText("Super Kid: " + session.getLoggedInUser().getName());
+        
+        
     }
 
     /**
@@ -91,10 +94,10 @@ public class QuestionPanel extends javax.swing.JPanel {
         superKidNameLabel = new javax.swing.JLabel();
         characterIconLabel = new javax.swing.JLabel();
         ChoicePanel = new javax.swing.JPanel();
-        choice1Button = new javax.swing.JButton();
-        choice2Button = new javax.swing.JButton();
-        choice3Button = new javax.swing.JButton();
-        choice4Button = new javax.swing.JButton();
+        choice1Button = new ImageButton();
+        choice2Button = new ImageButton();
+        choice3Button = new ImageButton();
+        choice4Button = new ImageButton();
         background = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -157,6 +160,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         ChoicePanel.setOpaque(false);
 
         choice1Button.setText("Choice 1");
+        choice1Button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        choice1Button.setIconTextGap(0);
         choice1Button.setPreferredSize(new java.awt.Dimension(150, 150));
         choice1Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,6 +170,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         });
 
         choice2Button.setText("Choice 2");
+        choice2Button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        choice2Button.setIconTextGap(0);
         choice2Button.setPreferredSize(new java.awt.Dimension(150, 150));
         choice2Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +180,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         });
 
         choice3Button.setText("Choice 3");
+        choice3Button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        choice3Button.setIconTextGap(0);
         choice3Button.setPreferredSize(new java.awt.Dimension(150, 150));
         choice3Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +190,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         });
 
         choice4Button.setText("Choice 4");
+        choice4Button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        choice4Button.setIconTextGap(0);
         choice4Button.setPreferredSize(new java.awt.Dimension(150, 150));
         choice4Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,7 +329,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     private javax.swing.JButton RepeatSoundButton;
     private javax.swing.JLabel background;
     private javax.swing.JLabel characterIconLabel;
-    private javax.swing.JButton choice1Button;
+    public javax.swing.JButton choice1Button;
     private javax.swing.JButton choice2Button;
     private javax.swing.JButton choice3Button;
     private javax.swing.JButton choice4Button;
@@ -347,9 +358,13 @@ public class QuestionPanel extends javax.swing.JPanel {
             choice2Button.setIcon(icons.get(1));
             choice3Button.setIcon(icons.get(2));
             choice4Button.setIcon(icons.get(3));
+            
+            choice1Button.setText("");
+            choice2Button.setText("");
+            choice3Button.setText("");
+            choice4Button.setText("");
         }
-
-        if (choices != null) {
+        else if (choices != null) {
             choice1Button.setText(choices.get(0));
             choice2Button.setText(choices.get(1));
             choice3Button.setText(choices.get(2));

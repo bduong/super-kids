@@ -1,11 +1,14 @@
 package com.ece.superkids.questions;
 
+import com.ece.superkids.images.FileImageManager;
+import com.ece.superkids.images.ImageManager;
 import com.ece.superkids.questions.enums.QuestionMode;
 
 public final class QuestionDatabaseFactory {
 
     private static QuestionDatabase questionDatabase;
     private static QuestionManager questionManager;
+    private static ImageManager imageManager;
 
     /**
      * Factory method to get the question database. Since the database can be expensive to load,
@@ -45,5 +48,12 @@ public final class QuestionDatabaseFactory {
             questionManager = new FileQuestionManager();
         }
         return questionManager;
+    }
+
+    public static ImageManager anImageManager() {
+        if (imageManager == null) {
+            imageManager = new FileImageManager();
+        }
+        return imageManager;
     }
 }

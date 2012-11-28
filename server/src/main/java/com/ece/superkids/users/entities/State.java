@@ -21,7 +21,8 @@ public class State implements Serializable {
     private QuestionLevel currentLevel;
     private Question currentQuestion;
     private QuestionCategory currentCategory;
-    private boolean categoryFinished;
+
+    
     private Map<Question, Integer> scores;
     static final long serialVersionUID = -6618469841122132321L;
 
@@ -29,13 +30,11 @@ public class State implements Serializable {
      */
     public State() {
         scores = new HashMap<Question, Integer>();
-        categoryFinished=false;
     }
     
     public QuestionCategory getCurrentCategory() {
         return currentCategory;
     }
-
     public void setCurrentCategory(QuestionCategory currentCategory) {
         this.currentCategory = currentCategory;
     }
@@ -43,7 +42,6 @@ public class State implements Serializable {
     public QuestionLevel getCurrentLevel() {
         return currentLevel;
     }
-
     public void setCurrentLevel(QuestionLevel currentLevel) {
         this.currentLevel = currentLevel;
     }
@@ -51,7 +49,6 @@ public class State implements Serializable {
     public Question getCurrentQuestion() {
         return currentQuestion;
     }
-
     public void setCurrentQuestion(Question currentQuestion) {
         this.currentQuestion = currentQuestion;
     }
@@ -64,7 +61,6 @@ public class State implements Serializable {
             return false;
         }
     }
-
     public Integer getTotalScore() {
         Integer score = 0;
         Iterator it = scores.entrySet().iterator();
@@ -74,7 +70,6 @@ public class State implements Serializable {
         }
         return score;
     }
-
     public Map<Question, Integer> getScores(int scoreLevel) {
         Map<Question, Integer> score = new HashMap<Question, Integer>();
         Iterator it = scores.entrySet().iterator();
@@ -86,7 +81,6 @@ public class State implements Serializable {
         }
         return score;
     }
-
     public Map<Question, Integer> getAllScores() {
         return scores;
     }
@@ -103,20 +97,6 @@ public class State implements Serializable {
         if (!currentCategory.equals(state.currentCategory))  return false;
 
         return true;
-    }
-
-    /**
-     * @return the categoryFinished
-     */
-    public boolean isCategoryFinished() {
-        return categoryFinished;
-    }
-
-    /**
-     * @param categoryFinished the categoryFinished to set
-     */
-    public void categoryFinished() {
-        this.categoryFinished = true;
     }
     
 }

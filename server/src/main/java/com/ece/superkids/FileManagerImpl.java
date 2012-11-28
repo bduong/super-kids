@@ -8,6 +8,7 @@ public class FileManagerImpl implements FileManager {
     private static String fileDirectory;
     private static final String customQuestionsFile = "customQuestions.txt";
     private static final String customImagePathFile = "custom_image_paths.properties";
+    private static final String customImageFolder = "images";
 
     private FileManagerImpl() {
         String userHome = System.getProperty("user.home");
@@ -62,5 +63,14 @@ public class FileManagerImpl implements FileManager {
             directory.mkdirs();
         }
         return directory;
+    }
+
+    @Override
+    public File getImagesDirectory() {
+        File imageDirectory = new File(fileDirectory + File.separator + customImageFolder);
+        if (!imageDirectory.exists()) {
+            imageDirectory.mkdirs();
+        }
+        return imageDirectory;
     }
 }
