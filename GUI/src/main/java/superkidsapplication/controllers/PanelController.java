@@ -22,7 +22,7 @@ import superkidsapplication.panels.UserSelectionPanel;
  */
 /**
  *
- * @author baris
+ * @author baris & david c
  */
 public class PanelController {
 
@@ -158,5 +158,25 @@ public class PanelController {
         if(found==false){
             this.addPanel(new SubjectSelectionPanel(session.getLoggedInUser().getState().getCurrentLevel()));
         }
+    }
+    
+    
+    //Goes back to parentalcontrol Panel
+    public void goToParentalControl() {
+         boolean found = false;
+        //start from back of the list to search for subject selection
+        for (int i = panels.size() - 1; i > -1; i--) {
+            //if the panel name is not null
+            if (panels.get(i).getName() != null) {
+                //and if the name is eqaul to parental control
+                if (panels.get(i).getName().equals("ParentalControl")) {
+                    //set the subject selection visible
+                    panels.get(i).setVisible(true);
+                    return;
+                }
+            }
+            //go back one panel until subjectselection is found
+            goBackOnePanel();
+        }       
     }
 }

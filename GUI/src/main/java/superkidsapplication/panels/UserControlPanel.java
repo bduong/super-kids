@@ -7,14 +7,16 @@ package superkidsapplication.panels;
 import com.ece.superkids.users.UserDatabaseFactory;
 import com.ece.superkids.users.UserManager;
 import com.ece.superkids.users.entities.User;
+import java.awt.Graphics;
 import java.util.Iterator;
 import java.util.List;
 import superkidsapplication.controllers.PanelController;
+import superkidsapplication.customui.ImageLabel;
 import superkidsapplication.events.Session;
 
 /**
  *
- * @author baris
+ * @author baris & david c
  */
 public class UserControlPanel extends javax.swing.JPanel {
 
@@ -26,6 +28,7 @@ public class UserControlPanel extends javax.swing.JPanel {
     private PanelController controller = PanelController.getInstance();
     private CharacterSelectionPanel characterselection;
     private String character;
+    private int AddState = 0;
     
     public UserControlPanel() {
         initComponents();
@@ -52,9 +55,11 @@ public class UserControlPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         warnLabel = new javax.swing.JLabel();
         avatarButton = new javax.swing.JButton();
+        characterDisplay = new ImageLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        setBounds(new java.awt.Rectangle(0, 0, 300, 300));
         setOpaque(false);
+        setSize(new java.awt.Dimension(370, 300));
 
         nameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +74,8 @@ public class UserControlPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Name");
 
         deleteButton.setText("Delete");
@@ -78,49 +85,67 @@ public class UserControlPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Add a new User");
 
+        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Users");
 
         warnLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         warnLabel.setForeground(new java.awt.Color(255, 0, 0));
 
-        avatarButton.setText("Set Character");
+        avatarButton.setText("Change");
         avatarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 avatarButtonActionPerformed(evt);
             }
         });
 
+        characterDisplay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
+        characterDisplay.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        characterDisplay.setIconTextGap(0);
+
+        jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Avatar");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(27, 27, 27)
-                        .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 315, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(12, 12, 12)
-                        .add(jLabel1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(layout.createSequentialGroup()
-                                .add(nameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                .add(avatarButton))
-                            .add(addButton)))
-                    .add(layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(48, 48, 48)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(jLabel3)
                             .add(layout.createSequentialGroup()
-                                .add(usersBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 166, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(usersBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 166, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(layout.createSequentialGroup()
+                                        .add(13, 13, 13)
+                                        .add(characterDisplay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 128, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                                 .add(18, 18, 18)
-                                .add(deleteButton)))))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                    .add(avatarButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .add(deleteButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .add(layout.createSequentialGroup()
+                                .add(addButton)
+                                .add(2, 2, 2)
+                                .add(warnLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .add(12, 12, 12)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel4)
+                            .add(layout.createSequentialGroup()
+                                .add(jLabel1)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel2)
+                                    .add(nameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -131,19 +156,23 @@ public class UserControlPanel extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(usersBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(deleteButton))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 73, Short.MAX_VALUE)
+                .add(18, 18, 18)
                 .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(nameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel1)
-                    .add(avatarButton))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(addButton)
-                    .add(avatarButton))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(warnLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1))
+                .add(18, 18, 18)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(jLabel4)
+                        .add(25, 25, 25)
+                        .add(avatarButton))
+                    .add(characterDisplay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 107, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(warnLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(addButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -154,16 +183,33 @@ public class UserControlPanel extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        if(nameField.getText().contains(" ")||nameField.getText().isEmpty()){
-            warnLabel.setText("Illegal Name");
-            return;
+        if (AddState == 0)
+        {
+            if(nameField.getText().contains(" ")||nameField.getText().isEmpty()){
+                warnLabel.setText("Illegal Name");
+                return;
+            }
+            User user = new User(nameField.getText());
+            character = characterselection.character;
+            user.setImage(character);
+            uM.addUser(user);
+            warnLabel.setText("User Added");
+            fillBox();
+            addButton.setText("Add another");
+            nameField.setEnabled(false);
+            avatarButton.setEnabled(false);
+            AddState = 1;
         }
-        User user = new User(nameField.getText());
-        character = characterselection.character;
-        user.setImage(character);
-        uM.addUser(user);
-        warnLabel.setText("User Added");
-        fillBox();
+        else
+        {
+            addButton.setText("Add");
+            nameField.setText("");
+            nameField.setEnabled(true);
+            avatarButton.setEnabled(true);
+            warnLabel.setText("");
+            AddState = 0;
+        }
+            
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -187,10 +233,12 @@ public class UserControlPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton avatarButton;
+    public javax.swing.JLabel characterDisplay;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox usersBox;
     private javax.swing.JLabel warnLabel;
@@ -203,6 +251,15 @@ public class UserControlPanel extends javax.swing.JPanel {
         while (iterator.hasNext()) {
             usersBox.addItem(iterator.next().getName());
         }
+    }
+
+    
+    @Override
+    public void paint(Graphics g)
+    {
+        super.paint(g);
+        character = characterselection.character;
+        this.characterDisplay.setIcon(new javax.swing.ImageIcon(getClass().getResource(this.character)));
     }
 
 }

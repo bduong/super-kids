@@ -28,6 +28,7 @@ public class ImageLabel extends JLabel {
     
     public Image image;
     private ImageObserver imageObserver;
+    private int iconwidth, iconheight;
     
     
     public ImageLabel() {
@@ -36,30 +37,50 @@ public class ImageLabel extends JLabel {
     
     
     @Override
-    public void paint(Graphics g) {
-        //super.paint(g);
-        int w, h, maxw, maxh;
-        image = iconToImage(this.getIcon());
-        w = getWidth()/2 - this.getIcon().getIconWidth()/2;
-        h = getHeight()/2 - this.getIcon().getIconHeight()/2;
-        if (this.getIcon().getIconWidth() < getWidth())
-        {
-            maxw = this.getIcon().getIconWidth();
-        }
-        else
-        {
-            maxw = getWidth();
-        }
-        if (this.getIcon().getIconHeight() < getHeight())
-        {
-            maxh = this.getIcon().getIconHeight();
-        }
-        else
-        {
-            maxh = getHeight();
-        }
+    public void setIcon(Icon icon)
+    {
+        super.setIcon(null);
         
-        g.drawImage(image, w, h, maxw, maxh, imageObserver);
+        if (icon != null)
+        {
+            iconwidth = icon.getIconWidth();
+            iconheight = icon.getIconHeight();
+            image = iconToImage(icon);
+        }
+        super.repaint();
+    }
+    
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        if (image != null)
+        {
+            int w, h, maxw, maxh;
+
+            if (iconwidth < getWidth())
+            {
+
+                maxw = iconwidth;
+                w = getWidth()/2 - iconwidth/2;
+            }
+            else
+            {
+                maxw = getWidth();
+                w = 0;
+            }
+            if (iconheight < getHeight())
+            {
+                maxh = iconheight;
+                h = getHeight()/2 - iconheight/2;
+            }
+            else
+            {
+                maxh = getHeight();
+                h = 0;
+            }
+
+            g.drawImage(image, w, h, maxw, maxh, imageObserver);
+        }
     }
     
     static Image iconToImage(Icon icon) {

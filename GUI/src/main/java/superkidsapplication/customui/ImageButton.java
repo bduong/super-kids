@@ -24,6 +24,7 @@ public class ImageButton extends JButton {
     
     public Image image;
     private ImageObserver imageObserver;
+    private int iconwidth, iconheight;
     
     
     public ImageButton() {
@@ -31,31 +32,51 @@ public class ImageButton extends JButton {
     }
     
     
+        @Override
+    public void setIcon(Icon icon)
+    {
+        super.setIcon(null);
+        
+        if (icon != null)
+        {
+            iconwidth = icon.getIconWidth();
+            iconheight = icon.getIconHeight();
+            image = iconToImage(icon);
+        }
+        super.repaint();
+    }
+    
     @Override
     public void paint(Graphics g) {
-        //super.paint(g);
-        int w, h, maxw, maxh;
-        image = iconToImage(this.getIcon());
-        w = getWidth()/2 - this.getIcon().getIconWidth()/2;
-        h = getHeight()/2 - this.getIcon().getIconHeight()/2;
-        if (this.getIcon().getIconWidth() < getWidth())
+        super.paint(g);
+        if (image != null)
         {
-            maxw = this.getIcon().getIconWidth();
+            int w, h, maxw, maxh;
+
+            if (iconwidth < getWidth())
+            {
+
+                maxw = iconwidth;
+                w = getWidth()/2 - iconwidth/2;
+            }
+            else
+            {
+                maxw = getWidth();
+                w = 0;
+            }
+            if (iconheight < getHeight())
+            {
+                maxh = iconheight;
+                h = getHeight()/2 - iconheight/2;
+            }
+            else
+            {
+                maxh = getHeight();
+                h = 0;
+            }
+
+            g.drawImage(image, w+10, h+10, maxw-20, maxh-20, imageObserver);
         }
-        else
-        {
-            maxw = getWidth();
-        }
-        if (this.getIcon().getIconHeight() < getHeight())
-        {
-            maxh = this.getIcon().getIconHeight();
-        }
-        else
-        {
-            maxh = getHeight();
-        }
-        
-        g.drawImage(image, w, h, maxw, maxh, imageObserver);
     }
     
     static Image iconToImage(Icon icon) {
