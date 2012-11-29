@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.TTSController;
+import superkidsapplication.customui.ImageLabel;
 import superkidsapplication.events.Session;
 
 /**
@@ -26,6 +27,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     public ScoreScreenPanel() {
         this.setName("ScoreScreen");
         initComponents();
+        avatar.setIcon(new javax.swing.ImageIcon(getClass().getResource(session.getLoggedInUser().getImage())));
         displayStars();
         //end the state for user
         session.getLoggedInUser().endState();
@@ -69,7 +71,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         textLabel = new javax.swing.JLabel();
-        avatar = new javax.swing.JLabel();
+        avatar = new ImageLabel();
         starPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
@@ -88,7 +90,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
 
         avatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
         avatar.setIconTextGap(0);
-        avatar.setBounds(330, 140, 130, 220);
+        avatar.setBounds(250, 120, 270, 240);
         jLayeredPane1.add(avatar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         starPanel.setOpaque(false);

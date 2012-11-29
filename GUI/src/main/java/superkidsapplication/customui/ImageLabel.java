@@ -4,6 +4,10 @@
  */
 package superkidsapplication.customui;
 
+/**
+ *
+ * @author david
+ */
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
@@ -14,19 +18,19 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
  * @author david cheung
  */
-public class ImageButton extends JButton {
+public class ImageLabel extends JLabel {
     
     public Image image;
     private ImageObserver imageObserver;
     
     
-    public ImageButton() {
+    public ImageLabel() {
         super();
     }
     
