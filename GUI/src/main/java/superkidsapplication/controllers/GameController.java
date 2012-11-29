@@ -52,7 +52,7 @@ public class GameController {
      */
     public void newGame() {
         //set gameOn
-        session.getLoggedInUser().setGameOn();
+        session.getLoggedInUser().setGameOn(true);
         //create a new game panel
         NewGamePanel gamePanel = new NewGamePanel();
         //add new panel
