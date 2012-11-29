@@ -3,6 +3,7 @@
  */
 package com.ece.superkids.users.entities;
 
+import com.ece.superkids.achievements.entities.Achievements;
 import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
@@ -20,11 +21,13 @@ public class User implements Serializable {
     private State state;
     private History history;
     private String image;
+    private Achievements achievements;
 
     public User(String name) {
         this.name = name;
         state = new State();
         history = new History();
+        achievements = new Achievements();
     }
 
     public int getId() {
@@ -51,6 +54,22 @@ public class User implements Serializable {
     }
     public String getImage() {
         return image;
+    }
+
+    public Achievements getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(final Achievements achievements) {
+        this.achievements = achievements;
+    }
+
+    public History getHistory() {
+        return history;
+    }
+
+    public void setHistory(final History history) {
+        this.history = history;
     }
 
     public void setGameOn(boolean set){
