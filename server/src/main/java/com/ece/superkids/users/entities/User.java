@@ -53,8 +53,10 @@ public class User implements Serializable {
         return image;
     }
 
-    public void setGameOn(boolean set){
+    public void setGameOn(){
         this.history.setGameStarted();
+        state.setCurrentCategory(null);
+        state.setCurrentLevel(null);
         saveUser();
     }
 
