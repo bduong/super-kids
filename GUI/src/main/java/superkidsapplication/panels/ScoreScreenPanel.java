@@ -119,7 +119,14 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
 
     private void jLayeredPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLayeredPane1MouseClicked
         // TODO add your handling code here:
-        controller.goToSubjectMenu();
+        if(session.getLoggedInUser().isCurrentLevelFinished()){
+            controller.addPanel(new NewGamePanel("Continue"));
+            TTSController.TTS("You have finished this level.");
+        }
+        else{
+            controller.goToSubjectMenu();
+            TTSController.TTS("You have finished this category.");
+        }
     }//GEN-LAST:event_jLayeredPane1MouseClicked
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel avatar;
