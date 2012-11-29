@@ -358,13 +358,8 @@ public class QuestionPanel extends javax.swing.JPanel {
             choice2Button.setIcon(icons.get(1));
             choice3Button.setIcon(icons.get(2));
             choice4Button.setIcon(icons.get(3));
-            
-            choice1Button.setText("");
-            choice2Button.setText("");
-            choice3Button.setText("");
-            choice4Button.setText("");
         }
-        else if (choices != null) {
+        if (choices != null) {
             choice1Button.setText(choices.get(0));
             choice2Button.setText(choices.get(1));
             choice3Button.setText(choices.get(2));

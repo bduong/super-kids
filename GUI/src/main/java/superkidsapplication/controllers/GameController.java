@@ -30,6 +30,7 @@ public class GameController {
     private Session session;
     private QuestionDatabase qD;
 
+    //a Facade object
     private GameController() {
         qController = QuestionController.getInstance();
         controller = PanelController.getInstance();
@@ -39,7 +40,6 @@ public class GameController {
     }
 
     private static class GameControllerHolder {
-
         public static final GameController INSTANCE = new GameController();
     }
 
@@ -51,8 +51,8 @@ public class GameController {
      * Create a new game
      */
     public void newGame() {
-        //set gameOn to false
-        session.getLoggedInUser().setGameOn(false);
+        //set gameOn
+        session.getLoggedInUser().setGameOn(true);
         //create a new game panel
         NewGamePanel gamePanel = new NewGamePanel();
         //add new panel
@@ -88,20 +88,20 @@ public class GameController {
             //if the current level is finished go to level selection
             if (user.isCurrentLevelFinished()) {
                 QuestionLevel lev = user.getState().getCurrentLevel();
-                controller.addPanel(new NewGamePanel());
+                controller.addPanel(new NewGamePanel("Continue"));
                 return;
             }
             //if the level is not finished
             //get the state of user
             State s = user.getState();
             //if the category is finished then go to the subject selection
-            /*
-            if (s.isCategoryFinished() == true) {
+           
+            if (s.getCurrentCategory() == null) {
                 QuestionLevel lev = user.getState().getCurrentLevel();
                 controller.addPanel(new SubjectSelectionPanel(lev));
                 return;
             }
-            */
+            
             
             //if the category is not finished get the current question
             Question q;

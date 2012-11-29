@@ -45,6 +45,7 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         passField = new javax.swing.JPasswordField();
         passField2 = new javax.swing.JPasswordField();
         nextButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -101,6 +102,10 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         nextButton.setBounds(650, 370, 90, 40);
         jLayeredPane1.add(nextButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel4.setText("It will be asked to access the parent controls.");
+        jLabel4.setBounds(60, 390, 460, 30);
+        jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/BasicScreen.png"))); // NOI18N
         background.setBounds(0, 0, 800, 600);
         jLayeredPane1.add(background, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -149,6 +154,7 @@ public class InitialSetupPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton okButton;

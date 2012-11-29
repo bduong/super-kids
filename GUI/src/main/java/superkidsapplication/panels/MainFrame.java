@@ -213,12 +213,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
-        //logout
-        session.logout();
-        //set visibility of logout to false
-        this.logoutButton.setVisible(false);
-        //go to main menu which is user selection when there is no one logged in
-        controller.goToMainMenu();
+        new LogoutAuthFrame(logoutButton).setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

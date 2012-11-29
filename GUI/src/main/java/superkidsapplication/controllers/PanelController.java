@@ -13,7 +13,7 @@ import superkidsapplication.panels.UserSelectionPanel;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
+/**
  * THIS CLASS CONTROLS PANELS THAT ARE ADDED TO THE MAIN FRAME
  * BASICALLY ALLOWS THE USAGE OF GO BACK FUNCTION
  * SINGLETON PATTERN IS USED FOR ACCESS GLOBALLY
@@ -36,7 +36,6 @@ public class PanelController {
     }
 
     private static class PanelControllerHolder {
-
         public static final PanelController INSTANCE = new PanelController();
     }
 

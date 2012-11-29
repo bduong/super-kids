@@ -19,7 +19,7 @@ public class History implements Serializable {
     private Map<String, ArrayList<State>> questionToList;
     private boolean gameStarted;
 
-    private static Map<QuestionLevel, ArrayList<QuestionCategory>> levelToCategories;
+    private Map<QuestionLevel, ArrayList<QuestionCategory>> levelToCategories;
     
     /* whenever new categories are added these lists need to be updated, else the history won't be able to know if the user is done with the level */
     private QuestionCategory level1Categories[] = {QuestionCategory.SHAPES, QuestionCategory.COLORS, QuestionCategory.ANIMALS};
@@ -57,6 +57,9 @@ public class History implements Serializable {
 
     /* call this to see if the level is finished */
      public boolean isLevelFinished(QuestionLevel level) {
+         if(level==null){
+             return true;
+         }
          ArrayList<QuestionCategory> questionCategoryList = levelToCategories.get(level);
          for(int i=0; i<questionCategoryList.size(); i++) {
              String key = questionCategoryList.get(i) + ":" + level;

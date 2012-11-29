@@ -24,6 +24,12 @@ public class NewGamePanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    public NewGamePanel(String aContinue) {
+        controller = PanelController.getInstance();
+        initComponents();
+        jLabel1.setText("Select a Level");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,7 +52,7 @@ public class NewGamePanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("New Game");
-        jLabel1.setBounds(90, 160, 210, 40);
+        jLabel1.setBounds(90, 160, 440, 40);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         level3Button.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N

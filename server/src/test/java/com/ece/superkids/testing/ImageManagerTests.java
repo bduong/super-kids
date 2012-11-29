@@ -31,20 +31,6 @@ public class ImageManagerTests {
     @After
     public void clean() throws IOException {
         deleteImageFile();
-
-//        File tempFile = File.createTempFile("imagepaths",".new");
-//        File imagePathFile = fileManager.getImagePathsFile();
-//        BufferedReader reader = new BufferedReader(new FileReader(imagePathFile));
-//        FileWriter writer = new FileWriter(tempFile);
-//
-//        for (int ii = 0; ii < lineCount-1; ii++) {
-//            writer.write(reader.readLine() + '\n');
-//        }
-//        reader.close();
-//        writer.close();
-//        imagePathFile.delete();
-//        tempFile.renameTo(imagePathFile);
-
     }
 
     private void deleteImageFile() throws IOException {
