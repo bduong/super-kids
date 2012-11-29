@@ -175,7 +175,7 @@ public class CharacterSelectionPanel extends javax.swing.JPanel {
 
     private void DoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButtonActionPerformed
         // TODO add your handling code here:
-        controller.goBackOnePanel();
+        controller.goToParentalControl();
         
     }//GEN-LAST:event_DoneButtonActionPerformed
 

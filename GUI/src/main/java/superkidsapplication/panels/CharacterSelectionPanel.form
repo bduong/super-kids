@@ -32,9 +32,6 @@
   <SubComponents>
     <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
       <Properties>
-        <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
-          <Point value="[0, 0]"/>
-        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[800, 600]"/>
         </Property>
@@ -204,18 +201,6 @@
             <Property name="alignmentY" type="float" value="0.0"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="iconTextGap" type="int" value="0"/>
-            <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
-              <Point value="[0, 0]"/>
-            </Property>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[800, 600]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[800, 600]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[800, 600]"/>
-            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">

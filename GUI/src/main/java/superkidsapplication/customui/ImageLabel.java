@@ -40,23 +40,27 @@ public class ImageLabel extends JLabel {
         //super.paint(g);
         int w, h, maxw, maxh;
         image = iconToImage(this.getIcon());
-        w = getWidth()/2 - this.getIcon().getIconWidth()/2;
-        h = getHeight()/2 - this.getIcon().getIconHeight()/2;
+     
         if (this.getIcon().getIconWidth() < getWidth())
         {
+            
             maxw = this.getIcon().getIconWidth();
+            w = getWidth()/2 - this.getIcon().getIconWidth()/2;
         }
         else
         {
             maxw = getWidth();
+            w = 0;
         }
         if (this.getIcon().getIconHeight() < getHeight())
         {
             maxh = this.getIcon().getIconHeight();
+            h = getHeight()/2 - this.getIcon().getIconHeight()/2;
         }
         else
         {
             maxh = getHeight();
+            h = 0;
         }
         
         g.drawImage(image, w, h, maxw, maxh, imageObserver);
