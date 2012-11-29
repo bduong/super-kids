@@ -56,9 +56,12 @@
             </Property>
             <Property name="iconTextGap" type="int" value="0"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new ImageLabel();"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-              <JLayeredPaneConstraints x="330" y="140" width="130" height="220" layer="0" position="-1"/>
+              <JLayeredPaneConstraints x="250" y="120" width="270" height="240" layer="0" position="-1"/>
             </Constraint>
           </Constraints>
         </Component>

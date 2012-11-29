@@ -23,6 +23,7 @@ import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.QuestionController;
 import superkidsapplication.controllers.TTSController;
 import superkidsapplication.customui.ImageButton;
+import superkidsapplication.customui.ImageLabel;
 import superkidsapplication.events.Session;
 import superkidsapplication.providers.ImageProvider;
 import superkidsapplication.providers.ResourceProviderFactory;
@@ -72,8 +73,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         saveQuestion();
         //set super kid name
         superKidNameLabel.setText("Super Kid: " + session.getLoggedInUser().getName());
-        
-        
+        this.characterIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource(session.getLoggedInUser().getImage())));    
     }
 
     /**
@@ -92,7 +92,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         scoreLabel = new javax.swing.JLabel();
         nextQButton = new javax.swing.JButton();
         superKidNameLabel = new javax.swing.JLabel();
-        characterIconLabel = new javax.swing.JLabel();
+        characterIconLabel = new ImageLabel();
         ChoicePanel = new javax.swing.JPanel();
         choice1Button = new ImageButton();
         choice2Button = new ImageButton();
@@ -154,7 +154,7 @@ public class QuestionPanel extends javax.swing.JPanel {
 
         characterIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
         characterIconLabel.setPreferredSize(new java.awt.Dimension(200, 200));
-        characterIconLabel.setBounds(10, 350, 200, 233);
+        characterIconLabel.setBounds(10, 350, 200, 220);
         jLayeredPane1.add(characterIconLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         ChoicePanel.setOpaque(false);

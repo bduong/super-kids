@@ -10,6 +10,7 @@ import com.ece.superkids.users.entities.User;
 import java.util.Iterator;
 import java.util.List;
 import superkidsapplication.controllers.PanelController;
+import superkidsapplication.customui.ImageLabel;
 import superkidsapplication.events.Session;
 
 /**
@@ -52,7 +53,7 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
         loginButton = new javax.swing.JButton();
         warnLabel = new javax.swing.JLabel();
         helloLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        characterDisplay = new ImageLabel();
         background = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -89,12 +90,13 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
 
         helloLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         helloLabel.setForeground(new java.awt.Color(255, 255, 255));
+        helloLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         helloLabel.setBounds(420, 460, 360, 50);
         jLayeredPane1.add(helloLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
-        jLabel2.setBounds(490, 230, 140, 220);
-        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        characterDisplay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/characters/Boy.png"))); // NOI18N
+        characterDisplay.setBounds(430, 210, 310, 240);
+        jLayeredPane1.add(characterDisplay, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/BasicScreen.png"))); // NOI18N
         background.setText("jLabel2");
@@ -121,6 +123,9 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
     private void usersBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersBoxActionPerformed
         // TODO add your handling code here:
         helloLabel.setText("Hello! My name is "+usersBox.getSelectedItem()+".");
+        if (usersBox.getSelectedIndex() != -1) {
+            this.characterDisplay.setIcon(new javax.swing.ImageIcon(getClass().getResource(uM.getUser((String) usersBox.getSelectedItem()).getImage())));
+        }
     }//GEN-LAST:event_usersBoxActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
@@ -143,9 +148,9 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_loginButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JLabel characterDisplay;
     private javax.swing.JLabel helloLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton loginButton;
     private javax.swing.JComboBox usersBox;

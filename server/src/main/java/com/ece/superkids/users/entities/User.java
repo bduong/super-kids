@@ -55,8 +55,6 @@ public class User implements Serializable {
 
     public void setGameOn(){
         this.history.setGameStarted();
-        state.setCurrentCategory(null);
-        state.setCurrentLevel(null);
         saveUser();
     }
 
