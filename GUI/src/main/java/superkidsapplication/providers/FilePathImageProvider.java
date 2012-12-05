@@ -73,6 +73,16 @@ public class FilePathImageProvider implements ImageProvider{
     }
 
     @Override
+    public List<String> getAllKeys() {
+        List<String> keys = new ArrayList<String>();
+        for (String key : imagePaths.keySet()) {
+            keys.add(key);
+        }
+
+        return keys;
+    }
+
+    @Override
     public void refresh() {
         imagePaths.clear();
         try {
@@ -91,6 +101,7 @@ public class FilePathImageProvider implements ImageProvider{
     /**
      * Enumeration for the type of image
      */
+
     private enum Mode{
         CUSTOM, DEFAULT
     }

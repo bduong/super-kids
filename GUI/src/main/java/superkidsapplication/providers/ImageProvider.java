@@ -17,6 +17,13 @@ public interface ImageProvider {
      * @return The ImageIcon, null if not found.
      */
     public ImageIcon getImage(String key);
+    
+    /**
+     * Get a list of all image keys.
+     *
+     * @return The list of keys.
+     */
+    public List<String> getAllKeys();
 
     /**
      * Refresh the provider's database of images.
