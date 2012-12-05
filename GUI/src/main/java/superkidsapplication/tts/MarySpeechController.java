@@ -7,6 +7,12 @@ import marytts.util.data.audio.AudioPlayer;
 
 import javax.sound.sampled.AudioInputStream;
 
+/**
+ * The <code>MarySpeechController</code> uses the MARY text-to-speech engine
+ * in order to generate audio files that contain speech patterns.
+ *
+ * @author Ben Duong
+ */
 public class MarySpeechController implements SpeechController{
 
     MaryInterface marytts;
@@ -37,7 +43,7 @@ public class MarySpeechController implements SpeechController{
     }
 
     /**
-     * This method is to test out the TTS engine with arbitrary sentences.
+     * This method is to test out the TTS engine with an arbitrary sentences.
      */
     public static void main(String [] args) throws Exception {
         SpeechController speechController = MarySpeechController.getInstance();

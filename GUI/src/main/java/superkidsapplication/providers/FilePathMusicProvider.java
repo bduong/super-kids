@@ -9,6 +9,12 @@ import java.util.Properties;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 
+/**
+ * The <code>FilePathMusicProvider</code> serves up the audio streams by using a key-value pair
+ * for the path to the piece of music.
+ *
+ * @author Ben Duong
+ */
 public class FilePathMusicProvider implements MusicProvider{
 
     private static final String PROPERTY_FILE = "/providers/music_paths.properties";
@@ -18,6 +24,11 @@ public class FilePathMusicProvider implements MusicProvider{
         loadFilePaths();
     }
 
+    /**
+     * Load the file paths of the audio files.
+     *
+     * @throws IOException If we cannot open the file.
+     */
     private void loadFilePaths() throws IOException {
         InputStream in = getClass().getResourceAsStream(PROPERTY_FILE);
         Properties filePaths = new Properties();

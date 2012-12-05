@@ -12,6 +12,12 @@ import java.util.Map;
 import java.util.Properties;
 import javax.swing.*;
 
+/**
+ * The <code>FilePathImageProvider</code> serves up images through the use of a key-value
+ * pair that maps the image key to a file path of the image.
+ *
+ * @author Ben Duong
+ */
 public class FilePathImageProvider implements ImageProvider{
 
     private static final String PROPERTY_FILE = "/providers/image_paths.properties";
@@ -22,11 +28,23 @@ public class FilePathImageProvider implements ImageProvider{
         loadAllImagePaths();
     }
 
+    /**
+     * Load all images.
+     *
+     * @throws IOException If we cannot find a file.
+     */
     private void loadAllImagePaths() throws IOException {
         loadImagePaths(getClass().getResourceAsStream(PROPERTY_FILE), Mode.DEFAULT);
         loadImagePaths(new FileInputStream(CUSTOM_PROPERTY_FILE), Mode.CUSTOM);
     }
 
+    /**
+     * Load image paths from an input stream.
+     *
+     * @param in the input stream to parse
+     * @param mode whether the images are custom or default
+     * @throws IOException If we cannot open a file.
+     */
     private void loadImagePaths(InputStream in, Mode mode) throws IOException {
         Properties filePaths = new Properties();
         filePaths.load(in);
@@ -70,10 +88,19 @@ public class FilePathImageProvider implements ImageProvider{
         }
     }
 
+    /**
+     * Enumeration for the type of image
+     */
     private enum Mode{
         CUSTOM, DEFAULT
     }
 
+    /**
+     * Path class to store the type of image alongside the file path.
+     *
+     * This is done because custom images and default images must be loaded differently
+     * do to the nature of their locations.
+     */
     private class Path{
         private String path;
         private Mode mode;
