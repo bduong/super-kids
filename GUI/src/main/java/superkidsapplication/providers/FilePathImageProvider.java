@@ -60,7 +60,7 @@ public class FilePathImageProvider implements ImageProvider{
 
     @Override
     public ImageIcon getImage(final String key) {
-        if(!imagePaths.containsKey(key)) return null;
+        if(!imagePaths.containsKey(key.toLowerCase())) return null;
 
         String path = imagePaths.get(key.toLowerCase()).getPath();
         Mode mode = imagePaths.get(key.toLowerCase()).getMode();

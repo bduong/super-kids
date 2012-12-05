@@ -110,7 +110,7 @@
           <appendAssemblyId>false</appendAssemblyId>
           <archive>
             <manifest>
-              <mainClass>superkidsapplication.Application</mainClass>
+              <mainClass>superkidsapplication.SuperKids</mainClass>
             </manifest>
           </archive>
         </configuration>
