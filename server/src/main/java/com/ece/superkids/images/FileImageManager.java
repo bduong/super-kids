@@ -10,6 +10,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * The <code>FileImageManager</code> saves custom images on the local file system
+ * in the user home directory.
+ *
+ * @author Ben Duong
+ */
 public class FileImageManager implements ImageManager {
 
     FileManager fileManager = FileManagerImpl.getInstance();

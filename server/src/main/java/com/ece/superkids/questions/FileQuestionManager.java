@@ -7,6 +7,12 @@ import com.google.gson.Gson;
 
 import java.io.*;
 
+/**
+ * The <code>FileQuestionManager</code> manages custom questions stored on the local filesystem.
+ * The questions are stored in JSON format on in the user's home directory.
+ *
+ * @author Ben Duong
+ */
 public class FileQuestionManager implements QuestionManager{
 
     private static File customQuestionsFile;
@@ -22,8 +28,6 @@ public class FileQuestionManager implements QuestionManager{
      * Determine the directory to save and read files from.
      */
     private void determineSaveDirectory() {
-        File directory = fileManager.getDirectory();
-        if (!directory.exists()) directory.mkdirs();
         customQuestionsFile = fileManager.getCustomQuestionsFile();
     }
 

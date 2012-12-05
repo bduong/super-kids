@@ -3,12 +3,20 @@ package com.ece.superkids.achievements.entities;
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * The <code>Achievements</code> object is an encapsulation of multiple achievements.
+ *
+ * @author Ben Duong
+ */
 public class Achievements implements Serializable {
 
     private static final long serialVersionUID = 123456123456123456L;
 
     private List<Achievement> achievements;
 
+    /**
+     * Create a new list of 10 blank achievements with scores from 10-100 in steps of 10.
+     */
     public Achievements() {
         achievements = new ArrayList<Achievement>();
         for (int ii = 10; ii < 110; ii+=10){
@@ -16,6 +24,12 @@ public class Achievements implements Serializable {
         }
     }
 
+    /**
+     * Get an achievement in the list.
+     *
+     * @param number the index of the achievement
+     * @return The achievement at that index.
+     */
     public Achievement getAchievement(int number) {
         return achievements.get(number);
     }

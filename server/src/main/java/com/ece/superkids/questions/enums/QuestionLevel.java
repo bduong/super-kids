@@ -6,6 +6,11 @@ import java.util.List;
 
 import static com.ece.superkids.questions.enums.QuestionCategory.*;
 
+/**
+ * <code>QuestionLevel</code> represents what level a question is in.
+ *
+ * @author Ben Duong
+ */
 public enum QuestionLevel {
     LEVEL_1(SHAPES, COLORS, ANIMALS),
     LEVEL_2(FOOD, GEOGRAPHY, PLANETS),

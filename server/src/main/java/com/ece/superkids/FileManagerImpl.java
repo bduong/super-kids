@@ -3,6 +3,14 @@ package com.ece.superkids;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * The <code>FileManagerImpl</code> allows access to the custom files stored on the local file system
+ * in the user's home directory.
+ *
+ * This class is created in a singleton pattern.
+ *
+ * @author Ben Duong
+ */
 public class FileManagerImpl implements FileManager {
 
     private static String fileDirectory;
@@ -19,6 +27,11 @@ public class FileManagerImpl implements FileManager {
         private static final FileManagerImpl INSTANCE = new FileManagerImpl();
     }
 
+    /**
+     * Get the singleton instance of the FileManager.
+     *
+     * @return the instance
+     */
     public static FileManagerImpl getInstance() {
         return FileManagerFactory.INSTANCE;
     }

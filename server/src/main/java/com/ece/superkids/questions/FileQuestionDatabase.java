@@ -13,6 +13,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The <code>FileQuestionDatabase</code> loads questions that are stored in JSON format
+ * from files on the local file system. The default questions are read only but custom questions
+ * are editable.
+ *
+ * @author Ben Duong
+ */
 public class FileQuestionDatabase implements QuestionDatabase{
 
     private static final String FILE_NAME = "/Questions.txt";
@@ -26,6 +33,7 @@ public class FileQuestionDatabase implements QuestionDatabase{
         switchMode(mode);
     }
 
+    @Override
     public void switchMode(QuestionMode mode) {
         questions.clear();
         try{
@@ -97,22 +105,6 @@ public class FileQuestionDatabase implements QuestionDatabase{
             return null;
         }
         return questions.get(level).get(category).get(number);
-    }
-
-    @Override
-    public void saveQuestion(final QuestionLevel level, final QuestionCategory category, final Question question) {
-        File file = new File(getClass().getResource("/" + FILE_NAME).getFile());
-
-        question.setLevel(level);
-        question.setCategory(category);
-        try {
-            FileWriter writer = new FileWriter(file, true);
-            writer.write(gson.toJson(question));
-            writer.write('\n');
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
     }
 
     @Override

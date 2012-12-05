@@ -7,6 +7,15 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * The <code>FileParentManager</code> stores the parent account information on the local file
+ * system in the user home directory.
+ *
+ * The parent password is heavily salted and then hashed before being stored anywhere on the file
+ * system. This will prevent cracking of the password.
+ *
+ * @author Ben Duong
+ */
 public class FileParentManager implements ParentManager{
 
     private FileManager manager = FileManagerImpl.getInstance();
@@ -70,6 +79,12 @@ public class FileParentManager implements ParentManager{
         }
     }
 
+    /**
+     * Do the MD5 hash of a given string.
+     *
+     * @param input the string to hash.
+     * @return The MD5 of the input string.
+     */
     private String md5(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");

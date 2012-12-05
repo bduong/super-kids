@@ -2,6 +2,12 @@ package com.ece.superkids.achievements.entities;
 
 import java.io.Serializable;
 
+/**
+ * The <code>Achievement</code> object represents a goal for the player to reach.
+ * When the player reaches the given score they unlocked the corresponding prize.
+ *
+ * @author Ben Duong
+ */
 public class Achievement implements Serializable{
 
     private static final long serialVersionUID = 654321654321654321L;
@@ -9,20 +15,41 @@ public class Achievement implements Serializable{
     private int score;
     private String prize;
 
+    /**
+     * Create an achievement with a score and prize.
+     *
+     * @param score the score the achievement is unlocked
+     * @param prize the prize unlocked
+     */
     public Achievement(int score, String prize) {
         this.score = score;
         this.prize = prize;
     }
 
+    /**
+     * Create an achievement with a blank prize.
+     *
+     * @param score the score the achievement is unlocked
+     */
     public Achievement(final int score) {
         this.score = score;
         prize = "";
     }
 
+    /**
+     * Returns the score needed to unlock this achievement.
+     *
+     * @return the score
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * Returns the prize unlocked.
+     *
+     * @return the prize
+     */
     public String getPrize() {
         return prize;
     }
@@ -43,5 +70,4 @@ public class Achievement implements Serializable{
 
         return true;
     }
-
 }
