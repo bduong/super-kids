@@ -14,6 +14,7 @@
   <name>User Interface</name>
   <properties>
     <mary.tts.version>5.1-SNAPSHOT</mary.tts.version>
+    <yworks.uml.path>${basedir}/../javadoc/yworks</yworks.uml.path>
   </properties>
 
   <repositories>
@@ -120,6 +121,32 @@
             <goals>
               <goal>single</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>javadoc</id>
+            <phase>site</phase>
+            <goals>
+              <goal>javadoc</goal>
+            </goals>
+            <configuration>
+              <doclet>ydoc.doclets.YStandard</doclet>
+              <docletArtifact>
+                <groupId>com.yworks</groupId>
+                <artifactId>umldoclet</artifactId>
+                <version>3.0.02</version>
+              </docletArtifact>
+              <additionalparam>
+                -umlautogen
+                -resourcepath ${yworks.uml.path}/resources
+              </additionalparam>
+              <show>public</show>
+            </configuration>
           </execution>
         </executions>
       </plugin>

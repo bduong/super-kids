@@ -13,6 +13,10 @@
   <artifactId>server</artifactId>
   <name>Data Server</name>
 
+  <properties>
+    <yworks.uml.path>${basedir}/../javadoc/yworks</yworks.uml.path>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -54,6 +58,32 @@
             <goals>
               <goal>report</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>doc-with-uml</id>
+            <phase>site</phase>
+            <goals>
+              <goal>javadoc</goal>
+            </goals>
+            <configuration>
+              <doclet>ydoc.doclets.YStandard</doclet>
+              <docletArtifact>
+                <groupId>com.yworks</groupId>
+                <artifactId>umldoclet</artifactId>
+                <version>3.0.02</version>
+              </docletArtifact>
+              <additionalparam>
+                -umlautogen
+                -resourcepath ${yworks.uml.path}/resources
+              </additionalparam>
+              <show>public</show>
+            </configuration>
           </execution>
         </executions>
       </plugin>
