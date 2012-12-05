@@ -13,7 +13,7 @@ import superkidsapplication.events.Session;
 
 /**
  *
- * @author david C
+ * @author david Cheung
  */
 public class ScoreScreenPanel extends javax.swing.JPanel {
 
@@ -49,7 +49,6 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
         }
 
         if(num_stars == 1){
-             this.jLabel1.setText("Good Job");
              TTSController.TTS("Good Job! You should try this level again.");
         }
         if (num_stars < 4) {
