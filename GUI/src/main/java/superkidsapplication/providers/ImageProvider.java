@@ -1,6 +1,7 @@
 package superkidsapplication.providers;
 
 import javax.swing.*;
+import java.util.List;
 
 /**
  * The <code>ImageProvider</code> allows access to image icons through the use
