@@ -57,22 +57,21 @@ public class FileUserDatabase  implements UserDatabase {
   // deserialize the user
   public User getUser(String name) {
       String filename = name + ".ser";
-      User user = null;
       try {
           InputStream file = new FileInputStream(path+filename);
           InputStream buffer = new BufferedInputStream( file );
           ObjectInput input = new ObjectInputStream ( buffer );
           try {
-              user = (User)input.readObject();
+              User user = (User)input.readObject();
+              return user;
           } finally {
               input.close();
+              System.out.println("Could not deserialize file: " + filename);
           }
       } catch(Exception e) {
-          System.out.println("Could not deserialize file: " + filename);
-          // e.printStackTrace();
-      } finally {
-          return user;
+             System.out.println(e.getMessage());
       }
+      return null;
   }
 
   // delete user object file
