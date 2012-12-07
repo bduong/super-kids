@@ -14,6 +14,8 @@ import com.ece.superkids.questions.enums.QuestionType;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JTextField;
+import superkidsapplication.controllers.PanelController;
 import superkidsapplication.controllers.QuestionController;
 
 /**
@@ -33,6 +35,8 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     private List<Question> qList2;
     private List<Question> qList3;
     private int choiceSelected;
+    private QuestionType qType;
+    private PanelController pControl = PanelController.getInstance();
 
     public EditQuestionsPanel() {
         initComponents();
@@ -77,6 +81,10 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         choice2Button = new javax.swing.JRadioButton();
         choice3Button = new javax.swing.JRadioButton();
         choice4Button = new javax.swing.JRadioButton();
+        picButton1 = new javax.swing.JButton();
+        picButton2 = new javax.swing.JButton();
+        picButton3 = new javax.swing.JButton();
+        picButton4 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(311, 300));
         setMinimumSize(new java.awt.Dimension(300, 300));
@@ -138,6 +146,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         responseLabel.setForeground(new java.awt.Color(255, 0, 0));
 
         choice1Text.setText("Choice 1 comes here");
+        choice1Text.setDragEnabled(false);
         choice1Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 choice1TextActionPerformed(evt);
@@ -145,6 +154,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         });
 
         choice2Text.setText("Choice 2 comes here");
+        choice2Text.setDragEnabled(false);
         choice2Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 choice2TextActionPerformed(evt);
@@ -152,6 +162,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         });
 
         choice3Text.setText("Choice 3 comes here");
+        choice3Text.setDragEnabled(false);
         choice3Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 choice3TextActionPerformed(evt);
@@ -159,6 +170,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         });
 
         choice4Text.setText("Choice 4 comes here");
+        choice4Text.setDragEnabled(false);
         choice4Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 choice4TextActionPerformed(evt);
@@ -197,62 +209,100 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
             }
         });
 
+        picButton1.setText("P");
+        picButton1.setEnabled(false);
+        picButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                picButton1ActionPerformed(evt);
+            }
+        });
+
+        picButton2.setText("P");
+        picButton2.setEnabled(false);
+        picButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                picButton2ActionPerformed(evt);
+            }
+        });
+
+        picButton3.setText("P");
+        picButton3.setEnabled(false);
+        picButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                picButton3ActionPerformed(evt);
+            }
+        });
+
+        picButton4.setText("P");
+        picButton4.setEnabled(false);
+        picButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                picButton4ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
+                .add(19, 19, 19)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(0, 0, Short.MAX_VALUE)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(infoLabel)
+                            .add(layout.createSequentialGroup()
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                    .add(level3QuestionsBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(level2QuestionsBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(level1QuestionsBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(18, 18, 18)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(level2Label)
+                                    .add(level1Label)
+                                    .add(level3Label))))
+                        .addContainerGap(32, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(choice2Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(picButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(choice2Button)
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
-                                .add(199, 199, 199)
-                                .add(responseLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 143, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(choice1Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(picButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                .add(choice1Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 131, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                             .add(layout.createSequentialGroup()
-                                .add(115, 115, 115)
-                                .add(deleteButton))
+                                .add(choice3Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(picButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                .add(choice3Button))
                             .add(layout.createSequentialGroup()
-                                .add(115, 115, 115)
-                                .add(infoLabel1)))
-                        .add(0, 9, Short.MAX_VALUE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(0, 0, Short.MAX_VALUE)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                                .add(saveButton)
-                                .add(257, 257, 257))
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(infoLabel)
-                                    .add(layout.createSequentialGroup()
-                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                            .add(level3QuestionsBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(level2QuestionsBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(level1QuestionsBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                        .add(18, 18, 18)
-                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(level2Label)
-                                            .add(level1Label)
-                                            .add(level3Label)))
-                                    .add(questionText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(layout.createSequentialGroup()
-                                        .add(choice1Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                        .add(choice1Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 131, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                    .add(layout.createSequentialGroup()
-                                        .add(choice2Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                        .add(choice2Button))
-                                    .add(layout.createSequentialGroup()
-                                        .add(choice3Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                        .add(choice3Button))
-                                    .add(layout.createSequentialGroup()
-                                        .add(choice4Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                        .add(choice4Button)))
-                                .add(13, 13, 13)))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                                .add(choice4Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(picButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                .add(choice4Button))
+                            .add(questionText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 229, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(9, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(56, 56, 56)
+                        .add(infoLabel1)
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(deleteButton)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(saveButton)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(responseLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 217, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -275,29 +325,36 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
                 .add(questionText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(choice1Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(choice1Button))
-                .add(5, 5, 5)
+                    .add(choice1Button)
+                    .add(picButton1)
+                    .add(choice1Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(choice2Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(picButton2)
                     .add(choice2Button))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(choice3Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(choice3Button))
+                    .add(choice3Button)
+                    .add(picButton3))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(choice4Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(choice4Button))
+                    .add(choice4Button)
+                    .add(picButton4))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(saveButton)
-                    .add(deleteButton))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(responseLabel)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(infoLabel1)
-                .add(174, 174, 174))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(saveButton)
+                            .add(deleteButton))
+                        .add(12, 12, 12)
+                        .add(infoLabel1)
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(responseLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .add(187, 187, 187))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -319,6 +376,12 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         int i = level2QuestionsBox.getSelectedIndex();
         //set the current question to the one selected
         currentQuestion = qList2.get(i);
+        qType = currentQuestion.getType();
+        if (qType.equals(QuestionType.PICTURE)) {
+            setPicBoxEnabled(true);
+        } else {
+            setPicBoxEnabled(false);
+        }
         //set choices
         choice1Text.setText(currentQuestion.getChoices().get(0));
         choice2Text.setText(currentQuestion.getChoices().get(1));
@@ -335,6 +398,12 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         int i = level1QuestionsBox.getSelectedIndex();
         //set the current question to the one selected
         currentQuestion = qList1.get(i);
+        qType=currentQuestion.getType();
+        if (qType.equals(QuestionType.PICTURE)) {
+            setPicBoxEnabled(true);
+        } else {
+            setPicBoxEnabled(false);
+        }
         //set choices
         choice1Text.setText(currentQuestion.getChoices().get(0));
         choice2Text.setText(currentQuestion.getChoices().get(1));
@@ -351,6 +420,12 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         int i = level3QuestionsBox.getSelectedIndex();
         //set the current question to the one selected
         currentQuestion = qList3.get(i);
+        qType = currentQuestion.getType();
+        if (qType.equals(QuestionType.PICTURE)) {
+            setPicBoxEnabled(true);
+        } else {
+            setPicBoxEnabled(false);
+        }
         //set choices
         choice1Text.setText(currentQuestion.getChoices().get(0));
         choice2Text.setText(currentQuestion.getChoices().get(1));
@@ -380,7 +455,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
             editedQuestion.setAnswer(choice.get(choiceSelected));
         }
         //set type
-        editedQuestion.setType(QuestionType.TEXT);
+        editedQuestion.setType(qType);
         //edit question
         manager.editQuestion(currentQuestion, editedQuestion);
         responseLabel.setText("Saved");
@@ -426,6 +501,26 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         choiceSelected = 0;
     }//GEN-LAST:event_choice1ButtonActionPerformed
+
+    private void picButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_picButton1ActionPerformed
+        // TODO add your handling code here:
+        handleCustomPicture(choice1Text);
+    }//GEN-LAST:event_picButton1ActionPerformed
+
+    private void picButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_picButton2ActionPerformed
+        // TODO add your handling code here:
+        handleCustomPicture(choice2Text);
+    }//GEN-LAST:event_picButton2ActionPerformed
+
+    private void picButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_picButton3ActionPerformed
+        // TODO add your handling code here:
+        handleCustomPicture(choice3Text);
+    }//GEN-LAST:event_picButton3ActionPerformed
+
+    private void picButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_picButton4ActionPerformed
+        // TODO add your handling code here:
+        handleCustomPicture(choice4Text);
+    }//GEN-LAST:event_picButton4ActionPerformed
 
     //fill the combo boxes
     private void fillInBoxes() {
@@ -482,8 +577,23 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox level2QuestionsBox;
     private javax.swing.JLabel level3Label;
     private javax.swing.JComboBox level3QuestionsBox;
+    private javax.swing.JButton picButton1;
+    private javax.swing.JButton picButton2;
+    private javax.swing.JButton picButton3;
+    private javax.swing.JButton picButton4;
     private javax.swing.JTextField questionText;
     private javax.swing.JLabel responseLabel;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
+
+    private void setPicBoxEnabled(boolean par) {
+            picButton1.setEnabled(par);
+            picButton2.setEnabled(par);
+            picButton3.setEnabled(par);
+            picButton4.setEnabled(par); 
+    }
+
+    private void handleCustomPicture(JTextField field) {
+        pControl.addPanel(new QuestionPicturePanel(field));
+    }
 }
