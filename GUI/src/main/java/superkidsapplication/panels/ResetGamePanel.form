@@ -40,14 +40,15 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="warningLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="passwordField" min="-2" pref="171" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="passwordField" min="-2" pref="171" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       <Component id="enterLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="warningLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="189" max="32767" attributes="0"/>
@@ -88,7 +89,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Grande" size="10" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="This will delete all custom added questions"/>
+        <Property name="text" type="java.lang.String" value="This will reset to the initial setup of the game."/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>

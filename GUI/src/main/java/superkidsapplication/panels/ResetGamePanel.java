@@ -4,9 +4,14 @@
  */
 package superkidsapplication.panels;
 
+import com.ece.superkids.FileManager;
+import com.ece.superkids.FileManagerImpl;
 import com.ece.superkids.users.ParentManager;
 import com.ece.superkids.users.UserDatabaseFactory;
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.commons.io.FileUtils;
 import superkidsapplication.controllers.QuestionController;
 
 /**
@@ -20,10 +25,11 @@ public class ResetGamePanel extends javax.swing.JPanel {
      */
     private QuestionController qController;
     ParentManager pM = UserDatabaseFactory.aParentManager();
-    
+    private FileManager manager = FileManagerImpl.getInstance();
+
     public ResetGamePanel() {
         initComponents();
-        qController= QuestionController.getInstance();
+        qController = QuestionController.getInstance();
     }
 
     /**
@@ -54,7 +60,7 @@ public class ResetGamePanel extends javax.swing.JPanel {
         });
 
         warningLabel.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
-        warningLabel.setText("This will delete all custom added questions");
+        warningLabel.setText("This will reset to the initial setup of the game.");
         warningLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         resetButton.setText("Reset");
@@ -86,12 +92,13 @@ public class ResetGamePanel extends javax.swing.JPanel {
                         .add(resposeLabel))
                     .add(layout.createSequentialGroup()
                         .add(46, 46, 46)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(warningLabel)
-                            .add(passwordField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 171, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(passwordField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 171, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .add(60, 60, 60)
-                        .add(enterLabel)))
+                        .add(enterLabel))
+                    .add(layout.createSequentialGroup()
+                        .add(30, 30, 30)
+                        .add(warningLabel)))
                 .addContainerGap(189, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,14 +126,17 @@ public class ResetGamePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String input = new String(passwordField.getPassword());
         if (pM.checkParentPassword(input)) {
-            qController.deleteAllCustomQuestions();
-            resposeLabel.setText("Game has been resetted.");
-        }
-        else{
+            try {
+                FileUtils.deleteDirectory(manager.getDirectory());
+                resposeLabel.setText("Successful. Restart the program.");
+            } catch (IOException ex) {
+                resposeLabel.setText("Error!");
+                Logger.getLogger(ResetGamePanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
             resposeLabel.setText("Wrong password! Try again.");
         }
     }//GEN-LAST:event_resetButtonActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel enterLabel;
     private javax.swing.JPasswordField passwordField;
