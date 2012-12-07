@@ -5,8 +5,10 @@
 package superkidsapplication.panels;
 
 import com.ece.superkids.questions.enums.QuestionLevel;
+import com.ece.superkids.users.entities.User;
 import java.awt.Color;
 import superkidsapplication.controllers.PanelController;
+import superkidsapplication.events.Session;
 
 /**
  *
@@ -18,14 +20,20 @@ public class NewGamePanel extends javax.swing.JPanel {
      * Creates new form NewGamePanel
      */
     private PanelController controller;
+    private Session session;
+    private User user;
 
     public NewGamePanel() {
         controller = PanelController.getInstance();
+        session=Session.aSession();
+        user=session.getLoggedInUser();
         initComponents();
     }
 
     public NewGamePanel(String aContinue) {
         controller = PanelController.getInstance();
+        session=Session.aSession();
+        user=session.getLoggedInUser();
         initComponents();
         jLabel1.setText("Select a Level");
     }
@@ -151,6 +159,7 @@ public class NewGamePanel extends javax.swing.JPanel {
     private void level2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level2ButtonActionPerformed
         // TODO add your handling code here:
         SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_2);
+        user.setCurrentLevel(QuestionLevel.LEVEL_2);
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_level2ButtonActionPerformed
@@ -160,6 +169,7 @@ public class NewGamePanel extends javax.swing.JPanel {
         //CATEGORIES PANEL COMES HERE.
         //QUESTIONS PANEL WILL BE ACCESSED FROM CATEGORIESPANEL
         SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_1);
+        user.setCurrentLevel(QuestionLevel.LEVEL_1);
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_level1ButtonActionPerformed
@@ -167,6 +177,7 @@ public class NewGamePanel extends javax.swing.JPanel {
     private void level3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level3ButtonActionPerformed
         // TODO add your handling code here:
         SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_3);
+        user.setCurrentLevel(QuestionLevel.LEVEL_3);
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_level3ButtonActionPerformed

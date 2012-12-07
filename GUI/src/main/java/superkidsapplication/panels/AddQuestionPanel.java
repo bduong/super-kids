@@ -12,6 +12,8 @@ import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.enums.QuestionType;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTextField;
+import superkidsapplication.controllers.PanelController;
 
 /**
  *
@@ -24,12 +26,19 @@ public class AddQuestionPanel extends javax.swing.JPanel {
      */
     QuestionManager qm;
     int choiceSelected;
+    String type="TEXT";
+    private PanelController panelC = PanelController.getInstance();
 
     public AddQuestionPanel() {
         initComponents();
         choiceSelected = 0;
         qm = QuestionDatabaseFactory.aQuestionManager();
         fillLevelBox();
+        picButton1.setVisible(false);
+        picButton2.setVisible(false);
+        picButton3.setVisible(false);
+        picButton4.setVisible(false);
+
     }
 
     /**
@@ -60,6 +69,11 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         choice1Button = new javax.swing.JRadioButton();
         choice3Button = new javax.swing.JRadioButton();
         choice4Button = new javax.swing.JRadioButton();
+        picButton1 = new javax.swing.JButton();
+        picButton2 = new javax.swing.JButton();
+        picButton3 = new javax.swing.JButton();
+        picButton4 = new javax.swing.JButton();
+        typeBox = new javax.swing.JComboBox();
 
         setOpaque(false);
         setSize(new java.awt.Dimension(520, 435));
@@ -140,6 +154,41 @@ public class AddQuestionPanel extends javax.swing.JPanel {
             }
         });
 
+        picButton1.setText("P");
+        picButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                picButton1ActionPerformed(evt);
+            }
+        });
+
+        picButton2.setText("P");
+        picButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                picButton2ActionPerformed(evt);
+            }
+        });
+
+        picButton3.setText("P");
+        picButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                picButton3ActionPerformed(evt);
+            }
+        });
+
+        picButton4.setText("P");
+        picButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                picButton4ActionPerformed(evt);
+            }
+        });
+
+        typeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TEXT", "PICTURE" }));
+        typeBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeBoxActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,30 +203,41 @@ public class AddQuestionPanel extends javax.swing.JPanel {
                             .add(jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 124, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 124, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                    .add(choice3Field, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, choice2Field)
-                                    .add(choice1Field)
-                                    .add(choice4Field))
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, choice4Field, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 152, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                        .add(org.jdesktop.layout.GroupLayout.LEADING, choice3Field, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                                        .add(org.jdesktop.layout.GroupLayout.LEADING, choice2Field)
+                                        .add(org.jdesktop.layout.GroupLayout.LEADING, choice1Field)))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                    .add(picButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                    .add(picButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, picButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                    .add(picButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(choice3Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 146, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(choice4Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 146, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(choice2Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 146, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(choice1Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 146, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                            .add(questionField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 240, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(layout.createSequentialGroup()
-                                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 124, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                    .add(layout.createSequentialGroup()
+                                        .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(typeBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .add(levelBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                    .add(questionField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 240, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(levelBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(catBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 99, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                                .add(catBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 90, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                     .add(layout.createSequentialGroup()
                         .add(70, 70, 70)
                         .add(addButton)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 182, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -186,7 +246,8 @@ public class AddQuestionPanel extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(catBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(levelBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(levelBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(typeBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(questionField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -194,18 +255,21 @@ public class AddQuestionPanel extends javax.swing.JPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(choice1Field, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(choice1Button))
+                    .add(choice1Button)
+                    .add(picButton1))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(choice2Field, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(choice2Button))
+                    .add(choice2Button)
+                    .add(picButton2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(choice3Field, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(picButton3)
                     .add(choice3Button))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
@@ -214,11 +278,12 @@ public class AddQuestionPanel extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(choice4Field, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(choice4Button))
+                            .add(choice4Button)
+                            .add(picButton4))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(addButton))
                     .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -255,7 +320,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         //set answer
         q.setAnswer(choice.get(choiceSelected));
         //set type
-        q.setType(QuestionType.TEXT);
+        q.setType(QuestionType.valueOf(type));
         //set explanation
         q.setExplaination("");
         //add question
@@ -289,6 +354,42 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         fillCatBox(level);
     }//GEN-LAST:event_levelBoxActionPerformed
 
+    private void picButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_picButton1ActionPerformed
+        // TODO add your handling code here:
+        handleCustomPicture(choice1Field);
+    }//GEN-LAST:event_picButton1ActionPerformed
+
+    private void picButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_picButton2ActionPerformed
+        // TODO add your handling code here:
+        handleCustomPicture(choice2Field);
+    }//GEN-LAST:event_picButton2ActionPerformed
+
+    private void picButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_picButton3ActionPerformed
+        // TODO add your handling code here:
+        handleCustomPicture(choice3Field);
+    }//GEN-LAST:event_picButton3ActionPerformed
+
+    private void picButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_picButton4ActionPerformed
+        // TODO add your handling code here:
+        handleCustomPicture(choice4Field);
+    }//GEN-LAST:event_picButton4ActionPerformed
+
+    private void typeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeBoxActionPerformed
+        // TODO add your handling code here:
+        type = (String) typeBox.getSelectedItem();
+        if (type.equals("PICTURE")) {
+            picButton1.setVisible(true);
+            picButton2.setVisible(true);
+            picButton3.setVisible(true);
+            picButton4.setVisible(true);
+        }
+        if (type.equals("TEXT")) {
+            picButton1.setVisible(false);
+            picButton2.setVisible(false);
+            picButton3.setVisible(false);
+            picButton4.setVisible(false);
+        }
+    }//GEN-LAST:event_typeBoxActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -308,7 +409,12 @@ public class AddQuestionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JComboBox levelBox;
+    private javax.swing.JButton picButton1;
+    private javax.swing.JButton picButton2;
+    private javax.swing.JButton picButton3;
+    private javax.swing.JButton picButton4;
     private javax.swing.JTextField questionField;
+    private javax.swing.JComboBox typeBox;
     // End of variables declaration//GEN-END:variables
 
     private void fillLevelBox() {
@@ -322,5 +428,9 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         for (QuestionCategory c : l.getCategories()) {
             catBox.addItem(c);
         }
+    }
+
+    private void handleCustomPicture(JTextField field) {
+        panelC.addPanel(new QuestionPicturePanel(field));
     }
 }
