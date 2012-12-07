@@ -76,9 +76,21 @@ public class User implements Serializable {
         this.history.setGameStarted();
         saveUser();
     }
+    public void setGameOn() {
+        this.history.setGameStarted();
+        saveUser();
+    }
 
     public boolean isGameOn() {
         return history.getGameOn();
+    }
+
+    /* Use this to create a new game for the user, warning: this clears everything! */
+    public void newGame() {
+        state = new State();
+        history = new History();
+        achievements = new Achievements();
+        setGameOn();
     }
     
     public boolean isCurrentLevelFinished(){
