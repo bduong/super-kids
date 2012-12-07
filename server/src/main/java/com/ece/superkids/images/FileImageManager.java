@@ -21,9 +21,10 @@ public class FileImageManager implements ImageManager {
     FileManager fileManager = FileManagerImpl.getInstance();
 
     @Override
-    public void saveImage(final String filePath, final String fileName) {
+    public String saveImage(final String filePath, final String fileName) {
         File imageDirectory = fileManager.getImagesDirectory();
         String ext = filePath.substring(filePath.lastIndexOf("."));
+        String key="";
 
         File newImage = new File(imageDirectory.getPath() + File.separator + fileName + ext);
         int counter = 0;
@@ -34,10 +35,13 @@ public class FileImageManager implements ImageManager {
         try {
             props.load(new FileInputStream(fileManager.getImagePathsFile()));
             if (counter > 0) {
-                props.put(fileName + counter, newImage.getPath());
+                key = fileName + counter;
+
             } else {
-                props.put(fileName, newImage.getPath());
+                key = fileName;
             }
+
+            props.put(key, newImage.getPath());
 
             FileWriter writer = new FileWriter(fileManager.getImagePathsFile());
             props.store(writer, "Custom Images");
@@ -47,5 +51,6 @@ public class FileImageManager implements ImageManager {
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
+        return key;
     }
 }

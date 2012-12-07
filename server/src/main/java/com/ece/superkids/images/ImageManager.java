@@ -12,6 +12,7 @@ public interface ImageManager {
      *
      * @param filePath the file path to the original image
      * @param fileName the name to save a copy of the image as
+     * @return The key the image is saved under.
      */
-    public void saveImage(String filePath, String fileName);
+    public String saveImage(String filePath, String fileName);
 }
