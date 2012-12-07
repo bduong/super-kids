@@ -44,8 +44,12 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         warnLabel = new javax.swing.JLabel();
         passField = new javax.swing.JPasswordField();
         passField2 = new javax.swing.JPasswordField();
+        answerField = new javax.swing.JTextField();
         nextButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        questionField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -63,19 +67,19 @@ public class InitialSetupPanel extends javax.swing.JPanel {
                 okButtonActionPerformed(evt);
             }
         });
-        okButton.setBounds(70, 340, 80, 40);
+        okButton.setBounds(70, 430, 80, 40);
         jLayeredPane1.add(okButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Enter Password");
-        jLabel2.setBounds(245, 240, 110, 30);
+        jLabel2.setBounds(70, 220, 110, 30);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Again");
-        jLabel3.setBounds(245, 290, 70, 30);
+        jLabel3.setText("Answer");
+        jLabel3.setBounds(70, 370, 140, 30);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         warnLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
@@ -92,6 +96,8 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         jLayeredPane1.add(passField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         passField2.setBounds(70, 290, 170, 28);
         jLayeredPane1.add(passField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        answerField.setBounds(70, 390, 170, 28);
+        jLayeredPane1.add(answerField, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         nextButton.setText("Next");
         nextButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,9 +108,24 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         nextButton.setBounds(650, 370, 90, 40);
         jLayeredPane1.add(nextButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel4.setText("It will be asked to access the parent controls.");
-        jLabel4.setBounds(60, 390, 460, 30);
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
+        jLabel4.setText("Password will be asked to access the parent controls.");
+        jLabel4.setBounds(40, 470, 370, 30);
         jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Again");
+        jLabel5.setBounds(70, 270, 70, 30);
+        jLayeredPane1.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        questionField.setBounds(70, 340, 170, 28);
+        jLayeredPane1.add(questionField, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Recover Question");
+        jLabel6.setBounds(70, 320, 140, 30);
+        jLayeredPane1.add(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/BasicScreen.png"))); // NOI18N
         background.setBounds(0, 0, 800, 600);
@@ -129,7 +150,7 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         String pass1 = new String(passField.getPassword());
         String pass2 = new String(passField2.getPassword());
         if (pass1.length() < 8) {
-            warnLabel.setText("Length must be at least 8 characters.");
+            warnLabel.setText("Password must be at least 8 characters.");
             return;
         }
         if (pass1.equals(pass2)) {
@@ -150,16 +171,20 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         pC.addPanel(new ParentalControlPanel());
     }//GEN-LAST:event_nextButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField answerField;
     private javax.swing.JLabel background;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton okButton;
     private javax.swing.JPasswordField passField;
     private javax.swing.JPasswordField passField2;
+    private javax.swing.JTextField questionField;
     private javax.swing.JLabel warnLabel;
     // End of variables declaration//GEN-END:variables
 }
