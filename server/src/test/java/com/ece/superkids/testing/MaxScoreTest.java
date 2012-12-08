@@ -49,7 +49,8 @@ public class MaxScoreTest {
     public void setup() {
         user = new User("ScoreMaximizer");
     }
-    @After
+    
+    @Test
     public void TestMaximumScore() {
         /* repeat same category and level 3 times */
         QuestionLevel questionLevel = QuestionLevel.LEVEL_1;
@@ -76,5 +77,10 @@ public class MaxScoreTest {
         Integer actualScore = state.getTotalScore();
         assertEquals(actualScore, maximumScore);
 
+    }
+
+    @After
+    public void cleanup() {
+        user.deleteUser();
     }
 }
