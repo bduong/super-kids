@@ -18,7 +18,7 @@ public class AuthFrame extends javax.swing.JFrame {
      * Creates new form AuthFrame
      */
     private ParentManager pM = UserDatabaseFactory.aParentManager();
-    private PanelController controller= PanelController.getInstance();
+    private PanelController controller = PanelController.getInstance();
 
     public AuthFrame() {
         initComponents();
@@ -39,6 +39,7 @@ public class AuthFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
         responseLabel = new javax.swing.JLabel();
+        forgotLabel = new javax.swing.JLabel();
 
         setResizable(false);
 
@@ -67,10 +68,23 @@ public class AuthFrame extends javax.swing.JFrame {
         responseLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         responseLabel.setForeground(new java.awt.Color(255, 0, 0));
 
+        forgotLabel.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
+        forgotLabel.setForeground(new java.awt.Color(51, 102, 255));
+        forgotLabel.setText("Forgot your password?");
+        forgotLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                forgotLabelMouseClicked(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(0, 37, Short.MAX_VALUE)
+                .add(responseLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 267, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(21, 21, 21))
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
@@ -81,12 +95,11 @@ public class AuthFrame extends javax.swing.JFrame {
                         .add(passwordField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .add(136, 136, 136)
-                        .add(okButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(okButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .add(106, 106, 106)
+                        .add(forgotLabel)))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(0, 37, Short.MAX_VALUE)
-                .add(responseLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 267, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -97,9 +110,11 @@ public class AuthFrame extends javax.swing.JFrame {
                 .add(passwordField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(okButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 9, Short.MAX_VALUE)
                 .add(responseLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(34, 34, 34))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(forgotLabel)
+                .add(12, 12, 12))
         );
 
         pack();
@@ -119,7 +134,13 @@ public class AuthFrame extends javax.swing.JFrame {
         responseLabel.setText(null);
     }//GEN-LAST:event_passwordFieldCaretUpdate
 
+    private void forgotLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotLabelMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new ResetPasswordFrame().setVisible(true);
+    }//GEN-LAST:event_forgotLabelMouseClicked
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel forgotLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton okButton;
     private javax.swing.JPasswordField passwordField;
