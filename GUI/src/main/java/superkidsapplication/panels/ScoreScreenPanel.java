@@ -48,8 +48,8 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
             this.starPanel.add(stars.get(i));
         }
 
-        if(num_stars == 1){
-             TTSController.TTS("Good Job! You should try this level again.");
+        if (num_stars == 1) {
+            TTSController.TTS("Good Job! You should try this level again.");
         }
         if (num_stars < 4) {
             TTSController.TTS("Good Job!");
@@ -120,11 +120,15 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
 
     private void jLayeredPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLayeredPane1MouseClicked
         // TODO add your handling code here:
-        if(session.getLoggedInUser().isCurrentLevelFinished()){
-            controller.addPanel(new NewGamePanel("Continue"));
-            TTSController.TTS("You have finished this level.");
+        if (session.getLoggedInUser().isGameOn() == false) {
+            controller.goToMainMenu();
+            TTSController.TTS("You have finished all levels");
+            return;
         }
-        else{
+        if (session.getLoggedInUser().isCurrentLevelFinished()) {
+            controller.addPanel(new NewGamePanel("Continue: Select a Level"));
+            TTSController.TTS("You have finished this level.");
+        } else {
             controller.goToSubjectMenu();
             TTSController.TTS("You have finished this category.");
         }

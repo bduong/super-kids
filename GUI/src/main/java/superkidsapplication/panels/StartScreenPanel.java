@@ -62,7 +62,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
      *called from panel listener
      *everytime startscreen is visible
     */
-    public void isContinueGameVisible() {
+    public void isContinueNewGameEnabled() {
         if (session.getLoggedInUser() != null) {
             boolean gameOn = session.getLoggedInUser().isGameOn();
             if (gameOn == true) {
@@ -103,7 +103,6 @@ public class StartScreenPanel extends javax.swing.JPanel {
         ScreenComponents.setAlignmentX(0.0F);
         ScreenComponents.setAlignmentY(0.0F);
         ScreenComponents.setMinimumSize(new java.awt.Dimension(800, 600));
-        ScreenComponents.setSize(new java.awt.Dimension(800, 600));
 
         ContinueGame.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         ContinueGame.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,11 +138,11 @@ public class StartScreenPanel extends javax.swing.JPanel {
         NewGame.setMaximumSize(new java.awt.Dimension(180, 29));
         NewGame.setMinimumSize(new java.awt.Dimension(180, 29));
         NewGame.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                NewGameMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 NewGameMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                NewGameMouseExited(evt);
             }
         });
         NewGame.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +162,6 @@ public class StartScreenPanel extends javax.swing.JPanel {
         Options.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         Options.setMaximumSize(new java.awt.Dimension(180, 29));
         Options.setMinimumSize(new java.awt.Dimension(180, 29));
-        Options.setSize(new java.awt.Dimension(140, 50));
         Options.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 OptionsMouseExited(evt);
@@ -194,6 +192,7 @@ public class StartScreenPanel extends javax.swing.JPanel {
     //if new game is clicked
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
+        session.getLoggedInUser().newGame();
         gController.newGame();
     }//GEN-LAST:event_NewGameActionPerformed
 

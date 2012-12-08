@@ -230,6 +230,11 @@ public class QuestionPanel extends javax.swing.JPanel {
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/QuestionScreen.png"))); // NOI18N
         background.setBounds(new java.awt.Rectangle(0, 0, 800, 600));
         background.setIconTextGap(0);
+        background.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backgroundMouseClicked(evt);
+            }
+        });
         background.setBounds(0, 0, 800, 600);
         jLayeredPane1.add(background, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -324,6 +329,16 @@ public class QuestionPanel extends javax.swing.JPanel {
         TTSController.TTS(this.questionLabel.getText());
 
     }//GEN-LAST:event_RepeatSoundButtonActionPerformed
+
+    private void backgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backgroundMouseClicked
+        // TODO add your handling code here:
+        /*FOR TESTING PURPOSES UNCOMMENT NEXT LINE
+         * IT WILL LET YOU GO THROUGH THE QUESTIONS FASTER
+         * JUST CLICK ON THE PANEL TO TRIGGER CORRECT ANSWER CLICKED
+         */
+        correctAnswerClicked();
+    }//GEN-LAST:event_backgroundMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ChoicePanel;
     private javax.swing.JButton RepeatSoundButton;

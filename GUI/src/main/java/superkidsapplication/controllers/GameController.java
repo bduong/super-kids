@@ -54,7 +54,7 @@ public class GameController {
         //set gameOn
         session.getLoggedInUser().setGameOn(true);
         //create a new game panel
-        NewGamePanel gamePanel = new NewGamePanel();
+        NewGamePanel gamePanel = new NewGamePanel("New Game");
         //add new panel
         controller.addPanel(gamePanel);
     }
@@ -88,7 +88,7 @@ public class GameController {
             //if the current level is finished go to level selection
             if (user.isCurrentLevelFinished()) {
                 QuestionLevel lev = user.getState().getCurrentLevel();
-                controller.addPanel(new NewGamePanel("Continue"));
+                controller.addPanel(new NewGamePanel("Continue: Select a Level"));
                 return;
             }
             //if the level is not finished

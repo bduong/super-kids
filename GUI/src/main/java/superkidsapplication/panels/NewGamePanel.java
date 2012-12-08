@@ -23,19 +23,13 @@ public class NewGamePanel extends javax.swing.JPanel {
     private Session session;
     private User user;
 
-    public NewGamePanel() {
+    public NewGamePanel(String newOrContinue){
         controller = PanelController.getInstance();
         session=Session.aSession();
         user=session.getLoggedInUser();
         initComponents();
-    }
-
-    public NewGamePanel(String aContinue) {
-        controller = PanelController.getInstance();
-        session=Session.aSession();
-        user=session.getLoggedInUser();
-        initComponents();
-        jLabel1.setText("Select a Level");
+        initLevelButtons();
+        jLabel1.setText(newOrContinue);
     }
 
     /**
@@ -219,4 +213,25 @@ public class NewGamePanel extends javax.swing.JPanel {
     private javax.swing.JButton level2Button;
     private javax.swing.JButton level3Button;
     // End of variables declaration//GEN-END:variables
+
+    private void initLevelButtons() {
+        if(session.getLoggedInUser().isLevelFinished(QuestionLevel.LEVEL_1)){
+            level1Button.setEnabled(false);
+        }
+        else{
+            level1Button.setEnabled(true);
+        }
+        if(session.getLoggedInUser().isLevelFinished(QuestionLevel.LEVEL_2)){
+            level2Button.setEnabled(false);
+        }
+        else{
+            level2Button.setEnabled(true);
+        }
+        if(session.getLoggedInUser().isLevelFinished(QuestionLevel.LEVEL_3)){
+            level3Button.setEnabled(false);
+        }
+        else{
+            level3Button.setEnabled(true);
+        }
+    }
 }
