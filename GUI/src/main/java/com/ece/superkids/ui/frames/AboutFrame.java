@@ -39,7 +39,7 @@ public class AboutFrame extends javax.swing.JFrame {
         namesArea.setBackground(new java.awt.Color(255, 153, 153));
         namesArea.setColumns(20);
         namesArea.setRows(5);
-        namesArea.setText("Boston University MET College \nFALL 2012\nCS673 - Software Engineering\n\nSuper Kids - The Ultimate Adventure\n\nTeam Members;\n\nBenjamin Duong\nMarc Adam\nChun-Chieh Feng\nFranklin Wong\nKunal Singh\nBaris Tevfik\nPrashant Vaidyanathan\nHeng Du\nDavid Cheung\nDavid Ohayon\n\nMusic by www.nosoapradio.us");
+        namesArea.setText("Boston University MET College \nFALL 2012\nCS673 - Software Engineering\n\nSuper Kids - The Ultimate Adventure\nhttps://github.com/bduong/super-kids\n\nTeam Members;\n\nBenjamin Duong\nBaris Tevfik\nMarc Adam\nChun-Chieh Feng\nFranklin Wong\nKunal Singh\nPrashant Vaidyanathan\nHeng Du\nDavid Cheung\nDavid Ohayon\n\nMusic by www.nosoapradio.us");
         namesArea.setBorder(null);
         jScrollPane1.setViewportView(namesArea);
 
