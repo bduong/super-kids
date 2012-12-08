@@ -127,6 +127,22 @@ public class History implements Serializable {
             return null;
         }
     }
+
+    public State getMaximumScore(QuestionCategory category, QuestionLevel level) {
+        Map maxScoresMap = new HashMap<Question, Integer>();
+        String key = category.toString() + ":" + level.toString();
+        ArrayList<State> states = (ArrayList<State>)questionToList.get(key);
+        int maxScore = 0;
+        int maxScoreIndex = 0;
+        for(int i=0; i<states.size(); i++) {
+            if(states.get(i).getTotalScore()>maxScore) {
+                maxScoreIndex=i;
+                maxScore=states.get(i).getTotalScore();
+            }
+        }
+        State maxScoreState = states.get(maxScoreIndex);
+        return maxScoreState;
+    }
     
     public Object[][] getHistory(QuestionCategory category, QuestionLevel level) {
         Map<Question, ArrayList<Integer>> map = this.getHistoryMap(category, level);

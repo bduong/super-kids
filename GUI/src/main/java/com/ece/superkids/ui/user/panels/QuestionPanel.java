@@ -4,12 +4,20 @@
  */
 package com.ece.superkids.ui.user.panels;
 
-import com.ece.superkids.ui.user.panels.ScoreScreenPanel;
-import com.ece.superkids.ui.user.frames.WrongAnswerFrame;
 import com.ece.superkids.questions.entities.Question;
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.enums.QuestionType;
+import com.ece.superkids.ui.controllers.PanelController;
+import com.ece.superkids.ui.controllers.QuestionController;
+import com.ece.superkids.ui.controllers.TTSController;
+import com.ece.superkids.ui.customui.ImageButton;
+import com.ece.superkids.ui.customui.ImageLabel;
+import com.ece.superkids.ui.events.Session;
+import com.ece.superkids.ui.providers.ImageProvider;
+import com.ece.superkids.ui.providers.ResourceProviderFactory;
+import com.ece.superkids.ui.user.frames.CorrectAnswerFrame;
+import com.ece.superkids.ui.user.frames.WrongAnswerFrame;
 import com.ece.superkids.users.entities.User;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,15 +29,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import com.ece.superkids.ui.controllers.PanelController;
-import com.ece.superkids.ui.controllers.QuestionController;
-import com.ece.superkids.ui.controllers.TTSController;
-import com.ece.superkids.ui.customui.ImageButton;
-import com.ece.superkids.ui.customui.ImageLabel;
-import com.ece.superkids.ui.events.Session;
-import com.ece.superkids.ui.user.frames.CorrectAnswerFrame;
-import com.ece.superkids.ui.providers.ImageProvider;
-import com.ece.superkids.ui.providers.ResourceProviderFactory;
 
 /**
  *
@@ -53,6 +52,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     private List<Icon> icons;
     private ImageProvider iconProvider;
     private Question question;
+    private int previousScore;
 
     //when creating the panel set which choice is the correct answer
     //1 is button1 , 2 is button2 and so on.
@@ -69,6 +69,8 @@ public class QuestionPanel extends javax.swing.JPanel {
         nextQButton.setVisible(false);
         //score is initally zero
         score = 0;
+        previousScore= session.getLoggedInUser().getState().getTotalScore();
+        scoreNumLabel.setText(Integer.toString(previousScore));
         iconProvider = ResourceProviderFactory.anImageProvider();
         //fill the panel
         fillQuestion();
@@ -403,19 +405,18 @@ public class QuestionPanel extends javax.swing.JPanel {
         if (score < 4) {
             score++;
         }
-
         if (score == 1) {
-            scoreValue = 10;
-            scoreNumLabel.setText("10");
+            scoreValue = 10; 
+            scoreNumLabel.setText(Integer.toString(previousScore+10));
         } else if (score == 2) {
             scoreValue = 7;
-            scoreNumLabel.setText("7");
+            scoreNumLabel.setText(Integer.toString(previousScore+7));
         } else if (score == 3) {
             scoreValue = 5;
-            scoreNumLabel.setText("5");
+            scoreNumLabel.setText(Integer.toString(previousScore+5));
         } else if (score == 4) {
             scoreValue = 3;
-            scoreNumLabel.setText("3");
+            scoreNumLabel.setText(Integer.toString(previousScore+3));
         }
 
         this.RepeatSoundButton.setVisible(false);
