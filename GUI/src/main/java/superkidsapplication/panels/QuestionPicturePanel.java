@@ -36,7 +36,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
     JTextField field;
     ImageManager iManager = QuestionDatabaseFactory.anImageManager();
     ImageProvider iProvider = ResourceProviderFactory.anImageProvider();
-    JPanel scrollable = new JPanel(new GridLayout(0, 5, 5, 10));
+    JPanel scrollable = new JPanel(new GridLayout(0, 4, 5, 10));
     PanelController pControl = PanelController.getInstance();
 
     public QuestionPicturePanel(JTextField field) {
@@ -76,7 +76,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Pick a picture, or add a new one from your computer.");
+        jLabel1.setText("Pick a picture, or add a new one from your computer.(20x20 px)");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -97,7 +97,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(233, 233, 233)
                 .add(jLabel1)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -148,7 +148,6 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             customPicturePath = dir + File.separator + filename;
             System.out.println("New picture added to custom pics:" + customPicturePath);
             String key = getKey(filename);
-            System.out.println(key);
             iManager.saveImage(customPicturePath, key);
             loadPictures(); //reload pictures
         }
@@ -166,8 +165,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
         for (int i = 0; i < keys.size(); i++) {
             JLabel label;
             JButton button = new JButton();
-           // String key = (String) keys.get(i);
-            String key = "deer";
+            String key = (String) keys.get(i);
             label = new JLabel(iProvider.getImage(key));
             button.add(label);
             button.setName(key);
