@@ -5,8 +5,8 @@ import com.ece.superkids.images.ImageManager;
 import com.ece.superkids.questions.QuestionDatabaseFactory;
 import org.junit.After;
 import org.junit.Test;
-import superkidsapplication.providers.ImageProvider;
-import superkidsapplication.providers.ResourceProviderFactory;
+import com.ece.superkids.ui.providers.ImageProvider;
+import com.ece.superkids.ui.providers.ResourceProviderFactory;
 
 import java.io.*;
 import java.util.Properties;

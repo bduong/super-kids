@@ -2,8 +2,8 @@ package providers;
 
 import org.junit.Before;
 import org.junit.Test;
-import superkidsapplication.providers.ImageProvider;
-import superkidsapplication.providers.ResourceProviderFactory;
+import com.ece.superkids.ui.providers.ImageProvider;
+import com.ece.superkids.ui.providers.ResourceProviderFactory;
 
 import javax.swing.*;
 

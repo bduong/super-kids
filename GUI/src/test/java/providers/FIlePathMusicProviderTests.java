@@ -2,8 +2,8 @@ package providers;
 
 import org.junit.Before;
 import org.junit.Test;
-import superkidsapplication.providers.MusicProvider;
-import superkidsapplication.providers.ResourceProviderFactory;
+import com.ece.superkids.ui.providers.MusicProvider;
+import com.ece.superkids.ui.providers.ResourceProviderFactory;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
