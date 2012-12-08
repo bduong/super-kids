@@ -168,6 +168,10 @@ public class User implements Serializable {
     public Object[][] getHistoryTest() {
         return history.getHistoryTest();
     }
+
+    public State getMaximumScore(QuestionCategory questionCategory, QuestionLevel questionLevel) {
+        return history.getMaximumScore(questionCategory, questionLevel);
+    }
     
     @Override
     public boolean equals(Object obj) {
