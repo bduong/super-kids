@@ -59,7 +59,8 @@ public class StateSavedTests {
 
         assertEquals(question.getQuestion(), actualQuestion.getQuestion());
         assertEquals(question.getExplaination(), actualQuestion.getExplaination());
-
+        
+        fileUserManager.deleteUser("TestUser");
     }
 
 
