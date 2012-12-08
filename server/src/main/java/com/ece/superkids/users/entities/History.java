@@ -166,6 +166,4 @@ public class History implements Serializable {
         }
         return o;
     }
-
-
 }

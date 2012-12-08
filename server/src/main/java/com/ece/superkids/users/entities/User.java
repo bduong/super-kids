@@ -76,13 +76,28 @@ public class User implements Serializable {
         this.history.setGameStarted();
         saveUser();
     }
+    public void setGameOn() {
+        this.history.setGameStarted();
+        saveUser();
+    }
 
     public boolean isGameOn() {
         return history.getGameOn();
     }
+
+    /* Use this to create a new game for the user, warning: this clears everything! */
+    public void newGame() {
+        state = new State();
+        history = new History();
+        achievements = new Achievements();
+        setGameOn();
+    }
     
     public boolean isCurrentLevelFinished(){
         return history.isLevelFinished(this.state.getCurrentLevel());
+    }
+    public boolean isLevelFinished(QuestionLevel level) {
+        return history.isLevelFinished(level);
     }
 
     public void setCurrentQuestion(Question question) {
@@ -139,6 +154,11 @@ public class User implements Serializable {
     public void saveUser() {
         (new FileUserManager()).addUser(this);
         (new FileUserManager()).updateUser(this, this);
+    }
+
+    /* deletes the serializable file for the user */
+    public void deleteUser() {
+        (new FileUserManager()).deleteUser(name);
     }
 
     public Object[][] getHistory(QuestionCategory questionCategory, QuestionLevel questionLevel) {
