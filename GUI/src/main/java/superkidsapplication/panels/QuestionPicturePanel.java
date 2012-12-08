@@ -76,7 +76,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Pick a picture, or add a new one from your computer.(20x20 px)");
+        jLabel1.setText("Pick a picture, or add a new one from your computer.(140 px)");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -97,7 +97,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(233, 233, 233)
                 .add(jLabel1)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
