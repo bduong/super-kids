@@ -1,13 +1,14 @@
 package com.ece.superkids.ui.controllers;
 
-import java.util.ArrayList;
-import javax.swing.JPanel;
 import com.ece.superkids.ui.events.PanelListener;
 import com.ece.superkids.ui.events.Session;
 import com.ece.superkids.ui.frames.MainFrame;
+import com.ece.superkids.ui.parent.panels.InitialSetupPanel;
 import com.ece.superkids.ui.user.panels.StartScreenPanel;
 import com.ece.superkids.ui.user.panels.SubjectSelectionPanel;
 import com.ece.superkids.ui.user.panels.UserSelectionPanel;
+import java.util.ArrayList;
+import javax.swing.JPanel;
 
 /*
  * To change this template, choose Tools | Templates
@@ -175,8 +176,20 @@ public class PanelController {
                     return;
                 }
             }
-            //go back one panel until subjectselection is found
+            //go back one panel until ParentalControl is found
             goBackOnePanel();
         }       
+    }
+    
+    //Create a new InitialSetup Panel and remove all other panels
+    public void goToInitialSetup() {
+        for (int i = panels.size()-1; i >=0; i--)
+        {
+            panels.get(i).setVisible(false);
+            //then remove from list
+            panels.remove(i);
+        }
+        addPanel(new InitialSetupPanel());
+        
     }
 }

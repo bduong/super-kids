@@ -6,30 +6,30 @@ package com.ece.superkids.ui.parent.panels;
 
 import com.ece.superkids.FileManager;
 import com.ece.superkids.FileManagerImpl;
+import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.users.ParentManager;
 import com.ece.superkids.users.UserDatabaseFactory;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
-import com.ece.superkids.ui.controllers.QuestionController;
 
 /**
  *
- * @author baris
+ * @author baris & edits by david c
  */
 public class ResetGamePanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ResetGamePanel
      */
-    private QuestionController qController;
     ParentManager pM = UserDatabaseFactory.aParentManager();
     private FileManager manager = FileManagerImpl.getInstance();
+    private PanelController controller = PanelController.getInstance();
 
     public ResetGamePanel() {
         initComponents();
-        qController = QuestionController.getInstance();
     }
 
     /**
@@ -60,6 +60,7 @@ public class ResetGamePanel extends javax.swing.JPanel {
         });
 
         warningLabel.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
+        warningLabel.setForeground(new java.awt.Color(255, 255, 255));
         warningLabel.setText("This will reset to the initial setup of the game.");
         warningLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -74,7 +75,8 @@ public class ResetGamePanel extends javax.swing.JPanel {
         resposeLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         resposeLabel.setForeground(new java.awt.Color(255, 0, 51));
 
-        enterLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        enterLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        enterLabel.setForeground(new java.awt.Color(255, 255, 255));
         enterLabel.setText("Enter password");
         enterLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -104,7 +106,7 @@ public class ResetGamePanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
+                .addContainerGap(129, Short.MAX_VALUE)
                 .add(enterLabel)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(passwordField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -127,8 +129,13 @@ public class ResetGamePanel extends javax.swing.JPanel {
         String input = new String(passwordField.getPassword());
         if (pM.checkParentPassword(input)) {
             try {
-                FileUtils.deleteDirectory(manager.getDirectory());
-                resposeLabel.setText("Successful. Restart the program.");
+                int n = JOptionPane.showConfirmDialog(this,"Would you like to reset every setting of the game?","Warning",JOptionPane.YES_NO_OPTION);
+                if (n == JOptionPane.YES_OPTION)
+                {
+                    FileUtils.deleteDirectory(manager.getDirectory());
+                    resposeLabel.setText("Successful. Restart the program.");
+                    controller.goToInitialSetup();
+                }
             } catch (IOException ex) {
                 resposeLabel.setText("Error!");
                 Logger.getLogger(ResetGamePanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -144,4 +151,7 @@ public class ResetGamePanel extends javax.swing.JPanel {
     private javax.swing.JLabel resposeLabel;
     private javax.swing.JLabel warningLabel;
     // End of variables declaration//GEN-END:variables
+
+    
+
 }
