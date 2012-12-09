@@ -95,14 +95,7 @@ public class EditAchievementPanel extends javax.swing.JPanel {
         str = achievement.getPrize();
         jTextArea21.setText(Integer.toString(score));
         jTextArea11.setText(str);
-
-
     }
-
-    public void setObject(Object bean) {
-        this.bean = bean;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -455,7 +448,10 @@ public class EditAchievementPanel extends javax.swing.JPanel {
         A.changeAchievement(8, B);
         B = new Achievement(Integer.parseInt(jTextArea21.getText()), jTextArea11.getText());
         A.changeAchievement(9, B);
-
+        
+        user.setAchievements(A);
+        uM.updateUser(user, user);
+        System.out.println("New achievements saved.");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
