@@ -84,6 +84,17 @@ public class AchievementTests {
     }
 
     @Test
+    public void canGetUnlockedAchievements() {
+        achievements.changeAchievement(0, achievementOne);
+        achievements.changeAchievement(1, achievementTwo);
+
+        List<Achievement> unlocked = achievements.getAchievementsUnlocked(20);
+
+        assertEquals(unlocked.get(0), achievementOne);
+        assertEquals(unlocked.get(1), achievementTwo);
+    }
+
+    @Test
     public void canSaveAUser() throws IOException, ClassNotFoundException {
         User user = new User("Me");
         File tempFile = File.createTempFile("temp", ".ser");
