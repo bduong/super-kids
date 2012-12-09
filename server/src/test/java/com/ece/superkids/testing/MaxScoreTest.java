@@ -63,7 +63,7 @@ public class MaxScoreTest {
             user.newState(questionCategory, questionLevel);
             for(int j=0; j<6; j++) {
                 Question question = createRandomQuestion(questionLevel, questionCategory);
-                int currentQuestionScore = score.nextInt()%10;
+                int currentQuestionScore = score.nextInt(10);
                 user.saveScore(question, currentQuestionScore);
                 currentScore+= currentQuestionScore;
             }
@@ -73,10 +73,31 @@ public class MaxScoreTest {
             user.endState();
         }
         History history = user.getHistory();
-        State state = history.getMaximumScore(questionCategory, questionLevel);
+        State state = history.getMaximumScoreState(questionCategory, questionLevel);
         Integer actualScore = state.getTotalScore();
         assertEquals(actualScore, maximumScore);
 
+
+        /* create a state with different level and different category */
+        questionLevel = QuestionLevel.LEVEL_2;
+        questionCategory = QuestionCategory.FOOD;
+        /* create state and add several questions to that state */
+        user.newState(questionCategory, questionLevel);
+        /* add 10 questions */
+        int secondQuestionScore = 0;
+        for (int i = 0; i < 10; i++) {
+            Question question = createRandomQuestion(questionLevel, questionCategory);
+            int currentQuestionScore = score.nextInt(10);
+            user.saveScore(question, currentQuestionScore);
+            secondQuestionScore += currentQuestionScore;
+        }
+        user.endState();
+
+        int expectedMaximumTotalScore = secondQuestionScore + maximumScore;
+        System.out.println("second question Score: " + secondQuestionScore);
+        System.out.println("First Maximum score: " + maximumScore);
+        int actualTotalScore = user.getTotalScore();
+        assertEquals(actualTotalScore, expectedMaximumTotalScore);
     }
 
     @After

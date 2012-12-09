@@ -4,6 +4,7 @@
  */
 package com.ece.superkids.ui.user.panels;
 
+import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.user.panels.SoundPanel;
 import com.ece.superkids.ui.user.panels.ScoresHistoryPanel;
 import java.awt.Color;
@@ -14,6 +15,9 @@ import java.awt.Color;
  */
 public class OptionPanel extends javax.swing.JPanel {
 
+    
+    private PanelController controller = PanelController.getInstance();
+    
     /**
      * Creates new form OptionPanel
      */
@@ -39,6 +43,7 @@ public class OptionPanel extends javax.swing.JPanel {
         ContentArea = new javax.swing.JLayeredPane();
         ReportHighlight = new javax.swing.JLabel();
         SoundHighlight = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setAlignmentX(0.0F);
@@ -112,6 +117,30 @@ public class OptionPanel extends javax.swing.JPanel {
         SoundHighlight.setBounds(50, 260, 310, 50);
         jLayeredPane1.add(SoundHighlight, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        BackButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 20)); // NOI18N
+        BackButton.setForeground(new java.awt.Color(255, 255, 255));
+        BackButton.setText("Back");
+        BackButton.setBorderPainted(false);
+        BackButton.setContentAreaFilled(false);
+        BackButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BackButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        BackButton.setIconTextGap(0);
+        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BackButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BackButtonMouseEntered(evt);
+            }
+        });
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        BackButton.setBounds(80, 350, 176, 32);
+        jLayeredPane1.add(BackButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/BasicScreen.png"))); // NOI18N
         background.setIconTextGap(0);
         background.setInheritsPopupMenu(false);
@@ -173,7 +202,23 @@ public class OptionPanel extends javax.swing.JPanel {
         ContentArea.add(new ScoresHistoryPanel());
     }//GEN-LAST:event_ReportCardButtonActionPerformed
 
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        controller.goToMainMenu();
+    }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void BackButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseEntered
+        // TODO add your handling code here:
+        BackButton.setForeground(Color.yellow);
+    }//GEN-LAST:event_BackButtonMouseEntered
+
+    private void BackButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseExited
+        // TODO add your handling code here:
+        BackButton.setForeground(Color.white);
+    }//GEN-LAST:event_BackButtonMouseExited
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JLayeredPane ContentArea;
     private javax.swing.JLabel Options;
     private javax.swing.JButton ReportCardButton;

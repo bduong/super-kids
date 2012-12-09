@@ -104,8 +104,10 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
             }
         });
 
+        level2Label.setForeground(new java.awt.Color(255, 255, 255));
         level2Label.setText("Level 2 Questions");
 
+        level1Label.setForeground(new java.awt.Color(255, 255, 255));
         level1Label.setText("Level 1 Questions");
 
         deleteButton.setText("Delete");
@@ -130,6 +132,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
             }
         });
 
+        level3Label.setForeground(new java.awt.Color(255, 255, 255));
         level3Label.setText("Level 3 Questions");
 
         level3QuestionsBox.addActionListener(new java.awt.event.ActionListener() {
@@ -138,9 +141,12 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
             }
         });
 
+        infoLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        infoLabel.setForeground(new java.awt.Color(255, 255, 255));
         infoLabel.setText("You can edit the question below");
 
         infoLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
+        infoLabel1.setForeground(new java.awt.Color(255, 255, 255));
         infoLabel1.setText("Delete will remove the question from the database.");
 
         responseLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -179,6 +185,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(choice1Button);
+        choice1Button.setForeground(new java.awt.Color(255, 255, 255));
         choice1Button.setText("Set Answer");
         choice1Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +194,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(choice2Button);
+        choice2Button.setForeground(new java.awt.Color(255, 255, 255));
         choice2Button.setText("Set Answer");
         choice2Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +203,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(choice3Button);
+        choice3Button.setForeground(new java.awt.Color(255, 255, 255));
         choice3Button.setText("Set Answer");
         choice3Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +212,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(choice4Button);
+        choice4Button.setForeground(new java.awt.Color(255, 255, 255));
         choice4Button.setText("Set Answer");
         choice4Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,7 +273,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
                                     .add(level2Label)
                                     .add(level1Label)
                                     .add(level3Label))))
-                        .addContainerGap(32, Short.MAX_VALUE))
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .add(choice2Text, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -292,7 +302,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                                 .add(choice4Button))
                             .add(questionText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 229, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(9, Short.MAX_VALUE))
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .add(56, 56, 56)
                         .add(infoLabel1)
