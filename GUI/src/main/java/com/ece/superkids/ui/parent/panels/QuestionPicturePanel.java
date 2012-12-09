@@ -6,6 +6,10 @@ package com.ece.superkids.ui.parent.panels;
 
 import com.ece.superkids.images.ImageManager;
 import com.ece.superkids.questions.QuestionDatabaseFactory;
+import com.ece.superkids.ui.controllers.PanelController;
+import com.ece.superkids.ui.customui.ImageButton;
+import com.ece.superkids.ui.providers.ImageProvider;
+import com.ece.superkids.ui.providers.ResourceProviderFactory;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -16,17 +20,13 @@ import java.io.File;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import com.ece.superkids.ui.controllers.PanelController;
-import com.ece.superkids.ui.customui.ImageButton;
-import com.ece.superkids.ui.providers.ImageProvider;
-import com.ece.superkids.ui.providers.ResourceProviderFactory;
 
 /**
  *
- * @author baris, edits by david c
+ * @author baris, david c
  */
 public class QuestionPicturePanel extends javax.swing.JPanel {
 
@@ -39,6 +39,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
     ImageProvider iProvider = ResourceProviderFactory.anImageProvider();
     JPanel scrollable = new JPanel(new GridLayout(0, 4, 5, 10));
     PanelController pControl = PanelController.getInstance();
+    String selectedkey;
 
     public QuestionPicturePanel(JTextField field) {
         this.field = field;
@@ -59,6 +60,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
         addButton = new javax.swing.JButton();
         doneButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        deleteButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
@@ -77,7 +79,14 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Pick a picture, or add a new one from your computer.(140 px)");
+        jLabel1.setText("Pick a picture, or add a new one from your computer.");
+
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -93,12 +102,14 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
                         .add(addButton)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(doneButton)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(deleteButton)
                         .add(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .add(layout.createSequentialGroup()
                 .add(233, 233, 233)
                 .add(jLabel1)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -109,7 +120,8 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(doneButton)
-                    .add(addButton))
+                    .add(addButton)
+                    .add(deleteButton))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -127,8 +139,33 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
         pControl.goBackOnePanel();
 
     }//GEN-LAST:event_doneButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+        int n = JOptionPane.showConfirmDialog(this,"Would you like to delete the selected image?","Warning",JOptionPane.YES_NO_OPTION);
+        
+        if (n == JOptionPane.YES_OPTION)
+        {
+            //System.out.println(field.getText());
+            boolean check;
+            check = iManager.deleteImage(field.getText());
+            System.out.println(check);
+            if (check == false)
+            {
+                JOptionPane.showMessageDialog(this,"This image cannot be deleted. Possible reason: It is a stock image.");           
+            }
+            else
+            {
+                loadPictures();
+            }
+                
+            
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JButton doneButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -170,7 +207,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             String key = (String) keys.get(i);
             button.setIcon(iProvider.getImage(key));
             button.setName(key);
-            button.addActionListener(new ButtonAction(field));
+            button.addActionListener(new ButtonAction(field, selectedkey));
             button.addFocusListener(new ButtonFocus());
             scrollable.add(button);
         }
@@ -193,8 +230,9 @@ class ButtonAction implements ActionListener {
 
     JTextField field;
 
-    public ButtonAction(JTextField field) {
+    public ButtonAction(JTextField field, String selectedkey) {
         this.field = field;
+        
     }
 
     public void actionPerformed(ActionEvent e) {
