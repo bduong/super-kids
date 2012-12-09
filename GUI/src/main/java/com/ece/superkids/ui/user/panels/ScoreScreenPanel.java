@@ -4,6 +4,7 @@
  */
 package com.ece.superkids.ui.user.panels;
 
+import com.ece.superkids.achievements.entities.Achievement;
 import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.controllers.TTSController;
 import com.ece.superkids.ui.customui.ImageLabel;
@@ -147,9 +148,19 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void displayAchievements() {
-        List achievement = user.getAchievements().getAchievementsUnlocked(user.getTotalScore());
+        List<Achievement> achievement = user.getAchievements().getAchievementsUnlocked(user.getTotalScore());
+        String ach = "";
         if (achievement.size() > 0) {
-            JOptionPane.showMessageDialog(this, "You unlocked:"+achievement);
+            for (int i = 0; i < achievement.size(); i++) {
+                if (achievement.get(i).getPrize().equals("")) {
+                    //do nothing
+                } else {
+                    ach = ach + "\n" + i + achievement.get(i).getPrize();
+                }
+            }
+            if (!ach.equals("")) {
+                JOptionPane.showMessageDialog(this, "You unlocked:" + ach);
+            }
         }
     }
 }

@@ -319,10 +319,12 @@ public class ParentalControlPanel extends javax.swing.JPanel {
 
     private void editachievementMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editachievementMouseExited
         // TODO add your handling code here:
+        editachievement.setForeground(Color.white);
     }//GEN-LAST:event_editachievementMouseExited
 
     private void editachievementMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editachievementMouseEntered
         // TODO add your handling code here:
+        editachievement.setForeground(Color.yellow);
     }//GEN-LAST:event_editachievementMouseEntered
 
     private void editachievementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editachievementActionPerformed

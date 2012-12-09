@@ -43,46 +43,55 @@ public class EditAchievementPanel extends javax.swing.JPanel {
         jTextArea2.setText(str);
         //2
         achievement = A.getAchievement(1);
+        score = A.getAchievement(1).getScore();
         str = achievement.getPrize();
         jTextArea13.setText(Integer.toString(score));
         jTextArea3.setText(str);
         //3
         achievement = A.getAchievement(2);
+        score = A.getAchievement(2).getScore();
         str = achievement.getPrize();
         jTextArea14.setText(Integer.toString(score));
         jTextArea4.setText(str);
         //4
         achievement = A.getAchievement(3);
+        score = A.getAchievement(3).getScore();
         str = achievement.getPrize();
         jTextArea15.setText(Integer.toString(score));
         jTextArea5.setText(str);
         //5
         achievement = A.getAchievement(4);
+        score = A.getAchievement(4).getScore();
         str = achievement.getPrize();
         jTextArea16.setText(Integer.toString(score));
         jTextArea6.setText(str);
         //6
         achievement = A.getAchievement(5);
+        score = A.getAchievement(5).getScore();
         str = achievement.getPrize();
         jTextArea17.setText(Integer.toString(score));
         jTextArea7.setText(str);
         //7
         achievement = A.getAchievement(6);
+        score = A.getAchievement(6).getScore();
         str = achievement.getPrize();
         jTextArea18.setText(Integer.toString(score));
         jTextArea8.setText(str);
         //8
         achievement = A.getAchievement(7);
+        score = A.getAchievement(7).getScore();
         str = achievement.getPrize();
         jTextArea19.setText(Integer.toString(score));
         jTextArea9.setText(str);
         //9
         achievement = A.getAchievement(8);
+        score = A.getAchievement(8).getScore();
         str = achievement.getPrize();
         jTextArea20.setText(Integer.toString(score));
         jTextArea10.setText(str);
         //10
         achievement = A.getAchievement(9);
+        score = A.getAchievement(9).getScore();
         str = achievement.getPrize();
         jTextArea21.setText(Integer.toString(score));
         jTextArea11.setText(str);
@@ -453,8 +462,8 @@ public class EditAchievementPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-       user = uM.getUser((String) jComboBox1.getSelectedItem());
-       A=user.getAchievements();
+        user = uM.getUser((String) jComboBox1.getSelectedItem());
+        A = user.getAchievements();
     }//GEN-LAST:event_jComboBox1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
