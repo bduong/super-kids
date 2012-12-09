@@ -54,6 +54,7 @@ public class AchievementTests {
 
         achievements.changeAchievement(7, achievementOne);
         achievements.changeAchievement(5, achievementTwo);
+        achievements.sortAchievements();
 
         assertEquals(achievements.getAchievement(0), achievementOne);
         assertEquals(achievements.getAchievement(1), achievementTwo);

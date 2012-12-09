@@ -75,6 +75,9 @@ public class Achievements implements Serializable {
      */
     public void changeAchievement(int index, Achievement newAchievement) {
         achievements.set(index, newAchievement);
+    }
+
+    public void sortAchievements() {
         Collections.sort(achievements, COMPARATOR);
     }
 
