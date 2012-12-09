@@ -15,4 +15,6 @@ public interface ImageManager {
      * @return The key the image is saved under.
      */
     public String saveImage(String filePath, String fileName);
+
+    public boolean deleteImage(String key);
 }
