@@ -35,6 +35,9 @@ public class EditAchievementPanel extends javax.swing.JPanel {
     public EditAchievementPanel() {
         initComponents();
         fillComboBox();
+        if(user==null){
+            return;
+        }
         //1
         Achievement achievement = A.getAchievement(0);
         int score = A.getAchievement(0).getScore();
@@ -96,6 +99,7 @@ public class EditAchievementPanel extends javax.swing.JPanel {
         jTextArea21.setText(Integer.toString(score));
         jTextArea11.setText(str);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -460,7 +464,9 @@ public class EditAchievementPanel extends javax.swing.JPanel {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         user = uM.getUser((String) jComboBox1.getSelectedItem());
-        A = user.getAchievements();
+        if (user != null) {
+            A = user.getAchievements();
+        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
