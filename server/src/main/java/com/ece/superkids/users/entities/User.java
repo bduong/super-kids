@@ -94,7 +94,6 @@ public class User implements Serializable {
     public void newGame() {
         state = new State();
         history = new History();
-        achievements = new Achievements();
         setGameOn();
     }
     
