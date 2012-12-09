@@ -9,6 +9,8 @@ import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.controllers.TTSController;
 import com.ece.superkids.ui.customui.ImageLabel;
 import com.ece.superkids.ui.events.Session;
+import com.ece.superkids.users.UserDatabaseFactory;
+import com.ece.superkids.users.UserManager;
 import com.ece.superkids.users.entities.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     private ArrayList<StarPanel> stars = new ArrayList(5);
     private PanelController controller = PanelController.getInstance();
     private User user = session.getLoggedInUser();
+    private UserManager uM = UserDatabaseFactory.aUserManager();
 
     public ScoreScreenPanel() {
         this.setName("ScoreScreen");
@@ -46,8 +49,8 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
         //find average score
         int score = totalscore / scores.size(); //scoring for the category
         int num_stars = score / 2; //One star per 2points
-        System.out.println(totalscore + " " + scores.size() + " " + score);
-        System.out.println(num_stars);
+        System.out.println("Total subject score:" + totalscore + " Number of scores:" + scores.size() + " Average:" + score);
+        System.out.println("Number of stars:" + num_stars);
         for (int i = 0; i < num_stars; i++) {
             stars.add(i, new StarPanel());
             this.starPanel.add(stars.get(i));
@@ -149,13 +152,14 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
 
     private void displayAchievements() {
         List<Achievement> achievement = user.getAchievements().getAchievementsUnlocked(user.getTotalScore());
+        uM.updateUser(user, user);
         String ach = "";
         if (achievement.size() > 0) {
             for (int i = 0; i < achievement.size(); i++) {
                 if (achievement.get(i).getPrize().equals("")) {
                     //do nothing
                 } else {
-                    ach = ach + "\n" + i + achievement.get(i).getPrize();
+                    ach = ach + "\n" + achievement.get(i).getPrize();
                 }
             }
             if (!ach.equals("")) {
