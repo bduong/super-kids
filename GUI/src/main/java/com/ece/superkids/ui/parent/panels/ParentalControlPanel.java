@@ -319,10 +319,12 @@ public class ParentalControlPanel extends javax.swing.JPanel {
 
     private void editachievementMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editachievementMouseExited
         // TODO add your handling code here:
+        editachievement.setForeground(Color.white);
     }//GEN-LAST:event_editachievementMouseExited
 
     private void editachievementMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editachievementMouseEntered
         // TODO add your handling code here:
+        editachievement.setForeground(Color.yellow);
     }//GEN-LAST:event_editachievementMouseEntered
 
     private void editachievementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editachievementActionPerformed
@@ -342,7 +344,7 @@ public class ParentalControlPanel extends javax.swing.JPanel {
     private javax.swing.JButton editachievement;
     private javax.swing.JLabel highlight;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JLayeredPane jLayeredPane2;
+    public javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
     private javax.swing.JPanel optionPanel;
     private javax.swing.JButton resetButton;

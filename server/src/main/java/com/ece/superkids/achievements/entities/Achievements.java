@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class Achievements implements Serializable {
 
-    private static final long serialVersionUID = 123456123456123456L;
+    private static final long serialVersionUID = 1L;
 
     private List<Achievement> achievements;
 
