@@ -455,6 +455,9 @@ public class EditAchievementPanel extends javax.swing.JPanel {
         B = new Achievement(Integer.parseInt(jTextArea21.getText()), jTextArea11.getText());
         A.changeAchievement(9, B);
 
+        user.setAchievements(A);
+        uM.updateUser(user, user);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
