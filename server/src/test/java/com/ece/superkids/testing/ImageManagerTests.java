@@ -20,6 +20,7 @@ public class ImageManagerTests {
     private File customImage;
     private ImageManager imageManager;
     private FileManager fileManager;
+    private String key;
 
     @Before
     public void setup() throws IOException {
@@ -36,45 +37,22 @@ public class ImageManagerTests {
     private void deleteImageFile() throws IOException {
         Properties props = new Properties();
         props.load(new FileInputStream(fileManager.getImagePathsFile()));
-        String imagePath = props.getProperty(IMAGE_NAME);
+        String imagePath = props.getProperty(key);
         File image = new File(imagePath);
         image.delete();
 
-        props.remove(IMAGE_NAME);
+        props.remove(key);
         props.store(new FileWriter(fileManager.getImagePathsFile()), "Custom Images");
     }
 
     @Test
     public void canUploadCustomImage() throws IOException {
-        imageManager.saveImage(customImage.getPath(), IMAGE_NAME);
-
-        String lastLine = getLastLine(fileManager.getImagePathsFile());
-        assertTrue(lastLine.contains(IMAGE_NAME));
+        key = imageManager.saveImage(customImage.getPath(), IMAGE_NAME);
 
         Properties props = new Properties();
         props.load(new FileInputStream(fileManager.getImagePathsFile()));
-        String imagePath = props.getProperty(IMAGE_NAME);
+        String imagePath = props.getProperty(key);
         File image = new File(imagePath);
         assertTrue(image.exists());
-    }
-
-    private String getLastLine(File file) throws IOException {
-        int lineCount = countLines(fileManager.getImagePathsFile());
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        for (int ii=0; ii < lineCount-1; ii ++) {
-            reader.readLine();
-        }
-        return reader.readLine();
-    }
-
-
-    private int countLines(File file) throws IOException {
-        int count = 0;
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        while (reader.readLine() != null) {
-            count++;
-        }
-        reader.close();
-        return count;
     }
 }

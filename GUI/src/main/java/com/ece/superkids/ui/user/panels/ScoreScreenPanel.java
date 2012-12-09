@@ -4,13 +4,12 @@
  */
 package com.ece.superkids.ui.user.panels;
 
-import com.ece.superkids.ui.user.panels.StarPanel;
-import java.util.ArrayList;
-import java.util.Map;
 import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.controllers.TTSController;
 import com.ece.superkids.ui.customui.ImageLabel;
 import com.ece.superkids.ui.events.Session;
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *

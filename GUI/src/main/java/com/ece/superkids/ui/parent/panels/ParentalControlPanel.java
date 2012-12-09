@@ -42,6 +42,7 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         addQbutton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
         changePassword = new javax.swing.JButton();
+        editachievement = new javax.swing.JButton();
         highlight = new javax.swing.JLabel();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         backgroundLabel = new javax.swing.JLabel();
@@ -50,7 +51,6 @@ public class ParentalControlPanel extends javax.swing.JPanel {
 
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(800, 600));
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(800, 600));
-        jLayeredPane1.setSize(new java.awt.Dimension(800, 600));
 
         ParentLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 30)); // NOI18N
         ParentLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -69,11 +69,11 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         userButton.setIconTextGap(0);
         userButton.setPreferredSize(new java.awt.Dimension(303, 33));
         userButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                userButtonMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 userButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                userButtonMouseExited(evt);
             }
         });
         userButton.addActionListener(new java.awt.event.ActionListener() {
@@ -90,11 +90,11 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         editQbutton.setContentAreaFilled(false);
         editQbutton.setPreferredSize(new java.awt.Dimension(303, 33));
         editQbutton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                editQbuttonMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 editQbuttonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editQbuttonMouseExited(evt);
             }
         });
         editQbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +166,28 @@ public class ParentalControlPanel extends javax.swing.JPanel {
             }
         });
         optionPanel.add(changePassword);
+
+        editachievement.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        editachievement.setForeground(new java.awt.Color(255, 255, 255));
+        editachievement.setText("Edit Achievement");
+        editachievement.setActionCommand("Edit Achienement");
+        editachievement.setBorderPainted(false);
+        editachievement.setContentAreaFilled(false);
+        editachievement.setPreferredSize(new java.awt.Dimension(303, 33));
+        editachievement.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editachievementMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editachievementMouseExited(evt);
+            }
+        });
+        editachievement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editachievementActionPerformed(evt);
+            }
+        });
+        optionPanel.add(editachievement);
 
         optionPanel.setBounds(0, 0, 310, 260);
         jLayeredPane3.add(optionPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -295,12 +317,29 @@ public class ParentalControlPanel extends javax.swing.JPanel {
         jLayeredPane2.add(cPanel);
     }//GEN-LAST:event_changePasswordActionPerformed
 
+    private void editachievementMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editachievementMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editachievementMouseExited
+
+    private void editachievementMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editachievementMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editachievementMouseEntered
+
+    private void editachievementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editachievementActionPerformed
+        this.highlight.setLocation(this.editachievement.getLocation());
+        jLayeredPane2.removeAll();
+        jLayeredPane2.repaint();
+        EditAchievementPanel dPanel = new EditAchievementPanel();
+        jLayeredPane2.add(dPanel);
+    }//GEN-LAST:event_editachievementActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ParentLabel;
     private javax.swing.JButton addQbutton;
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JButton changePassword;
     private javax.swing.JButton editQbutton;
+    private javax.swing.JButton editachievement;
     private javax.swing.JLabel highlight;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;

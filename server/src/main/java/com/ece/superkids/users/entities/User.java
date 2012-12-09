@@ -169,8 +169,12 @@ public class User implements Serializable {
         return history.getHistoryTest();
     }
 
-    public State getMaximumScore(QuestionCategory questionCategory, QuestionLevel questionLevel) {
-        return history.getMaximumScore(questionCategory, questionLevel);
+    public State getMaximumScoreState(QuestionCategory questionCategory, QuestionLevel questionLevel) {
+        return history.getMaximumScoreState(questionCategory, questionLevel);
+    }
+
+    public int getTotalScore() {
+        return history.getTotalScore();
     }
     
     @Override

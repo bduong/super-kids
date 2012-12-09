@@ -2,6 +2,9 @@ package com.ece.superkids.users;
 
 import com.ece.superkids.FileManager;
 import com.ece.superkids.FileManagerImpl;
+import com.ece.superkids.users.entities.RecoveryQuestion;
+import com.google.gson.Gson;
+
 import java.io.*;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -20,7 +23,9 @@ public class FileParentManager implements ParentManager{
 
     private FileManager manager = FileManagerImpl.getInstance();
     private static final String PARENT_FILE_NAME = "parent.txt";
+    private static final String RECOVERY_FILE = "recovery.txt";
     private static final String SALT = "LetsSaltThisPasswordWithABunchOfSalt?!?!#$#@#$@$%#";
+    private Gson gson = new Gson();
 
     @Override
     public boolean doesParentExist() {
@@ -77,6 +82,32 @@ public class FileParentManager implements ParentManager{
                 new File(createFileName()).delete();
             }
         }
+    }
+
+    @Override
+    public boolean setRecoverQuestion(final RecoveryQuestion question) {
+        String fileName = manager.getDirectory() + File.separator + RECOVERY_FILE;
+        try {
+            FileWriter writer = new FileWriter(fileName);
+            writer.write(gson.toJson(question));
+            writer.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public RecoveryQuestion getRecoveryQuestion() {
+        String fileName = manager.getDirectory() + File.separator + RECOVERY_FILE;
+        try {
+            FileReader reader = new FileReader(fileName);
+            return gson.fromJson(reader, RecoveryQuestion.class);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
