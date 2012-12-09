@@ -20,12 +20,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import com.ece.superkids.ui.controllers.PanelController;
+import com.ece.superkids.ui.customui.ImageButton;
 import com.ece.superkids.ui.providers.ImageProvider;
 import com.ece.superkids.ui.providers.ResourceProviderFactory;
 
 /**
  *
- * @author baris
+ * @author baris, edits by david c
  */
 public class QuestionPicturePanel extends javax.swing.JPanel {
 
@@ -163,11 +164,11 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
         scrollable.repaint();
         List keys = iProvider.getAllKeys();
         for (int i = 0; i < keys.size(); i++) {
-            JLabel label;
-            JButton button = new JButton();
+            ImageButton button = new ImageButton();
+            button.setPreferredSize(new java.awt.Dimension(150,150));
+            button.setSize(150, 150);
             String key = (String) keys.get(i);
-            label = new JLabel(iProvider.getImage(key));
-            button.add(label);
+            button.setIcon(iProvider.getImage(key));
             button.setName(key);
             button.addActionListener(new ButtonAction(field));
             button.addFocusListener(new ButtonFocus());
