@@ -110,6 +110,7 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         jLayeredPane1.add(nextButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password will be asked to access the parent controls.");
         jLabel4.setBounds(40, 470, 370, 30);
         jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);

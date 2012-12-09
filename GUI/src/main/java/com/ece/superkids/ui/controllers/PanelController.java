@@ -4,6 +4,7 @@ import com.ece.superkids.ui.events.PanelListener;
 import com.ece.superkids.ui.events.Session;
 import com.ece.superkids.ui.frames.MainFrame;
 import com.ece.superkids.ui.parent.panels.InitialSetupPanel;
+import com.ece.superkids.ui.parent.panels.ParentalControlPanel;
 import com.ece.superkids.ui.user.panels.StartScreenPanel;
 import com.ece.superkids.ui.user.panels.SubjectSelectionPanel;
 import com.ece.superkids.ui.user.panels.UserSelectionPanel;
@@ -164,7 +165,6 @@ public class PanelController {
     
     //Goes back to parentalcontrol Panel
     public void goToParentalControl() {
-         boolean found = false;
         //start from back of the list to search for subject selection
         for (int i = panels.size() - 1; i > -1; i--) {
             //if the panel name is not null
@@ -179,6 +179,25 @@ public class PanelController {
             //go back one panel until ParentalControl is found
             goBackOnePanel();
         }       
+    }
+    
+    public void setParentalControlLayerPane(JPanel panel) {
+         //start from back of the list to search for subject selection
+        for (int i = panels.size() - 1; i > -1; i--) {
+            //if the panel name is not null
+            if (panels.get(i).getName() != null) {
+                //and if the name is eqaul to parental control
+                if (panels.get(i).getName().equals("ParentalControl")) {
+                    //set the subject selection visible
+                    ParentalControlPanel foo = (ParentalControlPanel)panels.get(i);
+                    foo.jLayeredPane2.removeAll();
+                    foo.jLayeredPane2.repaint();
+                    foo.jLayeredPane2.add(panel);
+                    return;
+                }
+            }
+        }
+        
     }
     
     //Create a new InitialSetup Panel and remove all other panels

@@ -376,6 +376,8 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         manager.deleteQuestion(currentQuestion);
         responseLabel.setText("Deleted");
         System.out.println("Question deleted: " + currentQuestion.getQuestion());
+        pControl.setParentalControlLayerPane(new EditQuestionsPanel());
+        
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void level2QuestionsBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level2QuestionsBoxActionPerformed
@@ -471,6 +473,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         manager.editQuestion(currentQuestion, editedQuestion);
         responseLabel.setText("Saved");
         System.out.println("Question saved: " + questionText.getText());
+        pControl.setParentalControlLayerPane(new EditQuestionsPanel());
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void questionTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionTextActionPerformed
