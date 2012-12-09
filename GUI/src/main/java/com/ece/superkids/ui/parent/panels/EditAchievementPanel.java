@@ -35,9 +35,6 @@ public class EditAchievementPanel extends javax.swing.JPanel {
     public EditAchievementPanel() {
         initComponents();
         fillComboBox();
-        if (user == null) {
-            return;
-        }
         //1
         Achievement achievement = A.getAchievement(0);
         int score = A.getAchievement(0).getScore();
@@ -98,6 +95,12 @@ public class EditAchievementPanel extends javax.swing.JPanel {
         str = achievement.getPrize();
         jTextArea21.setText(Integer.toString(score));
         jTextArea11.setText(str);
+
+
+    }
+
+    public void setObject(Object bean) {
+        this.bean = bean;
     }
 
     /**
@@ -163,9 +166,8 @@ public class EditAchievementPanel extends javax.swing.JPanel {
         setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Points");
+        jLabel1.setText("Stars");
 
         jButton1.setText("Confirm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -455,7 +457,6 @@ public class EditAchievementPanel extends javax.swing.JPanel {
 
         user.setAchievements(A);
         uM.updateUser(user, user);
-        System.out.println(user.getAchievements().getAchievement(0).getPrize());
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -465,9 +466,7 @@ public class EditAchievementPanel extends javax.swing.JPanel {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         user = uM.getUser((String) jComboBox1.getSelectedItem());
-        if (user != null) {
-            A = user.getAchievements();
-        }
+        A = user.getAchievements();
     }//GEN-LAST:event_jComboBox1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

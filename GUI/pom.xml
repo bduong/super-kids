@@ -115,7 +115,7 @@
           <appendAssemblyId>false</appendAssemblyId>
           <archive>
             <manifest>
-              <mainClass>superkidsapplication.SuperKids</mainClass>
+              <mainClass>com.ece.superkids.ui.SuperKids</mainClass>
             </manifest>
           </archive>
         </configuration>
