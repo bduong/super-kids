@@ -27,7 +27,7 @@ public class EditAchievementPanel extends javax.swing.JPanel {
 
     private Object bean;
     private UserManager uM = UserDatabaseFactory.aUserManager();
-    private User user;
+    private User user=new User("temp");
     private Achievements A;
     private Parent p = new Parent();
 
@@ -66,6 +66,7 @@ public class EditAchievementPanel extends javax.swing.JPanel {
 
         fillComboBox();
         loadUser();
+        fillAchievements();
     }
 
     private void fillAchievements() {
