@@ -14,7 +14,7 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-    static final long serialVersionUID = -6618469841127325812L;
+    static final long serialVersionUID = 1L;
 
     private int id;
     private String name;
@@ -49,6 +49,11 @@ public class User implements Serializable {
         this.state = state;
         saveUser();
     }
+
+    public void copyState(State state) {
+        this.state = state;
+    }
+
     public void setImage(String image) {
         this.image = image;
     }

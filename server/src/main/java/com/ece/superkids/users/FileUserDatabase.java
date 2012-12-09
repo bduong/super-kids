@@ -13,35 +13,33 @@ public class FileUserDatabase  implements UserDatabase {
   public FileUserDatabase() {
       userHome = FileManagerImpl.getInstance().getDirectory().getAbsolutePath();
       path = userHome+File.separator;
-      System.out.println(path);
+      //System.out.println(path);
   }
 
   private User getUserFromFile(String filename) {
-      User user = null;
+
       try {
-          InputStream file = new FileInputStream(path+filename);
-          InputStream buffer = new BufferedInputStream( file );
-          ObjectInput input = new ObjectInputStream ( buffer );
-          try {
-              user = (User)input.readObject();
-          } finally {
-              input.close();
-          }
-      } catch(Exception e) {
-          System.out.println("Could not deserialize file: " + filename);
-          e.printStackTrace();
-      } finally {
+          ObjectInputStream input = new ObjectInputStream(new FileInputStream(path + filename));
+          User user = (User)input.readObject();
+          input.close();
           return user;
+
+      } catch(IOException e) {
+          return null;
+      } catch (ClassNotFoundException e) {
+          e.printStackTrace();
       }
+
+      return null;
   }
 
   // serialize the user
   public void saveUser(User user) {
       String filename = user.getName() + ".ser";
       try {
-          OutputStream file = new FileOutputStream(path+filename);
-          OutputStream buffer = new BufferedOutputStream( file );
-          ObjectOutput output = new ObjectOutputStream( buffer );
+          FileOutputStream file = new FileOutputStream(path+filename);
+          BufferedOutputStream buffer = new BufferedOutputStream( file );
+          ObjectOutputStream output = new ObjectOutputStream( buffer );
           try {
               output.writeObject(user);
           } finally {
@@ -57,21 +55,7 @@ public class FileUserDatabase  implements UserDatabase {
   // deserialize the user
   public User getUser(String name) {
       String filename = name + ".ser";
-      try {
-          InputStream file = new FileInputStream(path+filename);
-          InputStream buffer = new BufferedInputStream( file );
-          ObjectInput input = new ObjectInputStream ( buffer );
-          try {
-              User user = (User)input.readObject();
-              return user;
-          } finally {
-              input.close();
-              System.out.println("Could not deserialize file: " + filename);
-          }
-      } catch(Exception e) {
-             System.out.println(e.getMessage());
-      }
-      return null;
+      return getUserFromFile(filename);
   }
 
   // delete user object file
