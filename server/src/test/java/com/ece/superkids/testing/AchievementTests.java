@@ -2,6 +2,9 @@ package com.ece.superkids.testing;
 
 import com.ece.superkids.achievements.entities.Achievement;
 import com.ece.superkids.achievements.entities.Achievements;
+import com.ece.superkids.users.UserDatabaseFactory;
+import com.ece.superkids.users.UserManager;
+import com.ece.superkids.users.builders.UserBuilder;
 import com.ece.superkids.users.entities.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,12 +21,15 @@ public class AchievementTests {
     private Achievement achievementOne;
     private Achievement achievementTwo;
 
+    private UserManager userManager;
+
 
     @Before
     public void setup() {
         achievements = new Achievements();
         achievementOne = new Achievement(10, "Ice Cream");
         achievementTwo = new Achievement(20, "New Toy");
+        userManager = UserDatabaseFactory.aUserManager();
     }
 
 
@@ -90,5 +96,30 @@ public class AchievementTests {
         ObjectInputStream input = new ObjectInputStream(new FileInputStream(tempFile));
         User save = (User)input.readObject();
         assertEquals(user, save);
+    }
+
+    @Test
+    public void canSaveUserAchievements() {
+        String userName = "tempUser";
+        User user = new User(userName);
+        userManager.addUser(user);
+        User saved = userManager.getUser(userName);
+
+        assertEquals(user, saved);
+
+        achievements.changeAchievement(0, achievementOne);
+        achievements.changeAchievement(1, achievementTwo);
+        User updateUser = UserBuilder.aUser()
+                .copiedFrom(user)
+                .build();
+
+        updateUser.setAchievements(achievements);
+        userManager.updateUser(user, updateUser);
+        User updated = userManager.getUser(userName);
+
+        Achievements savedAchievements = updated.getAchievements();
+
+        assertEquals(savedAchievements.getAchievement(0), achievementOne);
+        assertEquals(savedAchievements.getAchievement(1), achievementTwo);
     }
 }

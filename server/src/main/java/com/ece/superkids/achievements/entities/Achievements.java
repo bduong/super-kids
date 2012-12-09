@@ -1,5 +1,7 @@
 package com.ece.superkids.achievements.entities;
 
+import com.ece.superkids.users.builders.AchievementBuilder;
+
 import java.io.Serializable;
 import java.util.*;
 
@@ -74,6 +76,33 @@ public class Achievements implements Serializable {
     public void changeAchievement(int index, Achievement newAchievement) {
         achievements.set(index, newAchievement);
         Collections.sort(achievements, COMPARATOR);
+    }
+
+    /**
+     * Get a list of all achievements.
+     *
+     * @return The list of all achievements
+     */
+    public List<Achievement> getAllAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(List<Achievement> achievements) {
+        this.achievements = achievements;
+        Collections.sort(achievements, COMPARATOR);
+
+        int size = achievements.size();
+        if (size > 10) this.achievements = this.achievements.subList(0, 9);
+        else if (size < 10) {
+            for (int ii = size - 1; ii < 10; ii++) {
+                this.achievements.add(
+                        AchievementBuilder.anAchievement()
+                            .unlockedAt((ii+1)*10)
+                            .withPrize("")
+                            .build()
+                );
+            }
+        }
     }
 
     private static Comparator<Achievement> COMPARATOR = new Comparator<Achievement>() {

@@ -49,6 +49,11 @@ public class User implements Serializable {
         this.state = state;
         saveUser();
     }
+
+    public void copyState(State state) {
+        this.state = state;
+    }
+
     public void setImage(String image) {
         this.image = image;
     }
