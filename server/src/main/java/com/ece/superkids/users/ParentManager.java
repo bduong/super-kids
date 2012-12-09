@@ -39,7 +39,18 @@ public interface ParentManager {
      */
     void deleteParentAccount(boolean wait);
 
+    /**
+     * Set the recovery question to use.
+     *
+     * @param question the question to use
+     * @return True if question saved successfully, false otherwise.
+     */
     boolean setRecoverQuestion(RecoveryQuestion question);
 
+    /**
+     * Get the recovery question.
+     *
+     * @return The parent's recovery question.
+     */
     RecoveryQuestion getRecoveryQuestion();
 }
