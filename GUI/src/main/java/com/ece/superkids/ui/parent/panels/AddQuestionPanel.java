@@ -90,6 +90,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Question");
 
         choice1Field.addActionListener(new java.awt.event.ActionListener() {
@@ -98,10 +99,13 @@ public class AddQuestionPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Choice 1");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Choice 4");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Choice 2");
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -114,6 +118,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Choice 3");
 
         levelBox.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +128,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(choice2Button);
+        choice2Button.setForeground(new java.awt.Color(255, 255, 255));
         choice2Button.setText("Set Answer");
         choice2Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +137,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(choice1Button);
+        choice1Button.setForeground(new java.awt.Color(255, 255, 255));
         choice1Button.setText("Set Answer");
         choice1Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +146,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(choice3Button);
+        choice3Button.setForeground(new java.awt.Color(255, 255, 255));
         choice3Button.setText("Set Answer");
         choice3Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,6 +155,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(choice4Button);
+        choice4Button.setForeground(new java.awt.Color(255, 255, 255));
         choice4Button.setText("Set Answer");
         choice4Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
