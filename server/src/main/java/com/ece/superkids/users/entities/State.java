@@ -18,13 +18,14 @@ import com.ece.superkids.questions.enums.QuestionCategory;
  */
 public class State implements Serializable {
 
+    static final long serialVersionUID = 1L;
+
     private QuestionLevel currentLevel;
     private Question currentQuestion;
     private QuestionCategory currentCategory;
 
     
     private Map<Question, Integer> scores;
-    static final long serialVersionUID = -6618469841122132321L;
 
     /** Contstructor for state.
      */

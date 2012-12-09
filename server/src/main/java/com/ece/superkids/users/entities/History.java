@@ -16,6 +16,8 @@ import java.io.Serializable;
 
 public class History implements Serializable {
 
+    static final long serialVersionUID = 1L;
+
     private Map<String, ArrayList<State>> questionToList;
     private boolean gameStarted;
 
