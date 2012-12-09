@@ -344,7 +344,7 @@ public class ParentalControlPanel extends javax.swing.JPanel {
     private javax.swing.JButton editachievement;
     private javax.swing.JLabel highlight;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JLayeredPane jLayeredPane2;
+    public javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
     private javax.swing.JPanel optionPanel;
     private javax.swing.JButton resetButton;

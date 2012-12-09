@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 public class Achievement implements Serializable{
 
-    private static final long serialVersionUID = 654321654321654321L;
+    private static final long serialVersionUID = 1L;
 
     private int score;
     private String prize;

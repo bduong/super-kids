@@ -28,6 +28,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
     int choiceSelected;
     String type="TEXT";
     private PanelController panelC = PanelController.getInstance();
+    private int addstate;
 
     public AddQuestionPanel() {
         initComponents();
@@ -38,6 +39,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         picButton2.setVisible(false);
         picButton3.setVisible(false);
         picButton4.setVisible(false);
+        addstate = 0;
 
     }
 
@@ -310,31 +312,82 @@ public class AddQuestionPanel extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        Question q = new Question();
-        //set question
-        q.setQuestion(questionField.getText());
-        //set level
-        q.setLevel((QuestionLevel) levelBox.getSelectedItem());
-        //set category
-        q.setCategory((QuestionCategory) catBox.getSelectedItem());
-        //set choices
-        List<String> choice = new ArrayList<String>();
-        choice.add(choice1Field.getText());
-        choice.add(choice2Field.getText());
-        choice.add(choice3Field.getText());
-        choice.add(choice4Field.getText());
-        q.setChoices(choice);
-        //set answer
-        buttonGroup1.getSelection();
-        //set answer
-        q.setAnswer(choice.get(choiceSelected));
-        //set type
-        q.setType(QuestionType.valueOf(type));
-        //set explanation
-        q.setExplaination("");
-        //add question
-        qm.addQuestion(q);
-        jLabel5.setText("Question Added");
+        if (addstate == 0)
+        {
+            Question q = new Question();
+            //set question
+            q.setQuestion(questionField.getText());
+            //set level
+            q.setLevel((QuestionLevel) levelBox.getSelectedItem());
+            //set category
+            q.setCategory((QuestionCategory) catBox.getSelectedItem());
+            //set choices
+            List<String> choice = new ArrayList<String>();
+            choice.add(choice1Field.getText());
+            choice.add(choice2Field.getText());
+            choice.add(choice3Field.getText());
+            choice.add(choice4Field.getText());
+            q.setChoices(choice);
+            //set answer
+            buttonGroup1.getSelection();
+            //set answer
+            q.setAnswer(choice.get(choiceSelected));
+            //set type
+            q.setType(QuestionType.valueOf(type));
+            //set explanation
+            q.setExplaination("");
+            //add question
+            qm.addQuestion(q);
+            jLabel5.setText("Question Added");
+            
+            addstate++;
+            choice1Field.setEnabled(false);
+            choice1Field.setText("");
+            choice2Field.setEnabled(false);
+            choice2Field.setText("");
+            choice3Field.setEnabled(false);
+            choice3Field.setText("");
+            choice4Field.setEnabled(false);
+            choice4Field.setText("");
+            questionField.setEnabled(false);
+            questionField.setText("");
+            picButton1.setEnabled(false);
+            picButton2.setEnabled(false);
+            picButton3.setEnabled(false);
+            picButton4.setEnabled(false);
+            choice1Button.setEnabled(false);
+            choice2Button.setEnabled(false);
+            choice3Button.setEnabled(false);
+            choice4Button.setEnabled(false);
+            typeBox.setEnabled(false);
+            levelBox.setEnabled(false);
+            catBox.setEnabled(false);
+            addButton.setText("Add Another");
+        }
+        else
+        {
+            addstate = 0;
+            choice1Field.setEnabled(true);
+            choice2Field.setEnabled(true);
+            choice3Field.setEnabled(true);
+            choice4Field.setEnabled(true);
+            questionField.setEnabled(true);
+            picButton1.setEnabled(true);
+            picButton2.setEnabled(true);
+            picButton3.setEnabled(true);
+            picButton4.setEnabled(true);
+            choice1Button.setEnabled(true);
+            choice2Button.setEnabled(true);
+            choice3Button.setEnabled(true);
+            choice4Button.setEnabled(true);
+            typeBox.setEnabled(true);
+            levelBox.setEnabled(true);
+            catBox.setEnabled(true);
+            addButton.setText("Add");
+            jLabel5.setText("");
+            
+        }
+        
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void choice1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice1ButtonActionPerformed
