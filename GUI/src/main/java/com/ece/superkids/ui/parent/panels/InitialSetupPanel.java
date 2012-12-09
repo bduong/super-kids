@@ -7,6 +7,7 @@ package com.ece.superkids.ui.parent.panels;
 import com.ece.superkids.users.ParentManager;
 import com.ece.superkids.users.UserDatabaseFactory;
 import com.ece.superkids.ui.controllers.PanelController;
+import com.ece.superkids.users.entities.RecoveryQuestion;
 
 /**
  *
@@ -118,6 +119,12 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         jLabel5.setText("Again");
         jLabel5.setBounds(70, 270, 70, 30);
         jLayeredPane1.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        questionField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                questionFieldActionPerformed(evt);
+            }
+        });
         questionField.setBounds(70, 340, 170, 28);
         jLayeredPane1.add(questionField, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -160,6 +167,11 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         } else if (!pass1.equals(pass2)) {
             warnLabel.setText("Passwords don't match.");
         }
+
+        RecoveryQuestion rq = new RecoveryQuestion(questionField.getText(), answerField.getText());
+        if(pM.setRecoverQuestion(rq)==false){
+           warnLabel.setText("Recover question error!");
+        }
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void passFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passFieldActionPerformed
@@ -170,6 +182,10 @@ public class InitialSetupPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         pC.addPanel(new ParentalControlPanel());
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void questionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_questionFieldActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField answerField;
     private javax.swing.JLabel background;
