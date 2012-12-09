@@ -152,6 +152,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
         String ach = "";
         if (achievement.size() > 0) {
             for (int i = 0; i < achievement.size(); i++) {
+                System.out.println("A"+achievement.get(i).getPrize());
                 if (achievement.get(i).getPrize().equals("")) {
                     //do nothing
                 } else {
@@ -159,7 +160,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
                 }
             }
             if (!ach.equals("")) {
-                JOptionPane.showMessageDialog(this, "You unlocked:" + ach);
+                JOptionPane.showMessageDialog(this, "You unlocked:" + ach, "Achievements", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }

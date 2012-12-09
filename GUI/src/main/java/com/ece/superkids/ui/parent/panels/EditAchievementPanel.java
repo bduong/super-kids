@@ -35,7 +35,7 @@ public class EditAchievementPanel extends javax.swing.JPanel {
     public EditAchievementPanel() {
         initComponents();
         fillComboBox();
-        if(user==null){
+        if (user == null) {
             return;
         }
         //1
@@ -455,6 +455,7 @@ public class EditAchievementPanel extends javax.swing.JPanel {
 
         user.setAchievements(A);
         uM.updateUser(user, user);
+        System.out.println(user.getAchievements().getAchievement(0).getPrize());
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
