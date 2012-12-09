@@ -33,3 +33,16 @@
 {"question":"What shape has 3 sides?","choices":["Square","circle","triangle","rectangle"],"answer":"triangle","explaination":"A triangle has three sides","type":"PICTURE","category":"SHAPES","level":"LEVEL_1"}
 {"question":"Which fruit is green?","choices":["apple","grapes","banana","kiwi"],"answer":"kiwi","explaination":"A kiwi has is green on the inside","type":"PICTURE","category":"COLORS","level":"LEVEL_1"}
 {"question":"Which is a Deer?","choices":["dog","giraffe","deer","elephant"],"answer":"deer","explaination":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
+{"question":"Where do fishes live","choices":["Water","Air","Land","Trees"],"answer":"Water","explaination":"","type":"TEXT", "category":"ANIMALS","level":"LEVEL_1"}
+{"question":"Which of the following do you use to write on paper","choices":["Pencil","Ruler","Scale","Eraser"],"answer":"Pencil","explaination":"","type":"TEXT", "category":"STATIONARY","level":"LEVEL_3"}
+{"question":"Which of the following is used for coloring","choices":["crayon","ruler","sharpener","eraser"],"answer":"crayon","explaination":"","type":"PICTURE", "category":"STATIONARY","level":"LEVEL_3"}
+{"question":"Which of the following is not a sense organ","choices":["eyes","nose","skin","hands"],"answer":"hands","explaination":"","type":"TEXT", "category":"BODYPARTS","level":"LEVEL_3"}
+{"question":"Which organ do you use to smell","choices":["eyes","nose","tongue","ears"],"answer":"nose","explaination":"","type":"TEXT", "category":"BODYPARTS","level":"LEVEL_3"}
+{"question":"Identify a violin from the pictures","choices":["violin","guitar","piano","flute"],"answer":"violin","explaination":"","type":"PICTURE", "category":"INSTRUMENTS","level":"LEVEL_3"}
+{"question":"Which of the following is a string instrument","choices":["drums","guitar","piano","flute"],"answer":"guitar","explaination":"","type":"PICTURE", "category":"INSTRUMENTS","level":"LEVEL_3"}
+{"question":"Identify the planet Saturn","choices":["mercury","saturn","jupiter","earth"],"answer":"saturn","explaination":"","type":"PICTURE", "category":"PLANETS","level":"LEVEL_2"}
+{"question":"Which of the following bodypart is used for hearing sounds","choices":["eye","nose","hand","ear"],"answer":"ear","explaination":"","type":"PICTURE", "category":"BODYPARTS","level":"LEVEL_3"}
+{"question":"Which of the following bodypart is used for walking","choices":["eye","hand","foot","ear"],"answer":"foot","explaination":"","type":"PICTURE", "category":"BODYPARTS","level":"LEVEL_3"}
+{"question":"Which fruit is red?","choices":["apple","banana","grapes","kiwi"],"answer":"apple","explaination":"","type":"PICTURE","category":"COLORS","level":"LEVEL_1"}
+{"question":"Which food is a leaf?","choices":["Potato","Radish","Lettuce","Pepper"],"answer":"Lettuce","explaination":"","type":"TEXT", "category":"FOOD","level":"LEVEL_2"}
+{"question":"Which of the following is used for erasing","choices":["crayon","ruler","sharpener","eraser"],"answer":"eraser","explaination":"","type":"PICTURE", "category":"STATIONARY","level":"LEVEL_3"}
