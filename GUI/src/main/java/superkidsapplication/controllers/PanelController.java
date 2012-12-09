@@ -159,7 +159,7 @@ public class PanelController {
             goBackOnePanel();
         }
         if(found==false){
-            this.addPanel(new SubjectSelectionPanel(session.getLoggedInUser().getState().getCurrentLevel()));
+            this.addPanel(new SubjectSelectionPanel(session.getLoggedInUser().getState().getCurrentLevel(),false));
         }
     }
 }

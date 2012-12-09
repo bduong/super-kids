@@ -24,14 +24,14 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private PanelController controller;
     private TutorialController factory2;
     private QuestionLevel level;
-    private boolean tutorial;
     private Session session;
+    private boolean tutorial_flag = false;
     private GameController gController;
 
     /**
      * Creates new form SubjectSelectionPanel
      */
-    public SubjectSelectionPanel(QuestionLevel level) {
+/*    public SubjectSelectionPanel(QuestionLevel level) {
         this.setName("SubjectSelection");
         controller = PanelController.getInstance();
         gController = GameController.getInstance();
@@ -42,13 +42,19 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         subject2.setText(level.getCategories().get(1).toString());
         subject3.setText(level.getCategories().get(2).toString());
     }
-
-    public SubjectSelectionPanel() {
-        this.setName("TutorialSelection");
-        tutorial = true;
+*/
+    public SubjectSelectionPanel(QuestionLevel level,boolean tutorial) {
+//        this.setName("TutorialSelection");
         controller = PanelController.getInstance();
-        factory2 = TutorialController.getInstance();
-        this.level = level.LEVEL_1;
+        if (tutorial){
+            tutorial_flag = true;
+            factory2 = TutorialController.getInstance();
+        }
+        else{
+            gController = GameController.getInstance();
+            session = Session.aSession();
+        }
+        this.level = level;
         initComponents();
         subject1.setText(level.getCategories().get(0).toString());
         subject2.setText(level.getCategories().get(1).toString());
@@ -148,7 +154,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
         // TODO add your handling code here:
-        if (tutorial) {
+        if (tutorial_flag) {
             factory2.reset();
             TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0));
             controller.addPanel(q);
@@ -160,7 +166,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private void subject2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject2ActionPerformed
          // TODO add your handling code here:
-        if (tutorial) {
+        if (tutorial_flag) {
             factory2.reset();
             TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0));
             controller.addPanel(q);
@@ -171,7 +177,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private void subject3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject3ActionPerformed
          // TODO add your handling code here:
-        if (tutorial) {
+        if (tutorial_flag) {
             factory2.reset();
             TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0));
             controller.addPanel(q);

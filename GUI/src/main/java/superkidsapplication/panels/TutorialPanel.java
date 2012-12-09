@@ -60,6 +60,8 @@ public class TutorialPanel extends javax.swing.JPanel implements ActionListener{
 
     public void play() {
         long time = System.currentTimeMillis();
+        SoundPanel sound = SoundPanel.getInstance();
+        sound.mController.stopMusic();
         player.play(fileName);
         System.out.println(System.currentTimeMillis() - time);
         time = System.currentTimeMillis();

@@ -127,7 +127,7 @@ public class GameController {
             } else if (number == -1) {
                 user.getState().getCurrentLevel();
                 QuestionLevel lev = user.getState().getCurrentLevel();
-                controller.addPanel(new SubjectSelectionPanel(lev));
+                controller.addPanel(new SubjectSelectionPanel(lev, false));
                 System.out.println("Cannot find saved question.");
             }
         } catch (IOException ex) {

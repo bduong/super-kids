@@ -6,6 +6,8 @@ package superkidsapplication.panels;
 
 import com.ece.superkids.questions.enums.QuestionLevel;
 import java.awt.Color;
+import java.util.HashSet;
+import java.util.Set;
 import superkidsapplication.controllers.PanelController;
 
 /**
@@ -18,10 +20,18 @@ public class NewGamePanel extends javax.swing.JPanel {
      * Creates new form NewGamePanel
      */
     private PanelController controller;
+    private boolean tutorial_flag = false;
 
     public NewGamePanel() {
         controller = PanelController.getInstance();
         initComponents();
+    }
+    
+    public NewGamePanel(String string) {
+        controller = PanelController.getInstance();
+        tutorial_flag = true;
+        initComponents();       
+        jLabel1.setText(string);
     }
 
     /**
@@ -46,7 +56,7 @@ public class NewGamePanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("New Game");
-        jLabel1.setBounds(90, 160, 210, 40);
+        jLabel1.setBounds(90, 160, 400, 40);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         level3Button.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
@@ -144,7 +154,8 @@ public class NewGamePanel extends javax.swing.JPanel {
     //FOR EACH LEVEL I THINK WE SHOULD HAVE A DIFFERENT PANEL RATHER THAN USING THE SAME PANEL
     private void level2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level2ButtonActionPerformed
         // TODO add your handling code here:
-        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_2);
+        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_2, tutorial_flag);
+           
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_level2ButtonActionPerformed
@@ -153,14 +164,15 @@ public class NewGamePanel extends javax.swing.JPanel {
         // TODO add your handling code here
         //CATEGORIES PANEL COMES HERE.
         //QUESTIONS PANEL WILL BE ACCESSED FROM CATEGORIESPANEL
-        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_1);
+        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_1, tutorial_flag);
+
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_level1ButtonActionPerformed
 
     private void level3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level3ButtonActionPerformed
         // TODO add your handling code here:
-        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_3);
+        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_3, tutorial_flag);
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_level3ButtonActionPerformed
