@@ -1,5 +1,7 @@
 package com.ece.superkids.users;
 
+import com.ece.superkids.users.entities.RecoveryQuestion;
+
 /**
  * The <code>ParentManager</code> allows interactions as a parent user.
  *
@@ -36,4 +38,8 @@ public interface ParentManager {
      * @param wait true if immediate action, false if wait until exit of application
      */
     void deleteParentAccount(boolean wait);
+
+    boolean setRecoverQuestion(RecoveryQuestion question);
+
+    RecoveryQuestion getRecoveryQuestion();
 }
