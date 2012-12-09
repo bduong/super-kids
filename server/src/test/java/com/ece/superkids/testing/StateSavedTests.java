@@ -16,7 +16,6 @@ import com.ece.superkids.users.FileUserManager;
 import com.ece.superkids.users.entities.History;
 import com.ece.superkids.users.entities.User;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,9 +61,5 @@ public class StateSavedTests {
         
         fileUserManager.deleteUser("TestUser");
     }
-
-
-
-
 
 }
