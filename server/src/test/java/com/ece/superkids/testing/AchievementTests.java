@@ -5,6 +5,7 @@ import com.ece.superkids.achievements.entities.Achievements;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.*;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
@@ -51,5 +52,26 @@ public class AchievementTests {
         assertEquals(achievements.getAchievement(1), achievementTwo);
     }
 
+    @Test
+    public void achievementsCanBeSaved() throws IOException, ClassNotFoundException {
+        achievements.changeAchievement(0, achievementOne);
+        achievements.changeAchievement(1, achievementTwo);
+        assertEquals(achievements.getAchievement(0), achievementOne);
+        assertEquals(achievements.getAchievement(1), achievementTwo);
 
+
+        File tempFile = File.createTempFile("temp", ".ser");
+        tempFile.deleteOnExit();
+
+
+        ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(tempFile));
+        output.writeObject(achievements);
+        output.close();
+
+        ObjectInputStream input = new ObjectInputStream(new FileInputStream(tempFile));
+        Achievements saved = (Achievements) input.readObject();
+        input.close();
+        assertEquals(saved.getAchievement(0), achievementOne);
+        assertEquals(saved.getAchievement(1), achievementTwo);
+    }
 }
