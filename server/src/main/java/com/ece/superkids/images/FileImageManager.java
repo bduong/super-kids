@@ -4,10 +4,7 @@ import com.ece.superkids.FileManager;
 import com.ece.superkids.FileManagerImpl;
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -60,8 +57,10 @@ public class FileImageManager implements ImageManager {
             Properties props = new Properties();
             props.load(new FileInputStream(fileManager.getImagePathsFile()));
             String imagePath = props.getProperty(key);
-            File image = new File(imagePath);
-            image.delete();
+            if(imagePath == null) {
+                throw new FileNotFoundException("Custom image does not exist");
+            }
+            new File(imagePath).delete();
 
             props.remove(key);
             props.store(new FileWriter(fileManager.getImagePathsFile()), "Custom Images");
