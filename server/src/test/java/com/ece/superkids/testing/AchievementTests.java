@@ -13,9 +13,12 @@ import java.io.*;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
 public class AchievementTests {
+
+    private static final int NUMBER_OF_ACHIEVEMENTS = 10;
 
     private Achievements achievements;
     private Achievement achievementOne;
@@ -54,6 +57,7 @@ public class AchievementTests {
 
         achievements.changeAchievement(7, achievementOne);
         achievements.changeAchievement(5, achievementTwo);
+        achievements.sortAchievements();
 
         assertEquals(achievements.getAchievement(0), achievementOne);
         assertEquals(achievements.getAchievement(1), achievementTwo);
@@ -80,6 +84,32 @@ public class AchievementTests {
         input.close();
         assertEquals(saved.getAchievement(0), achievementOne);
         assertEquals(saved.getAchievement(1), achievementTwo);
+    }
+
+    @Test
+    public void canGetUnlockedAchievements() {
+        achievements.changeAchievement(0, achievementOne);
+        achievements.changeAchievement(1, achievementTwo);
+
+        List<Achievement> unlocked = achievements.getAchievementsUnlocked(20);
+
+        assertEquals(unlocked.get(0), achievementOne);
+        assertEquals(unlocked.get(1), achievementTwo);
+    }
+
+    @Test
+    public void unlockedAchievementsAreDeleted() {
+        achievements.changeAchievement(0, achievementOne);
+        achievements.changeAchievement(1, achievementTwo);
+
+        List<Achievement> unlocked = achievements.getAchievementsUnlocked(20);
+
+        assertEquals(unlocked.get(0), achievementOne);
+        assertEquals(unlocked.get(1), achievementTwo);
+
+        assertFalse(achievements.getAllAchievements().contains(achievementOne));
+        assertFalse(achievements.getAllAchievements().contains(achievementTwo));
+        assertEquals(NUMBER_OF_ACHIEVEMENTS, achievements.getAllAchievements().size());
     }
 
     @Test
