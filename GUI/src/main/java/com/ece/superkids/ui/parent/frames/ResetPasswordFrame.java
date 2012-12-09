@@ -168,7 +168,7 @@ public class ResetPasswordFrame extends javax.swing.JFrame {
         String pass1 = new String(jPasswordField1.getPassword());
         String pass2 = new String(jPasswordField2.getPassword());
         if (pass1.length() < 8) {
-            responseLabel.setText("Length must be at least 8");
+            responseLabel.setText("At least 8 char");
             return;
         }
         if (pass1.equals(pass2)) {
