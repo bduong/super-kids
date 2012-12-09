@@ -166,8 +166,9 @@ public class EditAchievementPanel extends javax.swing.JPanel {
         setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Stars");
+        jLabel1.setText("Points");
 
         jButton1.setText("Confirm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
