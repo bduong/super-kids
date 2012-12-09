@@ -8,8 +8,11 @@ import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.controllers.TTSController;
 import com.ece.superkids.ui.customui.ImageLabel;
 import com.ece.superkids.ui.events.Session;
+import com.ece.superkids.users.entities.User;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,21 +26,22 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     private Session session = Session.aSession();
     private ArrayList<StarPanel> stars = new ArrayList(5);
     private PanelController controller = PanelController.getInstance();
+    private User user = session.getLoggedInUser();
 
     public ScoreScreenPanel() {
         this.setName("ScoreScreen");
         initComponents();
-        avatar.setIcon(new javax.swing.ImageIcon(getClass().getResource(session.getLoggedInUser().getImage())));
+        avatar.setIcon(new javax.swing.ImageIcon(getClass().getResource(user.getImage())));
         displayStars();
         //end the state for user
-        session.getLoggedInUser().endState();
+        user.endState();
     }
 
     private void displayStars() {
         //get total score for this level
-        int totalscore = session.getLoggedInUser().getState().getTotalScore();
+        int totalscore = user.getState().getTotalScore();
         //get the scores size
-        Map scores = session.getLoggedInUser().getState().getAllScores();
+        Map scores = user.getState().getAllScores();
         //find average score
         int score = totalscore / scores.size(); //scoring for the category
         int num_stars = score / 2; //One star per 2points
@@ -56,7 +60,6 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
         } else {
             TTSController.TTS("Excellent Job!");
         }
-
     }
 
     /**
@@ -120,18 +123,19 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
 
     private void jLayeredPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLayeredPane1MouseClicked
         // TODO add your handling code here:
-        if (session.getLoggedInUser().isGameOn() == false) {
+        if (user.isGameOn() == false) {
             controller.goToMainMenu();
             TTSController.TTS("You have finished all levels");
             return;
         }
-        if (session.getLoggedInUser().isCurrentLevelFinished()) {
+        if (user.isCurrentLevelFinished()) {
             controller.addPanel(new NewGamePanel("Continue: Select a Level"));
             TTSController.TTS("You have finished this level.");
         } else {
             controller.goToSubjectMenu();
             TTSController.TTS("You have finished this category.");
         }
+        displayAchievements();
     }//GEN-LAST:event_jLayeredPane1MouseClicked
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel avatar;
@@ -141,4 +145,11 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     private javax.swing.JPanel starPanel;
     private javax.swing.JLabel textLabel;
     // End of variables declaration//GEN-END:variables
+
+    private void displayAchievements() {
+        List achievement = user.getAchievements().getAchievementsUnlocked(user.getTotalScore());
+        if (achievement.size() > 0) {
+            JOptionPane.showMessageDialog(this, "You unlocked:"+achievement);
+        }
+    }
 }
