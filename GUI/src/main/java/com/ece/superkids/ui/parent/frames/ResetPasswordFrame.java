@@ -4,6 +4,9 @@
  */
 package com.ece.superkids.ui.parent.frames;
 
+import com.ece.superkids.users.ParentManager;
+import com.ece.superkids.users.UserDatabaseFactory;
+
 /**
  *
  * @author baris
@@ -13,6 +16,7 @@ public class ResetPasswordFrame extends javax.swing.JFrame {
     /**
      * Creates new form ResetPasswordFrame
      */
+    ParentManager pM = UserDatabaseFactory.aParentManager();
     public ResetPasswordFrame() {
         initComponents();
         setLocationRelativeTo(null);
@@ -34,10 +38,10 @@ public class ResetPasswordFrame extends javax.swing.JFrame {
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        questionField = new javax.swing.JTextField();
+        answerField = new javax.swing.JTextField();
+        okButton1 = new javax.swing.JButton();
+        okButton2 = new javax.swing.JButton();
         responseLabel = new javax.swing.JLabel();
 
         setResizable(false);
@@ -50,16 +54,26 @@ public class ResetPasswordFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Answer");
 
-        jTextField1.setEditable(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        questionField.setEditable(false);
+        questionField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                questionFieldActionPerformed(evt);
             }
         });
 
-        jButton2.setText("OK");
+        okButton1.setText("OK");
+        okButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("OK");
+        okButton2.setText("OK");
+        okButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButton2ActionPerformed(evt);
+            }
+        });
 
         responseLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         responseLabel.setForeground(new java.awt.Color(255, 51, 51));
@@ -82,8 +96,8 @@ public class ResetPasswordFrame extends javax.swing.JFrame {
                                 .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel2))
                             .add(18, 18, 18)
                             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .add(jTextField2)))
+                                .add(questionField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                .add(answerField)))
                         .add(layout.createSequentialGroup()
                             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                                 .add(jLabel3)
@@ -94,10 +108,10 @@ public class ResetPasswordFrame extends javax.swing.JFrame {
                                 .add(jPasswordField2)
                                 .add(layout.createSequentialGroup()
                                     .add(41, 41, 41)
-                                    .add(jButton1))
+                                    .add(okButton2))
                                 .add(layout.createSequentialGroup()
                                     .add(8, 8, 8)
-                                    .add(jButton2)))))
+                                    .add(okButton1)))))
                     .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -110,14 +124,14 @@ public class ResetPasswordFrame extends javax.swing.JFrame {
                 .add(layout.createSequentialGroup()
                     .add(31, 31, 31)
                     .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(questionField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(jLabel1))
                     .add(18, 18, 18)
                     .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(answerField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(jLabel2))
                     .add(8, 8, 8)
-                    .add(jButton2)
+                    .add(okButton1)
                     .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                     .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jPasswordField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -127,36 +141,64 @@ public class ResetPasswordFrame extends javax.swing.JFrame {
                         .add(jPasswordField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(jLabel3))
                     .add(18, 18, 18)
-                    .add(jButton1)
+                    .add(okButton2)
                     .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void questionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_questionFieldActionPerformed
+
+    private void okButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton1ActionPerformed
+        // TODO add your handling code here:
+        if((pM.getRecoveryQuestion().checkAnswer(answerField.getText()))){
+           initPassFields(true);
+           responseLabel.setText("Correct answer");
+        }
+        else{
+            responseLabel.setText("Wrong answer");
+        }
+    }//GEN-LAST:event_okButton1ActionPerformed
+
+    private void okButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton2ActionPerformed
+        // TODO add your handling code here:
+        String pass1 = new String(jPasswordField1.getPassword());
+        String pass2 = new String(jPasswordField2.getPassword());
+        if (pass1.length() < 8) {
+            responseLabel.setText("Length must be at least 8");
+            return;
+        }
+        if (pass1.equals(pass2)) {
+            pM.changeParentPassword(new String(jPasswordField1.getPassword()));
+            responseLabel.setText("Password changed");
+        } else if (!pass1.equals(pass2)) {
+            responseLabel.setText("Don't match");
+        }
+    }//GEN-LAST:event_okButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField answerField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton okButton1;
+    private javax.swing.JButton okButton2;
+    private javax.swing.JTextField questionField;
     private javax.swing.JLabel responseLabel;
     // End of variables declaration//GEN-END:variables
 
     private void initPassFields(boolean set) {
+        questionField.setText(pM.getRecoveryQuestion().getQuestion());
         jPasswordField1.setVisible(set);
         jPasswordField2.setVisible(set);
         jLabel3.setVisible(set);
         jLabel4.setVisible(set);
-        jButton2.setVisible(set);
+        okButton2.setVisible(set);
     }
 }
