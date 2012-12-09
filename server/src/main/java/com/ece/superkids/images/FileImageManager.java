@@ -53,4 +53,22 @@ public class FileImageManager implements ImageManager {
         }
         return key;
     }
+
+    @Override
+    public boolean deleteImage(final String key) {
+        try{
+            Properties props = new Properties();
+            props.load(new FileInputStream(fileManager.getImagePathsFile()));
+            String imagePath = props.getProperty(key);
+            File image = new File(imagePath);
+            image.delete();
+
+            props.remove(key);
+            props.store(new FileWriter(fileManager.getImagePathsFile()), "Custom Images");
+            return true;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
 }
