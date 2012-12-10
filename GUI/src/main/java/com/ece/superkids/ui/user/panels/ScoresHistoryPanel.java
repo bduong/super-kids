@@ -113,13 +113,17 @@ public class ScoresHistoryPanel extends javax.swing.JPanel {
         for (int i = 0; i < category.size(); i++) {
             
             Object data[][] = user.getHistory(level.getCategories().get(i), level);
-
+            
+            if(data != null)
+            {
+            
             String Columnname[] = {"Question", "Attempt 1", "Attempt 2", "Attempt 3", "Attempt 4", "Attempt 5"};
 
             table[i] = new JTable(data, Columnname);
             JScrollPane spTable = new JScrollPane(table[i]);
 
             jTabbedPane1.addTab(category.get(i).toString(), spTable);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -130,13 +134,15 @@ public class ScoresHistoryPanel extends javax.swing.JPanel {
         jTabbedPane1.removeAll();
         for (int i = 0; i < category.size(); i++) {
             Object data[][] = user.getHistory(level.getCategories().get(i), level);
-
+            if(data != null)
+            {
             String Columnname[] = {"Question Number", "Attempt 1", "Attempt 2", "Attempt 3", "Attempt 4", "Attempt 5"};
 
             table[i] = new JTable(data, Columnname);
             JScrollPane spTable = new JScrollPane(table[i]);
 
             jTabbedPane1.addTab(category.get(i).toString(), spTable);
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -146,14 +152,17 @@ public class ScoresHistoryPanel extends javax.swing.JPanel {
         category = level.getCategories();
         jTabbedPane1.removeAll();
         for (int i = 0; i < category.size(); i++) {
+           
             Object data[][] = user.getHistory(level.getCategories().get(i), level);
-
+            if(data != null)
+            {
             String Columnname[] = {"Question Number", "Attempt 1", "Attempt 2", "Attempt 3", "Attempt 4", "Attempt 5"};
 
             table[i] = new JTable(data, Columnname);
             JScrollPane spTable = new JScrollPane(table[i]);
 
             jTabbedPane1.addTab(category.get(i).toString(), spTable);
+            }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
