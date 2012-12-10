@@ -99,7 +99,7 @@ public class HistoryScoreTests {
         Object[][] scores = user.getHistory(QuestionCategory.SHAPES, QuestionLevel.LEVEL_1);
         for(int i=0; i<numberOfQuestions; i++) {
             System.out.print(scores[i][0]);
-            for(int j=1; j<scores[0].length; j++) {
+            for(int j=1; j<6; j++) {
                 System.out.print(" " + scores[i][j]);
             }
             System.out.println();
