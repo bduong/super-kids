@@ -374,11 +374,13 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
         //delete the question from the database
-        manager.deleteQuestion(currentQuestion);
-        responseLabel.setText("Deleted");
-        System.out.println("Question deleted: " + currentQuestion.getQuestion());
-        pControl.setParentalControlLayerPane(new EditQuestionsPanel());
-        
+        if (currentQuestion != null) {
+            manager.deleteQuestion(currentQuestion);
+            responseLabel.setText("Deleted");
+            JOptionPane.showMessageDialog(this, "Question Deleted.");
+            System.out.println("Question deleted: " + currentQuestion.getQuestion());
+            pControl.setParentalControlLayerPane(new EditQuestionsPanel());
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void level2QuestionsBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level2QuestionsBoxActionPerformed
@@ -401,6 +403,8 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         choice2Text.setText(currentQuestion.getChoices().get(1));
         choice3Text.setText(currentQuestion.getChoices().get(2));
         choice4Text.setText(currentQuestion.getChoices().get(3));
+
+        pickChoiceButton(currentQuestion);
     }//GEN-LAST:event_level2QuestionsBoxActionPerformed
 
     private void level1QuestionsBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level1QuestionsBoxActionPerformed
@@ -412,7 +416,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         int i = level1QuestionsBox.getSelectedIndex();
         //set the current question to the one selected
         currentQuestion = qList1.get(i);
-        qType=currentQuestion.getType();
+        qType = currentQuestion.getType();
         if (qType.equals(QuestionType.PICTURE)) {
             setPicBoxEnabled(true);
         } else {
@@ -424,6 +428,7 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         choice3Text.setText(currentQuestion.getChoices().get(2));
         choice4Text.setText(currentQuestion.getChoices().get(3));
 
+        pickChoiceButton(currentQuestion);
     }//GEN-LAST:event_level1QuestionsBoxActionPerformed
     private void level3QuestionsBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level3QuestionsBoxActionPerformed
         // TODO add your handling code here:
@@ -445,6 +450,8 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         choice2Text.setText(currentQuestion.getChoices().get(1));
         choice3Text.setText(currentQuestion.getChoices().get(2));
         choice4Text.setText(currentQuestion.getChoices().get(3));
+
+        pickChoiceButton(currentQuestion);
     }//GEN-LAST:event_level3QuestionsBoxActionPerformed
 
     //edit the question when save button is clicked
@@ -474,9 +481,9 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         manager.editQuestion(currentQuestion, editedQuestion);
         responseLabel.setText("Saved");
         System.out.println("Question saved: " + questionText.getText());
-        JOptionPane.showMessageDialog(this,"Changes saved.");           
+        JOptionPane.showMessageDialog(this, "Changes saved.");
         pControl.setParentalControlLayerPane(new EditQuestionsPanel());
-        
+
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void questionTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionTextActionPerformed
@@ -604,13 +611,32 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void setPicBoxEnabled(boolean par) {
-            picButton1.setEnabled(par);
-            picButton2.setEnabled(par);
-            picButton3.setEnabled(par);
-            picButton4.setEnabled(par); 
+        picButton1.setEnabled(par);
+        picButton2.setEnabled(par);
+        picButton3.setEnabled(par);
+        picButton4.setEnabled(par);
     }
 
     private void handleCustomPicture(JTextField field) {
         pControl.addPanel(new QuestionPicturePanel(field));
+    }
+
+    private void pickChoiceButton(Question currentQuestion1) {
+        for (int i = 0; i < 3; i++) {
+            if (currentQuestion1.getAnswer().equals(currentQuestion1.getChoices().get(i))) {
+                if (i == 0) {
+                    choice1Button.setSelected(true);
+                }
+                if (i == 1) {
+                    choice2Button.setSelected(true);
+                }
+                if (i == 2) {
+                    choice3Button.setSelected(true);
+                }
+                if (i == 3) {
+                    choice4Button.setSelected(true);
+                }
+            }
+        }
     }
 }
