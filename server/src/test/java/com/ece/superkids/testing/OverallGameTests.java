@@ -19,6 +19,11 @@ import org.junit.Test;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
+/**
+ * The <code>OverallGameTests</code> has tests to check the flow of the game: resuming game, finishing categories, finishing levels, and restarting game.
+ *
+ * @author Marc Adam
+ */
 public class OverallGameTests {
 
     User user;
@@ -30,12 +35,18 @@ public class OverallGameTests {
 
     /* whenever new levels are added this needs to be updated, else the history won't be able to know if the user is done with the game */
     private QuestionLevel gameLevels[] = {QuestionLevel.LEVEL_1, QuestionLevel.LEVEL_2, QuestionLevel.LEVEL_3};
-    
+
+    /**
+     * Create test user.
+     */
     @Before
     public void setup() {
         user = new User("GameTester");
     }
 
+    /**
+     * Start the game and check if the game is started.
+     */
     @Test
     public void gameStarted() {
         boolean gameStarted = user.isGameOn();
@@ -43,6 +54,10 @@ public class OverallGameTests {
         user.newGame();
         assertTrue(user.isGameOn());
     }
+
+    /**
+     * Make the user answer all the questions, and check if the game is done when he does.
+     */
     @Test
     public void answerEverything() {
         ArrayList<QuestionCategory> categories1 = new ArrayList<QuestionCategory>(Arrays.asList(level1Categories));
@@ -83,12 +98,21 @@ public class OverallGameTests {
         assertFalse(user.isGameOn());
     }
 
+    /**
+     * Delete the test user from the database.
+     */
     @After
     public void cleanUp() {
         user.deleteUser();
     }
 
 
+    /**
+     * Generate a fake random question.
+     * @param questionLevel Level for the question.
+     * @param questionCategory Category for the question.
+     * @return Question object.
+     */
     private Question createRandomQuestion(QuestionLevel questionLevel, QuestionCategory questionCategory) {
         
         Question question = new Question();
