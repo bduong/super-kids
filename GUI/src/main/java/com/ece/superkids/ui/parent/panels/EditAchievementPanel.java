@@ -425,18 +425,31 @@ public class EditAchievementPanel extends javax.swing.JPanel {
         Achievements B = AchievementsBuilder.aSetOfAchievements()
                 .copiedFrom(A)
                 .build();
-
+        int no_updates=0;
         for (int ii = 0; ii < 10; ii++) {
-            int score = Integer.parseInt(scores.get(ii).getText());
+            String pattern = "[0-9]*";
+            if(scores.get(ii).getText().matches(pattern))
+            {
+            int score = Integer.parseInt(scores.get(ii).getText());            
             String prize = prizes.get(ii).getText();
             B.changeAchievement(ii, AchievementBuilder.anAchievement().unlockedAt(score).withPrize(prize).build());
+            }
+            else
+            {
+                System.out.printf("Invalid inputs : Scores %s and Prize %s didn't update\n",scores.get(ii).getText(),prizes.get(ii).getText());
+                no_updates++;
+            }
+            
         }
         B.sortAchievements();
         user.setAchievements(B);
         updateSessionUser();
         uM.updateUser(user, user);
         loadUser();
-        JOptionPane.showMessageDialog(this, "Achievements updated", "Message", JOptionPane.INFORMATION_MESSAGE);
+        if(no_updates==0)
+        JOptionPane.showMessageDialog(this, "All Achievements updated", "Message", JOptionPane.INFORMATION_MESSAGE);
+        else
+        JOptionPane.showMessageDialog(this, (10-no_updates)+" Achievements updated,"+no_updates+" columns on Points has invalid numbers", "Message", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

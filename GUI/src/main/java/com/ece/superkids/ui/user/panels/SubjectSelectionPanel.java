@@ -5,14 +5,9 @@
 package com.ece.superkids.ui.user.panels;
 
 import com.ece.superkids.questions.enums.QuestionLevel;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import com.ece.superkids.ui.controllers.GameController;
 import com.ece.superkids.ui.controllers.PanelController;
-import com.ece.superkids.ui.controllers.QuestionController;
 import com.ece.superkids.ui.controllers.TTSController;
-import com.ece.superkids.ui.controllers.TutorialController;
 import com.ece.superkids.ui.events.Session;
 
 /**
@@ -22,33 +17,25 @@ import com.ece.superkids.ui.events.Session;
 public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private PanelController controller;
-    private TutorialController factory2;
     private QuestionLevel level;
-    private boolean tutorial;
     private Session session;
+    private boolean tutorial_flag = false;
     private GameController gController;
 
     /**
      * Creates new form SubjectSelectionPanel
      */
-    public SubjectSelectionPanel(QuestionLevel level) {
-        this.setName("SubjectSelection");
-        controller = PanelController.getInstance();
-        gController = GameController.getInstance();
-        session = Session.aSession();
-        this.level = level;
-        initComponents();
-        subject1.setText(level.getCategories().get(0).toString());
-        subject2.setText(level.getCategories().get(1).toString());
-        subject3.setText(level.getCategories().get(2).toString());
-    }
 
-    public SubjectSelectionPanel() {
-        this.setName("TutorialSelection");
-        tutorial = true;
+    public SubjectSelectionPanel(QuestionLevel level, boolean tutorial) {
         controller = PanelController.getInstance();
-        factory2 = TutorialController.getInstance();
-        this.level = level.LEVEL_1;
+        if (tutorial){
+            tutorial_flag = true;
+        }
+        else{
+            gController = GameController.getInstance();
+            session = Session.aSession();
+        }
+        this.level = level;
         initComponents();
         subject1.setText(level.getCategories().get(0).toString());
         subject2.setText(level.getCategories().get(1).toString());
@@ -147,10 +134,8 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
         // TODO add your handling code here:
-        if (tutorial) {
-            factory2.reset();
-            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
-            controller.addPanel(q);
+        if (tutorial_flag) {
+
         } else {
             gController.newSubject(level, 0);
         }
@@ -158,10 +143,8 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private void subject2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject2ActionPerformed
          // TODO add your handling code here:
-        if (tutorial) {
-            factory2.reset();
-            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
-            controller.addPanel(q);
+        if (tutorial_flag) {
+
         } else {
             gController.newSubject(level, 1);
         }
@@ -169,10 +152,8 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private void subject3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject3ActionPerformed
          // TODO add your handling code here:
-        if (tutorial) {
-            factory2.reset();
-            TutorialPanel q = factory2.createTutorialPanel(level.getCategories().get(0).toString());
-            controller.addPanel(q);
+        if (tutorial_flag) {
+
         } else {
             gController.newSubject(level, 2);
         }
