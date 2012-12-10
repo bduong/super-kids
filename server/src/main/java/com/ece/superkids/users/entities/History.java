@@ -173,14 +173,23 @@ public class History implements Serializable {
             Object o[][] = new Object[counter][6];
             it = map.entrySet().iterator();
             int index = 0;
+            ArrayList<Integer> scoresList;
+            int scoresListSize = 0;
             while(it.hasNext()) {
                 Map.Entry pairs = (Map.Entry)it.next();
-                ArrayList<Integer> scoresList = (ArrayList<Integer>)pairs.getValue();
+                scoresList = (ArrayList<Integer>)pairs.getValue();
+                scoresListSize = scoresList.size();
                 o[index][0] = ((Question)pairs.getKey()).getQuestion();
                 for(int i=1; i<scoresList.size()+1; i++) {
                     o[index][i] = scoresList.get(i-1);
                 }
                 index++;
+            }
+            index++;
+            for(int i=0; i<counter; i++) {
+                for(int j=scoresListSize+1; j<6; j++) {
+                    o[index][i] = 0;
+                }
             }
             return o;
         } else {
