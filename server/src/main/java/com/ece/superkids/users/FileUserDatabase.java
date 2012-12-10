@@ -5,18 +5,31 @@ import com.ece.superkids.users.entities.User;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * The <code>FileUserDatabase</code> class implements for the UserDatabase class.
+ * It implements the functions to add, delete, update and get users by serializing/deserializing files from the database.
+ *
+ * @author Marc Adam
+ */
 public class FileUserDatabase  implements UserDatabase {
 
     String userHome;
     String path;
+    
+    /**
+     * Create a FileUserDatabase object and set the path to .superkidsdata
+     */
+    public FileUserDatabase() {
+        userHome = FileManagerImpl.getInstance().getDirectory().getAbsolutePath();
+        path = userHome+File.separator;
+    }
 
-  public FileUserDatabase() {
-      userHome = FileManagerImpl.getInstance().getDirectory().getAbsolutePath();
-      path = userHome+File.separator;
-      //System.out.println(path);
-  }
-
-  private User getUserFromFile(String filename) {
+    /**
+     * Construct a user object from a serialized file.
+     * @param filename Path for the serialized file.
+     * @return User object deserialized.
+     */
+    private User getUserFromFile(String filename) {
 
       try {
           ObjectInputStream input = new ObjectInputStream(new FileInputStream(path + filename));
@@ -33,7 +46,10 @@ public class FileUserDatabase  implements UserDatabase {
       return null;
   }
 
-  // serialize the user
+  /**
+   * Save the user to a file using serialization. The user is saved in name.ser
+   * @param user User to be saved in the file.
+   */
   public void saveUser(User user) {
       String filename = user.getName() + ".ser";
       try {
@@ -52,19 +68,31 @@ public class FileUserDatabase  implements UserDatabase {
       }
   }
 
-  // deserialize the user
+  /**
+   * Get the user from a file by deserializing the file.
+   * @param name Name of the user to get.
+   * @return User object deserialized.
+   */
   public User getUser(String name) {
       String filename = name + ".ser";
       return getUserFromFile(filename);
   }
 
-  // delete user object file
+  /**
+   * Delete the file for the user.
+   * @param name Name of the user.
+   * @return File deleted successfully.
+   */
   public boolean deleteUser(String name) {
       File file = new File(path+name+".ser");
       return file.delete();
   }
 
-  // update user object file
+  /**
+   * Update the serialized file of the user.
+   * @param oldUser User to update.
+   * @param newUser User to be updated to.
+   */
   public void updateUser(User oldUser, User newUser) {
       String fileName = path+oldUser.getName() + ".ser";
       String newFileName = path+newUser.getName() + ".ser";
@@ -72,6 +100,10 @@ public class FileUserDatabase  implements UserDatabase {
       saveUser(newUser);
   }
 
+  /**
+   * Get all the users in the database, deserialize all files in .superkidsdata.
+   * @return List of users.
+   */
   public ArrayList<User> getAllUsers() {
       File dir = new File(path);
       File[] files = dir.listFiles(new FilenameFilter() {
