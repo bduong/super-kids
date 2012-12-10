@@ -622,18 +622,18 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     }
 
     private void pickChoiceButton(Question currentQuestion1) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             if (currentQuestion1.getAnswer().equals(currentQuestion1.getChoices().get(i))) {
                 if (i == 0) {
                     choice1Button.setSelected(true);
                 }
-                if (i == 1) {
+                else if (i == 1) {
                     choice2Button.setSelected(true);
                 }
-                if (i == 2) {
+                else if (i == 2) {
                     choice3Button.setSelected(true);
                 }
-                if (i == 3) {
+                else if (i == 3) {
                     choice4Button.setSelected(true);
                 }
             }
