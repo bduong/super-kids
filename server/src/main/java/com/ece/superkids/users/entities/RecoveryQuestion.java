@@ -4,6 +4,10 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * The <code>RecoveryQuestion</code> holds the recovery question the parent can use to reset their password
+ *
+ */
 public class RecoveryQuestion {
 
     private String question;
