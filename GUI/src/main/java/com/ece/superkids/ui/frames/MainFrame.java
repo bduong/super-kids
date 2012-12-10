@@ -5,6 +5,7 @@
 package com.ece.superkids.ui.frames;
 
 import com.ece.superkids.ui.user.frames.LogoutAuthFrame;
+import com.ece.superkids.ui.user.panels.NewGamePanel;
 import com.ece.superkids.ui.user.panels.SubjectSelectionPanel;
 import com.ece.superkids.ui.user.panels.UserSelectionPanel;
 import com.ece.superkids.ui.parent.frames.AuthFrame;
@@ -206,7 +207,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void LearnModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LearnModeActionPerformed
         // TODO add your handling code here:
-        SubjectSelectionPanel sPanel = new SubjectSelectionPanel();
+//        SubjectSelectionPanel sPanel = new SubjectSelectionPanel();
+        NewGamePanel sPanel = new NewGamePanel("New Tutorial");
+        
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_LearnModeActionPerformed

@@ -4,12 +4,13 @@
  */
 package com.ece.superkids.ui.user.panels;
 
-import com.ece.superkids.ui.user.panels.SubjectSelectionPanel;
 import com.ece.superkids.questions.enums.QuestionLevel;
-import com.ece.superkids.users.entities.User;
-import java.awt.Color;
 import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.events.Session;
+import com.ece.superkids.ui.user.panels.SubjectSelectionPanel;
+import com.ece.superkids.users.entities.User;
+
+import java.awt.Color;
 
 /**
  *
@@ -23,11 +24,13 @@ public class NewGamePanel extends javax.swing.JPanel {
     private PanelController controller;
     private Session session;
     private User user;
+    private boolean tutorial_flag = false;
 
     public NewGamePanel(String newOrContinue){
         controller = PanelController.getInstance();
         session=Session.aSession();
         user=session.getLoggedInUser();
+        tutorial_flag = true;
         initComponents();
         initLevelButtons();
         jLabel1.setText(newOrContinue);
@@ -55,7 +58,7 @@ public class NewGamePanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("New Game");
-        jLabel1.setBounds(90, 160, 440, 40);
+        jLabel1.setBounds(90, 160, 400, 40);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         level3Button.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
@@ -153,8 +156,9 @@ public class NewGamePanel extends javax.swing.JPanel {
     //FOR EACH LEVEL I THINK WE SHOULD HAVE A DIFFERENT PANEL RATHER THAN USING THE SAME PANEL
     private void level2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level2ButtonActionPerformed
         // TODO add your handling code here:
-        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_2);
+        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_2, tutorial_flag);
         user.setCurrentLevel(QuestionLevel.LEVEL_2);
+
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_level2ButtonActionPerformed
@@ -163,16 +167,18 @@ public class NewGamePanel extends javax.swing.JPanel {
         // TODO add your handling code here
         //CATEGORIES PANEL COMES HERE.
         //QUESTIONS PANEL WILL BE ACCESSED FROM CATEGORIESPANEL
-        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_1);
+        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_1, tutorial_flag);
         user.setCurrentLevel(QuestionLevel.LEVEL_1);
+
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_level1ButtonActionPerformed
 
     private void level3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_level3ButtonActionPerformed
         // TODO add your handling code here:
-        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_3);
+        SubjectSelectionPanel sPanel = new SubjectSelectionPanel(QuestionLevel.LEVEL_3, tutorial_flag);
         user.setCurrentLevel(QuestionLevel.LEVEL_3);
+
         //add questionPanel
         controller.addPanel(sPanel);
     }//GEN-LAST:event_level3ButtonActionPerformed
