@@ -1,6 +1,3 @@
-/**
- * @author M4rc Adam
- */
 package com.ece.superkids.testing;
 
 import java.util.List;
@@ -21,7 +18,11 @@ import com.ece.superkids.users.entities.User;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * The <code>UserDatabaseTests</code> has unit tests for adding, deleting and saving scores in the database.
+ *
+ * @author Marc Adam
+ */
 public class UserDatabaseTests {
     private FileUserManager fileUserManager = new FileUserManager();
     private User expectedUser;
@@ -29,6 +30,9 @@ public class UserDatabaseTests {
     private Question expectedQuestion;
     private QuestionLevel expectedLevel;
 
+    /**
+     * Create a user, create a state and make him answer a few questions.
+     */
     @Before
     public void setup() {
 
@@ -60,6 +64,9 @@ public class UserDatabaseTests {
         fileUserManager.addUser(expectedUser);
     }
 
+    /**
+     * Check if the user was added successfully to database.
+     */
     @Test
     public void usersAreAdded() {
         User actual = fileUserManager.getUser("xuser");
@@ -67,6 +74,9 @@ public class UserDatabaseTests {
         assertEquals(actual.getId(), expectedUser.getId());
     }
 
+    /**
+     * Check if the state was saved successfully to the user profile.
+     */
     @Test
     public void statesAreSaved() {
         User actual = fileUserManager.getUser("xuser");
@@ -76,7 +86,10 @@ public class UserDatabaseTests {
         assertEquals(actualQuestion, expectedQuestion);
 
     }
-    
+
+    /**
+     * Add a score the the user and check if the score is saved.
+     */
     @Test
     public void addScore() {
         Integer expectedScore = 4;
@@ -95,12 +108,13 @@ public class UserDatabaseTests {
 
         Object[][] objects = new Object[1][2];
         objects = expectedUser.getHistory(QuestionCategory.SHAPES, QuestionLevel.LEVEL_1);
-        System.out.println(objects.length);
-        System.out.println("objects 0 1 is: " + objects[0][1]);
         assertEquals("xquestion", objects[0][0]);
     }
 
-    
+
+    /**
+     * Delete the user from the database.
+     */
     @After
     public void usersAreDeleted() {
         fileUserManager.deleteUser("xuser");
