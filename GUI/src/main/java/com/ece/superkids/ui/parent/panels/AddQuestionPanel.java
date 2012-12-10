@@ -140,6 +140,7 @@ public class AddQuestionPanel extends javax.swing.JPanel {
 
         buttonGroup1.add(choice1Button);
         choice1Button.setForeground(new java.awt.Color(255, 255, 255));
+        choice1Button.setSelected(true);
         choice1Button.setText("Set Answer");
         choice1Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

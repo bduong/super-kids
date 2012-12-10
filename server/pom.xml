@@ -38,6 +38,10 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <includes>
@@ -50,7 +54,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
         <configuration>
-          <outputDirectory> ${project.build.directory}/surefire-reports </outputDirectory>
+          <outputDirectory>${project.build.directory}/surefire-reports</outputDirectory>
         </configuration>
         <executions>
           <execution>

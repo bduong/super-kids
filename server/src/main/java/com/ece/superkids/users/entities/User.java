@@ -28,7 +28,7 @@ public class User implements Serializable {
 
      /**
      * Create a new User.
-      * @param Name The name of the User.
+      * @param name The name of the User.
      */
     public User(String name) {
         this.name = name;
@@ -47,7 +47,7 @@ public class User implements Serializable {
 
     /**
      * Set the ID of the user.
-     * @param ID The new ID of the user.
+     * @param id The new ID of the user.
      */
     public void setId(int id) {
         this.id = id;
@@ -63,7 +63,7 @@ public class User implements Serializable {
 
     /**
      * Set the name of the user.
-     * @param Name New name for the user.
+     * @param name New name for the user.
      */
     public void setName(String name) {
         this.name = name;
@@ -79,7 +79,7 @@ public class User implements Serializable {
 
     /**
      * Set the state of the user.
-     * @param State The state to the the current state to.
+     * @param state The state to the the current state to.
      */
     private void setState(State state) {
         this.state = state;
@@ -92,7 +92,7 @@ public class User implements Serializable {
 
     /**
      * Set the image path for the user image
-     * @param Image Image path for the image
+     * @param image Image path for the image
      */
     public void setImage(String image) {
         this.image = image;
@@ -116,7 +116,7 @@ public class User implements Serializable {
 
     /**
      * Set the achievements of the user.
-     * @param Achievements Achievements of the user.
+     * @param achievements Achievements of the user.
      */
     public void setAchievements(final Achievements achievements) {
         this.achievements = achievements;
@@ -132,7 +132,7 @@ public class User implements Serializable {
 
     /**
      * Set the history of the user.
-     * @param History of the user.
+     * @param history of the user.
      */
     public void setHistory(final History history) {
         this.history = history;
@@ -253,7 +253,7 @@ public class User implements Serializable {
 
     /**
      * Set the category you want the user to be in
-     * @param category Current Question Category
+     * @param currentCategory Current Question Category
      */
     public void setCurrentCategory(QuestionCategory currentCategory) {
         state.setCurrentCategory(currentCategory);

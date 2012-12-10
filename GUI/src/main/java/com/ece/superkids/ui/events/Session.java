@@ -53,7 +53,7 @@ public class Session{
             System.out.println("User logged out: " + tmpUser);
             return true;
         } else {
-            System.out.println("This user is not logged in yet");
+            System.out.println("No user logged in yet.");
             return false;
         }
     }
