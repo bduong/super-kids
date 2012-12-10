@@ -1,6 +1,3 @@
-/**
- * @author M4rc Adam
- */
 package com.ece.superkids.users.entities;
 
 import com.ece.superkids.questions.entities.Question;
@@ -14,6 +11,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.io.Serializable;
 
+/**
+ * The <code>History</code> class represents the current state of the user.
+ * It maintains the history for all the questions and the scores the user answered, up to 5 attempts.
+ *
+ * @author Marc Adam
+ */
 public class History implements Serializable {
 
     static final long serialVersionUID = 1L;
@@ -39,25 +42,44 @@ public class History implements Serializable {
         levelToCategories.put(QuestionLevel.LEVEL_3, new ArrayList<QuestionCategory>(Arrays.asList(level3Categories)));
     }
 
+    /**
+     * Create a new History object.
+     */
     public History() {
         questionToList = new HashMap();
         gameStarted = false;
         init();
     }
 
+    /**
+     * Set the Game Started flag to true.
+     * Call this when starting a new game. This is also automatically called.
+     */
     public void setGameStarted() {
         gameStarted = true;
     }
+    /**
+     * Get the value of the Game Started flag to true.
+     * @return Game started
+     */
     public boolean getGameStarted() {
         return gameStarted;
     }
 
-    /* use this function to see if you wanna show 'continue game' button or not */
+    /**
+     * Get the value of Game On, whether the user should continue game or start a new game.
+     * Use this function to see if you wanna show 'continue game' button or not
+     * @return Game is on
+     */
     public boolean getGameOn() {
         return (gameStarted && !isGameFinished());
     }
 
-    /* call this to see if the level is finished */
+    /**
+     * Check whether the use has finished the level
+     * @param level Level to check
+     * @return Level finished
+     */
      public boolean isLevelFinished(QuestionLevel level) {
          if(level==null){
              return true;
@@ -72,7 +94,10 @@ public class History implements Serializable {
         return true;
     }
 
-     /* call to see if the game is finished */
+     /**
+      * Checks if the whole game is finished, this goes through all the levels.
+      * @return Game is finished.
+      */
      public boolean isGameFinished() {
          ArrayList<QuestionLevel> gameLevelsList = new ArrayList<QuestionLevel>(Arrays.asList(gameLevels));
          for(int i=0; i<gameLevelsList.size(); i++) {
@@ -83,6 +108,10 @@ public class History implements Serializable {
          return true;
      }
 
+     /**
+      * Save a state to the history, to the list of attempts.
+      * @param state State to save to the history.
+      */
     public void saveToHistory(State state) {
         QuestionCategory category = state.getCurrentCategory();
         QuestionLevel level = state.getCurrentLevel();
@@ -99,7 +128,13 @@ public class History implements Serializable {
             questionToList.put(key, states);
         }
     }
-    
+
+    /**
+     * Get the history for a category and level
+     * @param category Category for the questions.
+     * @param level Level for the questions.
+     * @return Map from questions to list of up to 5 scores.
+     */
     public Map<Question, ArrayList<Integer>> getHistoryMap(QuestionCategory category, QuestionLevel level) {
         String key = category.toString() + ":" + level.toString();
         Map<Question, ArrayList<Integer>> questionToScores = new HashMap();
@@ -130,6 +165,12 @@ public class History implements Serializable {
         }
     }
 
+    /**
+     * Get the best attempt for a category and a level.
+     * @param category Category of the attempt.
+     * @param level Level of the best attempt.
+     * @return State map from questions to scores of the best attempt.
+     */
     public State getMaximumScoreState(QuestionCategory category, QuestionLevel level) {
         Map maxScoresMap = new HashMap<Question, Integer>();
         String key = category.toString() + ":" + level.toString();
@@ -145,6 +186,11 @@ public class History implements Serializable {
         State maxScoreState = states.get(maxScoreIndex);
         return maxScoreState;
     }
+
+    /**
+     * Get the scores out of the best attempts of each of the levels and categories played by the user.
+     * @return Total score
+     */
     public int getTotalScore() {
         int totalScore = 0;
         for (int i= 0; i < gameLevels.length; i++) {
@@ -160,7 +206,13 @@ public class History implements Serializable {
         }
         return totalScore;
     }
-    
+
+    /**
+     * Get the history for a category and a level.
+     * @param category Category of the question.
+     * @param level Category of the level.
+     * @return Two dimensional array with 6 columns, first column has the questions, the 5 other columns have the scores.
+     */
     public Object[][] getHistory(QuestionCategory category, QuestionLevel level) {
         Map<Question, ArrayList<Integer>> map = this.getHistoryMap(category, level);
         if(map.size()!=0) {
@@ -197,7 +249,11 @@ public class History implements Serializable {
         }
 
     }
-    
+
+    /**
+     * Get the history for a category and a level.
+     * @return Two dimensional array with fake scores.
+     */
     public Object[][] getHistoryTest() {
         Object o[][] = new Object[10][6];
         for(int i=0; i<o.length; i++) {
