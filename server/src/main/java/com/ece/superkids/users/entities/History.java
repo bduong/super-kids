@@ -240,7 +240,7 @@ public class History implements Serializable {
             index++;
             for(int i=0; i<counter; i++) {
                 for(int j=scoresListSize+1; j<6; j++) {
-                    o[index][i] = 0;
+                    o[i][j] = 0;
                 }
             }
             return o;
