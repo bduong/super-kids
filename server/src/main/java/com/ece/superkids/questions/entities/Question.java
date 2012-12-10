@@ -179,4 +179,21 @@ public class Question implements Serializable {
 
         return true;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + (this.question != null ? this.question.hashCode() : 0);
+        hash = 89 * hash + (this.choices != null ? this.choices.hashCode() : 0);
+        hash = 89 * hash + (this.answer != null ? this.answer.hashCode() : 0);
+        hash = 89 * hash + (this.explaination != null ? this.explaination.hashCode() : 0);
+        hash = 89 * hash + (this.type != null ? this.type.hashCode() : 0);
+        hash = 89 * hash + (this.category != null ? this.category.hashCode() : 0);
+        hash = 89 * hash + (this.level != null ? this.level.hashCode() : 0);
+        return hash;
+    }
+    
+    
+    
+    
 }
