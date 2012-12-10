@@ -1,5 +1,7 @@
 package providers;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.junit.Before;
 import org.junit.Test;
 import com.ece.superkids.ui.providers.ImageProvider;
@@ -59,7 +61,8 @@ public class FilePathImageProviderTests {
             }
 
             assertNotNull(image);
-            assertTrue(image.getAbsolutePath().contains(path));
+            String imagePath = FilenameUtils.separatorsToUnix(image.getAbsolutePath());
+            assertTrue(imagePath.contains(path));
             assertTrue(image.exists());
         }
     }
