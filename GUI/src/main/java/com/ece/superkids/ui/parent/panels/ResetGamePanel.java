@@ -132,12 +132,14 @@ public class ResetGamePanel extends javax.swing.JPanel {
         String input = new String(passwordField.getPassword());
         if (pM.checkParentPassword(input)) {
             try {
-                int n = JOptionPane.showConfirmDialog(this,"Would you like to reset every setting of the game?","Warning",JOptionPane.YES_NO_OPTION);
-                if (n == JOptionPane.YES_OPTION)
-                {
+                int n = JOptionPane.showConfirmDialog(this, "Would you like to reset every setting of the game?", "Warning", JOptionPane.YES_NO_OPTION);
+                if (n == JOptionPane.YES_OPTION) {
+                    session.logout();
                     FileUtils.deleteDirectory(manager.getDirectory());
                     resposeLabel.setText("Successful.");
-                    session.logout();
+                    //change the logout button visibility in the main frame
+                    MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+                    frame.logoutButton.setVisible(false);
                     controller.goToInitialSetup();
                 }
             } catch (IOException ex) {
@@ -155,7 +157,4 @@ public class ResetGamePanel extends javax.swing.JPanel {
     private javax.swing.JLabel resposeLabel;
     private javax.swing.JLabel warningLabel;
     // End of variables declaration//GEN-END:variables
-
-    
-
 }
