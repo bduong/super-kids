@@ -61,10 +61,14 @@ public class FilePathImageProvider implements ImageProvider{
 
         String path = imagePaths.get(key.toLowerCase()).getPath();
         Mode mode = imagePaths.get(key.toLowerCase()).getMode();
-        if (mode == Mode.DEFAULT) {
-            return new ImageIcon(getClass().getResource(path));
-        } else {
-            return new ImageIcon(path);
+        try {
+            if (mode == Mode.DEFAULT) {
+                return new ImageIcon(getClass().getResource(path));
+            } else {
+                return new ImageIcon(path);
+            }
+        } catch (NullPointerException e) {
+            throw new NullPointerException(key + " image is missing or URL is incorrect");
         }
 
     }

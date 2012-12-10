@@ -51,12 +51,15 @@ public class FilePathImageProviderTests {
         for (String key : keys) {
             File image = null;
             String path = props.getProperty(key);
+            if (path == null) continue;
             try{
                 image = new File(getClass().getResource(path).getFile());
             } catch (NullPointerException e) {
                 throw new NullPointerException(key + " image is missing");
             }
+
             assertNotNull(image);
+            assertTrue(image.getAbsolutePath().contains(path));
             assertTrue(image.exists());
         }
     }
