@@ -1,6 +1,3 @@
-/**
- * @author M4rc Adam
- */
 package com.ece.superkids.testing;
 
 import com.ece.superkids.questions.entities.Question;
@@ -20,8 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
-
+/**
+ * The <code>HistoryScoreTests</code> tests getHistory function for score reporting, and adding scores and states to the history.
+ *
+ * @author Marc Adam
+ */
 public class HistoryScoreTests {
 
     private User user;
@@ -33,8 +33,10 @@ public class HistoryScoreTests {
 
     private int totalScore;
     
-
-    /* this functions generate a number of questions */
+    /**
+     * Generate a number of questions
+     * @param n Number of question to generate.
+     */
     private void generateQuestions(int n) {
         questions  = new ArrayList();
         for(int i=0; i<n; i++) {
@@ -54,7 +56,9 @@ public class HistoryScoreTests {
         }
     }
 
-    
+    /**
+     * Add scores and answer questions randomely.
+     */
     public void addScores() {
         user.newState(QuestionCategory.SHAPES, QuestionLevel.LEVEL_1);
 
@@ -72,7 +76,9 @@ public class HistoryScoreTests {
         assertEquals(stateScore, totalScore);
     }
 
-
+    /**
+     * Create a new user, setup a new state and add scores questions.
+     */
     @Before
     public void setup() {
         // create user
@@ -90,6 +96,9 @@ public class HistoryScoreTests {
         }
     }
 
+    /**
+     * Check if the total score function gets the score right.
+     */
     @Test
     public void testTotalScore() {
         int score = user.getState().getTotalScore();
@@ -107,6 +116,9 @@ public class HistoryScoreTests {
     }
 
 
+    /**
+     * Delete the user from the database.
+     */
     @After
     public void cleanUp() {
          fileUserManager.deleteUser("scorer");
