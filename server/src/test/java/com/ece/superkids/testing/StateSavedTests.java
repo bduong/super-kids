@@ -1,6 +1,3 @@
-/**
- * @author M4rc Adam
- */
 package com.ece.superkids.testing;
 
 import org.junit.Before;
