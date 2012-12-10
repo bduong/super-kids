@@ -18,6 +18,7 @@ import java.util.List;
 import javax.swing.JTextField;
 import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.controllers.QuestionController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -473,7 +474,9 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         manager.editQuestion(currentQuestion, editedQuestion);
         responseLabel.setText("Saved");
         System.out.println("Question saved: " + questionText.getText());
+        JOptionPane.showMessageDialog(this,"Changes saved.");           
         pControl.setParentalControlLayerPane(new EditQuestionsPanel());
+        
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void questionTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionTextActionPerformed

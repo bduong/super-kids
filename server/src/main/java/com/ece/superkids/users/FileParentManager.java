@@ -47,6 +47,7 @@ public class FileParentManager implements ParentManager{
         try {
             BufferedReader reader = new BufferedReader(new FileReader(createFileName()));
             String hash = reader.readLine();
+            reader.close();
             return hash.equals(md5(password + SALT));
         } catch (IOException e) {
             e.printStackTrace();
@@ -103,11 +104,14 @@ public class FileParentManager implements ParentManager{
         String fileName = manager.getDirectory() + File.separator + RECOVERY_FILE;
         try {
             FileReader reader = new FileReader(fileName);
-            return gson.fromJson(reader, RecoveryQuestion.class);
+            RecoveryQuestion question = gson.fromJson(reader, RecoveryQuestion.class);
+            reader.close();
+            return question;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        return null;
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } return null;
     }
 
     /**

@@ -6,7 +6,10 @@ package com.ece.superkids.ui.parent.panels;
 
 import com.ece.superkids.images.ImageManager;
 import com.ece.superkids.questions.QuestionDatabaseFactory;
+import com.ece.superkids.questions.entities.Question;
+import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.ui.controllers.PanelController;
+import com.ece.superkids.ui.controllers.QuestionController;
 import com.ece.superkids.ui.customui.ImageButton;
 import com.ece.superkids.ui.providers.ImageProvider;
 import com.ece.superkids.ui.providers.ResourceProviderFactory;
@@ -17,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -39,7 +43,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
     ImageProvider iProvider = ResourceProviderFactory.anImageProvider();
     JPanel scrollable = new JPanel(new GridLayout(0, 4, 5, 10));
     PanelController pControl = PanelController.getInstance();
-    String selectedkey;
+    QuestionController qControl = QuestionController.getInstance();
 
     public QuestionPicturePanel(JTextField field) {
         this.field = field;
@@ -146,7 +150,24 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
         
         if (n == JOptionPane.YES_OPTION)
         {
-            //System.out.println(field.getText());
+            List<Question> qList = new ArrayList<Question>();
+            qList.addAll((List<Question>) qControl.getListOfCustomQuestions(QuestionLevel.LEVEL_1));
+            qList.addAll((List<Question>) qControl.getListOfCustomQuestions(QuestionLevel.LEVEL_2));
+            qList.addAll((List<Question>) qControl.getListOfCustomQuestions(QuestionLevel.LEVEL_3));
+            
+            for (int i = 0; i < qList.size(); i++)
+            {
+                List<String> choices = qList.get(i).getChoices();
+                for (int j = 0; j < choices.size(); j++)
+                {
+                    if (choices.get(j).contentEquals(field.getText()))
+                    {
+                        JOptionPane.showMessageDialog(this,"This image cannot be deleted. Possible reason: It is a choice to a custom question.");
+                        return;
+                    }
+                }
+            }
+            
             boolean check;
             check = iManager.deleteImage(field.getText());
             System.out.println(check);
@@ -156,6 +177,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             }
             else
             {
+                field.setText("");
                 loadPictures();
             }
                 
@@ -207,7 +229,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             String key = (String) keys.get(i);
             button.setIcon(iProvider.getImage(key));
             button.setName(key);
-            button.addActionListener(new ButtonAction(field, selectedkey));
+            button.addActionListener(new ButtonAction(field));
             button.addFocusListener(new ButtonFocus());
             scrollable.add(button);
         }
@@ -230,7 +252,7 @@ class ButtonAction implements ActionListener {
 
     JTextField field;
 
-    public ButtonAction(JTextField field, String selectedkey) {
+    public ButtonAction(JTextField field) {
         this.field = field;
         
     }
