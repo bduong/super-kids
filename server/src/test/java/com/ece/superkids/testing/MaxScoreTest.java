@@ -1,6 +1,3 @@
-/**
- * @author M4rc Adam
- */
 package com.ece.superkids.testing;
 
 import com.ece.superkids.questions.entities.Question;
@@ -20,10 +17,21 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * The <code>MaxScoreTest</code> has tests to check if the maximum scores are being fetched from the history correctly, and check if the total score is being computed correctly.
+ *
+ * @author Marc Adam
+ */
 public class MaxScoreTest {
 
     private User user;
     
+    /**
+     * Generate a fake random question.
+     * @param questionLevel Level for the question.
+     * @param questionCategory Category for the question.
+     * @return Question object.
+     */
     private Question createRandomQuestion(QuestionLevel questionLevel, QuestionCategory questionCategory) {
 
         Question question = new Question();
@@ -45,11 +53,17 @@ public class MaxScoreTest {
         return question;
     }
 
+    /**
+     * Create test user.
+     */
     @Before
     public void setup() {
         user = new User("ScoreMaximizer");
     }
-    
+
+    /**
+     * Have the user do several attempts for the same category and level, and check for the maximum score.
+     */
     @Test
     public void TestMaximumScore() {
         /* repeat same category and level 3 times */
@@ -100,6 +114,9 @@ public class MaxScoreTest {
         assertEquals(actualTotalScore, expectedMaximumTotalScore);
     }
 
+    /**
+     * Delete the user from the database.
+     */
     @After
     public void cleanup() {
         user.deleteUser();
