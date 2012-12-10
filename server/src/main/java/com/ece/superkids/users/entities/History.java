@@ -137,7 +137,7 @@ public class History implements Serializable {
      */
     public Map<Question, ArrayList<Integer>> getHistoryMap(QuestionCategory category, QuestionLevel level) {
         String key = category.toString() + ":" + level.toString();
-        Map<Question, ArrayList<Integer>> questionToScores = new HashMap();
+        Map<Question, ArrayList<Integer>> questionToScores = new HashMap<Question, ArrayList<Integer>>();
         if(questionToList.containsKey(key)) {
             ArrayList<State> states = (ArrayList<State>)questionToList.get(key);
             for(int i=0; i<states.size(); i++) {
@@ -215,7 +215,7 @@ public class History implements Serializable {
      */
     public Object[][] getHistory(QuestionCategory category, QuestionLevel level) {
         Map<Question, ArrayList<Integer>> map = this.getHistoryMap(category, level);
-        if(map.size()!=0) {
+        if(map != null && map.size()!=0) {
             Iterator it = map.entrySet().iterator();
             int counter = 0;
             while(it.hasNext())  {
