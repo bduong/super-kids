@@ -341,7 +341,7 @@ public class QuestionPanel extends javax.swing.JPanel {
          * IT WILL LET YOU GO THROUGH THE QUESTIONS FASTER
          * JUST CLICK ON THE PANEL TO TRIGGER CORRECT ANSWER CLICKED
          */
-        correctAnswerClicked();
+        //correctAnswerClicked();
     }//GEN-LAST:event_backgroundMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

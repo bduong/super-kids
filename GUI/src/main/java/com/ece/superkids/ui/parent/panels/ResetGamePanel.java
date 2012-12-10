@@ -7,6 +7,8 @@ package com.ece.superkids.ui.parent.panels;
 import com.ece.superkids.FileManager;
 import com.ece.superkids.FileManagerImpl;
 import com.ece.superkids.ui.controllers.PanelController;
+import com.ece.superkids.ui.events.Session;
+import com.ece.superkids.ui.frames.MainFrame;
 import com.ece.superkids.users.ParentManager;
 import com.ece.superkids.users.UserDatabaseFactory;
 import java.io.IOException;
@@ -27,6 +29,7 @@ public class ResetGamePanel extends javax.swing.JPanel {
     ParentManager pM = UserDatabaseFactory.aParentManager();
     private FileManager manager = FileManagerImpl.getInstance();
     private PanelController controller = PanelController.getInstance();
+    private Session session = Session.aSession();
 
     public ResetGamePanel() {
         initComponents();
@@ -133,7 +136,8 @@ public class ResetGamePanel extends javax.swing.JPanel {
                 if (n == JOptionPane.YES_OPTION)
                 {
                     FileUtils.deleteDirectory(manager.getDirectory());
-                    resposeLabel.setText("Successful. Restart the program.");
+                    resposeLabel.setText("Successful.");
+                    session.logout();
                     controller.goToInitialSetup();
                 }
             } catch (IOException ex) {
