@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The <code>FileQuestionManager</code> manages custom questions stored on the local filesystem.
@@ -56,6 +58,9 @@ public class FileQuestionManager implements QuestionManager{
                     writer.write(line + '\n');
                 }
             }
+            
+            reader.close();
+            writer.flush();
             writer.close();
             FileUtils.forceDelete(customQuestionsFile);
             FileUtils.copyFile(tempFile, customQuestionsFile);
