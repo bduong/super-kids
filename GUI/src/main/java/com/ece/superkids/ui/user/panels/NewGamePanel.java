@@ -16,15 +16,13 @@ import java.awt.Color;
  */
 public class NewGamePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form NewGamePanel
-     */
     private PanelController controller;
     private Session session;
     private User user;
     private boolean tutorialFlag;
 
     /**
+     * Creates new form NewGamePanel
      * This creates a level selection screen panel.
      * The available levels depend on whether this a new game or continuing on a
      * game.

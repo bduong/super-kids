@@ -8,15 +8,16 @@ import com.ece.superkids.ui.controllers.MusicController;
 
 /**
  *
- * @author davidOhayon & baris & DavidC
+ * @author baris & DavidC
  */
 public class SoundPanel extends javax.swing.JPanel {
 
+    
+    MusicController mController;
     /**
      * Creates new form SoundPanel
+     * This panel controls the background music.
      */
-    MusicController mController;
-
     private SoundPanel() {
         mController = MusicController.getInstance();
         initComponents();

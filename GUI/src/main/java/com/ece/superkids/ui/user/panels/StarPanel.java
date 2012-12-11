@@ -12,6 +12,7 @@ public class StarPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form StarPanel
+     * Shows a star.
      */
     public StarPanel() {
         initComponents();

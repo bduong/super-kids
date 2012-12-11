@@ -23,10 +23,12 @@ public class ScoresHistoryPanel extends javax.swing.JPanel {
     private JTable table[] = new JTable[3];
     private User user;
     private Session session;
-    /*   
+    
+    /**   
      * Creates new form ScoresHistoryPanel
+     * The Scores History panel display information about how well
+     * the user performed for each level.
      */
-
     public ScoresHistoryPanel() {
         initComponents();
         //get session
@@ -46,31 +48,31 @@ public class ScoresHistoryPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Level1Button = new javax.swing.JButton();
+        Level2Button = new javax.swing.JButton();
+        Level3Button = new javax.swing.JButton();
 
         setBounds(new java.awt.Rectangle(0, 0, 300, 300));
         setOpaque(false);
 
-        jButton1.setLabel("Level 1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Level1Button.setLabel("Level 1");
+        Level1Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Level1ButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setLabel("Level 2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Level2Button.setLabel("Level 2");
+        Level2Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Level2ButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setLabel("Level 3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Level3Button.setLabel("Level 3");
+        Level3Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                Level3ButtonActionPerformed(evt);
             }
         });
 
@@ -84,11 +86,11 @@ public class ScoresHistoryPanel extends javax.swing.JPanel {
                 .addContainerGap())
             .add(layout.createSequentialGroup()
                 .add(34, 34, 34)
-                .add(jButton1)
+                .add(Level1Button)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jButton2)
+                .add(Level2Button)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jButton3)
+                .add(Level3Button)
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,16 +98,16 @@ public class ScoresHistoryPanel extends javax.swing.JPanel {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
-                    .add(jButton2)
-                    .add(jButton3))
+                    .add(Level1Button)
+                    .add(Level2Button)
+                    .add(Level3Button))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 241, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Level1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level1ButtonActionPerformed
         // TODO add your handling code here:
         level = QuestionLevel.LEVEL_1;
         category = level.getCategories();
@@ -125,9 +127,9 @@ public class ScoresHistoryPanel extends javax.swing.JPanel {
             jTabbedPane1.addTab(category.get(i).toString(), spTable);
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Level1ButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void Level2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level2ButtonActionPerformed
         // TODO add your handling code here:
         level = QuestionLevel.LEVEL_2;
         category = level.getCategories();
@@ -144,9 +146,9 @@ public class ScoresHistoryPanel extends javax.swing.JPanel {
             jTabbedPane1.addTab(category.get(i).toString(), spTable);
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_Level2ButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void Level3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level3ButtonActionPerformed
         // TODO add your handling code here:
         level = QuestionLevel.LEVEL_3;
         category = level.getCategories();
@@ -164,11 +166,11 @@ public class ScoresHistoryPanel extends javax.swing.JPanel {
             jTabbedPane1.addTab(category.get(i).toString(), spTable);
             }
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_Level3ButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton Level1Button;
+    private javax.swing.JButton Level2Button;
+    private javax.swing.JButton Level3Button;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,15 +20,18 @@ import com.ece.superkids.ui.frames.MainFrame;
  */
 public final class UserSelectionPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form UserSelectionPanel
-     */
+    
     private StartScreenPanel startscreen;
     //get the panel controller to manage panels
     private PanelController controller;
     private UserManager uM = UserDatabaseFactory.aUserManager();
     private Session session = Session.aSession();
 
+    /**
+     * Creates new form UserSelectionPanel
+     * This is the login screen for the child.
+     * Child select from a list of user to login to.
+     */
     public UserSelectionPanel() {
         this.setName("UserSelection");
         initComponents();
