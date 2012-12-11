@@ -8,15 +8,19 @@ import com.ece.superkids.users.ParentManager;
 import com.ece.superkids.users.UserDatabaseFactory;
 
 /**
- *
+ * Creates new form <code>ResetPasswordFrame</code>
+ * This form helps reset the password for the parent
+ * 
  * @author baris
  */
 public class ResetPasswordFrame extends javax.swing.JFrame {
 
+    
+    ParentManager pM = UserDatabaseFactory.aParentManager();
     /**
      * Creates new form ResetPasswordFrame
+     * This form helps reset the password for the parent
      */
-    ParentManager pM = UserDatabaseFactory.aParentManager();
     public ResetPasswordFrame() {
         initComponents();
         setLocationRelativeTo(null);
