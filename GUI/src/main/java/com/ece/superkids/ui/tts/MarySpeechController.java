@@ -1,11 +1,10 @@
 package com.ece.superkids.ui.tts;
 
+import javax.sound.sampled.AudioInputStream;
 import marytts.LocalMaryInterface;
 import marytts.MaryInterface;
 import marytts.exceptions.MaryConfigurationException;
 import marytts.util.data.audio.AudioPlayer;
-
-import javax.sound.sampled.AudioInputStream;
 
 /**
  * The <code>MarySpeechController</code> uses the MARY text-to-speech engine
@@ -34,6 +33,12 @@ public class MarySpeechController implements SpeechController{
         return MarySpeechControllerFactory.INSTANCE;
     }
 
+    /**
+     * Say a given sentence using the <code>MarySpeechController</code>
+     * 
+     * @param sentence the sentence to play
+     * @throws Exception If we cannot synthesize the speech audio.
+     */
     @Override
     public void say(final String sentence) throws Exception {
         AudioInputStream audio = marytts.generateAudio(sentence);
