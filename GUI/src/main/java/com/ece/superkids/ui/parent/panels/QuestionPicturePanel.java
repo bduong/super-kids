@@ -45,6 +45,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
     JPanel scrollable = new JPanel(new GridLayout(0, 4, 5, 10));
     PanelController pControl = PanelController.getInstance();
     QuestionController qControl = QuestionController.getInstance();
+    String newPictureKey="";
     
     /**
      * Creates new form QuestionPicturePanel
