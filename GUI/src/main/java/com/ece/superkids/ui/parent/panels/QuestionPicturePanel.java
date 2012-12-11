@@ -241,7 +241,8 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             button.addFocusListener(new ButtonFocus());
             scrollable.add(button);
             if(key.equals(newPictureKey)){
-                button.setBackground(Color.ORANGE);
+                button.setBackground(Color.RED);
+                field.setText(key);
                 newPictureKey="";
             }
         }
