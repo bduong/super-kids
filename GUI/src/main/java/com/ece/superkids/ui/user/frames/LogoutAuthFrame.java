@@ -9,19 +9,23 @@ import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.events.Session;
 
 /**
- *
+ * Creates new form <code>LogoutAuthFrame</code>
+ * Confirmation dialog to log out of current child user.
  * @author baris
  */
 public class LogoutAuthFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AuthFrame
-     *
-     */
+    
     private PanelController controller = PanelController.getInstance();
     private Session session = Session.aSession();
     private JButton logout;
 
+    /**
+     * Creates new form AuthFrame
+     * Confirmation dialog to log out of current child user.
+     * 
+     * @param logout  , logout button
+     */
     public LogoutAuthFrame(JButton logout) {
         initComponents();
         this.logout=logout;

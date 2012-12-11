@@ -4,20 +4,19 @@
  */
 package com.ece.superkids.ui.parent.panels;
 
-import com.ece.superkids.ui.parent.panels.ResetGamePanel;
-import com.ece.superkids.ui.parent.panels.AddQuestionPanel;
-import com.ece.superkids.ui.parent.panels.UserControlPanel;
 import java.awt.Color;
-import java.awt.Graphics;
 
 /**
- *
- * @author baris
+ * Creates new form <code>ParentalControlPanel</code>
+ * This panel has options to change many settings of the game
+ * 
+ * @author baris & David Cheung
  */
 public class ParentalControlPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ParentalControlPanel
+     * This panel has options to change many settings of the game
      */
     public ParentalControlPanel() {
         setName("ParentalControl");

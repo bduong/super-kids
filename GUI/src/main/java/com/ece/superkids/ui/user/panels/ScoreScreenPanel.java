@@ -18,20 +18,25 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Creates new form <code>ScoreScreenPanel</code>
+ * Number of stars are based on scoring for that category
+ * Achievement unlocks are based on total score of the user.
  * @author david Cheung
  */
 public class ScoreScreenPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ScoreScreenPanel
-     */
+    
     private Session session = Session.aSession();
     private ArrayList<StarPanel> stars = new ArrayList(5);
     private PanelController controller = PanelController.getInstance();
     private User user = session.getLoggedInUser();
     private UserManager uM = UserDatabaseFactory.aUserManager();
 
+    /**
+     * Creates new form ScoreScreenPanel
+     * Number of stars are based on scoring for that category
+     * Achievement unlocks are based on total score of the user.
+     */
     public ScoreScreenPanel() {
         this.setName("ScoreScreen");
         initComponents();

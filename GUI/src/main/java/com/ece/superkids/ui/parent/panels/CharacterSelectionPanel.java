@@ -7,8 +7,11 @@ package com.ece.superkids.ui.parent.panels;
 import com.ece.superkids.ui.controllers.PanelController;
 
 /**
- *
- * @author david
+ * Creates new form <code>CharacterSelectionPanel</code>
+ * This panel allow the user to select which character they want to use
+ * as their avatar.
+ * 
+ * @author david cheung
  */
 public class CharacterSelectionPanel extends javax.swing.JPanel {
 
@@ -18,6 +21,8 @@ public class CharacterSelectionPanel extends javax.swing.JPanel {
     
     /**
      * Creates new form CharacterSelectionPanel
+     * This panel allow the user to select which character they want to use
+     * as their avatar.
      */
     public CharacterSelectionPanel() {
         initComponents();

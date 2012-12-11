@@ -11,7 +11,9 @@ import com.ece.superkids.ui.controllers.TTSController;
 import com.ece.superkids.ui.events.Session;
 
 /**
- *
+ * Creates new form <code>SubjectSelectionPanel</code>
+ * User chooses which level of difficulty they want to play
+ * Each level has different categories.
  * @author Heng & David C
  */
 public class SubjectSelectionPanel extends javax.swing.JPanel {
@@ -22,10 +24,15 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private boolean tutorial_flag = false;
     private GameController gController;
 
+
     /**
      * Creates new form SubjectSelectionPanel
+     * User chooses which level of difficulty they want to play
+     * Each level has different categories.
+     * 
+     * @param level , Levels that are available to play
+     * @param tutorial , Flag to indicate whether in learning mode or question mode
      */
-
     public SubjectSelectionPanel(QuestionLevel level, boolean tutorial) {
         controller = PanelController.getInstance();
         if (tutorial){
