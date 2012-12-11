@@ -5,8 +5,6 @@
 package com.ece.superkids.ui.frames;
 
 import com.ece.superkids.ui.user.frames.LogoutAuthFrame;
-import com.ece.superkids.ui.user.panels.NewGamePanel;
-import com.ece.superkids.ui.user.panels.SubjectSelectionPanel;
 import com.ece.superkids.ui.user.panels.UserSelectionPanel;
 import com.ece.superkids.ui.parent.frames.AuthFrame;
 import com.ece.superkids.ui.parent.panels.InitialSetupPanel;
@@ -16,19 +14,23 @@ import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.events.Session;
 
 /**
- *
- * @author david
+ * Creates new form <code>MainFrame</code>
+ * This is the main frame for the application
+ * 
+ * @author david cheung
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainFrame
-     */
+    
     //get the panel controller to manage panels
     private PanelController controller;
     private ParentManager pM;
     private Session session = Session.aSession();
 
+    /**
+     * Creates new form MainFrame
+     * This is the main frame for the application
+     */
     public MainFrame() {
         initComponents();
         //logout button is initally invisible
