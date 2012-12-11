@@ -4,18 +4,20 @@
  */
 package com.ece.superkids.ui.events;
 
+import com.ece.superkids.ui.frames.MainFrame;
+import com.ece.superkids.ui.user.panels.StartScreenPanel;
+import com.ece.superkids.ui.user.panels.UserSelectionPanel;
 import java.awt.Component;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.JPanel;
-import com.ece.superkids.ui.frames.MainFrame;
-import com.ece.superkids.ui.user.panels.StartScreenPanel;
-import com.ece.superkids.ui.user.panels.UserSelectionPanel;
 
 /**
- *
+ * This listener class <code>PanelListerner</code> listens to changes made
+ * to the panels in the MainFrame
+ * 
  * @author baris
  */
 public class PanelListener implements ComponentListener,
@@ -23,6 +25,12 @@ public class PanelListener implements ComponentListener,
 
     private MainFrame frame;
 
+    /**
+     * Creates a new PanelListener listens to changes made
+     * to the panels in the MainFrame
+     * 
+     * @param frame , The main frame of the game
+     */
     public PanelListener(MainFrame frame) {
         this.frame = frame;
     }
@@ -31,14 +39,26 @@ public class PanelListener implements ComponentListener,
         panel.addComponentListener(this);
     }
 
+    /**
+     * Does nothing right now
+     * @param e
+     */
     public void componentResized(ComponentEvent e) {
         //throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Does nothing right now
+     * @param e
+     */
     public void componentMoved(ComponentEvent e) {
         //throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Does nothing right now
+     * @param e
+     */
     public void componentShown(ComponentEvent e) {
         Component component = e.getComponent();
         if (component.getName() != null && component.getName().equals("InitialSetup")) {
@@ -92,10 +112,18 @@ public class PanelListener implements ComponentListener,
         }
     }
 
+    /**
+     * Does nothing right now
+     * @param e
+     */
     public void componentHidden(ComponentEvent e) {
         //throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Does nothing right now
+     * @param e
+     */
     public void itemStateChanged(ItemEvent e) {
         //throw new UnsupportedOperationException("Not supported yet.");
     }
