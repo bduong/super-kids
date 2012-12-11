@@ -33,7 +33,7 @@ public class ScoreScreenPanel extends javax.swing.JPanel {
     /**
      * Creates new form ScoreScreenPanel
      * Number of stars are based on scoring for that category
-     * Achievement unlocks are based on total score of the user
+     * Achievement unlocks are based on total score of the user.
      */
     public ScoreScreenPanel() {
         this.setName("ScoreScreen");

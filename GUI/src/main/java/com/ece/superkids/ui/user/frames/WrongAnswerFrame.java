@@ -12,6 +12,7 @@ public class WrongAnswerFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form WrongAnswerFrame
+     * Display that you got a wrong answer
      */
     public WrongAnswerFrame() {
         initComponents();

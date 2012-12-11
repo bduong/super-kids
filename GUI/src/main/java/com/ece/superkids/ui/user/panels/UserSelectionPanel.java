@@ -4,15 +4,15 @@
  */
 package com.ece.superkids.ui.user.panels;
 
+import com.ece.superkids.ui.controllers.PanelController;
+import com.ece.superkids.ui.customui.ImageLabel;
+import com.ece.superkids.ui.events.Session;
+import com.ece.superkids.ui.frames.MainFrame;
 import com.ece.superkids.users.UserDatabaseFactory;
 import com.ece.superkids.users.UserManager;
 import com.ece.superkids.users.entities.User;
 import java.util.Iterator;
 import java.util.List;
-import com.ece.superkids.ui.controllers.PanelController;
-import com.ece.superkids.ui.customui.ImageLabel;
-import com.ece.superkids.ui.events.Session;
-import com.ece.superkids.ui.frames.MainFrame;
 
 /**
  *
@@ -161,6 +161,9 @@ public final class UserSelectionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel warnLabel;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * This updates the drop box list with the list of child users.
+     */
     public void fillBox() {
         usersBox.removeAllItems();
         warnLabel.setText("");

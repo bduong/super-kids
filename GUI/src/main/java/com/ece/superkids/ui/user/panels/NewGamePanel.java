@@ -23,7 +23,7 @@ public class NewGamePanel extends javax.swing.JPanel {
 
     /**
      * Creates new form NewGamePanel
-     * This creates a level selection screen panel.
+     * This creates a level selection screen panel
      * The available levels depend on whether this a new game or continuing on a
      * game.
      * 

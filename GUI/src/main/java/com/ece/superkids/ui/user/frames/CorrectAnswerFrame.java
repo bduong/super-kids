@@ -12,6 +12,7 @@ public class CorrectAnswerFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form CorrectAnswerFrame
+     * Display that you got the answer correct
      */
     public CorrectAnswerFrame() {
         initComponents();
