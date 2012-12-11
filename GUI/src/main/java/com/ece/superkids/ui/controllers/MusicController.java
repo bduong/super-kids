@@ -9,8 +9,10 @@ import com.ece.superkids.ui.providers.MusicProvider;
 import com.ece.superkids.ui.providers.ResourceProviderFactory;
 
 /**
+ * <code>MusicController</code>
+ * 
  * @author baris
- *
+ * 
  * MUSIC by www.nosoapradio.us
  *
  * a method to play audio clips:
@@ -48,11 +50,18 @@ public class MusicController {
         public static final MusicController INSTANCE = new MusicController();
     }
 
+    /**
+     * @return instance of music controller 
+     */
     public static MusicController getInstance() {
         return MusicController.MusicControllerHolder.INSTANCE;
     }
 
-    //load main theme
+    
+    /**
+     * load main theme
+     * @param themeToLoad theam to load 
+     */
     public void loadThemeMusic(String themeToLoad) {
         theme = themeToLoad;
         try {
@@ -77,6 +86,9 @@ public class MusicController {
         }
     }
 
+    /**
+     * play the music
+     */
     public void playMusic() {
         //if the music has been stopped before...
         if (stopPlayback) {
@@ -88,10 +100,17 @@ public class MusicController {
         }
     }
 
+    /**
+     * stop the music
+     */
     public void stopMusic() {
         stopPlayback = true;
     }
 
+    /**
+     * set the volume
+     * @param gain gain to be set 
+     */
     public void setVolume(double gain) {
         FloatControl gainControl = (FloatControl) sourceDataLine.getControl(FloatControl.Type.MASTER_GAIN);
         // set the gain
@@ -100,8 +119,9 @@ public class MusicController {
     }
 
 //=============================================//
-//Inner class to play back the data from the
-// audio file.
+ /**
+  * Inner class to play back the data from the audio file.
+  */ 
  private class PlayThread extends Thread {
 
         byte tempBuffer[] = new byte[10000];

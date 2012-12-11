@@ -12,10 +12,6 @@ import com.ece.superkids.ui.user.panels.UserSelectionPanel;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  * THIS CLASS CONTROLS PANELS THAT ARE ADDED TO THE MAIN FRAME
  * BASICALLY ALLOWS THE USAGE OF GO BACK FUNCTION
@@ -25,6 +21,7 @@ import javax.swing.JPanel;
  */
 /**
  *
+ * <code>PanelController</code> controls the panel actions.
  * @author baris & david c
  */
 public class PanelController {
@@ -33,7 +30,7 @@ public class PanelController {
     private MainFrame mainFrame;
     private PanelListener listener;
     private Session session = Session.aSession();
-
+    
     private PanelController() {
         panels = new ArrayList<JPanel>();
     }
@@ -42,17 +39,28 @@ public class PanelController {
         public static final PanelController INSTANCE = new PanelController();
     }
 
+    /**
+     * 
+     * @return the only instance of panel controller
+     */
     public static PanelController getInstance() {
         return PanelControllerHolder.INSTANCE;
     }
 
+    /**
+     * set the main frame in the panelcontroller
+     * call it only once through out the program
+     * @param mainFrame main frame to be set
+     */
     public void setMainFrame(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         listener = new PanelListener(mainFrame);
     }
 
-    //add to panels list.
-    //add to mainFrame.
+    /**
+     * add a new panel
+     * @param panel 
+     */
     public void addPanel(JPanel panel) {
         //first add to list
         panels.add(panel);
@@ -70,18 +78,19 @@ public class PanelController {
         //and change the visiblity to true
         panel.setVisible(true);
     }
-
-    //removes the last panel from the list by setting it invisible and removing it from the list
-    //shouldnt call this directly
-    //call goBackOnePanel instead
-    public void removePanel() {
+    
+    
+    private void removePanel() {
         //set last panel invisible
         panels.get(panels.size() - 1).setVisible(false);
         //then remove from list
         panels.remove(panels.size() - 1);
     }
 
-    //are we on start panel?
+    /**
+     * 
+     * @return weather the program is on start panel 
+     */
     private boolean onStartPanel() {
         if (panels.size() == 1) {
             return true;
@@ -89,12 +98,17 @@ public class PanelController {
         return false;
     }
 
-    //get the current panel in the list/visible on the main frame.
+   /**
+    *
+    * @return the current panel visible 
+    */
     public JPanel getCurrentPanel() {
         return panels.get(panels.size() - 1);
     }
 
-    //when going back only remove the last panel from the list and set the panel before that visible.
+    /**
+     * remove the last panel and bring back the panel before
+     */
     public void goBackOnePanel() {
 
         //if there is only one panel in the list then you are in the main menu, so return this function
@@ -107,6 +121,9 @@ public class PanelController {
         panels.get(panels.size() - 1).setVisible(true);
     }
     
+    /**
+     * go to learning panel
+     */
     public void goToLearning(){
         if (session.isUserLoggedIn()) {
             NewGamePanel sPanel = new NewGamePanel("New Tutorial"); 
@@ -116,7 +133,9 @@ public class PanelController {
         }
     }
 
-    //go to main menu (startscreenpanel)
+   /**
+    * go to main menu (startscreenpanel)
+    */
     public void goToMainMenu() {
         boolean found = false;
         String startScreenName = "";
@@ -149,8 +168,10 @@ public class PanelController {
           }
         }
     }
-//goes back to subject selection menu if found
 
+    /**
+     * go to subject selection menu if found
+     */
     public void goToSubjectMenu() {
         boolean found = false;
         //start from back of the list to search for subject selection
@@ -173,7 +194,9 @@ public class PanelController {
     }
     
     
-    //Goes back to parentalcontrol Panel
+    /**
+     * go to parental control panel
+     */
     public void goToParentalControl() {
         //start from back of the list to search for subject selection
         for (int i = panels.size() - 1; i > -1; i--) {
@@ -191,6 +214,10 @@ public class PanelController {
         }       
     }
     
+    /**
+     * set the layeredpane for parentalcontrolpanel
+     * @param panel the parentalcontrol panel
+     */
     public void setParentalControlLayerPane(JPanel panel) {
          //start from back of the list to search for subject selection
         for (int i = panels.size() - 1; i > -1; i--) {
@@ -210,7 +237,9 @@ public class PanelController {
         
     }
     
-    //Create a new InitialSetup Panel and remove all other panels
+    /**
+     * remove every panel and create a new initial setup panel 
+     */
     public void goToInitialSetup() {
         for (int i = panels.size()-1; i >=0; i--)
         {

@@ -11,12 +11,14 @@ import com.ece.superkids.ui.tts.MarySpeechController;
 import com.ece.superkids.ui.tts.SpeechController;
 
 /**
- *
+ * The <code>TTSController</code> allows text to speech controller to be picked depending on OS.
  * @author david C
  */
 public class TTSController {
     
-    //Use this if you want to have text to speech
+    /**
+     * Provide a string to get a speech
+     */
     public static void TTS(String string)
     {
         //Mac Only

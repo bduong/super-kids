@@ -17,10 +17,9 @@ import com.ece.superkids.ui.user.panels.QuestionPanel;
  */
 
 /**
+ * The <code>QuestionController</code> controls the questions 
  *
- * @author baris //questionpanel factory(base) creates a questionpanel getting
- * the question and choices(answers) from the server
- *
+ * @author baris
  */
 public class QuestionController {
 
@@ -40,17 +39,25 @@ public class QuestionController {
         return QuestionBaseHolder.INSTANCE;
     }
 
-    //resets count
-    //this is called switching between categories in subjectselectionframe
+    /**
+     *resets count, this is called switching between categories in subjectselectionframe
+     * 
+     */
     public void reset() {
         count = 0;
     }
     
+    /**
+     * sets the count
+     * @param number number to set
+     */
     public void setCount(int number){
         count = number;
     }
 
-    //questions are fetched from the database
+    /**
+     * Questions are fetched from the database and new question panel is created.
+     */
     public QuestionPanel createQuestionPanel(QuestionLevel level, QuestionCategory category) throws IOException {
         //get the database
         QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabaseWithAllQuestions();
@@ -76,7 +83,12 @@ public class QuestionController {
         return null;
     }
 
-    //get list of custom question for given level
+    /**
+     * 
+     * get list of custom question for given level
+     * @param level level to get custom questions from
+     * @return a list of custom questions
+     */
     public List getListOfCustomQuestions(QuestionLevel level) {
         //get the database of custom questions
         QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabaseWithOnlyCustomQuestions();
@@ -100,8 +112,9 @@ public class QuestionController {
         return qList;
     }
 
-    //use with caution
-    //deletes all custom added questions
+    /**
+     * use with caution, deletes all custom added questions
+     */
     public void deleteAllCustomQuestions() {
         QuestionDatabase qd = QuestionDatabaseFactory.aQuestionDatabaseWithOnlyCustomQuestions();
 

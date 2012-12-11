@@ -4,8 +4,16 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import com.ece.superkids.ui.frames.MainFrame;
 
+/**
+ * <code>SuperKids</code> main class where the program starts
+ * @author baris
+ */
 public class SuperKids {
 
+    /**
+     * main method
+     * @param args 
+     */
     public static void main(String [] args) {
         setLookAndFeel();
          //set icon
@@ -19,7 +27,9 @@ public class SuperKids {
         });
     }
     
-    //set icon
+    /**
+     * set the icon of the application
+     */
     private static void setIcon() {
         String osName = System.getProperty("os.name");
         java.net.URL url = ClassLoader.getSystemResource("characters/Boy.png");
@@ -30,6 +40,9 @@ public class SuperKids {
         }
     }
 
+    /**
+     * set the look and feel
+     */
     private static void setLookAndFeel() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

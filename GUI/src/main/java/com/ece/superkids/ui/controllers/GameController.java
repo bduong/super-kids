@@ -20,7 +20,7 @@ import com.ece.superkids.ui.user.panels.StartScreenPanel;
 import com.ece.superkids.ui.user.panels.SubjectSelectionPanel;
 
 /**
- *
+ * <code>GameController</code> controls the game functions
  * @author baris
  */
 public class GameController {
@@ -43,11 +43,15 @@ public class GameController {
         public static final GameController INSTANCE = new GameController();
     }
 
+    /**
+     * 
+     * @return instance of game controller 
+     */
     public static GameController getInstance() {
         return GameController.GameControllerHolder.INSTANCE;
     }
 
-    /*
+    /**
      * Create a new game
      */
     public void newGame() {
@@ -59,8 +63,10 @@ public class GameController {
         controller.addPanel(gamePanel);
     }
 
-    /*
-     * New subject is selected 
+    /**
+     * new subject is selected
+     * @param level level to be selected
+     * @param categoryNum index of category in the level
      */
     public void newSubject(QuestionLevel level, int categoryNum) {
         //create a new state for the logged inuser
