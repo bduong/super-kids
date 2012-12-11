@@ -44,6 +44,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
     JPanel scrollable = new JPanel(new GridLayout(0, 4, 5, 10));
     PanelController pControl = PanelController.getInstance();
     QuestionController qControl = QuestionController.getInstance();
+    String newPictureKey="";
 
     public QuestionPicturePanel(JTextField field) {
         this.field = field;
@@ -208,6 +209,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             customPicturePath = dir + File.separator + filename;
             System.out.println("New picture added to custom pics:" + customPicturePath);
             String key = getKey(filename);
+            newPictureKey=key;
             iManager.saveImage(customPicturePath, key);
             loadPictures(); //reload pictures
         }
@@ -227,11 +229,15 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             button.setPreferredSize(new java.awt.Dimension(150,150));
             button.setSize(150, 150);
             String key = (String) keys.get(i);
-            button.setIcon(iProvider.getImage(key));
+            button.setIcon(iProvider.getImage(key));   
             button.setName(key);
             button.addActionListener(new ButtonAction(field));
             button.addFocusListener(new ButtonFocus());
             scrollable.add(button);
+            if(key.equals(newPictureKey)){
+                button.setBackground(Color.ORANGE);
+                newPictureKey="";
+            }
         }
         jScrollPane1.add(scrollable);
         jScrollPane1.setViewportView(scrollable);
