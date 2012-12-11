@@ -6,4 +6,5 @@ com.ece.superkids.questions.builders
 com.ece.superkids.questions.entities
 com.ece.superkids.questions.enums
 com.ece.superkids.users
+com.ece.superkids.users.builders
 com.ece.superkids.users.entities
