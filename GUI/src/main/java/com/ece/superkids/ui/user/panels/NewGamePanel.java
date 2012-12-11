@@ -5,6 +5,7 @@
 package com.ece.superkids.ui.user.panels;
 
 import com.ece.superkids.questions.enums.QuestionLevel;
+import com.ece.superkids.ui.controllers.MusicController;
 import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.events.Session;
 import com.ece.superkids.users.entities.User;
@@ -33,6 +34,9 @@ public class NewGamePanel extends javax.swing.JPanel {
         initComponents();
         initLevelButtons();
         jLabel1.setText(newOrContinue);
+        if (SoundPanel.getInstance().isMusicON()){
+            MusicController.getInstance().playMusic();
+        }
     }
 
     /**
