@@ -40,6 +40,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         controller = PanelController.getInstance();
         if (tutorial){
             tutorial_flag = true;
+            MusicController.getInstance().stopMusic();
         }
         else{
             gController = GameController.getInstance();
@@ -51,7 +52,6 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         subject2.setText(level.getCategories().get(1).toString());
         subject3.setText(level.getCategories().get(2).toString());
         //jLayeredPane1.setName("Tutorial Mode");
-        MusicController.getInstance().stopMusic();
     }
 
     /**
