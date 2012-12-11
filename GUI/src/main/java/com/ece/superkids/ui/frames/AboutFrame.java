@@ -5,13 +5,16 @@
 package com.ece.superkids.ui.frames;
 
 /**
- *
+ * Creates new form <code>AboutFrame</code>
+ * About the game
+ * 
  * @author baris
  */
 public class AboutFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form AboutFrame
+     * About the game
      */
     public AboutFrame() {
         initComponents();

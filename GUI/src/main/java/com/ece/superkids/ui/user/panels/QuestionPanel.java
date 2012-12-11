@@ -31,14 +31,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /**
- *
+ * Creates a <code>QuestionPanel</code> form with the specified question
+ * 
  * @author Prashant & Baris & David C
  */
 public class QuestionPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form QuestionPanel
-     */
+
     private int score;
     private int scoreValue;
     //points to which choice is correct
@@ -54,9 +53,11 @@ public class QuestionPanel extends javax.swing.JPanel {
     private Question question;
     private int previousScore;
 
-    //when creating the panel set which choice is the correct answer
-    //1 is button1 , 2 is button2 and so on.
-    //look at design tab to see which button is which
+    /**
+     * Creates a QuestionPanel form with the specified question
+     * 
+     * @param question , Question that will be displayed in this panel
+     */
     public QuestionPanel(Question question) {
         this.setName("Question");
         this.question = question;
@@ -349,7 +350,7 @@ public class QuestionPanel extends javax.swing.JPanel {
     private javax.swing.JButton RepeatSoundButton;
     private javax.swing.JLabel background;
     private javax.swing.JLabel characterIconLabel;
-    public javax.swing.JButton choice1Button;
+    private javax.swing.JButton choice1Button;
     private javax.swing.JButton choice2Button;
     private javax.swing.JButton choice3Button;
     private javax.swing.JButton choice4Button;

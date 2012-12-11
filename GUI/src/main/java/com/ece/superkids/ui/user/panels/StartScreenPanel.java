@@ -13,8 +13,13 @@ import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.events.Session;
 
 /**
- *
- * @author david & baris
+ * Creates new form <code>StartScreenPanel</code>
+ * This is main screen when the child user logs in.
+ * Contains options to:
+ * Start a new game.
+ * Continue a game.
+ * Go to Options panel.
+ * @author david cheung & baris
  *
  */
 public class StartScreenPanel extends javax.swing.JPanel {
@@ -27,6 +32,11 @@ public class StartScreenPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form StartScreenPanel
+     * This is main screen when the child user logs in.
+     * Contains options to:
+     * Start a new game.
+     * Continue a game.
+     * Go to Options panel.
      */
     private StartScreenPanel() {
         this.setName("StartScreen");

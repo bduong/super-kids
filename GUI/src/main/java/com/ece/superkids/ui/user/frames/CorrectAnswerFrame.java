@@ -5,13 +5,15 @@
 package com.ece.superkids.ui.user.frames;
 
 /**
- *
+ * Creates new form <code>CorrectAnswerFrame</code>
+ * Display that you got the answer correct
  * @author Prashant
  */
 public class CorrectAnswerFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form CorrectAnswerFrame
+     * Display that you got the answer correct
      */
     public CorrectAnswerFrame() {
         initComponents();

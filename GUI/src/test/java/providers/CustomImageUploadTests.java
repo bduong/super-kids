@@ -13,10 +13,13 @@ import java.util.Properties;
 
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 
 public class CustomImageUploadTests {
 
-    private static final String key = "testelephant";
+    private static final String name = "testelephant";
+    private String key;
     private ImageProvider imageProvider = ResourceProviderFactory.anImageProvider();
     private ImageManager imageManager = QuestionDatabaseFactory.anImageManager();
 
@@ -27,8 +30,8 @@ public class CustomImageUploadTests {
         props.load(in);
         in.close();
 
-        File image = new File(props.getProperty(key));
-        image.delete();
+        File image = new File(FilenameUtils.separatorsToUnix(props.getProperty(key)));
+        FileUtils.forceDelete(image);
 
         props.remove(key);
         Writer out = new FileWriter(FileManagerImpl.getInstance().getImagePathsFile());
@@ -38,10 +41,11 @@ public class CustomImageUploadTests {
 
     @Test
     public void uploadImagesAppearInProvider() {
+        key=name;
         String path = getClass().getResource("/elephant.png").getPath();
 
         assertNull(imageProvider.getImage(key));
-        imageManager.saveImage(path, key);
+        key = imageManager.saveImage(path, key);
         imageProvider.refresh();
         assertNotNull(imageProvider.getImage(key));
     }

@@ -82,6 +82,7 @@ public class FileQuestionDatabase implements QuestionDatabase{
                 Question question = gson.fromJson(line, Question.class);
                 addQuestionToList(question);
             }
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

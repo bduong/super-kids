@@ -18,19 +18,25 @@ import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
 
 /**
- *
- * @author baris & edits by david c
+ * Creates new form <code>ResetGamePanel</code>
+ * This panel resets all settings for the game as well as delete any custom
+ * questions and pictures
+ * 
+ * @author baris &  david c
  */
 public class ResetGamePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ResetGamePanel
-     */
+    
     ParentManager pM = UserDatabaseFactory.aParentManager();
     private FileManager manager = FileManagerImpl.getInstance();
     private PanelController controller = PanelController.getInstance();
     private Session session = Session.aSession();
-
+    
+    /**
+     * Creates new form ResetGamePanel
+     * This panel resets all settings for the game as well as delete any custom
+     * questions and pictures
+     */
     public ResetGamePanel() {
         initComponents();
     }

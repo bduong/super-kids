@@ -21,7 +21,9 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Creates new panel <code>EditAchievementPanel</code>
+ * This panel allows the parent to edit achievements that the child can unlock.
+ * 
  * @author Maxe
  */
 public class EditAchievementPanel extends javax.swing.JPanel {
@@ -36,7 +38,8 @@ public class EditAchievementPanel extends javax.swing.JPanel {
     private List<JTextArea> prizes;
 
     /**
-     * Creates new customizer EditAchievementPanel
+     * Creates new panel EditAchievementPanel
+     * This panel allows the parent to edit achievements that the child can unlock.
      */
     public EditAchievementPanel() {
         initComponents();
