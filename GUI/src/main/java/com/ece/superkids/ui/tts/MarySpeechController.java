@@ -1,11 +1,10 @@
 package com.ece.superkids.ui.tts;
 
+import javax.sound.sampled.AudioInputStream;
 import marytts.LocalMaryInterface;
 import marytts.MaryInterface;
 import marytts.exceptions.MaryConfigurationException;
 import marytts.util.data.audio.AudioPlayer;
-
-import javax.sound.sampled.AudioInputStream;
 
 /**
  * The <code>MarySpeechController</code> uses the MARY text-to-speech engine

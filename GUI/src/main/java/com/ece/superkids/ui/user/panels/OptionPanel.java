@@ -5,13 +5,13 @@
 package com.ece.superkids.ui.user.panels;
 
 import com.ece.superkids.ui.controllers.PanelController;
-import com.ece.superkids.ui.user.panels.SoundPanel;
-import com.ece.superkids.ui.user.panels.ScoresHistoryPanel;
 import java.awt.Color;
 
 /**
- *
- * @author david
+ *Creates new form <code>OptionPanel</code> containing settings
+ * to change the sound and view report cards.
+ * 
+ * @author david Cheung
  */
 public class OptionPanel extends javax.swing.JPanel {
 
@@ -19,7 +19,9 @@ public class OptionPanel extends javax.swing.JPanel {
     private PanelController controller = PanelController.getInstance();
     
     /**
-     * Creates new form OptionPanel
+     * Creates new form OptionPanel containing settings
+     * to change the sound and view report cards.
+     * 
      */
     public OptionPanel() {
         initComponents();

@@ -29,14 +29,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- *
+ * Creates new form <code>QuestionPicturePanel</code>
+ * This panel allows the user to add/delete pictures as well as
+ * select a picture to use as part of a question
+ * 
  * @author baris, david c
  */
 public class QuestionPicturePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form QuestionPicturePanel
-     */
+    
     String customPicturePath;
     JTextField field;
     ImageManager iManager = QuestionDatabaseFactory.anImageManager();
@@ -44,7 +45,12 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
     JPanel scrollable = new JPanel(new GridLayout(0, 4, 5, 10));
     PanelController pControl = PanelController.getInstance();
     QuestionController qControl = QuestionController.getInstance();
-
+    
+    /**
+     * Creates new form QuestionPicturePanel
+     * This panel allows the user to add/delete pictures as well as
+     * select a picture to use as part of a question
+     */
     public QuestionPicturePanel(JTextField field) {
         this.field = field;
         initComponents();

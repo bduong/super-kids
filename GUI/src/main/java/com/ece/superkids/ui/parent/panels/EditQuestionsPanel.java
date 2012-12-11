@@ -4,31 +4,29 @@
  */
 package com.ece.superkids.ui.parent.panels;
 
-import com.ece.superkids.ui.parent.panels.QuestionPicturePanel;
 import com.ece.superkids.questions.QuestionDatabaseFactory;
 import com.ece.superkids.questions.QuestionManager;
 import com.ece.superkids.questions.builders.QuestionBuilder;
 import com.ece.superkids.questions.entities.Question;
-import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.questions.enums.QuestionType;
+import com.ece.superkids.ui.controllers.PanelController;
+import com.ece.superkids.ui.controllers.QuestionController;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import javax.swing.JTextField;
-import com.ece.superkids.ui.controllers.PanelController;
-import com.ece.superkids.ui.controllers.QuestionController;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
- *
- * @author baris
+ * Creates new form <code>EditQuestionsPanel</code>
+ * This panel allows the parent to edit custom questions and delete them
+ * 
+ * @author baris & david cheung
  */
 public class EditQuestionsPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form EditQuestionsPanel
-     */
+    
     private QuestionController qController;
     private QuestionManager manager;
     private Question currentQuestion;
@@ -39,7 +37,11 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     private int choiceSelected;
     private QuestionType qType;
     private PanelController pControl = PanelController.getInstance();
-
+    
+    /**
+     * Creates new form EditQuestionsPanel
+     * This panel allows the parent to edit custom questions and delete them
+     */
     public EditQuestionsPanel() {
         initComponents();
         qController = QuestionController.getInstance();
