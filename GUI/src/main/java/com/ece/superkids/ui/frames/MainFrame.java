@@ -208,10 +208,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void LearnModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LearnModeActionPerformed
         // TODO add your handling code here:
 //        SubjectSelectionPanel sPanel = new SubjectSelectionPanel();
-        NewGamePanel sPanel = new NewGamePanel("New Tutorial");
-        
-        //add questionPanel
-        controller.addPanel(sPanel);
+       controller.goToLearning();
     }//GEN-LAST:event_LearnModeActionPerformed
 
     private void ExitAppItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitAppItemActionPerformed
