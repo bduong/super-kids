@@ -8,12 +8,11 @@ import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.events.Session;
 import com.ece.superkids.users.entities.User;
-
 import java.awt.Color;
 
 /**
  *
- * @author baris
+ * @author baris & David C
  */
 public class NewGamePanel extends javax.swing.JPanel {
 
@@ -25,6 +24,13 @@ public class NewGamePanel extends javax.swing.JPanel {
     private User user;
     private boolean tutorialFlag;
 
+    /**
+     * This creates a level selection screen panel.
+     * The available levels depend on whether this a new game or continuing on a
+     * game.
+     * 
+     * @param newOrContinue  the state of the game
+     */
     public NewGamePanel(String newOrContinue){
         controller = PanelController.getInstance();
         session=Session.aSession();
@@ -57,7 +63,7 @@ public class NewGamePanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("New Game");
-        jLabel1.setBounds(90, 160, 400, 40);
+        jLabel1.setBounds(90, 160, 640, 50);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         level3Button.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
