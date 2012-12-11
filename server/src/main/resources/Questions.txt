@@ -29,7 +29,6 @@
 {"question":"What measures length?","choices":["Calculator","Ruler","Scale","Pencil"],"answer":"Ruler","explaination":"","type":"TEXT", "category":"STATIONARY","level":"LEVEL_3"}
 {"question":"What instrument is a brass?","choices":["Violin","Piano","Trumpet","Flute"],"answer":"Trumpet","explaination":"","type":"TEXT", "category":"INSTRUMENTS","level":"LEVEL_3"}
 {"question":"Which one is not a planet?","choices":["Neptune","Saturn","The Sun","Earth"],"answer":"The Sun","explaination":"","type":"TEXT", "category":"PLANETS","level":"LEVEL_2"}
-{"question":"Body question test","choices":["test1","test2","test3","test4"],"answer":"test4","explaination":"","type":"TEXT", "category":"BODYPARTS","level":"LEVEL_3"}
 {"question":"What shape has 3 sides?","choices":["Square","circle","triangle","rectangle"],"answer":"triangle","explaination":"A triangle has three sides","type":"PICTURE","category":"SHAPES","level":"LEVEL_1"}
 {"question":"Which fruit is green?","choices":["apple","grapes","banana","kiwi"],"answer":"kiwi","explaination":"A kiwi has is green on the inside","type":"PICTURE","category":"COLORS","level":"LEVEL_1"}
 {"question":"Which is a Deer?","choices":["dog","giraffe","deer","elephant"],"answer":"deer","explaination":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
