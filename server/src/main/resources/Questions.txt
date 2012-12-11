@@ -46,3 +46,6 @@
 {"question":"Which fruit is red?","choices":["apple","banana","grapes","kiwi"],"answer":"apple","explaination":"","type":"PICTURE","category":"COLORS","level":"LEVEL_1"}
 {"question":"Which food is a leaf?","choices":["Potato","Radish","Lettuce","Pepper"],"answer":"Lettuce","explaination":"","type":"TEXT", "category":"FOOD","level":"LEVEL_2"}
 {"question":"Which of the following is used for erasing","choices":["crayon","ruler","sharpener","eraser"],"answer":"eraser","explaination":"","type":"PICTURE", "category":"STATIONARY","level":"LEVEL_3"}
+{"question":"Which organ do you use to taste food","choices":["eyes","nose","ears","tongue"],"answer":"tongue","explaination":"","type":"TEXT", "category":"BODYPARTS","level":"LEVEL_3"}
+{"question":"Which of the following do you use to draw a circle","choices":["Protractor","Scale","Compass","Stapler"],"answer":"Compass","explaination":"","type":"TEXT", "category":"STATIONARY","level":"LEVEL_3"}
+{"question":"Which food is a stem?","choices":["Tomato","Radish","Corn","Potato"],"answer":"Potato","explaination":"","type":"TEXT", "category":"FOOD","level":"LEVEL_2"}
