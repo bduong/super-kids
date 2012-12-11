@@ -4,10 +4,7 @@
  */
 package com.ece.superkids.ui.customui;
 
-/**
- *
- * @author david
- */
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
@@ -21,8 +18,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
- *
- * @author david cheung
+ * This GUI class <code>ImageLabel</code>
+ * extends JLabel so that images get resized and center in the JLabel
+ * 
+ * @author david
  */
 public class ImageLabel extends JLabel {
     
@@ -31,6 +30,10 @@ public class ImageLabel extends JLabel {
     private int iconwidth, iconheight;
     
     
+    /**
+    * This GUI class ImageLabel
+    * extends JLabel so that images get resized and center in the JLabel
+    */
     public ImageLabel() {
         super();
     }

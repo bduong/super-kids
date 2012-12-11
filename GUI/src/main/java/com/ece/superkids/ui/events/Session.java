@@ -7,7 +7,8 @@ package com.ece.superkids.ui.events;
 import com.ece.superkids.users.entities.User;
 
 /**
- *
+ * This class <code>Session</code> handles the child user session.
+ * 
  * @author baris
  */
 public class Session{

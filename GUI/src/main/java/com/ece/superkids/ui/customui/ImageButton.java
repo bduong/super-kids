@@ -17,7 +17,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
- *
+ * This GUI class <code>ImageButton</code>
+ * extends JButton so that images get resized and center in the button
+ * 
+ * Note getIcon() will return null
+ * 
  * @author david cheung
  */
 public class ImageButton extends JButton {
@@ -26,13 +30,18 @@ public class ImageButton extends JButton {
     private ImageObserver imageObserver;
     private int iconwidth, iconheight;
     
-    
+    /**
+    * This GUI class <code>ImageButton</code>
+    * extends JButton so that images get resized and center in the button
+    * 
+    * Note getIcon() will return null
+    */
     public ImageButton() {
         super();
     }
     
     
-        @Override
+    @Override
     public void setIcon(Icon icon)
     {
         super.setIcon(null);

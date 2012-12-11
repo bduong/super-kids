@@ -4,23 +4,27 @@
  */
 package com.ece.superkids.ui.parent.frames;
 
-import com.ece.superkids.users.ParentManager;
-import com.ece.superkids.users.UserDatabaseFactory;
 import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.parent.panels.ParentalControlPanel;
+import com.ece.superkids.users.ParentManager;
+import com.ece.superkids.users.UserDatabaseFactory;
 
 /**
- *
+ * Creates new form <code>AuthFrame</code>
+ * Authentication screen for logging into parent control panel
+ * 
  * @author baris
  */
 public class AuthFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AuthFrame
-     */
+    
     private ParentManager pM = UserDatabaseFactory.aParentManager();
     private PanelController controller = PanelController.getInstance();
 
+    /**
+     * Creates new form AuthFrame
+     * Authentication screen for logging into parent control panel
+     */
     public AuthFrame() {
         initComponents();
         //center frame relative to screen
