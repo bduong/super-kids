@@ -270,6 +270,7 @@ class ButtonAction implements ActionListener {
         
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         JButton source = (JButton) e.getSource();
         field.setText(source.getName());
@@ -278,11 +279,13 @@ class ButtonAction implements ActionListener {
 
 class ButtonFocus implements FocusListener {
 
+    @Override
     public void focusGained(FocusEvent e) {
         JButton source = (JButton) e.getSource();
         source.setBackground(Color.RED);
     }
 
+    @Override
     public void focusLost(FocusEvent e) {
         JButton source = (JButton) e.getSource();
         source.setBackground(Color.white);

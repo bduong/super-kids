@@ -6,6 +6,7 @@ package com.ece.superkids.ui.user.panels;
 
 import com.ece.superkids.questions.enums.QuestionLevel;
 import com.ece.superkids.ui.controllers.GameController;
+import com.ece.superkids.ui.controllers.MusicController;
 import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.ui.controllers.TTSController;
 import com.ece.superkids.ui.events.Session;
@@ -23,6 +24,8 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private Session session;
     private boolean tutorial_flag = false;
     private GameController gController;
+    
+    String OS = System.getProperty("os.name").toLowerCase();
 
 
     /**
@@ -48,6 +51,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         subject2.setText(level.getCategories().get(1).toString());
         subject3.setText(level.getCategories().get(2).toString());
         //jLayeredPane1.setName("Tutorial Mode");
+        MusicController.getInstance().stopMusic();
     }
 
     /**
@@ -141,8 +145,31 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
 
     private void subject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject1ActionPerformed
         // TODO add your handling code here:
+        System.out.println(getClass().getClassLoader().getResource("videos/shapes.mp4")); 
         if (tutorial_flag) {
-
+            if (OS.indexOf("win")>=0) {
+                try {
+                    if (level == QuestionLevel.LEVEL_1){
+                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/shapes.mp4"));
+                    }
+                    else if (level == QuestionLevel.LEVEL_2){
+                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/food.mp4"));                        
+                    }
+                    else if (level == QuestionLevel.LEVEL_3){
+                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/stationary.mp4"));                    
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }       
+            }
+            else if (OS.indexOf("mac")>=0){
+                try {
+                    Runtime.getRuntime().exec("open -a \"QuickTime Player\"" + getClass().getClassLoader().getResource("videos/shapes.mp4"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            
         } else {
             gController.newSubject(level, 0);
         }
@@ -151,8 +178,30 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private void subject2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject2ActionPerformed
          // TODO add your handling code here:
         if (tutorial_flag) {
-
-        } else {
+            if (OS.indexOf("win")>=0) {
+                try {
+                    if (level == QuestionLevel.LEVEL_1){
+                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/animals.mp4"));
+                    }
+                    else if (level == QuestionLevel.LEVEL_2){
+                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/planets.mp4"));                        
+                    }
+                    else if (level == QuestionLevel.LEVEL_3){
+                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/bodyparts.mp4"));                    
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }       
+            }
+            else if (OS.indexOf("mac")>=0){
+                try {
+                    Runtime.getRuntime().exec("open -a \"QuickTime Player\"" + getClass().getClassLoader().getResource("videos/animals.mp4"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } 
+        else {
             gController.newSubject(level, 1);
         }
     }//GEN-LAST:event_subject2ActionPerformed
@@ -160,7 +209,28 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private void subject3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject3ActionPerformed
          // TODO add your handling code here:
         if (tutorial_flag) {
-
+            if (OS.indexOf("win")>=0) {
+                try {
+                    if (level == QuestionLevel.LEVEL_1){
+                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/colors.mp4"));
+                    }
+                    else if (level == QuestionLevel.LEVEL_2){
+                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/geography.mp4"));                        
+                    }
+                    else if (level == QuestionLevel.LEVEL_3){
+                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/instruments.mp4"));                    
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }       
+            }
+            else if (OS.indexOf("mac")>=0){
+                try {
+                    Runtime.getRuntime().exec("open -a \"QuickTime Player\"" + getClass().getClassLoader().getResource("videos/colors.mp4"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         } else {
             gController.newSubject(level, 2);
         }
