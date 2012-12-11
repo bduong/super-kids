@@ -36,6 +36,7 @@ public class StateSavedTests {
     public void setup() {
         testUser = new User("TestUser");
         question = new Question();
+        fileUserManager.addUser(testUser);
         
         question.setAnswer("QuestionAnswer");
         question.setCategory(QuestionCategory.ANIMALS);
@@ -48,6 +49,8 @@ public class StateSavedTests {
         choices.add("Answer 3");
         choices.add("Answer 4");
         question.setChoices(choices);
+        testUser.setCurrentQuestion(question);
+        testUser.saveUser();
     }
 
     /**
