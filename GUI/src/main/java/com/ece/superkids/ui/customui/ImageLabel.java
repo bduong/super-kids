@@ -21,7 +21,7 @@ import javax.swing.JLabel;
  * This GUI class <code>ImageLabel</code>
  * extends JLabel so that images get resized and center in the JLabel
  * 
- * @author david
+ * @author david cheung
  */
 public class ImageLabel extends JLabel {
     

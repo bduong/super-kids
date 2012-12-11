@@ -1,9 +1,15 @@
 package com.ece.superkids.ui;
 
+import com.ece.superkids.ui.frames.MainFrame;
 import java.awt.Image;
 import java.awt.Toolkit;
-import com.ece.superkids.ui.frames.MainFrame;
 
+/**
+ * This class <code>SuperKids</code>
+ * starts the game/application
+ * 
+ * @author david
+ */
 public class SuperKids {
 
     public static void main(String [] args) {
