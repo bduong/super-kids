@@ -5,6 +5,7 @@ import com.ece.superkids.ui.events.Session;
 import com.ece.superkids.ui.frames.MainFrame;
 import com.ece.superkids.ui.parent.panels.InitialSetupPanel;
 import com.ece.superkids.ui.parent.panels.ParentalControlPanel;
+import com.ece.superkids.ui.user.panels.NewGamePanel;
 import com.ece.superkids.ui.user.panels.StartScreenPanel;
 import com.ece.superkids.ui.user.panels.SubjectSelectionPanel;
 import com.ece.superkids.ui.user.panels.UserSelectionPanel;
@@ -104,6 +105,15 @@ public class PanelController {
         removePanel();
         //set the panel before the last panel visible
         panels.get(panels.size() - 1).setVisible(true);
+    }
+    
+    public void goToLearning(){
+        if (session.isUserLoggedIn()) {
+            NewGamePanel sPanel = new NewGamePanel("New Tutorial"); 
+            this.addPanel(sPanel);
+        } else {
+            this.addPanel(new UserSelectionPanel());
+        }
     }
 
     //go to main menu (startscreenpanel)
