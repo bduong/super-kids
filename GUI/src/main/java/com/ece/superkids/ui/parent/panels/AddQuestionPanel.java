@@ -16,20 +16,24 @@ import javax.swing.JTextField;
 import com.ece.superkids.ui.controllers.PanelController;
 
 /**
- *
- * @author baris
+ * Creates new form <code>AddQuestionPanel</code>
+ * This panel allows to add custom questions to the game.
+ * 
+ * @author baris & david c
  */
 public class AddQuestionPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form AddQuestionPanel
-     */
+    
     QuestionManager qm;
     int choiceSelected;
     String type="TEXT";
     private PanelController panelC = PanelController.getInstance();
     private int addstate;
 
+    /**
+     * Creates new form AddQuestionPanel
+     * This panel allows to add custom questions to the game
+     */
     public AddQuestionPanel() {
         initComponents();
         choiceSelected = 0;

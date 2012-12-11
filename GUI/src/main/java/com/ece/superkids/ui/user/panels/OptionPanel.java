@@ -8,7 +8,9 @@ import com.ece.superkids.ui.controllers.PanelController;
 import java.awt.Color;
 
 /**
- *
+ *Creates new form <code>OptionPanel</code> containing settings
+ * to change the sound and view report cards.
+ * 
  * @author david Cheung
  */
 public class OptionPanel extends javax.swing.JPanel {

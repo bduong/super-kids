@@ -15,7 +15,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- *
+ * Creates new form <code>UserSelectionPanel</code>
+ * This is the login screen for the child.
  * @author baris
  */
 public final class UserSelectionPanel extends javax.swing.JPanel {

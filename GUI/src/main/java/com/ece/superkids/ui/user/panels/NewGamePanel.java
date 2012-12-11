@@ -11,7 +11,10 @@ import com.ece.superkids.users.entities.User;
 import java.awt.Color;
 
 /**
- *
+ * Creates new form <code>NewGamePanel</code>
+ * This creates a level selection screen panel
+ * The available levels depend on whether this a new game or continuing on a
+ * game.
  * @author baris & David C
  */
 public class NewGamePanel extends javax.swing.JPanel {

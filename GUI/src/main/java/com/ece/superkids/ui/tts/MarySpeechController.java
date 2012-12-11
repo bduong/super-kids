@@ -33,12 +33,6 @@ public class MarySpeechController implements SpeechController{
         return MarySpeechControllerFactory.INSTANCE;
     }
 
-    /**
-     * Say a given sentence using the <code>MarySpeechController</code>
-     * 
-     * @param sentence the sentence to play
-     * @throws Exception If we cannot synthesize the speech audio.
-     */
     @Override
     public void say(final String sentence) throws Exception {
         AudioInputStream audio = marytts.generateAudio(sentence);

@@ -6,14 +6,16 @@ package com.ece.superkids.ui.user.panels;
 
 import com.ece.superkids.questions.enums.QuestionCategory;
 import com.ece.superkids.questions.enums.QuestionLevel;
+import com.ece.superkids.ui.events.Session;
 import com.ece.superkids.users.entities.User;
 import java.util.List;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import com.ece.superkids.ui.events.Session;
 
 /**
- *
+ * Creates new form <code>ScoresHistoryPanel</code>
+ * The Scores History panel display information about how well
+ * the user performed for each level.
  * @author baris & prashant
  */
 public class ScoresHistoryPanel extends javax.swing.JPanel {

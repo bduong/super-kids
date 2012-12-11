@@ -15,14 +15,14 @@ import com.ece.superkids.ui.customui.ImageLabel;
 import com.ece.superkids.ui.events.Session;
 
 /**
- *
+ * Creates new form <code>UserControlPanel</code>
+ * This panel allows for adding/deleting new child users
+ * 
  * @author baris & david c
  */
 public class UserControlPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form UserControlPanel
-     */
+    
     private UserManager uM  = UserDatabaseFactory.aUserManager();
     private Session session = Session.aSession();
     private PanelController controller = PanelController.getInstance();
@@ -30,6 +30,10 @@ public class UserControlPanel extends javax.swing.JPanel {
     private String character;
     private int AddState = 0;
     
+    /**
+     * Creates new form UserControlPanel
+     * This panel allows for adding/deleting new child users
+     */
     public UserControlPanel() {
         initComponents();
         fillBox();

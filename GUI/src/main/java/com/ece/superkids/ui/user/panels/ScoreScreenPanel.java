@@ -18,7 +18,9 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Creates new form <code>ScoreScreenPanel</code>
+ * Number of stars are based on scoring for that category
+ * Achievement unlocks are based on total score of the user.
  * @author david Cheung
  */
 public class ScoreScreenPanel extends javax.swing.JPanel {

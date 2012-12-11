@@ -31,7 +31,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /**
- *
+ * Creates a <code>QuestionPanel</code> form with the specified question
+ * 
  * @author Prashant & Baris & David C
  */
 public class QuestionPanel extends javax.swing.JPanel {

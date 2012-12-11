@@ -7,7 +7,8 @@ package com.ece.superkids.ui.user.panels;
 import com.ece.superkids.ui.controllers.MusicController;
 
 /**
- *
+ * Creates new form <code>SoundPanel</code>
+ * This panel controls the background music.
  * @author baris & DavidC
  */
 public class SoundPanel extends javax.swing.JPanel {

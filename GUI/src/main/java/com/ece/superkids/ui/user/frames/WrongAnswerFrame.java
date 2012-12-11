@@ -5,7 +5,8 @@
 package com.ece.superkids.ui.user.frames;
 
 /**
- *
+ * Creates new form <code>WrongAnswerFrame</code>
+ * Display that you got a wrong answer
  * @author Prashant
  */
 public class WrongAnswerFrame extends javax.swing.JFrame {

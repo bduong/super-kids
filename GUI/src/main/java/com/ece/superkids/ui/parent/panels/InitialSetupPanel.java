@@ -10,17 +10,20 @@ import com.ece.superkids.ui.controllers.PanelController;
 import com.ece.superkids.users.entities.RecoveryQuestion;
 
 /**
- *
+ * Creates new form <code>InitialSetupPanel</code>
+ * This panel sets up the parent's login credentials
+ * 
  * @author baris
  */
 public class InitialSetupPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form InitialSetupPanel
-     */
+    
     ParentManager pM = UserDatabaseFactory.aParentManager();
     PanelController pC;
-
+    /**
+     * Creates new form InitialSetupPanel
+     * This panel sets up the parent's login credentials
+     */
     public InitialSetupPanel() {
         setName("InitialSetup");
         initComponents();

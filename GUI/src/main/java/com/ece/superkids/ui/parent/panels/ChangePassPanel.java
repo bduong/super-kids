@@ -8,15 +8,19 @@ import com.ece.superkids.users.ParentManager;
 import com.ece.superkids.users.UserDatabaseFactory;
 
 /**
- *
+ * Creates new form <code>ChangePassPanel</code>
+ * This panel allow the parent user to change their panels
+ * 
  * @author baris
  */
 public class ChangePassPanel extends javax.swing.JPanel {
 
+    
+    ParentManager pM = UserDatabaseFactory.aParentManager();
     /**
      * Creates new form ChangePassPanel
+     * This panel allow the parent user to change their panels
      */
-    ParentManager pM = UserDatabaseFactory.aParentManager();
     public ChangePassPanel() {
         initComponents();
     }

@@ -5,7 +5,8 @@
 package com.ece.superkids.ui.user.panels;
 
 /**
- *
+ * Creates new form <code>StarPanel</code>
+ * Shows a star.
  * @author david C
  */
 public class StarPanel extends javax.swing.JPanel {
