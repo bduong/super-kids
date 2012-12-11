@@ -4,6 +4,8 @@ import com.ece.superkids.FileManager;
 import com.ece.superkids.FileManagerImpl;
 import com.ece.superkids.images.ImageManager;
 import com.ece.superkids.questions.QuestionDatabaseFactory;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,8 +40,8 @@ public class ImageManagerTests {
         Properties props = new Properties();
         props.load(new FileInputStream(fileManager.getImagePathsFile()));
         String imagePath = props.getProperty(key);
-        File image = new File(imagePath);
-        image.delete();
+        File image = new File(FilenameUtils.separatorsToUnix(imagePath));
+        FileUtils.forceDelete(image);
 
         props.remove(key);
         props.store(new FileWriter(fileManager.getImagePathsFile()), "Custom Images");
