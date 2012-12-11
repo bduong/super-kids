@@ -428,9 +428,9 @@ public class EditAchievementPanel extends javax.swing.JPanel {
         int no_updates=0;
         for (int ii = 0; ii < 10; ii++) {
             String pattern = "[0-9]*";
-            if(scores.get(ii).getText().matches(pattern))
+            if(scores.get(ii).getText().matches(pattern)&&scores.get(ii).getText().length()<5)
             {
-            int score = Integer.parseInt(scores.get(ii).getText());            
+            int score = Integer.parseInt(scores.get(ii).getText());
             String prize = prizes.get(ii).getText();
             B.changeAchievement(ii, AchievementBuilder.anAchievement().unlockedAt(score).withPrize(prize).build());
             }
