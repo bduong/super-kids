@@ -4,6 +4,7 @@ import com.ece.superkids.FileManager;
 import com.ece.superkids.FileManagerImpl;
 import com.ece.superkids.questions.entities.Question;
 import com.google.gson.Gson;
+import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 
@@ -56,8 +57,8 @@ public class FileQuestionManager implements QuestionManager{
                 }
             }
             writer.close();
-            customQuestionsFile.delete();
-            tempFile.renameTo(customQuestionsFile);
+            FileUtils.forceDelete(customQuestionsFile);
+            FileUtils.copyFile(tempFile, customQuestionsFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
