@@ -148,7 +148,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         System.out.println(getClass().getClassLoader().getResource("videos/shapes.mp4")); 
         if (tutorial_flag) {
-            if (OS.indexOf("win")>=0) {
+            if (OS.contains("win")) {
                 try {
                     if (level == QuestionLevel.LEVEL_1){
                     Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/shapes.mp4"));
@@ -163,23 +163,26 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
                     e.printStackTrace();
                 }       
             }
-            else if (OS.indexOf("mac")>=0){
+            else if (OS.contains("mac")){
                 try {
                         if(videoProcess!=null)
                         {
-                            System.out.println("before create"+videoProcess.toString());
-                            videoProcess.destroy();
-                            System.out.println("after destroy"+videoProcess.toString());
+//                            System.out.println("before create"+videoProcess.toString());
+//                            videoProcess.destroy();
+//                            System.out.println("after destroy"+videoProcess.toString());
+                            Runtime.getRuntime().exec(new String[] {"killall", "-9", "\"QuickTime Player\""});
                         }
-                    Runtime.getRuntime().exec(new String[] {"defaults", "write", "com.apple.QuickTimePlayerX", "MGPlayMovieOnOpen", "1"});
+                    videoProcess = Runtime.getRuntime().exec(new String[] {"defaults", "write",
+                            "com.apple.QuickTimePlayerX",
+                            "MGPlayMovieOnOpen", "1"});
                     if (level == QuestionLevel.LEVEL_1){
-                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/shapes.mp4").toString()});
+                        Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/shapes.mp4").toString()});
                     }
                     else if (level == QuestionLevel.LEVEL_2){
-                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/food.mp4").toString()});    
+                        Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/food.mp4").toString()});
                     }
                     else if (level == QuestionLevel.LEVEL_3){
-                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/stationary.mp4").toString()});
+                        Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/stationary.mp4").toString()});
                     }
                     
                 } catch (Exception e) {
@@ -210,13 +213,15 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
                     e.printStackTrace();
                 }       
             }
-            else if (OS.indexOf("mac")>=0){
+            else if (OS.contains("mac")){
                 try {
                         if(videoProcess!=null)
                         {
-                            System.out.println("before create"+videoProcess.toString());
-                            videoProcess.destroy();
-                            System.out.println("after destroy"+videoProcess.toString());
+//                            System.out.println("before create"+videoProcess.toString());
+//                            videoProcess.destroy();
+//                            System.out.println("after destroy"+videoProcess.toString());
+                            Runtime.getRuntime().exec(new String[] {"killall", "-9", "\"QuickTime Player\""});
+
                         }
                     Runtime.getRuntime().exec(new String[] {"defaults", "write", "com.apple.QuickTimePlayerX", "MGPlayMovieOnOpen", "1"});
                     if (level == QuestionLevel.LEVEL_1){
@@ -241,7 +246,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private void subject3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject3ActionPerformed
          // TODO add your handling code here:
         if (tutorial_flag) {
-            if (OS.indexOf("win")>=0) {
+            if (OS.contains("win")) {
                 try {
                     if (level == QuestionLevel.LEVEL_1){
                     Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/colors.mp4"));
@@ -256,13 +261,15 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
                     e.printStackTrace();
                 }       
             }
-            else if (OS.indexOf("mac")>=0){
+            else if (OS.contains("mac")){
                 try {
                         if(videoProcess!=null)
                         {
-                            System.out.println("before create"+videoProcess.toString());
-                            videoProcess.destroy();
-                            System.out.println("after destroy"+videoProcess.toString());
+//                            System.out.println("before create"+videoProcess.toString());
+//                            videoProcess.destroy();
+//                            System.out.println("after destroy"+videoProcess.toString());
+                            Runtime.getRuntime().exec(new String[] {"killall", "-9", "\"QuickTime Player\""});
+
                         }
                     Runtime.getRuntime().exec(new String[] {"defaults", "write", "com.apple.QuickTimePlayerX", "MGPlayMovieOnOpen", "1"});
                     if (level == QuestionLevel.LEVEL_1){
