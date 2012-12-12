@@ -29,15 +29,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * Creates new form <code>QuestionPicturePanel</code>
- * This panel allows the user to add/delete pictures as well as
- * select a picture to use as part of a question
- * 
+ * Creates new form
+ * <code>QuestionPicturePanel</code> This panel allows the user to add/delete
+ * pictures as well as select a picture to use as part of a question
+ *
  * @author baris, david c
  */
 public class QuestionPicturePanel extends javax.swing.JPanel {
 
-    
     String customPicturePath;
     JTextField field;
     ImageManager iManager = QuestionDatabaseFactory.anImageManager();
@@ -45,12 +44,12 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
     JPanel scrollable = new JPanel(new GridLayout(0, 4, 5, 10));
     PanelController pControl = PanelController.getInstance();
     QuestionController qControl = QuestionController.getInstance();
-    String newPictureKey="";
-    
+    String newPictureKey = "";
+
     /**
-     * Creates new form QuestionPicturePanel
-     * This panel allows the user to add/delete pictures as well as
-     * select a picture to use as part of a question
+     * Creates new form QuestionPicturePanel This panel allows the user to
+     * add/delete pictures as well as select a picture to use as part of a
+     * question
      */
     public QuestionPicturePanel(JTextField field) {
         this.field = field;
@@ -153,45 +152,37 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        int n = JOptionPane.showConfirmDialog(this,"Would you like to delete the selected image?","Warning",JOptionPane.YES_NO_OPTION);
-        
-        if (n == JOptionPane.YES_OPTION)
-        {
+        int n = JOptionPane.showConfirmDialog(this, "Would you like to delete the selected image?", "Warning", JOptionPane.YES_NO_OPTION);
+
+        if (n == JOptionPane.YES_OPTION) {
             List<Question> qList = new ArrayList<Question>();
             qList.addAll((List<Question>) qControl.getListOfCustomQuestions(QuestionLevel.LEVEL_1));
             qList.addAll((List<Question>) qControl.getListOfCustomQuestions(QuestionLevel.LEVEL_2));
             qList.addAll((List<Question>) qControl.getListOfCustomQuestions(QuestionLevel.LEVEL_3));
-            
-            for (int i = 0; i < qList.size(); i++)
-            {
+
+            for (int i = 0; i < qList.size(); i++) {
                 List<String> choices = qList.get(i).getChoices();
-                for (int j = 0; j < choices.size(); j++)
-                {
-                    if (choices.get(j).contentEquals(field.getText()))
-                    {
-                        JOptionPane.showMessageDialog(this,"This image cannot be deleted. Possible reason: It is a choice to a custom question.");
+                for (int j = 0; j < choices.size(); j++) {
+                    if (choices.get(j).contentEquals(field.getText())) {
+                        JOptionPane.showMessageDialog(this, "This image cannot be deleted. Possible reason: It is a choice to a custom question.");
                         return;
                     }
                 }
             }
-            
+
             boolean check;
             check = iManager.deleteImage(field.getText());
             System.out.println(check);
-            if (check == false)
-            {
-                JOptionPane.showMessageDialog(this,"This image cannot be deleted. Possible reason: It is a stock image.");           
-            }
-            else
-            {
+            if (check == false) {
+                JOptionPane.showMessageDialog(this, "This image cannot be deleted. Possible reason: It is a stock image.");
+            } else {
                 field.setText("");
                 loadPictures();
             }
-                
-            
+
+
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton deleteButton;
@@ -214,10 +205,12 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             dir = (c.getCurrentDirectory().toString());
             customPicturePath = dir + File.separator + filename;
             System.out.println("New picture added to custom pics:" + customPicturePath);
-            String key = getKey(filename);
-            newPictureKey=key;
-            iManager.saveImage(customPicturePath, key);
-            loadPictures(); //reload pictures
+            String key = (String) JOptionPane.showInputDialog(this, "The key will be used for text to speech", "Set a Key", 1);
+            if (key != null && key.length()>0 ) {
+                newPictureKey = key;
+                iManager.saveImage(customPicturePath, key);
+                loadPictures(); //reload pictures
+            }
         }
     }
 
@@ -232,62 +225,52 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
         List keys = iProvider.getAllKeys();
         for (int i = 0; i < keys.size(); i++) {
             ImageButton button = new ImageButton();
-            button.setPreferredSize(new java.awt.Dimension(150,150));
+            button.setPreferredSize(new java.awt.Dimension(150, 150));
             button.setSize(150, 150);
             String key = (String) keys.get(i);
-            button.setIcon(iProvider.getImage(key));   
+            button.setIcon(iProvider.getImage(key));
             button.setName(key);
             button.addActionListener(new ButtonAction(field));
             button.addFocusListener(new ButtonFocus());
             scrollable.add(button);
-            if(key.equals(newPictureKey)){
+            if (key.equals(newPictureKey)) {
                 button.setBackground(Color.RED);
                 field.setText(key);
-                newPictureKey="";
+                newPictureKey = "";
             }
         }
         jScrollPane1.add(scrollable);
         jScrollPane1.setViewportView(scrollable);
     }
 
-    private String getKey(String filename) {
-        int dot = 0;
-        for (int i = 0; i < filename.length(); i++) {
-            if (filename.charAt(i) == '.') {
-                dot = i;
-            }
+    class ButtonAction implements ActionListener {
+
+        JTextField field;
+
+        public ButtonAction(JTextField field) {
+            this.field = field;
+
         }
-        return filename.substring(0, dot);
-    }
-}
 
-class ButtonAction implements ActionListener {
-
-    JTextField field;
-
-    public ButtonAction(JTextField field) {
-        this.field = field;
-        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton source = (JButton) e.getSource();
+            field.setText(source.getName());
+        }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        JButton source = (JButton) e.getSource();
-        field.setText(source.getName());
-    }
-}
+    class ButtonFocus implements FocusListener {
 
-class ButtonFocus implements FocusListener {
+        @Override
+        public void focusGained(FocusEvent e) {
+            JButton source = (JButton) e.getSource();
+            source.setBackground(Color.RED);
+        }
 
-    @Override
-    public void focusGained(FocusEvent e) {
-        JButton source = (JButton) e.getSource();
-        source.setBackground(Color.RED);
-    }
-
-    @Override
-    public void focusLost(FocusEvent e) {
-        JButton source = (JButton) e.getSource();
-        source.setBackground(Color.white);
+        @Override
+        public void focusLost(FocusEvent e) {
+            JButton source = (JButton) e.getSource();
+            source.setBackground(Color.white);
+        }
     }
 }
