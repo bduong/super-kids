@@ -31,12 +31,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /**
- * Creates a <code>QuestionPanel</code> form with the specified question
- * 
+ * Creates a
+ * <code>QuestionPanel</code> form with the specified question
+ *
  * @author Prashant & Baris & David C
  */
 public class QuestionPanel extends javax.swing.JPanel {
-
 
     private int score;
     private int scoreValue;
@@ -55,7 +55,7 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     /**
      * Creates a QuestionPanel form with the specified question
-     * 
+     *
      * @param question , Question that will be displayed in this panel
      */
     public QuestionPanel(Question question) {
@@ -70,7 +70,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         nextQButton.setVisible(false);
         //score is initally zero
         score = 0;
-        previousScore= session.getLoggedInUser().getState().getTotalScore();
+        previousScore = session.getLoggedInUser().getState().getTotalScore();
         scoreNumLabel.setText(Integer.toString(previousScore));
         iconProvider = ResourceProviderFactory.anImageProvider();
         //fill the panel
@@ -79,7 +79,7 @@ public class QuestionPanel extends javax.swing.JPanel {
         saveQuestion();
         //set super kid name
         superKidNameLabel.setText("Super Kid: " + session.getLoggedInUser().getName());
-        this.characterIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource(session.getLoggedInUser().getImage())));    
+        this.characterIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource(session.getLoggedInUser().getImage())));
     }
 
     /**
@@ -258,7 +258,8 @@ public class QuestionPanel extends javax.swing.JPanel {
 
     private void choice1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice1ButtonActionPerformed
         // TODO add your handling code here:
-        TTSController.TTS(this.choice1Button.getText());
+        String speak = normalizeChoiceSpeech(this.choice1Button.getText());
+        TTSController.TTS(speak);
 
         if (correctAnswer == 1) {
             correctAnswerClicked();
@@ -268,8 +269,8 @@ public class QuestionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_choice1ButtonActionPerformed
 
     private void choice3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice3ButtonActionPerformed
-        TTSController.TTS(this.choice3Button.getText());
-
+        String speak = normalizeChoiceSpeech(this.choice3Button.getText());
+        TTSController.TTS(speak);
         if (correctAnswer == 3) {
             correctAnswerClicked();
         } else {
@@ -278,7 +279,9 @@ public class QuestionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_choice3ButtonActionPerformed
 
     private void choice2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice2ButtonActionPerformed
-        TTSController.TTS(this.choice2Button.getText());
+
+        String speak = normalizeChoiceSpeech(this.choice2Button.getText());
+        TTSController.TTS(speak);
 
         if (correctAnswer == 2) {
             correctAnswerClicked();
@@ -288,7 +291,9 @@ public class QuestionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_choice2ButtonActionPerformed
 
     private void choice4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choice4ButtonActionPerformed
-        TTSController.TTS(this.choice4Button.getText());
+        
+        String speak = normalizeChoiceSpeech(this.choice4Button.getText());
+        TTSController.TTS(speak);
 
         if (correctAnswer == 4) {
             correctAnswerClicked();
@@ -344,7 +349,6 @@ public class QuestionPanel extends javax.swing.JPanel {
          */
         //correctAnswerClicked();
     }//GEN-LAST:event_backgroundMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ChoicePanel;
     private javax.swing.JButton RepeatSoundButton;
@@ -407,17 +411,17 @@ public class QuestionPanel extends javax.swing.JPanel {
             score++;
         }
         if (score == 1) {
-            scoreValue = 10; 
-            scoreNumLabel.setText(Integer.toString(previousScore+10));
+            scoreValue = 10;
+            scoreNumLabel.setText(Integer.toString(previousScore + 10));
         } else if (score == 2) {
             scoreValue = 7;
-            scoreNumLabel.setText(Integer.toString(previousScore+7));
+            scoreNumLabel.setText(Integer.toString(previousScore + 7));
         } else if (score == 3) {
             scoreValue = 5;
-            scoreNumLabel.setText(Integer.toString(previousScore+5));
+            scoreNumLabel.setText(Integer.toString(previousScore + 5));
         } else if (score == 4) {
             scoreValue = 3;
-            scoreNumLabel.setText(Integer.toString(previousScore+3));
+            scoreNumLabel.setText(Integer.toString(previousScore + 3));
         }
 
         this.RepeatSoundButton.setVisible(false);
@@ -499,5 +503,14 @@ public class QuestionPanel extends javax.swing.JPanel {
             }
         }
         return 0;
+    }
+
+    /**
+     * gets rid of numbers from a choice
+     * @param choice
+     * @return normalized key
+     */
+    private String normalizeChoiceSpeech(String choice) {
+        return choice.replaceAll("[^a-zA-Z]", ""); 
     }
 }
