@@ -207,8 +207,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             System.out.println("New picture added to custom pics:" + customPicturePath);
             String key = (String) JOptionPane.showInputDialog(this, "The key will be used for text to speech", "Set a Key", 1);
             if (key != null && key.length()>0 ) {
-                newPictureKey = key;
-                iManager.saveImage(customPicturePath, key);
+                newPictureKey = iManager.saveImage(customPicturePath, key);
                 loadPictures(); //reload pictures
             }
         }
