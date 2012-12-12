@@ -257,12 +257,15 @@ public class MainFrame extends javax.swing.JFrame {
     private void musicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicButtonActionPerformed
         // TODO add your handling code here:
         if (musicOn == false) {
+            soundControls.add(SoundPanel.getInstance());
             soundControls.setVisible(true);
             musicOn = true;
             return;
         }
         if (musicOn == true) {
             soundControls.setVisible(false);
+            soundControls.removeAll();
+            soundControls.validate();
             musicOn = false;
         }
     }//GEN-LAST:event_musicButtonActionPerformed
