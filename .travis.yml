@@ -1,0 +1,2 @@
+language: java
+install: echo 'Skipping mvn install'
