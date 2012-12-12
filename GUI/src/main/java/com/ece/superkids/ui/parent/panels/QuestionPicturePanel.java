@@ -229,7 +229,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
             button.setSize(150, 150);
             String key = (String) keys.get(i);
             button.setIcon(iProvider.getImage(key));
-            button.setName(key);
+            button.setText(key);
             button.addActionListener(new ButtonAction(field));
             button.addFocusListener(new ButtonFocus());
             scrollable.add(button);
@@ -255,7 +255,7 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             JButton source = (JButton) e.getSource();
-            field.setText(source.getName());
+            field.setText(source.getText());
         }
     }
 
