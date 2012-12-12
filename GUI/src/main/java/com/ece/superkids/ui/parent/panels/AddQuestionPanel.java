@@ -44,7 +44,6 @@ public class AddQuestionPanel extends javax.swing.JPanel {
         picButton3.setVisible(false);
         picButton4.setVisible(false);
         addstate = 0;
-
     }
 
     /**
@@ -449,12 +448,20 @@ public class AddQuestionPanel extends javax.swing.JPanel {
             picButton2.setVisible(true);
             picButton3.setVisible(true);
             picButton4.setVisible(true);
+            choice1Field.setEnabled(false);
+            choice2Field.setEnabled(false);
+            choice3Field.setEnabled(false);
+            choice4Field.setEnabled(false);         
         }
         if (type.equals("TEXT")) {
             picButton1.setVisible(false);
             picButton2.setVisible(false);
             picButton3.setVisible(false);
             picButton4.setVisible(false);
+            choice1Field.setEnabled(true);
+            choice2Field.setEnabled(true);
+            choice3Field.setEnabled(true);
+            choice4Field.setEnabled(true);        
         }
     }//GEN-LAST:event_typeBoxActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables

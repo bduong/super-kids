@@ -19,14 +19,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- * Creates new form <code>EditQuestionsPanel</code>
- * This panel allows the parent to edit custom questions and delete them
- * 
+ * Creates new form
+ * <code>EditQuestionsPanel</code> This panel allows the parent to edit custom
+ * questions and delete them
+ *
  * @author baris & david cheung
  */
 public class EditQuestionsPanel extends javax.swing.JPanel {
 
-    
     private QuestionController qController;
     private QuestionManager manager;
     private Question currentQuestion;
@@ -37,10 +37,10 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
     private int choiceSelected;
     private QuestionType qType;
     private PanelController pControl = PanelController.getInstance();
-    
+
     /**
-     * Creates new form EditQuestionsPanel
-     * This panel allows the parent to edit custom questions and delete them
+     * Creates new form EditQuestionsPanel This panel allows the parent to edit
+     * custom questions and delete them
      */
     public EditQuestionsPanel() {
         initComponents();
@@ -617,6 +617,10 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
         picButton2.setEnabled(par);
         picButton3.setEnabled(par);
         picButton4.setEnabled(par);
+        choice1Text.setEnabled(!par);
+        choice2Text.setEnabled(!par);
+        choice3Text.setEnabled(!par);
+        choice4Text.setEnabled(!par);
     }
 
     private void handleCustomPicture(JTextField field) {
@@ -628,14 +632,11 @@ public class EditQuestionsPanel extends javax.swing.JPanel {
             if (currentQuestion1.getAnswer().equals(currentQuestion1.getChoices().get(i))) {
                 if (i == 0) {
                     choice1Button.setSelected(true);
-                }
-                else if (i == 1) {
+                } else if (i == 1) {
                     choice2Button.setSelected(true);
-                }
-                else if (i == 2) {
+                } else if (i == 2) {
                     choice3Button.setSelected(true);
-                }
-                else if (i == 3) {
+                } else if (i == 3) {
                     choice4Button.setSelected(true);
                 }
             }
