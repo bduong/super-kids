@@ -24,6 +24,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
     private Session session;
     private boolean tutorial_flag = false;
     private GameController gController;
+    private Process videoProcess;
     
     String OS = System.getProperty("os.name").toLowerCase();
 
@@ -156,7 +157,7 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
                     Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/food.mp4"));                        
                     }
                     else if (level == QuestionLevel.LEVEL_3){
-                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/stationary.mp4"));                    
+                    Runtime.getRuntime().exec("C:/Program Files/Windows Media Player/wmplayer.exe /fullscreen /play /close " + getClass().getClassLoader().getResource("videos/stationary.mp4")); 
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -164,7 +165,23 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
             }
             else if (OS.indexOf("mac")>=0){
                 try {
-                    Runtime.getRuntime().exec("open -a \"QuickTime Player\"" + getClass().getClassLoader().getResource("videos/shapes.mp4"));
+                        if(videoProcess!=null)
+                        {
+                            System.out.println("before create"+videoProcess.toString());
+                            videoProcess.destroy();
+                            System.out.println("after destroy"+videoProcess.toString());
+                        }
+                    Runtime.getRuntime().exec(new String[] {"defaults", "write", "com.apple.QuickTimePlayerX", "MGPlayMovieOnOpen", "1"});
+                    if (level == QuestionLevel.LEVEL_1){
+                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/shapes.mp4").toString()});
+                    }
+                    else if (level == QuestionLevel.LEVEL_2){
+                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/food.mp4").toString()});    
+                    }
+                    else if (level == QuestionLevel.LEVEL_3){
+                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/stationary.mp4").toString()});
+                    }
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -195,7 +212,22 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
             }
             else if (OS.indexOf("mac")>=0){
                 try {
-                    Runtime.getRuntime().exec("open -a \"QuickTime Player\"" + getClass().getClassLoader().getResource("videos/animals.mp4"));
+                        if(videoProcess!=null)
+                        {
+                            System.out.println("before create"+videoProcess.toString());
+                            videoProcess.destroy();
+                            System.out.println("after destroy"+videoProcess.toString());
+                        }
+                    Runtime.getRuntime().exec(new String[] {"defaults", "write", "com.apple.QuickTimePlayerX", "MGPlayMovieOnOpen", "1"});
+                    if (level == QuestionLevel.LEVEL_1){
+                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/colors.mp4").toString()});
+                    }
+                    else if (level == QuestionLevel.LEVEL_2){
+                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/geography.mp4").toString()});   
+                    }
+                    else if (level == QuestionLevel.LEVEL_3){
+                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/instruments.mp4").toString()});
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -226,7 +258,23 @@ public class SubjectSelectionPanel extends javax.swing.JPanel {
             }
             else if (OS.indexOf("mac")>=0){
                 try {
-                    Runtime.getRuntime().exec("open -a \"QuickTime Player\"" + getClass().getClassLoader().getResource("videos/colors.mp4"));
+                        if(videoProcess!=null)
+                        {
+                            System.out.println("before create"+videoProcess.toString());
+                            videoProcess.destroy();
+                            System.out.println("after destroy"+videoProcess.toString());
+                        }
+                    Runtime.getRuntime().exec(new String[] {"defaults", "write", "com.apple.QuickTimePlayerX", "MGPlayMovieOnOpen", "1"});
+                    if (level == QuestionLevel.LEVEL_1){
+                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/animals.mp4").toString()});
+                    }
+                    else if (level == QuestionLevel.LEVEL_2){
+                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/planets.mp4").toString()});  
+                    }
+                    else if (level == QuestionLevel.LEVEL_3){
+                        if(videoProcess!=null)
+                        videoProcess = Runtime.getRuntime().exec(new String[] {"open", getClass().getClassLoader().getResource("videos/bodyparts.mp4").toString()});
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
