@@ -32,7 +32,7 @@
 {"question":"What shape has 3 sides?","choices":["Square","circle","triangle","rectangle"],"answer":"triangle","explaination":"A triangle has three sides","type":"PICTURE","category":"SHAPES","level":"LEVEL_1"}
 {"question":"Which fruit is green?","choices":["apple","grapes","banana","kiwi"],"answer":"kiwi","explaination":"A kiwi has is green on the inside","type":"PICTURE","category":"COLORS","level":"LEVEL_1"}
 {"question":"Which is a Deer?","choices":["dog","giraffe","deer","elephant"],"answer":"deer","explaination":"","type":"PICTURE","category":"ANIMALS","level":"LEVEL_1"}
-{"question":"Where do fishes live","choices":["Water","Air","Land","Trees"],"answer":"Water","explaination":"","type":"TEXT", "category":"ANIMALS","level":"LEVEL_1"}
+{"question":"Where do fishes live?","choices":["Ocean","Sky","Desert","Tree"],"answer":"Ocean","explaination":"","type":"PICTURE", "category":"ANIMALS","level":"LEVEL_1"}
 {"question":"Which of the following do you use to write on paper","choices":["Pencil","Ruler","Scale","Eraser"],"answer":"Pencil","explaination":"","type":"TEXT", "category":"STATIONARY","level":"LEVEL_3"}
 {"question":"Which of the following is used for coloring","choices":["crayon","ruler","sharpener","eraser"],"answer":"crayon","explaination":"","type":"PICTURE", "category":"STATIONARY","level":"LEVEL_3"}
 {"question":"Which of the following is not a sense organ","choices":["eyes","nose","skin","hands"],"answer":"hands","explaination":"","type":"TEXT", "category":"BODYPARTS","level":"LEVEL_3"}
