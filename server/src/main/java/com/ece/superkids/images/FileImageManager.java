@@ -31,11 +31,10 @@ public class FileImageManager implements ImageManager {
         Properties props = new Properties();
         try {
             props.load(new FileInputStream(fileManager.getImagePathsFile()));
-            if (counter > 0) {
-                key = fileName + counter;
-
-            } else {
-                key = fileName;
+            key = fileName;
+            counter = 0;
+            while(props.getProperty(key) != null) {
+                key = fileName + ++counter;
             }
 
             props.put(key, newImage.getPath());

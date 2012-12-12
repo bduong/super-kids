@@ -13,8 +13,8 @@ import com.ece.superkids.ui.controllers.QuestionController;
 import com.ece.superkids.ui.customui.ImageButton;
 import com.ece.superkids.ui.providers.ImageProvider;
 import com.ece.superkids.ui.providers.ResourceProviderFactory;
-import java.awt.Color;
-import java.awt.GridLayout;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -221,12 +221,11 @@ public class QuestionPicturePanel extends javax.swing.JPanel {
         scrollable.removeAll();
         scrollable.revalidate();
         scrollable.repaint();
-        List keys = iProvider.getAllKeys();
-        for (int i = 0; i < keys.size(); i++) {
+        List<String> keys = iProvider.getAllKeys();
+        for (String key : keys) {
             ImageButton button = new ImageButton();
-            button.setPreferredSize(new java.awt.Dimension(150, 150));
+            button.setPreferredSize(new Dimension(150, 150));
             button.setSize(150, 150);
-            String key = (String) keys.get(i);
             button.setIcon(iProvider.getImage(key));
             button.setText(key);
             button.addActionListener(new ButtonAction(field));
