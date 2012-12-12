@@ -1,5 +1,5 @@
 language: java
-install: echo 'Skipping mvn install'
+install: mvn clean
 before_script:
  - "mkdir ~/.superkidsdata"
  - "chmod 755 ~/.superkidsdata"
