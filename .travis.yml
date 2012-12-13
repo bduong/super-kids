@@ -1,6 +1,6 @@
 language: java
 install: 
- - mvn clean compile -DskipTests | sed "s_Download*__g"
+ - mvn clean compile -DskipTests | sed "s_Download.*__g"
 before_script:
  - "mkdir ~/.superkidsdata"
  - "chmod 755 ~/.superkidsdata"
